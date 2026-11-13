@@ -1,0 +1,11 @@
+(async()=>{const t=(await (await fetch('http://127.0.0.1:9226/json')).json()).find(x=>x.type==='page');const ws=new WebSocket(t.webSocketDebuggerUrl);let id=0;const p=new Map();const errors=[];ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&p.has(m.id)){p.get(m.id)(m);p.delete(m.id)}else if(m.method==='Runtime.exceptionThrown'){errors.push(m.params.exceptionDetails.text+' '+(m.params.exceptionDetails.exception&&m.params.exceptionDetails.exception.description||''))}};await new Promise(r=>ws.onopen=r);const send=(m,q={})=>new Promise(r=>{const i=++id;p.set(i,r);ws.send(JSON.stringify({id:i,method:m,params:q}))});const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true});return r.result&&r.result.result&&r.result.result.value};await send('Runtime.enable');await send('Page.enable');await send('Page.reload',{ignoreCache:true});await new Promise(r=>setTimeout(r,1200));
+console.log('moduleRow',await ev("getComputedStyle(document.getElementById('moduleRow')).display"));
+await ev("document.querySelector('#editorBar [data-panel=\\\"assets\\\"]').click()");await new Promise(r=>setTimeout(r,200));
+console.log('insertButtons',await ev("[...document.querySelectorAll('[data-insert-module]')].map(b=>b.textContent)"));
+await ev("document.querySelector('[data-insert-module=\\\"flow\\\"]').click()");await new Promise(r=>setTimeout(r,400));
+console.log('flow',await ev("({moduleNodes:document.querySelectorAll('.alur-module-node').length,embeds:document.querySelectorAll('.alur-module-embed').length,svgs:document.querySelectorAll('.alur-module-embed svg').length,titles:[...document.querySelectorAll('.alur-module-node .alur-node-label')].map(t=>t.textContent)})"));
+await ev("document.querySelector('[data-insert-module=\\\"chart\\\"]').click()");await new Promise(r=>setTimeout(r,400));
+console.log('chart',await ev("({moduleNodes:document.querySelectorAll('.alur-module-node').length,svgs:document.querySelectorAll('.alur-module-embed svg').length,errors:[...document.querySelectorAll('.alur-error')].map(e=>e.textContent)})"));
+console.log('errors',errors.slice(0,5));
+const shot=await send('Page.captureScreenshot',{format:'png'});require('fs').writeFileSync('/home/moon/Projects/ai-tools/renders/modules.png',Buffer.from(shot.result.data,'base64'));
+ws.close()})();

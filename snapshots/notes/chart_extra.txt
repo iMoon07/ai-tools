@@ -1,0 +1,246 @@
+        } else if (type === 'bell') {
+            var bMu = spec.mean || 0, bSigma = spec.sigma || 1;
+            var bMarker = spec.marker === undefined ? bMu : spec.marker;
+            var bMin = bMu - 4 * bSigma, bMax = bMu + 4 * bSigma;
+            var bPts = [];
+            for (var bi = 0; bi <= 60; bi++) {
+                var bx = bMin + (bMax - bMin) * bi / 60;
+                var by = Math.exp(-0.5 * Math.pow((bx - bMu) / bSigma, 2));
+                bPts.push([padL + pw * bi / 60, base - by * ph * 0.9]);
+            }
+            var bPath = bPts.map(function (p, i) { return (i ? 'L ' : 'M ') + p[0] + ' ' + p[1]; }).join(' ');
+            kit.path(layer, bPath, 'alur-line', { stroke: series[0].color });
+            var bmx = padL + pw * ((bMarker - bMin) / (bMax - bMin));
+            kit.line(layer, bmx, padT, bmx, base, 'alur-marker-line');
+            kit.text(layer, bmx, padT - 6, spec.markerLabel || '', 'alur-axis-label', { 'text-anchor': 'middle' });
+        } else if (type === 'histogram') {
+            var hBins = spec.bins || 8;
+            var hData = series[0].data;
+            var hMin = Math.min.apply(null, hData), hMax = Math.max.apply(null, hData);
+            var hCounts = [];
+            for (var hi = 0; hi < hBins; hi++) hCounts.push(0);
+            hData.forEach(function (v) {
+                var idx = Math.min(hBins - 1, Math.floor((v - hMin) / ((hMax - hMin) || 1) * hBins));
+                hCounts[idx]++;
+            });
+            var hPeak = niceMax(Math.max.apply(null, hCounts));
+            grid(hPeak, 4);
+            var hStep = pw / hBins;
+            hCounts.forEach(function (c, i) {
+                var h = (c / hPeak) * ph;
+                kit.rect(layer, padL + hStep * i + 2, base - h, hStep - 4, h, 'alur-bar', { fill: series[0].color, rx: 2 });
+            });
+        } else if (type === 'stackedArea') {
+            var sMax = 0;
+            for (var si2 = 0; si2 < labels.length; si2++) {
+                var sTot = 0;
+                series.forEach(function (s) { sTot += s.data[si2] || 0; });
+                if (sTot > sMax) sMax = sTot;
+            }
+            var sTop = niceMax(sMax);
+            grid(sTop, 4);
+            var sAcc = labels.map(function () { return 0; });
+            series.forEach(function (s) {
+                var topPts = [], botPts = [];
+                s.data.forEach(function (v, i) {
+                    var y0 = base - (sAcc[i] / sTop) * ph;
+                    sAcc[i] += v;
+                    var y1 = base - (sAcc[i] / sTop) * ph;
+                    var xx = padL + pw * (i + 0.5) / s.data.length;
+                    topPts.push([xx, y1]);
+                    botPts.push([xx, y0]);
+                });
+                var areaD = topPts.map(function (p, i) { return (i ? 'L ' : 'M ') + p[0] + ' ' + p[1]; }).join(' ') +
+                    ' ' + botPts.slice().reverse().map(function (p) { return 'L ' + p[0] + ' ' + p[1]; }).join(' ') + ' Z';
+                kit.path(layer, areaD, 'alur-area', { fill: s.color, opacity: 0.55 });
+            });
+        } else if (type === 'treemap') {
+            var tVals = series[0].data;
+            var tTotal = tVals.reduce(function (a, b) { return a + b; }, 0) || 1;
+            var tx = padL, ty = padT, tw = pw, th = ph;
+            tVals.forEach(function (v, i) {
+                var frac = v / tTotal;
+                var col = kit.color((spec.colors && spec.colors[i]) || (i % 2 ? 'green' : 'blue'));
+                if (i % 2 === 0) {
+                    var cw2 = tw * frac;
+                    kit.rect(layer, tx, ty, Math.max(2, cw2 - 3), th, 'alur-treemap-cell', { fill: col, rx: 4, opacity: 0.85 });
+                    kit.text(layer, tx + 8, ty + 18, labels[i] || '', 'alur-treemap-label');
+                    tx += cw2;
+                } else {
+                    var ch2 = th * frac;
+                    kit.rect(layer, tx, ty, Math.max(2, tw - 3), ch2, 'alur-treemap-cell', { fill: col, rx: 4, opacity: 0.85 });
+                    kit.text(layer, tx + 8, ty + 18, labels[i] || '', 'alur-treemap-label');
+                    ty += ch2;
+                }
+            });
+        } else if (type === 'box') {
+            var bxs = spec.boxes || [];
+            var bMax2 = 0;
+            bxs.forEach(function (b) { if (b.max > bMax2) bMax2 = b.max; });
+            var bTop = niceMax(bMax2);
+            grid(bTop, 4);
+            var bStep2 = ph / Math.max(1, bxs.length);
+            bxs.forEach(function (b, i) {
+                var y = padT + bStep2 * (i + 0.5);
+                var x1 = padL + (b.min / bTop) * pw;
+                var x2 = padL + (b.max / bTop) * pw;
+                var xq1 = padL + (b.q1 / bTop) * pw;
+                var xq3 = padL + (b.q3 / bTop) * pw;
+                var xm = padL + (b.median / bTop) * pw;
+                kit.line(layer, x1, y, x2, y, 'alur-box-whisker');
+                kit.rect(layer, xq1, y - 11, Math.max(2, xq3 - xq1), 22, 'alur-box-range', { fill: series[0].color, opacity: 0.25, rx: 3 });
+                kit.line(layer, xm, y - 11, xm, y + 11, 'alur-box-median');
+                kit.text(layer, padL - 8, y + 3, b.label || '', 'alur-axis-label', { 'text-anchor': 'end' });
+            });
+        } else if (type === 'range') {
+            var rItems = spec.items || [];
+            var rMax = 0;
+            rItems.forEach(function (it) { if (it.to > rMax) rMax = it.to; });
+            var rTop = niceMax(rMax);
+            grid(rTop, 4);
+            var rStep = ph / Math.max(1, rItems.length);
+            rItems.forEach(function (it, i) {
+                var y = padT + rStep * (i + 0.5);
+                var x1 = padL + (it.from / rTop) * pw;
+                var x2 = padL + (it.to / rTop) * pw;
+                kit.line(layer, x1, y, x2, y, 'alur-range-line', { stroke: series[0].color, 'stroke-width': 6 });
+                kit.circle(layer, x2, y, 5, 'alur-range-dot', { fill: series[0].color });
+                kit.text(layer, padL - 8, y + 3, it.label || '', 'alur-axis-label', { 'text-anchor': 'end' });
+            });
+        } else if (type === 'density') {
+            grid(1, 4);
+            series.forEach(function (s) {
+                var pts = s.data.map(function (v, i) { return [padL + pw * (i + 0.5) / s.data.length, base - v * ph]; });
+                var d = pts.map(function (p, i) { return (i ? 'L ' : 'M ') + p[0] + ' ' + p[1]; }).join(' ');
+                kit.path(layer, d, 'alur-line', { stroke: s.color });
+            });
+        } else if (type === 'slope') {
+            var slItems = spec.items || [];
+            var slMax = 0;
+            slItems.forEach(function (it) { if (it.before > slMax) slMax = it.before; if (it.after > slMax) slMax = it.after; });
+            var slTop = niceMax(slMax);
+            grid(slTop, 4);
+            var slX1 = padL + pw * 0.3, slX2 = padL + pw * 0.7;
+            slItems.forEach(function (it) {
+                var y1 = base - (it.before / slTop) * ph;
+                var y2 = base - (it.after / slTop) * ph;
+                kit.line(layer, slX1, y1, slX2, y2, 'alur-slope-line', { stroke: series[0].color });
+                kit.circle(layer, slX1, y1, 4, 'alur-line-dot', { fill: palette.blue });
+                kit.circle(layer, slX2, y2, 4, 'alur-line-dot', { fill: palette.green });
+                kit.text(layer, slX1 - 8, y1 + 3, it.label || '', 'alur-axis-label', { 'text-anchor': 'end' });
+            });
+        } else if (type === 'combo') {
+            var cVals = spec.bars || series[0].data;
+            var cMax = niceMax(Math.max.apply(null, cVals));
+            grid(cMax, 4);
+            var cStep = pw / cVals.length;
+            cVals.forEach(function (v, i) {
+                var h = (v / cMax) * ph;
+                kit.rect(layer, xAt(i, cVals.length) - Math.min(20, cStep * 0.28), base - h, Math.min(40, cStep * 0.56), h, 'alur-bar', { fill: series[0].color, rx: 3, opacity: 0.7 });
+                kit.text(layer, xAt(i, cVals.length), base + 16, labels[i] || '', 'alur-axis-label', { 'text-anchor': 'middle' });
+            });
+            var cLine = spec.line || [];
+            var cTop = niceMax(Math.max.apply(null, cLine.concat([1])));
+            var cPts = cLine.map(function (v, i) { return [xAt(i, cLine.length), base - (v / cTop) * ph]; });
+            if (cPts.length) kit.path(layer, cPts.map(function (p, i) { return (i ? 'L ' : 'M ') + p[0] + ' ' + p[1]; }).join(' '), 'alur-line', { stroke: palette.amber });
+        } else if (type === 'timeline') {
+            var tEvents = spec.events || [];
+            var tY = padT + ph / 2;
+            kit.line(layer, padL, tY, padL + pw, tY, 'alur-timeline-line');
+            tEvents.forEach(function (ev, i) {
+                var x = padL + pw * (ev.at !== undefined ? ev.at : (i / Math.max(1, tEvents.length - 1)));
+                kit.circle(layer, x, tY, 5, 'alur-timeline-dot', { fill: series[0].color });
+                kit.text(layer, x, tY - 12, ev.label || '', 'alur-axis-label', { 'text-anchor': 'middle' });
+            });
+        } else if (type === 'bubble') {
+            var buPts = series[0].data;
+            var buX = niceMax(Math.max.apply(null, buPts.map(function (p) { return p[0]; })));
+            var buY = niceMax(Math.max.apply(null, buPts.map(function (p) { return p[1]; })));
+            var buR = Math.max.apply(null, buPts.map(function (p) { return p[2] || 1; }));
+            grid(buY, 4);
+            buPts.forEach(function (p) {
+                kit.circle(layer, padL + (p[0] / buX) * pw, base - (p[1] / buY) * ph, 4 + ((p[2] || 1) / buR) * 14, 'alur-bubble', { fill: series[0].color, opacity: 0.45 });
+            });
+        } else if (type === 'dumbbell') {
+            var dItems = spec.items || [];
+            var dMax = 0;
+            dItems.forEach(function (it) { if (it.a > dMax) dMax = it.a; if (it.b > dMax) dMax = it.b; });
+            var dTop = niceMax(dMax);
+            grid(dTop, 4);
+            var dStep = ph / Math.max(1, dItems.length);
+            dItems.forEach(function (it, i) {
+                var y = padT + dStep * (i + 0.5);
+                var xa = padL + (it.a / dTop) * pw;
+                var xb = padL + (it.b / dTop) * pw;
+                kit.line(layer, xa, y, xb, y, 'alur-dumbbell-line', { stroke: palette.slate, 'stroke-width': 3 });
+                kit.circle(layer, xa, y, 5, 'alur-dumbbell-dot', { fill: palette.blue });
+                kit.circle(layer, xb, y, 5, 'alur-dumbbell-dot', { fill: palette.green });
+                kit.text(layer, padL - 8, y + 3, it.label || '', 'alur-axis-label', { 'text-anchor': 'end' });
+            });
+        } else if (type === 'quadrant') {
+            var qPts = series[0].data;
+            var qX = niceMax(Math.max.apply(null, qPts.map(function (p) { return p[0]; })));
+            var qY = niceMax(Math.max.apply(null, qPts.map(function (p) { return p[1]; })));
+            grid(qY, 4);
+            kit.line(layer, padL + pw / 2, padT, padL + pw / 2, base, 'alur-quad-line');
+            kit.line(layer, padL, padT + ph / 2, padL + pw, padT + ph / 2, 'alur-quad-line');
+            qPts.forEach(function (p) {
+                kit.circle(layer, padL + (p[0] / qX) * pw, base - (p[1] / qY) * ph, 5, 'alur-bubble', { fill: series[0].color, opacity: 0.85 });
+            });
+            kit.text(layer, padL + 6, padT + 12, spec.q2 || '', 'alur-axis-label');
+            kit.text(layer, padL + pw - 6, padT + 12, spec.q1 || '', 'alur-axis-label', { 'text-anchor': 'end' });
+            kit.text(layer, padL + 6, base - 6, spec.q3 || '', 'alur-axis-label');
+            kit.text(layer, padL + pw - 6, base - 6, spec.q4 || '', 'alur-axis-label', { 'text-anchor': 'end' });
+        } else if (type === 'process') {
+            var pSteps = spec.steps || [];
+            var pN = Math.max(1, pSteps.length);
+            var pStep = pw / pN;
+            var pY = padT + ph / 2;
+            pSteps.forEach(function (s, i) {
+                var x = padL + pStep * (i + 0.5);
+                kit.circle(layer, x, pY, 18, 'alur-process-dot', { fill: series[0].color, opacity: 0.2 });
+                kit.text(layer, x, pY + 4, String(i + 1), 'alur-process-num', { 'text-anchor': 'middle' });
+                kit.text(layer, x, pY + 36, typeof s === 'string' ? s : s.label, 'alur-axis-label', { 'text-anchor': 'middle' });
+                if (i < pN - 1) kit.line(layer, x + 18, pY, x + pStep - 18, pY, 'alur-process-arrow');
+            });
+        } else if (type === 'cycle') {
+            var cySteps = spec.steps || [];
+            var cyN = Math.max(1, cySteps.length);
+            var cyCx = W / 2, cyCy = H / 2, cyR = Math.min(W, H) / 2 - 54;
+            kit.circle(layer, cyCx, cyCy, cyR, 'alur-cycle-guide', { fill: 'none', stroke: '#30363d', 'stroke-dasharray': '3 6' });
+            cySteps.forEach(function (s, i) {
+                var ang = -Math.PI / 2 + i * 2 * Math.PI / cyN;
+                var x = cyCx + cyR * Math.cos(ang), y = cyCy + cyR * Math.sin(ang);
+                kit.circle(layer, x, y, 22, 'alur-cycle-node', { fill: '#161b22', stroke: series[0].color, 'stroke-width': 2 });
+                kit.text(layer, x, y + 4, String(i + 1), 'alur-cycle-num', { 'text-anchor': 'middle' });
+                kit.text(layer, x, y + 38, typeof s === 'string' ? s : s.label, 'alur-axis-label', { 'text-anchor': 'middle' });
+            });
+        } else if (type === 'progress') {
+            var prItems = spec.items || [];
+            var prStep = ph / Math.max(1, prItems.length);
+            prItems.forEach(function (it, i) {
+                var y = padT + prStep * i + prStep * 0.2;
+                kit.text(layer, padL, y + 10, it.label || '', 'alur-axis-label');
+                var x = padL + 120, w = pw - 130, acc = 0;
+                (it.parts || []).forEach(function (p) {
+                    var segW = w * (p.value / 100);
+                    kit.rect(layer, x + acc, y, Math.max(1, segW - 2), 16, 'alur-progress-seg', { fill: p.color || series[0].color, rx: 3 });
+                    acc += segW;
+                });
+            });
+        } else if (type === 'table') {
+            var tCols = spec.columns || [];
+            var tRows = spec.rows || [];
+            var tCW = pw / Math.max(1, tCols.length);
+            var tRH = ph / Math.max(1, tRows.length + 1);
+            tCols.forEach(function (c, i) {
+                kit.text(layer, padL + tCW * i + tCW / 2, padT + tRH / 2, c, 'alur-table-head', { 'text-anchor': 'middle' });
+            });
+            tRows.forEach(function (row, ri) {
+                row.forEach(function (cell, ci) {
+                    kit.text(layer, padL + tCW * ci + tCW / 2, padT + tRH * (ri + 1) + tRH / 2, String(cell), 'alur-table-cell', { 'text-anchor': 'middle' });
+                });
+                kit.line(layer, padL, padT + tRH * (ri + 2), padL + pw, padT + tRH * (ri + 2), 'alur-table-line');
+            });
+        } else {
+            /* kpi: angka besar + label + delta. */

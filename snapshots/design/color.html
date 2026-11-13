@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/ai-tools/vendor/marked.min.js"></script>
+<script src="file:///home/moon/Projects/ai-tools/vendor/purify.min.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/markdown.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/shell.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/article.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#111827}</style></head><body class="article-page">
+<div class="site"><main class="article-layout"><article class="article-column"><div class="prose" id="content"></div></article></article></main></div>
+<pre id="report">pending</pre>
+<script>
+const MD="```topology\n"+"{\n  \"vertical\": true,\n  \"title\": \"The Flow\",\n  \"columns\": [[\"C\"], [\"P\"], [\"K\"], [\"G\"]],\n  \"nodes\": {\n    \"C\": [\"Customer\", \"Places an order\", \"customer\", \"actor\", \"https://en.wikipedia.org/wiki/Web_browser\"],\n    \"P\": [\"Waiter\", \"Takes the order and forwards it\", \"waiter\", \"process\", \"https://en.wikipedia.org/wiki/Web_server\"],\n    \"K\": [\"Chef\", \"Prepares the order\", \"cook\", \"process\", \"https://en.wikipedia.org/wiki/Runtime_system\", \"cook\"],\n    \"G\": [\"Pantry\", \"Stores ingredients\", \"warehouse\", \"store\", \"https://en.wikipedia.org/wiki/Database\"]\n  },\n  \"edges\": [[\"C\", \"P\", \"1\"], [\"P\", \"K\", \"2\"], [\"K\", \"G\", \"3\"], [\"G\", \"K\", \"4\", true], [\"K\", \"P\", \"5\", true], [\"P\", \"C\", \"6\", true]],\n  \"groups\": [[\"Eatery / Single Location\", [\"P\", \"K\", \"G\"], \"store\"]],\n  \"legend\": {\n    \"flow\": \"Order / request\",\n    \"back\": \"Return / response\"\n  },\n  \"facilities\": [\"In this place\", [\"store\", \"Eatery\"], [\"cooking-pot\", \"Kitchen\"], [\"utensils\", \"Dining area\"], [\"warehouse\", \"Storage\"]]\n}"+"\n```\n";
+const parsed=marked.parse(MD,{gfm:true});
+document.getElementById('content').innerHTML=DOMPurify.sanitize(parsed,{ADD_TAGS:['figure','figcaption'],ADD_ATTR:['id','class','style','data-spec','aria-label','role','fill','r'],ALLOW_DATA_ATTR:true});
+Topology.init();
+setTimeout(function(){
+ var r=document.querySelector('.topology');
+ var dots=[];
+ var nodes=r.querySelectorAll('.topo-dot');
+ for(var i=0;i<nodes.length;i++){var c=getComputedStyle(nodes[i]);dots.push({cls:nodes[i].getAttribute('class'),fill:c.fill,stroke:c.stroke,op:c.opacity,filter:c.filter,r:nodes[i].getAttribute('r')});}
+ var blacks=[];
+ var all=r.querySelectorAll('*');
+ for(var j=0;j<all.length;j++){var el=all[j];var c=getComputedStyle(el);
+   if(c.fill==='rgb(0, 0, 0)'||c.stroke==='rgb(0, 0, 0)'||c.backgroundColor==='rgb(0, 0, 0)'){blacks.push({tag:el.tagName,cls:el.getAttribute('class')||'',fill:c.fill,stroke:c.stroke,bg:c.backgroundColor});}
+ }
+ document.getElementById('report').textContent=JSON.stringify({dots:dots,blacks:blacks});
+},900);
+</script></body></html>

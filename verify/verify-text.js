@@ -1,0 +1,31 @@
+(async()=>{
+const targets=await (await fetch('http://127.0.0.1:9224/json')).json();
+const page=targets.find(t=>t.type==='page');
+const ws=new WebSocket(page.webSocketDebuggerUrl); let id=0; const p=new Map(); const errs=[];
+ws.onmessage=e=>{const m=JSON.parse(e.data); if(m.id&&p.has(m.id)){p.get(m.id)(m);p.delete(m.id);} else if(m.method==='Runtime.exceptionThrown'){errs.push(m.params.exceptionDetails.text);} };
+await new Promise(r=>ws.onopen=r);
+const send=(m,params={})=>new Promise(res=>{const i=++id;p.set(i,res);ws.send(JSON.stringify({id:i,method:m,params}))});
+const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true}); if(r.result.exceptionDetails)console.log('EXC',JSON.stringify(r.result.exceptionDetails).slice(0,500)); return r.result&&r.result.result&&r.result.result.value};
+const key=async(type,opts={})=>send('Input.dispatchKeyEvent',Object.assign({type},opts));
+const typeText=async s=>{for(const ch of s){await key('keyDown',{text:ch,key:ch});await key('keyUp',{key:ch});}};
+const click=async(x,y)=>{await send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1,clickCount:1});await send('Input.dispatchMouseEvent',{type:'mouseReleased',x,y,button:'left',buttons:0,clickCount:1});};
+const dbl=async(x,y)=>{await click(x,y);await click(x,y);};
+await send('Runtime.enable'); await send('Page.enable');
+await send('Page.navigate',{url:'file:///home/moon/Projects/imoon07.github.io/preview.html'});
+await new Promise(r=>setTimeout(r,1500));
+// ensure canvas module
+console.log('module',await ev("document.getElementById('module').value"));
+await ev("document.querySelector('[data-tool=\\\"text\\\"]').click()"); await new Promise(r=>setTimeout(r,150));
+const stage=await ev("(()=>{const r=document.getElementById('stage').getBoundingClientRect();return{x:r.left+r.width*0.35,y:r.top+r.height*0.4}})()");
+await click(stage.x,stage.y); await new Promise(r=>setTimeout(r,400));
+console.log('editing',await ev("(()=>{const a=document.getElementById('inlineText');return a&&a.style.display!=='none'?{value:a.value,focused:document.activeElement===a}:null})()"));
+await typeText('hello'); await new Promise(r=>setTimeout(r,900));
+await key('keyDown',{key:'a',code:'KeyA',modifiers:2,text:'a'}); await key('keyUp',{key:'a',code:'KeyA',modifiers:2});
+await new Promise(r=>setTimeout(r,120));
+console.log('afterCtrlA',await ev("(()=>{const a=document.getElementById('inlineText');return {value:a.value,sel:[a.selectionStart,a.selectionEnd],nodes:document.querySelectorAll('.alur-canvas-node.is-selected').length}})()"));
+await typeText('X'); await new Promise(r=>setTimeout(r,200));
+console.log('afterType',await ev("document.getElementById('inlineText').value"));
+await key('keyDown',{key:'Enter',code:'Enter',text:'\r'}); await key('keyUp',{key:'Enter',code:'Enter'}); await new Promise(r=>setTimeout(r,400));
+console.log('committed',await ev("(()=>{const a=document.getElementById('inlineText');const t=document.querySelector('.alur-node.is-text .alur-node-label');return {hidden:a.style.display==='none', label:t&&t.textContent}})()"));
+console.log('errs',errs);
+ws.close();})();

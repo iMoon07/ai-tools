@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#0d1117;padding:20px} .prose{max-width:760px;margin:0 auto}</style>
+</head><body><div class="prose"><div class="topology" data-spec='{
+  "vertical": true,
+  "title": "Alurnya",
+  "columns": [["C"], ["P"], ["K"], ["G"]],
+  "nodes": {
+    "C": ["Pelanggan", "Datang dan memesan makanan", "customer", "actor", "https://en.wikipedia.org/wiki/Web_browser"],
+    "P": [
+      "Pelayan",
+      "Menerima pesanan dan meneruskannya",
+      "waiter",
+      "process",
+      "https://en.wikipedia.org/wiki/Web_server"
+    ],
+    "K": ["Koki", "Memasak sesuai pesanan", "cook", "process", "https://en.wikipedia.org/wiki/Runtime_system", "cook"],
+    "G": ["Gudang Bahan", "Menyimpan bahan makanan", "warehouse", "store", "https://en.wikipedia.org/wiki/Database"]
+  },
+  "edges": [
+    ["C", "P"],
+    ["P", "K"],
+    ["K", "G"],
+    ["G", "K", "", true],
+    ["K", "P", "", true],
+    ["P", "C", "", true]
+  ],
+  "badges": false,
+  "groups": [["Warung / Satu Lokasi", ["P", "K", "G"], "store"]],
+  "legend": {
+    "flow": "Pesanan / permintaan",
+    "back": "Balasan / respons"
+  },
+  "facilities": [
+    "Di tempat ini",
+    ["store", "Warung"],
+    ["cooking-pot", "Dapur"],
+    ["utensils", "Meja makan"],
+    ["warehouse", "Gudang bahan"]
+  ]
+}'></div></div>
+<script>Topology.init();</script></body></html>

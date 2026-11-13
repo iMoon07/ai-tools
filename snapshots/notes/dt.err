@@ -1,0 +1,5 @@
+[3284928:3284928:1113/072917.638167:WARNING:sandbox/policy/linux/sandbox_linux.cc:405] InitializeSandbox() called with multiple threads in process gpu-process.
+[3284881:3284881:1113/072917.926909:WARNING:components/dbus/xdg/portal.cc:126] Failed to register with org.freedesktop.host.portal.Registry
+[3284881:3284881:1113/072918.013210:INFO:CONSOLE:26] "Uncaught TypeError: Cannot read properties of null (reading 'value')", source: http://localhost:8000/imoon07.github.io/__draw_test.html (26)
+[3284945:3284958:1113/072918.420066:WARNING:net/extras/sqlite/sqlite_persistent_store_backend_base.cc:181] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:231 to client_task_runner_.
+[3284945:3284958:1113/072918.420110:WARNING:net/extras/sqlite/sqlite_persistent_store_backend_base.cc:181] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:231 to client_task_runner_.

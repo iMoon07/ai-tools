@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#0d1117;padding:16px} .prose{max-width:900px;margin:0 auto}</style>
+</head><body><div class="prose"><div class="topology" data-spec='{
+  "vertical": true,
+  "title": "Alurnya",
+  "columns": [["C"], ["P"], ["K"], ["G"]],
+  "nodes": {
+    "C": ["Pelanggan", "Datang dan memesan makanan", "customer", "actor", "https://en.wikipedia.org/wiki/Web_browser"],
+    "P": [
+      "Pelayan",
+      "Menerima pesanan dan meneruskannya",
+      "waiter",
+      "process",
+      "https://en.wikipedia.org/wiki/Web_server"
+    ],
+    "K": ["Koki", "Memasak sesuai pesanan", "cook", "process", "https://en.wikipedia.org/wiki/Runtime_system", "cook"],
+    "G": ["Gudang Bahan", "Menyimpan bahan makanan", "warehouse", "store", "https://en.wikipedia.org/wiki/Database"]
+  },
+  "edges": [
+    ["C", "P", "1"],
+    ["P", "K", "2"],
+    ["K", "G", "3"],
+    ["G", "K", "4", true],
+    ["K", "P", "5", true],
+    ["P", "C", "6", true]
+  ],
+  "groups": [["Warung / Satu Lokasi", ["P", "K", "G"], "store"]],
+  "legend": {
+    "flow": "Pesanan / permintaan",
+    "back": "Balasan / respons"
+  },
+  "facilities": [
+    "Di tempat ini",
+    ["store", "Warung"],
+    ["cooking-pot", "Dapur"],
+    ["utensils", "Meja makan"],
+    ["warehouse", "Gudang bahan"]
+  ]
+}'></div></div><pre id="report">pending</pre>
+<script>
+Topology.init();
+setTimeout(function(){
+ var r=document.querySelectorAll('.topology')[0];
+ var cr=r.querySelector('.topo-canvas').getBoundingClientRect();
+ var out={pad:getComputedStyle(r.querySelector('.topo-columns')).paddingRight,nodes:[],paths:[]};
+ r.querySelectorAll('.topo-node').forEach(function(n){var b=n.getBoundingClientRect();out.nodes.push({id:n.dataset.node,x:Math.round(b.x-cr.x),w:Math.round(b.width)});});
+ r.querySelectorAll('.topo-svg path').forEach(function(p){if((p.getAttribute('class')||'').indexOf('back')>=0)out.paths.push(p.getAttribute('d'));});
+ document.getElementById('report').textContent=JSON.stringify(out);
+},800);
+</script></body></html>

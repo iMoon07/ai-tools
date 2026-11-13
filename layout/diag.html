@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/markdown.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/shell.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/article.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#111827}</style></head><body class="article-page">
+<div class="site"><main class="article-layout"><article class="article-column"><div class="prose" id="content"></div></article></article></main></div>
+<pre id="report">pending</pre>
+<script>
+const MD="```topology\n{\"title\":\"The Flow\",\"columns\":[{\"nodes\":[\"C\"]},{\"nodes\":[\"P\"]},{\"nodes\":[\"K\"]},{\"nodes\":[\"G\"]}],\"nodes\":{\"C\":{\"label\":\"Customer\",\"sub\":\"Places an order\",\"icon\":\"user-round\",\"kind\":\"actor\",\"href\":\"https://en.wikipedia.org/wiki/Web_browser\"},\"P\":{\"label\":\"Waiter\",\"sub\":\"Takes the order and forwards it\",\"icon\":\"concierge-bell\",\"kind\":\"process\",\"href\":\"https://en.wikipedia.org/wiki/Web_server\"},\"K\":{\"label\":\"Chef\",\"sub\":\"Prepares the order\",\"icon\":\"chef-hat\",\"kind\":\"process\",\"href\":\"https://en.wikipedia.org/wiki/Runtime_system\"},\"G\":{\"label\":\"Pantry\",\"sub\":\"Stores ingredients\",\"icon\":\"refrigerator\",\"kind\":\"store\",\"href\":\"https://en.wikipedia.org/wiki/Database\"}},\"edges\":[{\"from\":\"C\",\"to\":\"P\",\"badge\":\"1\"},{\"from\":\"P\",\"to\":\"K\",\"badge\":\"2\"},{\"from\":\"K\",\"to\":\"G\",\"badge\":\"3\"},{\"from\":\"G\",\"to\":\"K\",\"badge\":\"4\",\"back\":true},{\"from\":\"K\",\"to\":\"P\",\"badge\":\"5\",\"back\":true},{\"from\":\"P\",\"to\":\"C\",\"badge\":\"6\",\"back\":true}],\"groups\":[{\"label\":\"Eatery / Single Location\",\"nodes\":[\"P\",\"K\",\"G\"],\"icon\":\"store\"}],\"legend\":[{\"type\":\"flow\",\"label\":\"Order / request\"},{\"type\":\"back\",\"label\":\"Return / response\"}],\"facilitiesLabel\":\"In this place\",\"facilities\":[{\"icon\":\"store\",\"label\":\"Eatery\"},{\"icon\":\"cooking-pot\",\"label\":\"Kitchen\"},{\"icon\":\"wifi\",\"label\":\"Wi-Fi\"},{\"icon\":\"wrench\",\"label\":\"Tools\"},{\"icon\":\"trash-2\",\"label\":\"Trash bin\"}]}\n```\n";
+const parsed=marked.parse(MD,{gfm:true});
+document.getElementById('content').innerHTML=DOMPurify.sanitize(parsed,{ADD_TAGS:['figure','figcaption'],ADD_ATTR:['id','class','style','href','data-spec'],ALLOW_DATA_ATTR:true});
+Topology.init();
+setTimeout(()=>{
+  const r=document.querySelector('.topology');
+  const out=[];
+  r.querySelectorAll('path,circle,rect,text,use,ellipse,polygon,line').forEach(el=>{
+    const cs=getComputedStyle(el);
+    const bb=el.getBBox?el.getBBox():null;
+    out.push({tag:el.tagName.toLowerCase(),cls:el.getAttribute('class')||'',id:el.id||'',
+      fill:cs.fill,stroke:cs.stroke,filter:cs.filter,opacity:cs.opacity,
+      sw:cs.strokeWidth,
+      box:bb?[Math.round(bb.x),Math.round(bb.y),Math.round(bb.width),Math.round(bb.height)]:null,
+      text:(el.textContent||'').slice(0,20)});
+  });
+  document.getElementById('report').textContent=JSON.stringify(out);
+},900);
+</script></body></html>

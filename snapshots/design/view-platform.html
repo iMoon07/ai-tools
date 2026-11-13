@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/article.css">
+<style>body{margin:0;background:#0d1117;padding:16px} .prose{max-width:900px;margin:0 auto}</style>
+</head><body><div class="prose"><div class="topology" data-spec='{
+  "vertical": true,
+  "title": "Memilih Platform untuk Menjalankan Stack",
+  "legend": {
+    "flow": "Aliran data"
+  },
+  "facilities": ["Peran", ["git-branch", "Choice"], ["server", "Platform"], ["layers", "Application"]],
+  "columns": [["B"], {"nodes": ["C", "D", "E", "F", "G", "H"], "grid": 3}, ["I"]],
+  "nodes": {
+    "B": ["Jalankan di mana?", "", "git-branch", "choice", "https://en.wikipedia.org/wiki/Deployment_environment"],
+    "C": [
+      "Bare Metal",
+      "Bangun warung sendiri",
+      "hard-drive",
+      "host",
+      "https://en.wikipedia.org/wiki/Bare-metal_server"
+    ],
+    "D": ["Virtual Machine", "Sewa kamar kost", "monitor", "host", "https://en.wikipedia.org/wiki/Virtual_machine"],
+    "E": [
+      "Container",
+      "Sewa gerai food court",
+      "si-docker",
+      "host",
+      "https://en.wikipedia.org/wiki/Operating-system-level_virtualization"
+    ],
+    "F": ["PaaS", "Ikut franchise siap pakai", "cloud", "host", "https://en.wikipedia.org/wiki/Platform_as_a_service"],
+    "G": [
+      "Serverless",
+      "Buka gerai saat ada pesanan",
+      "zap",
+      "host",
+      "https://en.wikipedia.org/wiki/Serverless_computing"
+    ],
+    "H": ["Edge Computing", "Gerobak dekat pelanggan", "radio", "host", "https://en.wikipedia.org/wiki/Edge_computing"],
+    "I": [
+      "Semua komponen stack",
+      "berjalan di satu tempat",
+      "layers",
+      "out",
+      "#satu-server-satu-tumpukan"
+    ]
+  },
+  "edges": [
+    ["B", "C"],
+    ["B", "D"],
+    ["B", "E"],
+    ["B", "F"],
+    ["B", "G"],
+    ["B", "H"],
+    ["C", "I"],
+    ["D", "I"],
+    ["E", "I"],
+    ["F", "I"],
+    ["G", "I"],
+    ["H", "I"]
+  ]
+}'></div></div>
+<script>Topology.init();</script></body></html>

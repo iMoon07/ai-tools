@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alur — visual explainer playground</title>
+<link rel="stylesheet" href="css/alur.css">
+<style>
+  :root {
+    --bg: #0b0f14;
+    --panel: #111722;
+    --line: #21262d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.5 Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  header {
+    padding: 22px 24px 14px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: baseline;
+  }
+  header h1 { margin: 0; font-size: 20px; letter-spacing: -0.2px; }
+  header p { margin: 0; color: var(--muted); font-size: 12.5px; }
+  .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px 330px;
+    gap: 16px;
+    padding: 18px 24px 40px;
+    align-items: start;
+  }
+  .logo-panel {
+    position: sticky;
+    top: 12px;
+    max-height: calc(100vh - 24px);
+    overflow: auto;
+  }
+  .panel-title {
+    margin: 0 0 4px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media (max-width: 1250px) {
+    .wrap { grid-template-columns: minmax(0, 1fr) 300px; }
+    .logo-panel { grid-column: 1 / -1; position: static; max-height: none; }
+    .logo-grid { max-height: 260px; }
+  }
+  @media (max-width: 900px) {
+    .wrap { grid-template-columns: minmax(0, 1fr); padding: 12px 14px 30px; }
+    header { padding: 16px 16px 10px; }
+    .logo-grid { grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); }
+    .row { flex-wrap: wrap; }
+    .logo-panel { grid-column: auto; }
+  }
+  .stage-card {
+    min-width: 0;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 14px;
+  }
+  .stage-card .alur { margin: 0; }
+  .panel {
+    min-width: 0;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 14px;
+    display: grid;
+    gap: 12px;
+  }
+  .panel label {
+    display: grid;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  select, input[type="range"], input[type="search"], textarea, button {
+    font: inherit;
+    color: var(--text);
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 9px;
+    width: 100%;
+  }
+  textarea {
+    min-height: 230px;
+    resize: vertical;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+  .row { display: flex; gap: 8px; }
+  .row > * { flex: 1; }
+  button {
+    cursor: pointer;
+    background: #1f6feb;
+    border-color: #1f6feb;
+    font-weight: 600;
+  }
+  button.ghost { background: #161b22; border-color: #30363d; }
+  button:hover { filter: brightness(1.08); }
+  .hint { color: var(--muted); font-size: 11.5px; margin: 0; }
+  .catalog { padding: 0 24px 50px; }
+  .catalog h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+  }
+  .demo {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 10px 6px;
+  }
+  .demo h3 { margin: 0 0 2px; font-size: 12.5px; }
+  .demo p { margin: 0 0 6px; color: var(--muted); font-size: 11px; min-height: 28px; }
+  .demo .alur { margin: 0; padding: 4px; border: 0; background: transparent; }
+  .badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: rgba(88,166,255,0.12);
+    color: var(--accent);
+    font-size: 10px;
+    vertical-align: middle;
+  }
+  .panel-section {
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    display: grid;
+    gap: 9px;
+  }
+  .panel-section h3 {
+    margin: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .scene-head { display: flex; justify-content: space-between; gap: 8px; }
+  .scene-head b { color: var(--text); font-weight: 600; }
+  .editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .editor-grid label { display: grid; gap: 3px; }
+  .editor-grid input { width: 100%; }
+  .inspector { border-top: 1px solid var(--line); padding-top: 8px; display: grid; gap: 8px; }
+  .inspector:empty { display: none; }
+  .checkline {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .checkline input { width: auto; }
+  .alur-canvas-node { cursor: grab; }
+  .alur-canvas-node.is-dragging { cursor: grabbing; }
+  .alur-canvas-node.is-selected .alur-node-box {
+    stroke: #58a6ff !important;
+    stroke-width: 2;
+  }
+  .alur-canvas-node.is-connect-from .alur-node-box {
+    stroke: #3fb950 !important;
+    stroke-width: 2;
+    stroke-dasharray: 4 3;
+  }
+  .alur-canvas-edge { pointer-events: stroke; cursor: pointer; }
+  .alur-canvas-edge.is-selected { stroke-width: 4; }
+  .alur-canvas-node { touch-action: none; }
+  .alur-canvas-grid { pointer-events: none; }
+  .alur-drawing { pointer-events: stroke; cursor: pointer; }
+  .alur-drawing.is-selected { stroke-width: 4; filter: drop-shadow(0 0 4px rgba(88,166,255,0.9)); }
+  .alur-handle { fill: #0d1117; stroke: #58a6ff; }
+  .alur-handle[data-handle="n"], .alur-handle[data-handle="s"] { cursor: ns-resize; }
+  .alur-handle[data-handle="e"], .alur-handle[data-handle="w"] { cursor: ew-resize; }
+  .alur-handle[data-handle="nw"], .alur-handle[data-handle="se"] { cursor: nwse-resize; }
+  .alur-handle[data-handle="ne"], .alur-handle[data-handle="sw"] { cursor: nesw-resize; }
+  #stage .alur-svg { touch-action: none; }
+
+  /* draw.io-style toolbar */
+  .editor-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .tool-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding-right: 8px;
+    border-right: 1px solid var(--line);
+  }
+  .tool-group:last-child { border-right: 0; padding-right: 0; }
+  .tool {
+    width: auto;
+    padding: 6px 9px;
+    font-size: 12px;
+    white-space: nowrap;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .tool:hover { border-color: #3d4652; }
+  .tool.is-on { background: rgba(88,166,255,0.16); border-color: var(--accent); color: var(--accent); }
+  .zoom-val { min-width: 40px; text-align: center; font-size: 11px; color: var(--muted); }
+  .stage-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  @media (max-width: 700px) {
+    .editor-bar { flex-wrap: nowrap; overflow-x: auto; }
+    .tool { padding: 6px 8px; font-size: 11.5px; }
+  }
+  .chip {
+    width: auto;
+    border: 1px solid var(--line);
+    background: #161b22;
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 3px 9px;
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .chip.is-on { border-color: var(--accent); color: var(--accent); background: rgba(88,166,255,0.12); }
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+    gap: 6px;
+    max-height: 300px;
+    overflow: auto;
+    padding: 2px;
+  }
+  .logo-tile {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    background: #0d1117;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  .logo-tile.dark { background: #eef2f6; }
+  .logo-tile img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .logo-tile:hover { border-color: #3d4652; }
+  .logo-tile.is-on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .logo-preview { display: flex; gap: 8px; align-items: center; }
+  .logo-preview .thumb {
+    width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 8px;
+    background: #0d1117; padding: 5px; display: grid; place-items: center;
+  }
+  .logo-preview .thumb.dark { background: #eef2f6; }
+  .logo-preview .thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  footer { padding: 0 24px 40px; color: var(--muted); font-size: 12px; }
+  code { background: #161b22; padding: 1px 5px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Alur <span class="badge">playground</span></h1>
+  <p>Visual explainer engine — cables, motions, and live modules. Edit the spec, switch a cable, or surprise yourself.</p>
+</header>
+
+<div class="wrap">
+  <div class="stage-card">
+    <div id="editorBar" class="editor-bar" style="">
+      <div class="tool-group">
+        <button class="tool is-on" data-tool="select" title="Select / move (V)">↖ Select</button>
+        <button class="tool" data-tool="box" title="Box (B)">▭ Box</button>
+        <button class="tool" data-tool="round" title="Rounded box (R)">▢ Round</button>
+        <button class="tool" data-tool="circle" title="Circle (O)">○ Circle</button>
+        <button class="tool" data-tool="text" title="Text (T)">T Text</button>
+        <button class="tool" data-tool="arrow" title="Arrow (A)">→ Arrow</button>
+        <button class="tool" data-tool="draw" title="Freehand (D)">✎ Draw</button>
+        <button class="tool" data-tool="pan" title="Pan (H)">✥ Pan</button>
+      </div>
+      <div class="tool-group">
+        <button id="undoBtn" class="tool" title="Undo (Ctrl+Z)" disabled="">↶</button>
+        <button id="redoBtn" class="tool" title="Redo (Ctrl+Shift+Z)" disabled="">↷</button>
+      </div>
+      <div class="tool-group">
+        <button id="zoomOut" class="tool" title="Zoom out">−</button>
+        <span id="zoomVal" class="zoom-val">100%</span>
+        <button id="zoomIn" class="tool" title="Zoom in">+</button>
+        <button id="zoomFit" class="tool" title="Fit">Fit</button>
+      </div>
+      <div class="tool-group">
+        <button id="exportJson" class="tool" title="Download scene JSON">JSON</button>
+        <button id="exportSvg" class="tool" title="Download SVG">SVG</button>
+      </div>
+    </div>
+    <div id="stage" class="alur" data-module="canvas" data-spec="{&quot;module&quot;:&quot;canvas&quot;,&quot;title&quot;:&quot;My canvas&quot;,&quot;grid&quot;:true,&quot;width&quot;:900,&quot;height&quot;:520,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;flow&quot;,&quot;speed&quot;:1,&quot;nodes&quot;:{},&quot;edges&quot;:[],&quot;_preset&quot;:&quot;blank&quot;}"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="My canvas"><defs><pattern id="alur-grid-2" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#3d4652" opacity="0.55"></circle></pattern></defs><rect x="-2000" y="-2000" width="4900" height="4520" class="alur-canvas-grid" fill="url(#alur-grid-2)"></rect><g class="alur-layer-draw"></g><g class="alur-layer-edges"></g><g class="alur-layer-nodes"></g><g class="alur-layer-handles"></g></svg></div></div>
+    <div id="stageStatus" class="stage-status">
+      <span id="statusCounts">0 nodes · 0 edges</span>
+      <span id="statusTool">tool: select</span>
+    </div>
+    <p class="hint" style="margin-top:8px">Draw boxes, text, arrows, and freehand strokes. Drag to move, use the handles to resize. Everything renders live.</p>
+  </div>
+
+  <aside class="panel">
+    <label>Module
+      <select id="module">
+        <option value="canvas">canvas — free-form editor</option>
+        <option value="flow">flow — layered flow</option>
+        <option value="reverse-proxy">reverse-proxy — one front, many backends</option>
+        <option value="chart">chart — bar / donut / gauge / line …</option>
+        <option value="pipeline">pipeline — ordered stages</option>
+        <option value="graph">graph — BFS frontier</option>
+      </select>
+    </label>
+    <div class="panel-section">
+      <h3>Scene</h3>
+      <label>Template
+        <select id="preset"><option value="blank">Blank canvas</option><option value="starter">Starter — 3 boxes</option></select>
+      </label>
+      <div id="sceneControls"></div>
+    </div>
+
+    <label id="chartTypeRow" style="display:none">Chart type
+      <select id="chartType">
+        <option value="bar">bar</option>
+        <option value="hbar">hbar — ranking</option>
+        <option value="line">line — multi-series</option>
+        <option value="area">area</option>
+        <option value="stacked">stacked</option>
+        <option value="donut">donut</option>
+        <option value="gauge">gauge</option>
+        <option value="spark">spark</option>
+        <option value="kpi">kpi</option>
+        <option value="scatter">scatter</option>
+        <option value="waterfall">waterfall</option>
+        <option value="funnel">funnel</option>
+        <option value="bell">bell</option>
+        <option value="histogram">histogram</option>
+        <option value="stackedArea">stackedArea</option>
+        <option value="treemap">treemap</option>
+        <option value="box">box</option>
+        <option value="range">range</option>
+        <option value="density">density</option>
+        <option value="slope">slope</option>
+        <option value="combo">combo</option>
+        <option value="timeline">timeline</option>
+        <option value="bubble">bubble</option>
+        <option value="dumbbell">dumbbell</option>
+        <option value="quadrant">quadrant</option>
+        <option value="process">process</option>
+        <option value="cycle">cycle</option>
+        <option value="progress">progress</option>
+        <option value="table">table</option>
+      </select>
+    </label>
+
+    <div id="editorPanel" class="panel-section" style="">
+      <h3>Editor <span id="editorMode" class="badge">select</span></h3>
+      <div class="editor-grid">
+        <button id="addBox" class="ghost">+ Box</button>
+        <button id="addPlain" class="ghost">+ Plain</button>
+        <button id="addPill" class="ghost">+ Pill</button>
+        <button id="addCircle" class="ghost">+ Circle</button>
+      </div>
+      <div class="row">
+        <button id="connectBtn" class="ghost">Connect</button>
+        <button id="deleteBtn" class="ghost">Delete</button>
+      </div>
+      <label class="checkline"><input id="gridToggle" type="checkbox" checked=""> Grid background</label>
+      <div id="nodeInspector" class="inspector"><p class="hint">No node selected.</p></div>
+      <div id="edgeInspector" class="inspector"><p class="hint">No edge selected.</p></div>
+      <p class="hint" id="editorHint">Drag a node to move it. Use the handles to resize. Click an edge or drawing to select.</p>
+    </div>
+
+    <div id="linkControls" class="panel-section">
+      <h3>Link style</h3>
+      <label>Cable
+        <select id="cable"><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="dash">Dash</option><option value="double">Double</option><option value="glow">Glow</option><option value="neon">Neon</option><option value="ribbon">Ribbon</option><option value="circuit">Circuit</option><option value="bundle">Bundle</option><option value="broken">Broken</option><option value="relay">Relay</option><option value="pulse">Pulse</option><option value="beam">Beam</option></select>
+      </label>
+      <label>Motion
+        <select id="motion"><option value="flow">Flow</option><option value="flowMany">Flow ×N</option><option value="dash">Dash march</option><option value="draw">Draw</option><option value="comet">Comet</option><option value="packets">Packets</option><option value="relay">Relay</option><option value="pulse">Pulse</option><option value="breathe">Breathe</option><option value="blink">Blink</option><option value="orbit">Orbit</option><option value="grow">Grow</option><option value="spin">Spin</option></select>
+      </label>
+      <p class="hint">Applies to every edge in flow and pipeline.</p>
+    </div>
+
+    <label id="speedRow">Speed <span id="speedVal">1.0×</span>
+      <input id="speed" type="range" min="0.25" max="3" step="0.25" value="1">
+    </label>
+
+    <div class="row">
+      <button id="surprise" class="ghost">Surprise</button>
+    </div>
+    <label>Spec JSON
+      <textarea id="spec" spellcheck="false"></textarea>
+    </label>
+    <div class="row">
+      <button id="apply" class="ghost">Apply JSON</button>
+      <button id="reset" class="ghost">Reset</button>
+    </div>
+    <p class="hint">Motion names follow the docs. Node motions (pulse, orbit, grow, spin) target the edge's target node.</p>
+  </aside>
+
+  <aside class="panel logo-panel">
+    <h2 class="panel-title">Logo library <span id="logoCount" class="badge">575</span></h2>
+    <div id="logoPanel" class="panel-section">
+      <p class="hint">Pick a target node, then click a logo. Shift-click stacks it.</p>
+      <label>Target node
+        <select id="logoNode"><option value="">— add a node first —</option></select>
+      </label>
+      <div id="logoPreview" class="logo-preview"><p class="hint" style="margin: 0px;">No node selected.</p></div>
+      <div class="row">
+        <label>Logo size
+          <input id="logoSize" type="range" min="10" max="34" step="1" value="18">
+        </label>
+        <label>Position
+          <select id="logoPos">
+            <option value="left">left</option>
+            <option value="right">right</option>
+            <option value="top">top</option>
+            <option value="bottom">bottom</option>
+          </select>
+        </label>
+      </div>
+      <input id="logoSearch" type="search" autocomplete="off" placeholder="Search 575 logos — docker, nginx, burp…">
+      <div id="logoCats" class="chips"><button type="button" class="chip is-on">All · 575</button><button type="button" class="chip">Profession · 60</button><button type="button" class="chip">Programming · 96</button><button type="button" class="chip">Security · 348</button><button type="button" class="chip">Stack · 71</button></div>
+      <div id="logoGrid" class="logo-grid"><button type="button" class="logo-tile dark" title="programming:actix"><img loading="lazy" alt="actix" src="assets/logos/programming/actix.svg"></button><button type="button" class="logo-tile" title="security:affcat"><img loading="lazy" alt="affcat" src="assets/logos/security/affcat.svg"></button><button type="button" class="logo-tile" title="security:afl"><img loading="lazy" alt="afl" src="assets/logos/security/afl.svg"></button><button type="button" class="logo-tile" title="security:aircrack-ng"><img loading="lazy" alt="aircrack-ng" src="assets/logos/security/aircrack-ng.svg"></button><button type="button" class="logo-tile dark" title="stack:airflow"><img loading="lazy" alt="airflow" src="assets/logos/stack/airflow.svg"></button><button type="button" class="logo-tile" title="security:airgeddon"><img loading="lazy" alt="airgeddon" src="assets/logos/security/airgeddon.svg"></button><button type="button" class="logo-tile" title="security:airwave-manager"><img loading="lazy" alt="airwave-manager" src="assets/logos/security/airwave-manager.svg"></button><button type="button" class="logo-tile dark" title="stack:alpinelinux"><img loading="lazy" alt="alpinelinux" src="assets/logos/stack/alpinelinux.svg"></button><button type="button" class="logo-tile" title="security:amass"><img loading="lazy" alt="amass" src="assets/logos/security/amass.svg"></button><button type="button" class="logo-tile dark" title="stack:android"><img loading="lazy" alt="android" src="assets/logos/stack/android.svg"></button><button type="button" class="logo-tile dark" title="programming:angular"><img loading="lazy" alt="angular" src="assets/logos/programming/angular.svg"></button><button type="button" class="logo-tile dark" title="stack:ansible"><img loading="lazy" alt="ansible" src="assets/logos/stack/ansible.svg"></button><button type="button" class="logo-tile dark" title="stack:apache"><img loading="lazy" alt="apache" src="assets/logos/stack/apache.svg"></button><button type="button" class="logo-tile dark" title="stack:apachekafka"><img loading="lazy" alt="apachekafka" src="assets/logos/stack/apachekafka.svg"></button><button type="button" class="logo-tile dark" title="security:apktool"><img loading="lazy" alt="apktool" src="assets/logos/security/apktool.svg"></button><button type="button" class="logo-tile" title="security:application-community"><img loading="lazy" alt="application-community" src="assets/logos/security/application-community.svg"></button><button type="button" class="logo-tile" title="security:application-default-icon"><img loading="lazy" alt="application-default-icon" src="assets/logos/security/application-default-icon.svg"></button><button type="button" class="logo-tile" title="security:applications-all"><img loading="lazy" alt="applications-all" src="assets/logos/security/applications-all.svg"></button><button type="button" class="logo-tile" title="security:applications-featured"><img loading="lazy" alt="applications-featured" src="assets/logos/security/applications-featured.svg"></button><button type="button" class="logo-tile" title="security:applications-graphics-drawing"><img loading="lazy" alt="applications-graphics-drawing" src="assets/logos/security/applications-graphics-drawing.svg"></button><button type="button" class="logo-tile" title="security:applications-haskell"><img loading="lazy" alt="applications-haskell" src="assets/logos/security/applications-haskell.svg"></button><button type="button" class="logo-tile" title="security:applications-interfacedesign"><img loading="lazy" alt="applications-interfacedesign" src="assets/logos/security/applications-interfacedesign.svg"></button><button type="button" class="logo-tile dark" title="stack:arch-linux"><img loading="lazy" alt="arch-linux" src="assets/logos/stack/arch-linux.svg"></button><button type="button" class="logo-tile" title="stack:argocd"><img loading="lazy" alt="argocd" src="assets/logos/stack/argocd.svg"></button><button type="button" class="logo-tile" title="security:armitage"><img loading="lazy" alt="armitage" src="assets/logos/security/armitage.svg"></button><button type="button" class="logo-tile" title="security:arping"><img loading="lazy" alt="arping" src="assets/logos/security/arping.svg"></button><button type="button" class="logo-tile" title="security:artemanufrij.hashit"><img loading="lazy" alt="artemanufrij.hashit" src="assets/logos/security/artemanufrij.hashit.svg"></button><button type="button" class="logo-tile" title="security:artemanufrij.webpin"><img loading="lazy" alt="artemanufrij.webpin" src="assets/logos/security/artemanufrij.webpin.svg"></button><button type="button" class="logo-tile dark" title="profession:artist"><img loading="lazy" alt="artist" src="assets/logos/profession/artist.svg"></button><button type="button" class="logo-tile" title="security:asleap"><img loading="lazy" alt="asleap" src="assets/logos/security/asleap.svg"></button><button type="button" class="logo-tile dark" title="programming:assemblyscript"><img loading="lazy" alt="assemblyscript" src="assets/logos/programming/assemblyscript.svg"></button><button type="button" class="logo-tile dark" title="programming:astro"><img loading="lazy" alt="astro" src="assets/logos/programming/astro.svg"></button><button type="button" class="logo-tile dark" title="profession:astronaut"><img loading="lazy" alt="astronaut" src="assets/logos/profession/astronaut.svg"></button><button type="button" class="logo-tile dark" title="profession:athlete"><img loading="lazy" alt="athlete" src="assets/logos/profession/athlete.svg"></button><button type="button" class="logo-tile" title="security:audio-input-microphone"><img loading="lazy" alt="audio-input-microphone" src="assets/logos/security/audio-input-microphone.svg"></button><button type="button" class="logo-tile" title="security:autopsy"><img loading="lazy" alt="autopsy" src="assets/logos/security/autopsy.svg"></button><button type="button" class="logo-tile" title="stack:aws"><img loading="lazy" alt="aws" src="assets/logos/stack/aws.svg"></button><button type="button" class="logo-tile dark" title="programming:axum"><img loading="lazy" alt="axum" src="assets/logos/programming/axum.svg"></button><button type="button" class="logo-tile" title="security:backdoor-factory"><img loading="lazy" alt="backdoor-factory" src="assets/logos/security/backdoor-factory.svg"></button><button type="button" class="logo-tile dark" title="profession:baker"><img loading="lazy" alt="baker" src="assets/logos/profession/baker.svg"></button><button type="button" class="logo-tile dark" title="profession:barista"><img loading="lazy" alt="barista" src="assets/logos/profession/barista.svg"></button><button type="button" class="logo-tile dark" title="profession:bartender"><img loading="lazy" alt="bartender" src="assets/logos/profession/bartender.svg"></button><button type="button" class="logo-tile dark" title="programming:bash"><img loading="lazy" alt="bash" src="assets/logos/programming/bash.svg"></button><button type="button" class="logo-tile" title="security:bbqsql"><img loading="lazy" alt="bbqsql" src="assets/logos/security/bbqsql.svg"></button><button type="button" class="logo-tile" title="security:beef-xss"><img loading="lazy" alt="beef-xss" src="assets/logos/security/beef-xss.svg"></button><button type="button" class="logo-tile" title="security:bettercap"><img loading="lazy" alt="bettercap" src="assets/logos/security/bettercap.svg"></button><button type="button" class="logo-tile" title="security:binwalk"><img loading="lazy" alt="binwalk" src="assets/logos/security/binwalk.svg"></button><button type="button" class="logo-tile dark" title="security:bitwarden"><img loading="lazy" alt="bitwarden" src="assets/logos/security/bitwarden.svg"></button><button type="button" class="logo-tile dark" title="programming:blazor"><img loading="lazy" alt="blazor" src="assets/logos/programming/blazor.svg"></button><button type="button" class="logo-tile" title="security:blkcalc"><img loading="lazy" alt="blkcalc" src="assets/logos/security/blkcalc.svg"></button><button type="button" class="logo-tile" title="security:blkcat"><img loading="lazy" alt="blkcat" src="assets/logos/security/blkcat.svg"></button><button type="button" class="logo-tile dark" title="security:blkls"><img loading="lazy" alt="blkls" src="assets/logos/security/blkls.svg"></button><button type="button" class="logo-tile" title="security:blkstat"><img loading="lazy" alt="blkstat" src="assets/logos/security/blkstat.svg"></button><button type="button" class="logo-tile" title="security:bloodhound"><img loading="lazy" alt="bloodhound" src="assets/logos/security/bloodhound.svg"></button><button type="button" class="logo-tile" title="security:braindump"><img loading="lazy" alt="braindump" src="assets/logos/security/braindump.svg"></button><button type="button" class="logo-tile" title="security:bulk-extractor"><img loading="lazy" alt="bulk-extractor" src="assets/logos/security/bulk-extractor.svg"></button><button type="button" class="logo-tile" title="security:bully"><img loading="lazy" alt="bully" src="assets/logos/security/bully.svg"></button><button type="button" class="logo-tile dark" title="programming:bun"><img loading="lazy" alt="bun" src="assets/logos/programming/bun.svg"></button><button type="button" class="logo-tile" title="security:burp"><img loading="lazy" alt="burp" src="assets/logos/security/burp.svg"></button><button type="button" class="logo-tile dark" title="security:burp-suite"><img loading="lazy" alt="burp-suite" src="assets/logos/security/burp-suite.svg"></button><button type="button" class="logo-tile dark" title="profession:butcher"><img loading="lazy" alt="butcher" src="assets/logos/profession/butcher.svg"></button><button type="button" class="logo-tile" title="security:bytecode-viewer"><img loading="lazy" alt="bytecode-viewer" src="assets/logos/security/bytecode-viewer.svg"></button><button type="button" class="logo-tile dark" title="programming:c"><img loading="lazy" alt="c" src="assets/logos/programming/c.svg"></button><button type="button" class="logo-tile" title="security:cadaver"><img loading="lazy" alt="cadaver" src="assets/logos/security/cadaver.svg"></button><button type="button" class="logo-tile" title="security:camera-web"><img loading="lazy" alt="camera-web" src="assets/logos/security/camera-web.svg"></button><button type="button" class="logo-tile dark" title="profession:carpenter"><img loading="lazy" alt="carpenter" src="assets/logos/profession/carpenter.svg"></button><button type="button" class="logo-tile dark" title="profession:cashier"><img loading="lazy" alt="cashier" src="assets/logos/profession/cashier.svg"></button><button type="button" class="logo-tile" title="security:cerebro"><img loading="lazy" alt="cerebro" src="assets/logos/security/cerebro.svg"></button><button type="button" class="logo-tile" title="security:cewl"><img loading="lazy" alt="cewl" src="assets/logos/security/cewl.svg"></button><button type="button" class="logo-tile dark" title="profession:chef"><img loading="lazy" alt="chef" src="assets/logos/profession/chef.svg"></button><button type="button" class="logo-tile" title="security:cherrytree"><img loading="lazy" alt="cherrytree" src="assets/logos/security/cherrytree.svg"></button><button type="button" class="logo-tile" title="security:chirp"><img loading="lazy" alt="chirp" src="assets/logos/security/chirp.svg"></button><button type="button" class="logo-tile" title="security:chkrootkit"><img loading="lazy" alt="chkrootkit" src="assets/logos/security/chkrootkit.svg"></button><button type="button" class="logo-tile" title="security:chntpw"><img loading="lazy" alt="chntpw" src="assets/logos/security/chntpw.svg"></button><button type="button" class="logo-tile dark" title="stack:chronograf"><img loading="lazy" alt="chronograf" src="assets/logos/stack/chronograf.svg"></button><button type="button" class="logo-tile dark" title="stack:cilium"><img loading="lazy" alt="cilium" src="assets/logos/stack/cilium.svg"></button><button type="button" class="logo-tile" title="security:clamav"><img loading="lazy" alt="clamav" src="assets/logos/security/clamav.svg"></button><button type="button" class="logo-tile dark" title="profession:cleaner"><img loading="lazy" alt="cleaner" src="assets/logos/profession/cleaner.svg"></button><button type="button" class="logo-tile dark" title="programming:clojure"><img loading="lazy" alt="clojure" src="assets/logos/programming/clojure.svg"></button><button type="button" class="logo-tile dark" title="stack:cloudflare"><img loading="lazy" alt="cloudflare" src="assets/logos/stack/cloudflare.svg"></button><button type="button" class="logo-tile" title="programming:cmake"><img loading="lazy" alt="cmake" src="assets/logos/programming/cmake.svg"></button><button type="button" class="logo-tile" title="programming:codeblocks"><img loading="lazy" alt="codeblocks" src="assets/logos/programming/codeblocks.svg"></button><button type="button" class="logo-tile dark" title="programming:coffeescript"><img loading="lazy" alt="coffeescript" src="assets/logos/programming/coffeescript.svg"></button><button type="button" class="logo-tile" title="security:commix"><img loading="lazy" alt="commix" src="assets/logos/security/commix.svg"></button><button type="button" class="logo-tile dark" title="profession:construction-worker"><img loading="lazy" alt="construction-worker" src="assets/logos/profession/construction-worker.svg"></button><button type="button" class="logo-tile dark" title="profession:cook"><img loading="lazy" alt="cook" src="assets/logos/profession/cook.svg"></button><button type="button" class="logo-tile dark" title="profession:courier"><img loading="lazy" alt="courier" src="assets/logos/profession/courier.svg"></button><button type="button" class="logo-tile" title="security:covenant"><img loading="lazy" alt="covenant" src="assets/logos/security/covenant.png"></button><button type="button" class="logo-tile" title="security:cowpatty"><img loading="lazy" alt="cowpatty" src="assets/logos/security/cowpatty.svg"></button><button type="button" class="logo-tile dark" title="programming:cplusplus"><img loading="lazy" alt="cplusplus" src="assets/logos/programming/cplusplus.svg"></button><button type="button" class="logo-tile" title="security:crackmapexec"><img loading="lazy" alt="crackmapexec" src="assets/logos/security/crackmapexec.svg"></button><button type="button" class="logo-tile dark" title="profession:criminal"><img loading="lazy" alt="criminal" src="assets/logos/profession/criminal.svg"></button><button type="button" class="logo-tile" title="security:crunch"><img loading="lazy" alt="crunch" src="assets/logos/security/crunch.svg"></button><button type="button" class="logo-tile" title="security:cryptomator"><img loading="lazy" alt="cryptomator" src="assets/logos/security/cryptomator.svg"></button><button type="button" class="logo-tile" title="security:cryptsetup"><img loading="lazy" alt="cryptsetup" src="assets/logos/security/cryptsetup.svg"></button><button type="button" class="logo-tile dark" title="programming:crystal"><img loading="lazy" alt="crystal" src="assets/logos/programming/crystal.svg"></button></div>
+      <div class="row">
+        <button id="logoMore" class="ghost">More</button>
+        <button id="logoAll" class="ghost">Apply all</button>
+        <button id="logoClear" class="ghost">Clear</button>
+      </div>
+      <p class="hint" id="logoStatus">Add a node first</p>
+    </div>
+
+  </aside>
+</div>
+
+
+
+<footer>
+  Engine source: <code>js/alur/</code> · Styles: <code>css/alur.css</code> · Docs: <code>docs/alur-guide.md</code>.
+  The blog-post-template folder stays Markdown-only; a <code>```alur</code> block is rendered by the site.
+</footer>
+
+<script src="js/topology-icons.js"></script>
+<script src="js/logo-manifest.js"></script>
+<script src="js/alur/logos.js"></script>
+<script src="js/alur/kit.js"></script>
+<script src="js/alur/cables.js"></script>
+<script src="js/alur/motions.js"></script>
+<script src="js/alur/core.js"></script>
+<script src="js/alur/modules/canvas.js"></script>
+<script src="js/alur/modules/flow.js"></script>
+<script src="js/alur/modules/reverse-proxy.js"></script>
+<script src="js/alur/modules/chart.js"></script>
+<script src="js/alur/modules/pipeline.js"></script>
+<script src="js/alur/modules/graph.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var CABLES = AlurCables.catalog;
+  var MOTIONS = AlurMotions.catalog;
+  var COLOR_KEYS = Object.keys(AlurKit.palette);
+  var CABLE_IDS = CABLES.map(function (c) { return c.id; });
+  var MOTION_IDS = MOTIONS.map(function (m) { return m.id; });
+
+  /* Scene generators ---------------------------------------------------- */
+
+  var NODE_POOL = [
+    { label: 'Client', sub: 'browser', logo: 'stack:github' },
+    { label: 'Edge', sub: 'nginx', logo: 'stack:nginx' },
+    { label: 'Web', sub: 'react', logo: 'programming:react' },
+    { label: 'API', sub: 'node', logo: 'programming:nodejs' },
+    { label: 'Worker', sub: 'python', logo: 'programming:python' },
+    { label: 'Cache', sub: 'redis', logo: 'stack:redis' },
+    { label: 'Queue', sub: 'kafka', logo: 'stack:apachekafka' },
+    { label: 'DB', sub: 'postgres', logo: 'stack:postgresql' },
+    { label: 'Search', sub: 'elastic', logo: 'stack:elasticsearch' },
+    { label: 'Metrics', sub: 'prometheus', logo: 'stack:prometheus' },
+    { label: 'Dash', sub: 'grafana', logo: 'stack:grafana' },
+    { label: 'Deploy', sub: 'docker', logo: 'stack:docker' },
+    { label: 'Orbit', sub: 'k8s', logo: 'stack:kubernetes' }
+  ];
+
+  var BACKEND_POOL = [
+    { label: 'API', sub: 'node', logo: 'programming:nodejs' },
+    { label: 'Worker', sub: 'python', logo: 'programming:python' },
+    { label: 'Service', sub: 'go', logo: 'programming:go' },
+    { label: 'Legacy', sub: 'java', logo: 'programming:java' },
+    { label: 'Web', sub: 'php', logo: 'programming:php' },
+    { label: 'Cache', sub: 'redis', logo: 'stack:redis' },
+    { label: 'DB', sub: 'postgres', logo: 'stack:postgresql' },
+    { label: 'Search', sub: 'elastic', logo: 'stack:elasticsearch' }
+  ];
+
+  function makeCanvas() {
+    return {
+      module: 'canvas',
+      title: 'My canvas',
+      grid: true,
+      width: 900,
+      height: 520,
+      cable: 'solid',
+      motion: 'flow',
+      speed: 1,
+      nodes: {},
+      edges: []
+    };
+  }
+
+  function clampInt(v, lo, hi, dflt) {
+    v = parseInt(v, 10);
+    if (isNaN(v)) return dflt;
+    return Math.max(lo, Math.min(hi, v));
+  }
+
+  function makeFlow(cols, perCol, pattern) {
+    cols = clampInt(cols, 1, 5, 4);
+    perCol = clampInt(perCol, 1, 4, 1);
+    pattern = pattern || 'bipartite';
+    var columns = [], nodes = {}, edges = [], id = 0;
+    for (var c = 0; c < cols; c++) {
+      var col = [];
+      for (var r = 0; r < perCol; r++) {
+        var p = NODE_POOL[id % NODE_POOL.length];
+        var nid = 'n' + id;
+        nodes[nid] = {
+          label: p.label, sub: p.sub, logo: p.logo,
+          color: COLOR_KEYS[id % COLOR_KEYS.length]
+        };
+        col.push(nid);
+        id++;
+      }
+      columns.push(col);
+    }
+    for (var c2 = 0; c2 < cols - 1; c2++) {
+      var a = columns[c2], b = columns[c2 + 1];
+      if (pattern === 'fan') {
+        for (var r2 = 1; r2 < b.length; r2++) edges.push({ from: a[0], to: b[r2] });
+      } else if (pattern === 'chain' && a.length === b.length) {
+        for (var r3 = 0; r3 < a.length; r3++) edges.push({ from: a[r3], to: b[r3] });
+      } else {
+        a.forEach(function (x) {
+          b.forEach(function (y) { edges.push({ from: x, to: y }); });
+        });
+      }
+    }
+    return {
+      module: 'flow',
+      title: 'Flow — ' + cols + '×' + perCol,
+      cable: 'solid', motion: 'flow', speed: 1,
+      columns: columns, nodes: nodes, edges: edges,
+      pattern: pattern
+    };
+  }
+
+  function makeProxy(count) {
+    count = clampInt(count, 1, 8, 3);
+    var nodes = {
+      client: { label: 'Client', sub: 'browser', logo: 'stack:github', color: 'blue' },
+      proxy: { label: 'Reverse Proxy', sub: 'edge layer', logo: 'stack:nginx', color: 'cyan' }
+    };
+    for (var i = 0; i < count; i++) {
+      var p = BACKEND_POOL[i % BACKEND_POOL.length];
+      nodes['backend' + (i + 1)] = {
+        label: p.label + ' ' + (i + 1), sub: p.sub, logo: p.logo,
+        color: COLOR_KEYS[(i + 2) % COLOR_KEYS.length]
+      };
+    }
+    return {
+      module: 'reverse-proxy',
+      title: 'Reverse proxy — ' + count + ' backends',
+      speed: 1, backends: count, nodes: nodes
+    };
+  }
+
+  function rnd(lo, hi) {
+    return Math.round(lo + Math.random() * (hi - lo));
+  }
+
+  function chartPreset(type, seriesCount, points) {
+    type = type || 'bar';
+    seriesCount = clampInt(seriesCount, 1, 4, 2);
+    points = clampInt(points, 3, 12, 7);
+
+    var labels = [];
+    for (var i = 0; i < points; i++) labels.push('P' + (i + 1));
+    var p = {
+      module: 'chart',
+      type: type,
+      title: 'Alur chart — ' + type,
+      height: 320,
+      color: 'blue',
+      _series: seriesCount,
+      _points: points
+    };
+
+    function makeSeries(count, lo, hi) {
+      var out = [];
+      for (var s = 0; s < count; s++) {
+        out.push({
+          name: 'series ' + (s + 1),
+          data: labels.map(function () { return rnd(lo, hi); }),
+          color: COLOR_KEYS[s % COLOR_KEYS.length]
+        });
+      }
+      return out;
+    }
+
+    function values(lo, hi) {
+      return labels.map(function () { return rnd(lo, hi); });
+    }
+
+    if (type === 'line' || type === 'stacked' || type === 'stackedArea' || type === 'density') {
+      p.series = makeSeries(seriesCount, 3, 30);
+    } else if (type === 'donut') {
+      var dn = Math.min(8, points);
+      p.labels = labels.slice(0, dn);
+      p.data = values(5, 40).slice(0, dn);
+      p.colors = COLOR_KEYS.slice(0, dn);
+      p.centerLabel = 'total';
+    } else if (type === 'gauge') {
+      p.data = [rnd(20, 90)]; p.max = 100; p.unit = '%'; p.label = 'usage';
+    } else if (type === 'kpi') {
+      p.data = [rnd(50, 500)]; p.label = 'requests / sec';
+      p.delta = (rnd(-20, 30) > 0 ? '+' : '') + rnd(-20, 30) + '%';
+    } else if (type === 'scatter') {
+      p.data = labels.map(function () { return [rnd(2, 20), rnd(2, 20)]; });
+      p.xLabel = 'latency (ms)'; p.yLabel = 'throughput';
+    } else if (type === 'waterfall') {
+      var wn = Math.min(5, points);
+      p.labels = labels.slice(0, wn);
+      p.data = values(-15, 30).slice(0, wn);
+    } else if (type === 'funnel') {
+      p.labels = ['Visit', 'Signup', 'Active', 'Paid'];
+      p.data = [100, rnd(40, 70), rnd(20, 40), rnd(5, 20)];
+      p.colors = ['blue', 'cyan', 'green', 'amber'];
+    } else if (type === 'bell') {
+      p.mean = 0; p.sigma = 1; p.marker = 0.6; p.markerLabel = 'p95';
+    } else if (type === 'histogram') {
+      p.bins = Math.min(10, points);
+      p.data = [];
+      for (var h = 0; h < 16; h++) p.data.push(rnd(1, 12));
+    } else if (type === 'treemap') {
+      var tn = Math.min(6, points);
+      p.labels = labels.slice(0, tn);
+      p.data = values(5, 40).slice(0, tn);
+      p.colors = COLOR_KEYS.slice(0, tn);
+    } else if (type === 'box') {
+      p.boxes = [];
+      for (var b = 0; b < Math.min(4, points); b++) {
+        var lo = rnd(2, 10), q1 = lo + rnd(2, 6), med = q1 + rnd(1, 5),
+            q3 = med + rnd(1, 5), hi = q3 + rnd(2, 7);
+        p.boxes.push({ label: 'S' + (b + 1), min: lo, q1: q1, median: med, q3: q3, max: hi });
+      }
+    } else if (type === 'range') {
+      p.items = labels.slice(0, Math.min(4, points)).map(function (l) {
+        var a = rnd(1, 5), b = a + rnd(2, 6);
+        return { label: l, from: a, to: b };
+      });
+      p.xLabel = 'confidence';
+    } else if (type === 'slope') {
+      p.items = labels.slice(0, Math.min(5, points)).map(function (l) {
+        return { label: l, before: rnd(5, 30), after: rnd(5, 30) };
+      });
+      p.aLabel = 'before'; p.bLabel = 'after';
+    } else if (type === 'combo') {
+      p.labels = labels;
+      p.bars = values(20, 120);
+      p.line = values(2, 60);
+      p.barLabel = 'requests'; p.lineLabel = 'p95 (ms)';
+    } else if (type === 'timeline') {
+      p.events = labels.map(function (l, i) {
+        return { label: l, at: points > 1 ? i / (points - 1) : 0 };
+      });
+    } else if (type === 'bubble') {
+      p.data = labels.map(function () { return [rnd(2, 20), rnd(2, 20), rnd(2, 8)]; });
+      p.xLabel = 'latency'; p.yLabel = 'throughput';
+    } else if (type === 'dumbbell') {
+      p.items = labels.slice(0, Math.min(5, points)).map(function (l) {
+        return { label: l, a: rnd(5, 30), b: rnd(5, 30) };
+      });
+      p.aLabel = 'before'; p.bLabel = 'after';
+    } else if (type === 'quadrant') {
+      p.q1 = 'scale'; p.q2 = 'invest'; p.q3 = 'watch'; p.q4 = 'drop';
+      p.data = labels.map(function () { return [rnd(1, 10), rnd(1, 10)]; });
+    } else if (type === 'process' || type === 'cycle') {
+      p.steps = labels.slice(0, Math.min(5, points));
+    } else if (type === 'progress') {
+      p.items = labels.slice(0, Math.min(4, points)).map(function (l) {
+        var a = rnd(20, 80);
+        return { label: l, parts: [{ value: a, color: 'green' }, { value: 100 - a, color: 'slate' }] };
+      });
+    } else if (type === 'table') {
+      p.columns = ['Stage', 'p50', 'p95', 'Error'];
+      p.rows = labels.slice(0, Math.min(6, points)).map(function (l) {
+        return [l, rnd(3, 40) + ' ms', rnd(10, 90) + ' ms', (rnd(0, 9) / 10) + '%'];
+      });
+    } else if (type === 'bar' || type === 'hbar' || type === 'area') {
+      p.labels = labels;
+      p.data = values(5, 40);
+    } else {
+      p.labels = labels;
+      p.data = values(5, 40);
+    }
+    return p;
+  }
+
+  function makePipeline(n) {
+    n = clampInt(n, 2, 8, 4);
+    var stages = [];
+    for (var i = 0; i < n; i++) {
+      var p = NODE_POOL[i % NODE_POOL.length];
+      stages.push({ label: p.label, sub: p.sub, logo: p.logo });
+    }
+    return {
+      module: 'pipeline',
+      title: 'Pipeline — ' + n + ' stages',
+      stages: stages,
+      color: 'cyan',
+      cable: 'solid',
+      motion: 'packets',
+      speed: 1,
+      items: Math.max(2, n)
+    };
+  }
+
+  function makeGraph(n, pattern) {
+    n = clampInt(n, 3, 12, 8);
+    pattern = pattern || 'tree';
+    var nodes = [], edges = [];
+    var perRow = Math.ceil(Math.sqrt(n));
+    for (var i = 0; i < n; i++) {
+      nodes.push({
+        id: 'n' + i,
+        x: 100 + (i % perRow) * 220,
+        y: 70 + Math.floor(i / perRow) * 105,
+        label: String.fromCharCode(65 + i),
+        logo: i === 0 ? 'stack:docker' : null,
+        logoSize: 20
+      });
+    }
+    if (pattern === 'line') {
+      for (var k = 0; k < n - 1; k++) {
+        edges.push({ from: 'n' + k, to: 'n' + (k + 1), w: (k % 5) + 1 });
+      }
+    } else if (pattern === 'random') {
+      for (var r = 1; r < n; r++) {
+        edges.push({ from: 'n' + r, to: 'n' + Math.floor(Math.random() * r), w: (r % 6) + 1 });
+      }
+      for (var e = 0; e < Math.max(1, Math.floor(n / 3)); e++) {
+        var a = Math.floor(Math.random() * n);
+        var b = Math.floor(Math.random() * n);
+        if (a !== b && !edges.some(function (x) {
+          return (x.from === 'n' + a && x.to === 'n' + b) || (x.from === 'n' + b && x.to === 'n' + a);
+        })) edges.push({ from: 'n' + a, to: 'n' + b, w: (e % 5) + 1 });
+      }
+    } else {
+      for (var t = 1; t < n; t++) {
+        edges.push({ from: 'n' + Math.floor((t - 1) / 2), to: 'n' + t, w: (t % 6) + 1 });
+      }
+    }
+    return {
+      module: 'graph',
+      title: 'Graph — ' + n + ' nodes',
+      color: 'green',
+      start: 'n0',
+      nodes: nodes,
+      edges: edges,
+      pattern: pattern
+    };
+  }
+
+  var PRESETS = {
+    flow: [
+      ['stack4', 'Stack 4 — chain', function () { return makeFlow(4, 1, 'bipartite'); }],
+      ['solo', 'Solo — 1 node', function () { return makeFlow(1, 1, 'bipartite'); }],
+      ['chain2', 'Chain ×2', function () { return makeFlow(2, 1, 'chain'); }],
+      ['chain3', 'Chain ×3', function () { return makeFlow(3, 1, 'chain'); }],
+      ['fan', 'Fan-out 1→3', function () { return makeFlow(2, 3, 'fan'); }],
+      ['layered', 'Layered 4×2', function () { return makeFlow(4, 2, 'bipartite'); }],
+      ['vertical', 'Vertical 3', function () { var s = makeFlow(3, 1, 'chain'); s.vertical = true; return s; }]
+    ],
+    'reverse-proxy': [
+      ['triple', '3 backends', function () { return makeProxy(3); }],
+      ['solo', '1 backend', function () { return makeProxy(1); }],
+      ['pair', '2 backends', function () { return makeProxy(2); }],
+      ['five', '5 backends', function () { return makeProxy(5); }],
+      ['eight', '8 backends', function () { return makeProxy(8); }]
+    ],
+    chart: [
+      ['single', 'Single series', function () { return chartPreset('line', 1, 7); }],
+      ['dual', 'Dual series', function () { return chartPreset('line', 2, 7); }],
+      ['ranking', 'Ranking 8', function () { return chartPreset('hbar', 1, 8); }],
+      ['trend', 'Trend 12', function () { return chartPreset('area', 1, 12); }],
+      ['mix', 'Donut 5', function () { return chartPreset('donut', 1, 5); }]
+    ],
+    pipeline: [
+      ['duo', '2 stages', function () { return makePipeline(2); }],
+      ['triple', '3 stages', function () { return makePipeline(3); }],
+      ['quad', '4 stages', function () { return makePipeline(4); }],
+      ['six', '6 stages', function () { return makePipeline(6); }],
+      ['eight', '8 stages', function () { return makePipeline(8); }]
+    ],
+    canvas: [
+      ['blank', 'Blank canvas', makeCanvas],
+      ['starter', 'Starter — 3 boxes', function () {
+        var s = makeCanvas();
+        s.nodes = {
+          n1: { id: 'n1', x: 90, y: 110, w: 160, h: 60, shape: 'box', label: 'Client', sub: 'browser', color: 'blue', logo: 'stack:github' },
+          n2: { id: 'n2', x: 370, y: 110, w: 160, h: 60, shape: 'box', label: 'API', sub: 'node', color: 'green', logo: 'programming:nodejs' },
+          n3: { id: 'n3', x: 650, y: 110, w: 160, h: 60, shape: 'box', label: 'DB', sub: 'postgres', color: 'purple', logo: 'stack:postgresql' }
+        };
+        s.edges = [
+          { from: 'n1', to: 'n2' },
+          { from: 'n2', to: 'n3' }
+        ];
+        return s;
+      }]
+    ],
+    graph: [
+      ['tree', 'Tree 7', function () { return makeGraph(7, 'tree'); }],
+      ['line', 'Line 5', function () { return makeGraph(5, 'line'); }],
+      ['random', 'Random 9', function () { return makeGraph(9, 'random'); }],
+      ['wide', 'Wide 12', function () { return makeGraph(12, 'tree'); }]
+    ]
+  };
+
+  function presetFor(id) {
+    var list = PRESETS[id] || PRESETS.flow;
+    return list[0][2]();
+  }
+
+  var state = { spec: presetFor('canvas') };
+  var stage = document.getElementById('stage');
+  var specBox = document.getElementById('spec');
+
+  function fillSelect(sel, items) {
+    items.forEach(function (it) {
+      var o = document.createElement('option');
+      o.value = it.id;
+      o.textContent = it.label;
+      sel.appendChild(o);
+    });
+  }
+
+  fillSelect(document.getElementById('cable'), CABLES);
+  fillSelect(document.getElementById('motion'), MOTIONS);
+
+  /* Logo picker ---------------------------------------------------------- */
+
+  var LOGOS = window.AlurLogos;
+  var logoState = { cat: 'all', q: '', limit: 96, target: null };
+
+  function logoTargets() {
+    var s = state.spec;
+    if (s.module === 'flow') {
+      return Object.keys(s.nodes || {}).map(function (id) {
+        return { id: id, node: s.nodes[id] };
+      });
+    }
+    if (s.module === 'pipeline') {
+      return (s.stages || []).map(function (st, i) {
+        return { id: String(i), node: st };
+      });
+    }
+    if (s.module === 'graph') {
+      return (s.nodes || []).map(function (n) {
+        return { id: n.id, node: n };
+      });
+    }
+    if (s.module === 'canvas') {
+      return Object.keys(s.nodes || {}).map(function (id) {
+        return { id: id, node: s.nodes[id] };
+      });
+    }
+    if (s.module === 'reverse-proxy') {
+      s.nodes = s.nodes || {};
+      var list = [];
+      ['client', 'proxy'].forEach(function (key) {
+        if (!s.nodes[key]) {
+          s.nodes[key] = { label: key === 'client' ? 'Client' : 'Reverse Proxy' };
+        }
+        list.push({ id: key, node: s.nodes[key] });
+      });
+      var count = s.backends || 3;
+      for (var i = 1; i <= count; i++) {
+        var bkey = 'backend' + i;
+        if (!s.nodes[bkey]) s.nodes[bkey] = { label: 'Backend ' + i };
+        list.push({ id: bkey, node: s.nodes[bkey] });
+      }
+      return list;
+    }
+    return [];
+  }
+
+  function logoTarget() {
+    var targets = logoTargets();
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i].id === logoState.target) return targets[i];
+    }
+    return targets[0] || null;
+  }
+
+  function logoIdsOf(node) {
+    var ids = [];
+    if (!node) return ids;
+    if (node.logo) ids.push(node.logo);
+    (node.logos || []).forEach(function (id) { ids.push(id); });
+    return ids;
+  }
+
+  function logoThumb(id, cls) {
+    var res = LOGOS.resolve(id);
+    var img = document.createElement('img');
+    img.alt = id;
+    img.loading = 'lazy';
+    if (res && res.kind === 'file') {
+      img.src = res.href;
+    } else {
+      /* sprite id: show a neutral placeholder tile */
+      img.removeAttribute('src');
+      img.style.display = 'none';
+    }
+    var wrap = document.createElement('div');
+    wrap.className = 'thumb' + (cls ? ' ' + cls : '');
+    wrap.appendChild(img);
+    if (!res || res.kind !== 'file') wrap.textContent = '◆';
+    return wrap;
+  }
+
+  function renderLogoPreview() {
+    var host = document.getElementById('logoPreview');
+    host.innerHTML = '';
+    var cur = logoTarget();
+    var node = cur && cur.node;
+    var ids = logoIdsOf(node);
+    if (!ids.length) {
+      var p = document.createElement('p');
+      p.className = 'hint';
+      p.style.margin = '0';
+      p.textContent = node && node.label ? node.label + ' has no logo yet.' : 'No node selected.';
+      host.appendChild(p);
+      return;
+    }
+    ids.forEach(function (id) {
+      var res = LOGOS.resolve(id);
+      var thumb = logoThumb(id, LOGOS.isDark(id) ? 'dark' : '');
+      thumb.title = id;
+      host.appendChild(thumb);
+    });
+    var label = document.createElement('span');
+    label.className = 'hint';
+    label.textContent = ids.length + ' logo' + (ids.length > 1 ? 's' : '');
+    host.appendChild(label);
+  }
+
+  function syncLogoCats() {
+    var host = document.getElementById('logoCats');
+    host.innerHTML = '';
+    var cats = [{ id: 'all', label: 'All', count: LOGOS.total }].concat(LOGOS.categories());
+    cats.forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip' + (logoState.cat === c.id ? ' is-on' : '');
+      b.textContent = c.label + ' · ' + c.count;
+      b.addEventListener('click', function () {
+        logoState.cat = c.id;
+        logoState.limit = 96;
+        syncLogoCats();
+        renderLogoGrid();
+      });
+      host.appendChild(b);
+    });
+  }
+
+  document.getElementById('preset').addEventListener('change', function (ev) {
+    var list = PRESETS[state.spec.module || 'flow'] || PRESETS.flow;
+    var def = null;
+    list.forEach(function (p) { if (p[0] === ev.target.value) def = p; });
+    if (!def) return;
+    state.spec = def[2]();
+    state.spec._preset = def[0];
+    syncScene();
+    syncControls();
+    render();
+  });
+
+  document.getElementById('logoAll').addEventListener('click', function () {
+    if (!logoState.last) return;
+    pushHistory();
+    logoTargets().forEach(function (t) {
+      t.node.logo = logoState.last;
+      delete t.node.logos;
+    });
+    syncControls();
+    render();
+  });
+
+  function renderLogoGrid() {
+    var grid = document.getElementById('logoGrid');
+    var hits = LOGOS.search(logoState.q, logoState.cat);
+    var shown = hits.slice(0, logoState.limit);
+    var cur = logoTarget();
+    var on = {};
+    logoIdsOf(cur && cur.node).forEach(function (id) { on[id] = true; });
+
+    grid.innerHTML = '';
+    shown.forEach(function (e) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'logo-tile' + (e.dark ? ' dark' : '') + (on[e.id] ? ' is-on' : '');
+      b.title = e.id;
+      var img = document.createElement('img');
+      img.loading = 'lazy';
+      img.alt = e.name;
+      img.src = LOGOS.base + e.file;
+      b.appendChild(img);
+      b.addEventListener('click', function (ev) {
+        applyLogo(e.id, ev.shiftKey);
+      });
+      grid.appendChild(b);
+    });
+
+    document.getElementById('logoMore').style.display = hits.length > shown.length ? '' : 'none';
+    document.getElementById('logoStatus').textContent =
+      hits.length + ' logo' + (hits.length === 1 ? '' : 's') +
+      (hits.length > shown.length ? ' · showing ' + shown.length : '');
+  }
+
+  function applyLogo(id, additive) {
+    var cur = logoTarget();
+    if (!cur) return;
+    pushHistory();
+    var node = cur.node;
+    logoState.last = id;
+    if (additive) {
+      node.logos = node.logos || [];
+      if (node.logo) {
+        node.logos.push(node.logo);
+        delete node.logo;
+      }
+      var at = node.logos.indexOf(id);
+      if (at >= 0) node.logos.splice(at, 1);
+      else node.logos.push(id);
+    } else if (node.logo === id && !node.logos) {
+      delete node.logo;
+    } else {
+      node.logo = id;
+      delete node.logos;
+    }
+    syncControls();
+    render();
+  }
+
+  function syncLogoPanel() {
+    var panel = document.getElementById('logoPanel');
+    var targets = logoTargets();
+    panel.style.display = '';
+
+    var sel = document.getElementById('logoNode');
+    if (!targets.length) {
+      logoState.target = null;
+      sel.innerHTML = '<option value="">— add a node first —</option>';
+      renderLogoPreview();
+      renderLogoGrid();
+      document.getElementById('logoStatus').textContent = 'Add a node first';
+      return;
+    }
+    var cur = logoTarget();
+    logoState.target = cur ? cur.id : null;
+    sel.innerHTML = '';
+    targets.forEach(function (t) {
+      var o = document.createElement('option');
+      o.value = t.id;
+      o.textContent = t.node.label || t.id;
+      if (t.id === logoState.target) o.selected = true;
+      sel.appendChild(o);
+    });
+
+    var node = cur && cur.node;
+    document.getElementById('logoSize').value = (node && node.logoSize) || 18;
+    document.getElementById('logoPos').value = (node && node.logoPos) || 'left';
+    renderLogoPreview();
+    renderLogoGrid();
+  }
+
+  /* Scene controls ------------------------------------------------------ */
+
+  function sceneSlider(label, min, max, value, onChange) {
+    var wrap = document.createElement('label');
+    var head = document.createElement('span');
+    head.className = 'scene-head';
+    head.textContent = label + ' ';
+    var val = document.createElement('b');
+    val.textContent = value;
+    head.appendChild(val);
+    var input = document.createElement('input');
+    input.type = 'range';
+    input.min = min; input.max = max; input.step = 1; input.value = value;
+    input.addEventListener('input', function () { val.textContent = input.value; });
+    input.addEventListener('change', function () { onChange(parseInt(input.value, 10)); });
+    wrap.appendChild(head);
+    wrap.appendChild(input);
+    return wrap;
+  }
+
+  function sceneSelect(label, options, value, onChange) {
+    var wrap = document.createElement('label');
+    wrap.textContent = label;
+    var sel = document.createElement('select');
+    options.forEach(function (o) {
+      var opt = document.createElement('option');
+      opt.value = o[0]; opt.textContent = o[1];
+      if (o[0] === value) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', function () { onChange(sel.value); });
+    wrap.appendChild(sel);
+    return wrap;
+  }
+
+  function sceneButton(label, onClick) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'ghost';
+    b.textContent = label;
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function regenFlow(cols, per, pattern) {
+    var base = makeFlow(cols, per, pattern);
+    base.cable = state.spec.cable || 'solid';
+    base.motion = state.spec.motion || 'flow';
+    base.speed = state.spec.speed || 1;
+    base.vertical = !!state.spec.vertical;
+    base._preset = 'custom';
+    state.spec = base;
+    syncScene();
+    syncControls();
+    render();
+  }
+
+  function regenPipeline(n) {
+    var base = makePipeline(n);
+    base.cable = state.spec.cable || 'solid';
+    base.motion = state.spec.motion || 'packets';
+    base.speed = state.spec.speed || 1;
+    base.color = state.spec.color || 'cyan';
+    base._preset = 'custom';
+    state.spec = base;
+    syncScene();
+    syncControls();
+    render();
+  }
+
+  function regenGraph(n, pattern) {
+    var base = makeGraph(n, pattern);
+    base._preset = 'custom';
+    state.spec = base;
+    syncScene();
+    syncControls();
+    render();
+  }
+
+  function regenProxy(n) {
+    var base = makeProxy(n);
+    base._preset = 'custom';
+    state.spec = base;
+    syncScene();
+    syncControls();
+    render();
+  }
+
+  function regenChart(series, points) {
+    var base = chartPreset(state.spec.type || 'bar', series, points);
+    base._preset = 'custom';
+    state.spec = base;
+    syncScene();
+    syncControls();
+    render();
+  }
+
+  function syncScene() {
+    var s = state.spec;
+    var m = s.module || 'flow';
+    var sel = document.getElementById('preset');
+    var list = PRESETS[m] || PRESETS.flow;
+
+    sel.innerHTML = '';
+    list.forEach(function (p) {
+      var o = document.createElement('option');
+      o.value = p[0];
+      o.textContent = p[1];
+      if (s._preset === p[0]) o.selected = true;
+      sel.appendChild(o);
+    });
+    if (!s._preset) s._preset = list[0][0];
+    if (s._preset === 'custom') {
+      var custom = document.createElement('option');
+      custom.value = 'custom';
+      custom.textContent = 'Custom';
+      sel.appendChild(custom);
+    }
+    sel.value = s._preset;
+
+    var host = document.getElementById('sceneControls');
+    host.innerHTML = '';
+
+    if (m === 'flow') {
+      var cols = (s.columns && s.columns.length) || 4;
+      var per = 1;
+      (s.columns || []).forEach(function (c) { if (c.length > per) per = c.length; });
+      host.appendChild(sceneSlider('Columns', 1, 5, cols, function (v) { regenFlow(v, per, s.pattern || 'bipartite'); }));
+      host.appendChild(sceneSlider('Nodes / column', 1, 4, per, function (v) { regenFlow(cols, v, s.pattern || 'bipartite'); }));
+      host.appendChild(sceneSelect('Edges', [['bipartite', 'Full'], ['fan', 'Fan'], ['chain', 'Chain']], s.pattern || 'bipartite', function (v) { regenFlow(cols, per, v); }));
+    } else if (m === 'reverse-proxy') {
+      host.appendChild(sceneSlider('Backends', 1, 8, s.backends || 3, function (v) { regenProxy(v); }));
+    } else if (m === 'chart') {
+      var needsSeries = ['line', 'stacked', 'stackedArea', 'density'].indexOf(s.type) !== -1;
+      if (needsSeries) {
+        host.appendChild(sceneSlider('Series', 1, 4, s._series || 2, function (v) { regenChart(v, s._points || 7); }));
+      }
+      host.appendChild(sceneSlider('Points', 3, 12, s._points || 7, function (v) { regenChart(s._series || 2, v); }));
+      host.appendChild(sceneButton('Randomize data', function () { regenChart(s._series || 2, s._points || 7); }));
+    } else if (m === 'pipeline') {
+      host.appendChild(sceneSlider('Stages', 2, 8, (s.stages || []).length || 4, function (v) { regenPipeline(v); }));
+      host.appendChild(sceneSlider('Items', 2, 8, s.items || 4, function (v) {
+        state.spec.items = v;
+        specBox.value = JSON.stringify(state.spec, null, 2);
+        render();
+      }));
+    } else if (m === 'graph') {
+      host.appendChild(sceneSlider('Nodes', 3, 12, (s.nodes || []).length || 8, function (v) { regenGraph(v, s.pattern || 'tree'); }));
+      host.appendChild(sceneSelect('Edges', [['tree', 'Tree'], ['line', 'Line'], ['random', 'Random']], s.pattern || 'tree', function (v) { regenGraph((s.nodes || []).length || 8, v); }));
+    }
+  }
+
+  /* Canvas editor ------------------------------------------------------- */
+
+  var editor = {
+    tool: 'select',
+    from: null,
+    drag: null,
+    history: [],
+    future: []
+  };
+  var nodeSeq = 0;
+  var drawSeq = 0;
+
+  function isCanvas() { return (state.spec.module || 'flow') === 'canvas'; }
+
+  function closestNode(el) {
+    while (el && el !== stage) {
+      if (el.classList && el.classList.contains('alur-canvas-node')) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  function closestHandle(el) {
+    while (el && el !== stage) {
+      if (el.getAttribute && el.getAttribute('data-handle')) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  function closestEdge(el) {
+    while (el && el !== stage) {
+      if (el.getAttribute && el.getAttribute('data-edge') != null) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  function closestDrawing(el) {
+    while (el && el !== stage) {
+      if (el.getAttribute && el.getAttribute('data-drawing')) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  function svgPoint(svg, ev) {
+    var pt = svg.createSVGPoint();
+    pt.x = ev.clientX;
+    pt.y = ev.clientY;
+    var ctm = svg.getScreenCTM();
+    if (!ctm) return { x: 0, y: 0 };
+    return pt.matrixTransform(ctm.inverse());
+  }
+
+  function touchSpec() {
+    specBox.value = JSON.stringify(state.spec, null, 2);
+  }
+
+  function overlayLayer() {
+    var svg = stage.querySelector('svg');
+    if (!svg) return null;
+    var g = svg.querySelector('.alur-layer-overlay');
+    if (!g) g = AlurKit.g(svg, 'alur-layer-overlay');
+    return g;
+  }
+
+  function pointsToPath(points) {
+    return points.map(function (p, i) {
+      return (i ? 'L ' : 'M ') + p[0].toFixed(1) + ' ' + p[1].toFixed(1);
+    }).join(' ');
+  }
+
+  function applyView() {
+    var svg = stage.querySelector('svg');
+    if (!svg) return;
+    var W = state.spec.width || 900;
+    var H = state.spec.height || 520;
+    var z = state.spec.zoom || 1;
+    svg.setAttribute('viewBox',
+      (state.spec.panX || 0) + ' ' + (state.spec.panY || 0) + ' ' + (W / z) + ' ' + (H / z));
+    var zv = document.getElementById('zoomVal');
+    if (zv) zv.textContent = Math.round(z * 100) + '%';
+  }
+
+  function setZoom(z) {
+    state.spec.zoom = Math.max(0.35, Math.min(3, z));
+    applyView();
+    touchSpec();
+  }
+
+  function updateStatus() {
+    var counts = document.getElementById('statusCounts');
+    var tool = document.getElementById('statusTool');
+    var zv = document.getElementById('zoomVal');
+    if (counts) {
+      var n = Object.keys(state.spec.nodes || {}).length;
+      var e = (state.spec.edges || []).length;
+      var d = (state.spec.drawings || []).length;
+      counts.textContent = n + ' nodes · ' + e + ' edges' + (d ? ' · ' + d + ' drawings' : '');
+    }
+    if (tool) tool.textContent = 'tool: ' + editor.tool;
+    if (zv) zv.textContent = Math.round((state.spec.zoom || 1) * 100) + '%';
+  }
+
+  function updateHistoryButtons() {
+    var u = document.getElementById('undoBtn');
+    var r = document.getElementById('redoBtn');
+    if (u) u.disabled = !editor.history.length;
+    if (r) r.disabled = !editor.future.length;
+  }
+
+  function pushHistory() {
+    editor.history.push(JSON.stringify(state.spec));
+    if (editor.history.length > 80) editor.history.shift();
+    editor.future.length = 0;
+    updateHistoryButtons();
+  }
+
+  function undo() {
+    if (!editor.history.length) return;
+    editor.future.push(JSON.stringify(state.spec));
+    state.spec = JSON.parse(editor.history.pop());
+    syncControls();
+    syncEditor();
+    render();
+    updateHistoryButtons();
+  }
+
+  function redo() {
+    if (!editor.future.length) return;
+    editor.history.push(JSON.stringify(state.spec));
+    state.spec = JSON.parse(editor.future.pop());
+    syncControls();
+    syncEditor();
+    render();
+    updateHistoryButtons();
+  }
+
+  function setTool(tool) {
+    editor.tool = tool;
+    editor.from = null;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-tool]'), function (b) {
+      b.classList.toggle('is-on', b.getAttribute('data-tool') === tool);
+    });
+    syncEditor();
+  }
+
+  function selectNode(id) {
+    state.spec.selected = id || null;
+    state.spec.selectedEdge = null;
+    state.spec.selectedDrawing = null;
+    touchSpec();
+    syncEditor();
+    render();
+  }
+
+  function selectEdge(i) {
+    state.spec.selectedEdge = (state.spec.selectedEdge === i) ? null : i;
+    state.spec.selected = null;
+    state.spec.selectedDrawing = null;
+    touchSpec();
+    syncEditor();
+    render();
+  }
+
+  function selectDrawing(id) {
+    state.spec.selectedDrawing = (state.spec.selectedDrawing === id) ? null : id;
+    state.spec.selected = null;
+    state.spec.selectedEdge = null;
+    touchSpec();
+    syncEditor();
+    render();
+  }
+
+  function addNode(shape, x, y, w, h) {
+    var s = state.spec;
+    s.nodes = s.nodes || {};
+    var id, n = 1;
+    do { id = 'n' + (++nodeSeq); } while (s.nodes[id]);
+    var nodeShape = shape === 'text' ? 'plain' : shape;
+    s.nodes[id] = {
+      id: id,
+      x: Math.round(x),
+      y: Math.round(y),
+      w: Math.round(w),
+      h: Math.round(h),
+      shape: nodeShape,
+      label: nodeShape === 'plain' ? 'Text' : (nodeShape === 'pill' ? 'Box' : nodeShape.charAt(0).toUpperCase() + nodeShape.slice(1)),
+      sub: '',
+      color: COLOR_KEYS[Object.keys(s.nodes).length % COLOR_KEYS.length]
+    };
+    s.selected = id;
+    s.selectedEdge = null;
+    s.selectedDrawing = null;
+    touchSpec();
+    syncControls();
+    syncEditor();
+    render();
+    if (nodeShape === 'plain') {
+      setTimeout(function () {
+        var input = document.querySelector('#nodeInspector input');
+        if (input) { input.focus(); input.select(); }
+      }, 0);
+    }
+  }
+
+  function deleteSelected() {
+    var s = state.spec;
+    pushHistory();
+    if (s.selectedDrawing) {
+      s.drawings = (s.drawings || []).filter(function (d) { return d.id !== s.selectedDrawing; });
+      s.selectedDrawing = null;
+    } else if (s.selectedEdge != null && s.edges[s.selectedEdge]) {
+      s.edges.splice(s.selectedEdge, 1);
+      s.selectedEdge = null;
+    } else if (s.selected && s.nodes[s.selected]) {
+      delete s.nodes[s.selected];
+      s.edges = (s.edges || []).filter(function (e) {
+        return e.from !== s.selected && e.to !== s.selected;
+      });
+      s.selected = null;
+    }
+    touchSpec();
+    syncControls();
+    syncEditor();
+    render();
+  }
+
+  function field(labelText, input) {
+    var l = document.createElement('label');
+    l.textContent = labelText;
+    l.appendChild(input);
+    return l;
+  }
+
+  function textField(labelText, value, onInput) {
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.value = value || '';
+    input.addEventListener('input', function () {
+      onInput(input.value);
+      touchSpec();
+      render();
+    });
+    return field(labelText, input);
+  }
+
+  function selectField(labelText, options, value, onChange) {
+    var sel = document.createElement('select');
+    options.forEach(function (o) {
+      var opt = document.createElement('option');
+      opt.value = o[0];
+      opt.textContent = o[1];
+      if (o[0] === value) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', function () {
+      onChange(sel.value);
+      touchSpec();
+      render();
+    });
+    return field(labelText, sel);
+  }
+
+  function plainHint(text) {
+    var p = document.createElement('p');
+    p.className = 'hint';
+    p.style.margin = '0';
+    p.textContent = text;
+    return p;
+  }
+
+  function renderNodeInspector() {
+    var host = document.getElementById('nodeInspector');
+    host.innerHTML = '';
+    var id = state.spec.selected;
+    var n = id && state.spec.nodes[id];
+    if (!n) { host.innerHTML = '<p class="hint">No node selected.</p>'; return; }
+
+    host.appendChild(textField('Label', n.label, function (v) { n.label = v; }));
+    host.appendChild(textField('Sub', n.sub, function (v) { n.sub = v; }));
+    host.appendChild(selectField('Shape', [
+      ['box', 'Box'], ['pill', 'Pill'], ['circle', 'Circle'], ['plain', 'Plain (no box)']
+    ], n.shape || 'box', function (v) { n.shape = v; }));
+    host.appendChild(selectField('Color', COLOR_KEYS.map(function (k) { return [k, k]; }),
+      n.color || 'blue', function (v) { n.color = v; }));
+
+    var grid = document.createElement('div');
+    grid.className = 'editor-grid';
+    [['x', 'X'], ['y', 'Y'], ['w', 'W'], ['h', 'H']].forEach(function (p) {
+      var input = document.createElement('input');
+      input.type = 'number';
+      input.value = n[p[0]];
+      input.addEventListener('input', function () {
+        n[p[0]] = parseFloat(input.value) || 0;
+        touchSpec();
+        render();
+      });
+      var l = document.createElement('label');
+      l.textContent = p[1];
+      l.appendChild(input);
+      grid.appendChild(l);
+    });
+    host.appendChild(field('Position & size', grid));
+
+    if (n.logo || (n.logos && n.logos.length)) {
+      var clear = document.createElement('button');
+      clear.type = 'button';
+      clear.className = 'ghost';
+      clear.textContent = 'Remove logo';
+      clear.addEventListener('click', function () {
+        pushHistory();
+        delete n.logo;
+        delete n.logos;
+        touchSpec();
+        syncControls();
+        syncEditor();
+        render();
+      });
+      host.appendChild(clear);
+    } else {
+      host.appendChild(plainHint('Pick a logo in the Logo library →'));
+    }
+  }
+
+  function renderEdgeInspector() {
+    var host = document.getElementById('edgeInspector');
+    host.innerHTML = '';
+    var i = state.spec.selectedEdge;
+    var e = (i != null) ? state.spec.edges[i] : null;
+    if (!e) { host.innerHTML = '<p class="hint">No edge selected.</p>'; return; }
+
+    host.appendChild(selectField('Cable',
+      CABLES.map(function (c) { return [c.id, c.label]; }),
+      e.cable || state.spec.cable || 'solid',
+      function (v) { e.cable = v; }));
+    host.appendChild(selectField('Motion',
+      MOTIONS.map(function (m) { return [m.id, m.label]; }),
+      e.motion || state.spec.motion || 'flow',
+      function (v) { e.motion = v; }));
+    host.appendChild(selectField('Color',
+      COLOR_KEYS.map(function (k) { return [k, k]; }),
+      e.color || 'blue',
+      function (v) { e.color = v; }));
+    host.appendChild(textField('Label', e.label, function (v) { e.label = v; }));
+  }
+
+  function syncEditor() {
+    var bar = document.getElementById('editorBar');
+    var status = document.getElementById('stageStatus');
+    if (bar) bar.style.display = isCanvas() ? '' : 'none';
+    if (status) status.style.display = isCanvas() ? '' : 'none';
+    var panel = document.getElementById('editorPanel');
+    if (panel) panel.style.display = isCanvas() ? '' : 'none';
+    updateStatus();
+    if (!isCanvas()) return;
+
+    document.getElementById('gridToggle').checked = state.spec.grid !== false;
+    document.getElementById('editorMode').textContent = editor.tool;
+
+    var hints = {
+      select: 'Drag a node to move it. Use the handles to resize. Click an edge or drawing to select.',
+      box: 'Drag on the canvas to draw a box. Click for a default box.',
+      round: 'Drag on the canvas to draw a rounded box.',
+      circle: 'Drag on the canvas to draw a circle.',
+      text: 'Drag or click to place text. Edit the label in the inspector.',
+      arrow: 'Drag from one node to another to connect them.',
+      draw: 'Drag to sketch a freehand stroke.',
+      pan: 'Drag to pan. Use the wheel or +/- to zoom.'
+    };
+    document.getElementById('editorHint').textContent = hints[editor.tool] || hints.select;
+
+    renderNodeInspector();
+    renderEdgeInspector();
+  }
+
+  stage.addEventListener('pointerdown', function (ev) {
+    if (!isCanvas()) return;
+    var svg = stage.querySelector('svg');
+    if (!svg) return;
+    var p = svgPoint(svg, ev);
+
+    if (editor.tool === 'pan') {
+      pushHistory();
+      editor.drag = {
+        type: 'pan', px: p.x, py: p.y,
+        panX: state.spec.panX || 0, panY: state.spec.panY || 0
+      };
+      ev.preventDefault();
+      return;
+    }
+
+    if (editor.tool === 'draw') {
+      pushHistory();
+      var preview = AlurKit.path(overlayLayer(), '', 'alur-preview-path', {
+        fill: 'none', stroke: '#e6edf3', 'stroke-width': 2,
+        'stroke-linecap': 'round', 'stroke-linejoin': 'round'
+      });
+      editor.drag = { type: 'draw', points: [[p.x, p.y]], preview: preview };
+      ev.preventDefault();
+      return;
+    }
+
+    if (editor.tool === 'arrow') {
+      var arrowNode = closestNode(ev.target);
+      if (arrowNode) {
+        if (!editor.from) {
+          pushHistory();
+          editor.from = arrowNode.getAttribute('data-node-id');
+          arrowNode.classList.add('is-connect-from');
+        } else if (editor.from !== arrowNode.getAttribute('data-node-id')) {
+          state.spec.edges = state.spec.edges || [];
+          state.spec.edges.push({
+            from: editor.from,
+            to: arrowNode.getAttribute('data-node-id'),
+            cable: state.spec.cable || 'solid',
+            motion: state.spec.motion || 'flow'
+          });
+          editor.from = null;
+          touchSpec();
+          syncControls();
+          syncEditor();
+          render();
+        }
+      }
+      ev.preventDefault();
+      return;
+    }
+
+    if (editor.tool === 'box' || editor.tool === 'round' || editor.tool === 'circle' || editor.tool === 'text') {
+      pushHistory();
+      var shape = editor.tool === 'round' ? 'pill' : editor.tool;
+      var previewRect = AlurKit.rect(overlayLayer(), p.x, p.y, 0, 0, 'alur-preview', {
+        fill: 'rgba(88,166,255,0.12)', stroke: '#58a6ff', 'stroke-dasharray': '4 3'
+      });
+      editor.drag = {
+        type: 'create', shape: shape,
+        x0: p.x, y0: p.y, x1: p.x, y1: p.y,
+        moved: false, preview: previewRect
+      };
+      ev.preventDefault();
+      return;
+    }
+
+    /* select tool */
+    var handle = closestHandle(ev.target);
+    if (handle) {
+      var hid = handle.getAttribute('data-node-id');
+      var hn = state.spec.nodes[hid];
+      if (!hn) return;
+      pushHistory();
+      editor.drag = {
+        type: 'resize', id: hid, handle: handle.getAttribute('data-handle'),
+        x0: hn.x || 0, y0: hn.y || 0, w0: hn.w || 160, h0: hn.h || 60,
+        px: p.x, py: p.y
+      };
+      ev.preventDefault();
+      return;
+    }
+
+    var nodeEl = closestNode(ev.target);
+    if (nodeEl) {
+      var nid = nodeEl.getAttribute('data-node-id');
+      var n = state.spec.nodes[nid];
+      if (!n) return;
+      pushHistory();
+      selectNode(nid);
+      var fresh = stage.querySelector('[data-node-id="' + nid + '"]');
+      editor.drag = {
+        type: 'move', id: nid, el: fresh,
+        dx: (n.x || 0) - p.x, dy: (n.y || 0) - p.y
+      };
+      if (fresh) fresh.classList.add('is-dragging');
+      ev.preventDefault();
+      return;
+    }
+
+    var edgeEl = closestEdge(ev.target);
+    if (edgeEl) {
+      selectEdge(parseInt(edgeEl.getAttribute('data-edge'), 10));
+      ev.preventDefault();
+      return;
+    }
+
+    var drawEl = closestDrawing(ev.target);
+    if (drawEl) {
+      selectDrawing(drawEl.getAttribute('data-drawing'));
+      ev.preventDefault();
+      return;
+    }
+
+    selectNode(null);
+  });
+
+  window.addEventListener('pointermove', function (ev) {
+    if (!editor.drag) return;
+    var svg = stage.querySelector('svg');
+    if (!svg) return;
+    var p = svgPoint(svg, ev);
+
+    if (editor.drag.type === 'pan') {
+      state.spec.panX = editor.drag.panX - (p.x - editor.drag.px);
+      state.spec.panY = editor.drag.panY - (p.y - editor.drag.py);
+      applyView();
+      touchSpec();
+      return;
+    }
+
+    if (editor.drag.type === 'draw') {
+      var pts = editor.drag.points;
+      var last = pts[pts.length - 1];
+      if (Math.abs(p.x - last[0]) + Math.abs(p.y - last[1]) > 2) {
+        pts.push([p.x, p.y]);
+        if (editor.drag.preview) editor.drag.preview.setAttribute('d', pointsToPath(pts));
+      }
+      return;
+    }
+
+    if (editor.drag.type === 'create') {
+      editor.drag.x1 = p.x;
+      editor.drag.y1 = p.y;
+      editor.drag.moved = true;
+      var x = Math.min(editor.drag.x0, p.x);
+      var y = Math.min(editor.drag.y0, p.y);
+      var w = Math.abs(p.x - editor.drag.x0);
+      var h = Math.abs(p.y - editor.drag.y0);
+      if (editor.drag.preview) {
+        editor.drag.preview.setAttribute('x', x);
+        editor.drag.preview.setAttribute('y', y);
+        editor.drag.preview.setAttribute('width', w);
+        editor.drag.preview.setAttribute('height', h);
+      }
+      return;
+    }
+
+    if (editor.drag.type === 'move') {
+      var n = state.spec.nodes[editor.drag.id];
+      if (!n) return;
+      n.x = Math.round(p.x + editor.drag.dx);
+      n.y = Math.round(p.y + editor.drag.dy);
+      if (editor.drag.el) {
+        editor.drag.el.setAttribute('transform', 'translate(' + n.x + ' ' + n.y + ')');
+      }
+      touchSpec();
+      return;
+    }
+
+    if (editor.drag.type === 'resize') {
+      var rn = state.spec.nodes[editor.drag.id];
+      if (!rn) return;
+      var dx = p.x - editor.drag.px;
+      var dy = p.y - editor.drag.py;
+      var x2 = editor.drag.x0, y2 = editor.drag.y0;
+      var w2 = editor.drag.w0, h2 = editor.drag.h0;
+      if (editor.drag.handle.indexOf('e') >= 0) w2 = editor.drag.w0 + dx;
+      if (editor.drag.handle.indexOf('s') >= 0) h2 = editor.drag.h0 + dy;
+      if (editor.drag.handle.indexOf('w') >= 0) { x2 = editor.drag.x0 + dx; w2 = editor.drag.w0 - dx; }
+      if (editor.drag.handle.indexOf('n') >= 0) { y2 = editor.drag.y0 + dy; h2 = editor.drag.h0 - dy; }
+      rn.x = Math.round(x2);
+      rn.y = Math.round(y2);
+      rn.w = Math.max(40, Math.round(w2));
+      rn.h = Math.max(30, Math.round(h2));
+      touchSpec();
+      render();
+    }
+  });
+
+  function endDrag() {
+    if (!editor.drag) return;
+    var drag = editor.drag;
+    editor.drag = null;
+
+    if (drag.type === 'draw') {
+      if (drag.preview && drag.preview.parentNode) drag.preview.parentNode.removeChild(drag.preview);
+      if (drag.points.length > 1) {
+        state.spec.drawings = state.spec.drawings || [];
+        state.spec.drawings.push({
+          id: 'd' + (++drawSeq),
+          d: pointsToPath(drag.points),
+          color: '#e6edf3',
+          width: 2
+        });
+      }
+    }
+
+    if (drag.type === 'create') {
+      if (drag.preview && drag.preview.parentNode) drag.preview.parentNode.removeChild(drag.preview);
+      var x = Math.min(drag.x0, drag.x1);
+      var y = Math.min(drag.y0, drag.y1);
+      var w = Math.abs(drag.x1 - drag.x0);
+      var h = Math.abs(drag.y1 - drag.y0);
+      if (!drag.moved || w < 16 || h < 12) {
+        x = drag.x0;
+        y = drag.y0;
+        w = 160;
+        h = drag.shape === 'plain' ? 40 : 60;
+      }
+      addNode(drag.shape, x, y, w, h);
+      return;
+    }
+
+    if (drag.type === 'move' && drag.el) {
+      drag.el.classList.remove('is-dragging');
+    }
+
+    syncControls();
+    syncEditor();
+    render();
+  }
+
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('pointercancel', endDrag);
+
+  stage.addEventListener('wheel', function (ev) {
+    if (!isCanvas()) return;
+    ev.preventDefault();
+    var z = (state.spec.zoom || 1) * (ev.deltaY < 0 ? 1.1 : 0.9);
+    setZoom(z);
+  }, { passive: false });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-tool]'), function (b) {
+    b.addEventListener('click', function () { setTool(b.getAttribute('data-tool')); });
+  });
+
+  document.getElementById('addBox').addEventListener('click', function () {
+    pushHistory();
+    addNode('box', 90 + Math.random() * 60, 90 + Math.random() * 60, 160, 60);
+  });
+  document.getElementById('addPlain').addEventListener('click', function () {
+    pushHistory();
+    addNode('plain', 90 + Math.random() * 60, 90 + Math.random() * 60, 160, 40);
+  });
+  document.getElementById('addPill').addEventListener('click', function () {
+    pushHistory();
+    addNode('pill', 90 + Math.random() * 60, 90 + Math.random() * 60, 160, 56);
+  });
+  document.getElementById('addCircle').addEventListener('click', function () {
+    pushHistory();
+    addNode('circle', 90 + Math.random() * 60, 90 + Math.random() * 60, 110, 110);
+  });
+  document.getElementById('deleteBtn').addEventListener('click', deleteSelected);
+  document.getElementById('connectBtn').addEventListener('click', function () { setTool('arrow'); });
+
+  document.getElementById('undoBtn').addEventListener('click', undo);
+  document.getElementById('redoBtn').addEventListener('click', redo);
+  document.getElementById('zoomIn').addEventListener('click', function () { setZoom((state.spec.zoom || 1) * 1.15); });
+  document.getElementById('zoomOut').addEventListener('click', function () { setZoom((state.spec.zoom || 1) / 1.15); });
+  document.getElementById('zoomFit').addEventListener('click', function () {
+    state.spec.zoom = 1;
+    state.spec.panX = 0;
+    state.spec.panY = 0;
+    applyView();
+    touchSpec();
+  });
+
+  function download(name, text, type) {
+    var blob = new Blob([text], { type: type || 'application/octet-stream' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  document.getElementById('exportJson').addEventListener('click', function () {
+    download('alur-scene.json', JSON.stringify(state.spec, null, 2), 'application/json');
+  });
+
+  document.getElementById('exportSvg').addEventListener('click', function () {
+    var svg = stage.querySelector('svg');
+    if (!svg) return;
+    var clone = svg.cloneNode(true);
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    download('alur-scene.svg', new XMLSerializer().serializeToString(clone), 'image/svg+xml');
+  });
+
+  document.getElementById('gridToggle').addEventListener('change', function (ev) {
+    pushHistory();
+    state.spec.grid = ev.target.checked;
+    touchSpec();
+    render();
+  });
+
+  window.addEventListener('keydown', function (ev) {
+    if (!isCanvas()) return;
+    var tag = (ev.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    var k = ev.key.toLowerCase();
+    if (ev.key === 'Escape') { setTool('select'); return; }
+    if (ev.key === 'Delete' || ev.key === 'Backspace') { ev.preventDefault(); deleteSelected(); return; }
+    if ((ev.ctrlKey || ev.metaKey) && k === 'z') {
+      ev.preventDefault();
+      if (ev.shiftKey) redo(); else undo();
+      return;
+    }
+    if ((ev.ctrlKey || ev.metaKey) && k === 'y') { ev.preventDefault(); redo(); return; }
+    var map = { v: 'select', b: 'box', r: 'round', o: 'circle', t: 'text', a: 'arrow', d: 'draw', h: 'pan' };
+    if (map[k]) setTool(map[k]);
+  });
+
+  updateHistoryButtons();
+
+  function syncControls() {
+    var s = state.spec;
+    var m = s.module || 'flow';
+    document.getElementById('module').value = m;
+    document.getElementById('chartTypeRow').style.display = m === 'chart' ? '' : 'none';
+    if (m === 'chart') document.getElementById('chartType').value = s.type || 'bar';
+    document.getElementById('linkControls').style.display = (m === 'flow' || m === 'pipeline' || m === 'canvas') ? '' : 'none';
+    document.getElementById('speedRow').style.display = m === 'chart' ? 'none' : '';
+    document.getElementById('cable').value = s.cable || 'solid';
+    document.getElementById('motion').value = s.motion || 'flow';
+    document.getElementById('speed').value = s.speed || 1;
+    document.getElementById('speedVal').textContent = (s.speed || 1).toFixed(2).replace(/0$/, '') + '×';
+    syncLogoPanel();
+    syncEditor();
+    specBox.value = JSON.stringify(s, null, 2);
+  }
+
+  function render() {
+    if (stage.__alur) {
+      Alur.destroy(stage.__alur);
+      stage.__alur = null;
+    }
+    stage.innerHTML = '';
+    stage.setAttribute('data-module', state.spec.module || 'flow');
+    stage.setAttribute('data-spec', JSON.stringify(state.spec));
+    stage.removeAttribute('data-ready');
+    Alur.mount(stage);
+    updateStatus();
+  }
+
+  function setAllEdges(patch) {
+    (state.spec.edges || []).forEach(function (e) {
+      Object.keys(patch).forEach(function (k) { e[k] = patch[k]; });
+    });
+  }
+
+  document.getElementById('module').addEventListener('change', function (ev) {
+    state.spec = presetFor(ev.target.value);
+    syncScene();
+    syncControls();
+    render();
+  });
+
+  document.getElementById('chartType').addEventListener('change', function (ev) {
+    var s = state.spec;
+    var spec = chartPreset(ev.target.value, s._series || 2, s._points || 7);
+    spec._preset = 'custom';
+    state.spec = spec;
+    syncScene();
+    syncControls();
+    render();
+  });
+
+  document.getElementById('cable').addEventListener('change', function (ev) {
+    state.spec.cable = ev.target.value;
+    setAllEdges({ cable: ev.target.value });
+    syncControls();
+    render();
+  });
+
+  document.getElementById('motion').addEventListener('change', function (ev) {
+    state.spec.motion = ev.target.value;
+    setAllEdges({ motion: ev.target.value });
+    syncControls();
+    render();
+  });
+
+  var speedTimer = null;
+  document.getElementById('speed').addEventListener('input', function (ev) {
+    state.spec.speed = parseFloat(ev.target.value);
+    document.getElementById('speedVal').textContent = state.spec.speed.toFixed(2).replace(/0$/, '') + '×';
+    specBox.value = JSON.stringify(state.spec, null, 2);
+    clearTimeout(speedTimer);
+    speedTimer = setTimeout(render, 140);
+  });
+
+  document.getElementById('surprise').addEventListener('click', function () {
+    var edges = state.spec.edges || [];
+    edges.forEach(function (e) {
+      e.cable = CABLE_IDS[Math.floor(Math.random() * CABLE_IDS.length)];
+      e.motion = MOTION_IDS[Math.floor(Math.random() * MOTION_IDS.length)];
+      e.color = COLOR_KEYS[Math.floor(Math.random() * COLOR_KEYS.length)];
+    });
+    syncControls();
+    render();
+  });
+
+  document.getElementById('apply').addEventListener('click', function () {
+    try {
+      state.spec = JSON.parse(specBox.value);
+      syncControls();
+      render();
+    } catch (err) {
+      alert('Invalid JSON: ' + err.message);
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', function () {
+    state.spec = presetFor(document.getElementById('module').value || 'canvas');
+    logoState.target = null;
+    logoState.q = '';
+    logoState.cat = 'all';
+    logoState.limit = 96;
+    document.getElementById('logoSearch').value = '';
+    syncLogoCats();
+    syncControls();
+    render();
+  });
+
+  /* Logo panel events ---------------------------------------------------- */
+
+  document.getElementById('logoSearch').addEventListener('input', function (ev) {
+    logoState.q = ev.target.value;
+    logoState.limit = 96;
+    renderLogoGrid();
+  });
+
+  document.getElementById('logoNode').addEventListener('change', function (ev) {
+    logoState.target = ev.target.value;
+    syncLogoPanel();
+  });
+
+  var sizeTimer = null;
+  document.getElementById('logoSize').addEventListener('input', function (ev) {
+    var cur = logoTarget();
+    if (cur) cur.node.logoSize = parseInt(ev.target.value, 10);
+    specBox.value = JSON.stringify(state.spec, null, 2);
+    clearTimeout(sizeTimer);
+    sizeTimer = setTimeout(render, 140);
+  });
+
+  document.getElementById('logoSize').addEventListener('change', function () {
+    syncControls();
+    render();
+  });
+
+  document.getElementById('logoPos').addEventListener('change', function (ev) {
+    var cur = logoTarget();
+    if (cur) cur.node.logoPos = ev.target.value;
+    syncControls();
+    render();
+  });
+
+  document.getElementById('logoClear').addEventListener('click', function () {
+    var cur = logoTarget();
+    if (!cur) return;
+    delete cur.node.logo;
+    delete cur.node.logos;
+    delete cur.node.logoSize;
+    delete cur.node.logoPos;
+    syncControls();
+    render();
+  });
+
+  document.getElementById('logoMore').addEventListener('click', function () {
+    logoState.limit += 96;
+    renderLogoGrid();
+  });
+
+  syncLogoCats();
+
+  Alur.init(document);
+  syncScene();
+  syncControls();
+  render();
+})();
+</script>
+
+</body></html>

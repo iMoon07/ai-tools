@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0}iframe{width:1440px;height:900px;border:0}</style>
+</head><body><iframe id="f" src="/imoon07.github.io/preview.html"></iframe>
+<pre id="report">{"stage":{"w":1440,"h":900,"vw":1440,"vh":900},"panelsOpen":0,"rail":"flex","topbar":"flex","svg":true,"minimapHidden":false,"propsOpen":true,"stageAfterPanel":true,"nodes":1,"selected":1,"propsAfterAdd":true,"minimapShown":true,"paletteOpen":true,"paletteItems":1,"moduleAfter":"flow","stageModule":"flow","minimapFlowHidden":true,"railFlow":"none","moduleBack":"canvas","minimapBack":true,"focusClass":true,"focusTopbar":"hidden","focusExit":"block","focusOff":true,"err":0}</pre>
+<script>
+const f=document.getElementById('f');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function ready(){
+  for(let i=0;i<100;i++){
+    const d=f.contentDocument;
+    if(d && d.getElementById('stage') && d.querySelector('#stage svg') && d.getElementById('editorBar').style.display!=='none') return d;
+    await sleep(50);
+  }
+  throw new Error('not ready');
+}
+(async()=>{
+  const d=await ready(); const w=f.contentWindow; const out={};
+  await sleep(300);
+  const stage=d.getElementById('stage');
+  const sr=stage.getBoundingClientRect();
+  out.stage={w:Math.round(sr.width),h:Math.round(sr.height),vw:w.innerWidth,vh:w.innerHeight};
+  out.panelsOpen=d.querySelectorAll('.dock.is-open').length;
+  out.rail=getComputedStyle(d.getElementById('editorBar')).display;
+  out.topbar=getComputedStyle(d.querySelector('.topbar')).display;
+  out.svg=!!d.querySelector('#stage svg');
+  out.minimapHidden=d.getElementById('minimap').hidden;
+  const before=stage.getBoundingClientRect().width;
+  d.querySelector('[data-panel="properties"]').click(); await sleep(200);
+  out.propsOpen=d.getElementById('panelProperties').classList.contains('is-open');
+  out.stageAfterPanel=stage.getBoundingClientRect().width===before;
+  d.getElementById('addBox').click(); await sleep(250);
+  out.nodes=Object.keys(JSON.parse(stage.getAttribute('data-spec')).nodes||{}).length;
+  out.selected=d.querySelectorAll('#stage .is-selected').length;
+  out.propsAfterAdd=d.getElementById('panelProperties').classList.contains('is-open');
+  out.minimapShown=!d.getElementById('minimap').hidden;
+  // command palette
+  w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));
+  await sleep(120);
+  out.paletteOpen=!d.getElementById('palette').hidden;
+  const pi=d.getElementById('paletteInput');
+  pi.value='Module · Flow'; pi.dispatchEvent(new w.Event('input',{bubbles:true}));
+  await sleep(120);
+  out.paletteItems=d.querySelectorAll('.palette-item').length;
+  const firstItem=d.querySelector('.palette-item'); if(firstItem) firstItem.click();
+  await sleep(350);
+  out.moduleAfter=d.getElementById('module').value;
+  out.stageModule=stage.getAttribute('data-module');
+  out.minimapFlowHidden=d.getElementById('minimap').hidden;
+  out.railFlow=getComputedStyle(d.getElementById('editorBar')).display;
+  // back to canvas
+  d.getElementById('module').value='canvas'; d.getElementById('module').dispatchEvent(new w.Event('change',{bubbles:true}));
+  await sleep(300);
+  out.moduleBack=d.getElementById('module').value;
+  out.minimapBack=!d.getElementById('minimap').hidden;
+  // focus mode
+  d.getElementById('focusMode').click(); await sleep(200);
+  out.focusClass=d.body.classList.contains('focus-mode');
+  out.focusTopbar=getComputedStyle(d.querySelector('.topbar')).visibility;
+  out.focusExit=getComputedStyle(d.getElementById('focusExit')).display;
+  d.getElementById('focusExit').click(); await sleep(150);
+  out.focusOff=!d.body.classList.contains('focus-mode');
+  out.err=0;
+  document.getElementById('report').textContent=JSON.stringify(out);
+})().catch(e=>{document.getElementById('report').textContent='ERR '+e.message+' | '+e.stack;});
+</script>
+</body></html>

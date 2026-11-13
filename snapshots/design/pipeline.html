@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/ai-tools/vendor/marked.min.js"></script>
+<script src="file:///home/moon/Projects/ai-tools/vendor/purify.min.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/markdown.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+</head><body>
+<div id="content"></div>
+<pre id="report">pending</pre>
+<script>
+const spec = {"title":"Alur","columns":[{"nodes":["a"]},{"nodes":["b"]}],"nodes":{"a":{"label":"A","icon":"user","kind":"actor","href":"https://en.wikipedia.org/wiki/Web_browser"},"b":{"label":"B","icon":"server","kind":"process","href":"https://en.wikipedia.org/wiki/Web_server"}},"edges":[{"from":"a","to":"b","badge":"1"}]};
+const md = "Intro\n\n```topology\n" + JSON.stringify(spec) + "\n```\n\nAfter\n";
+const parsed = marked.parse(md, {gfm:true});
+const sanitized = DOMPurify.sanitize(parsed, {ADD_ATTR:['data-spec'], ALLOW_DATA_ATTR:true});
+document.getElementById('content').innerHTML = sanitized;
+Topology.init();
+const el = document.querySelector('.topology');
+document.getElementById('report').textContent =
+  'hasTopology=' + !!el + ' nodes=' + document.querySelectorAll('.topo-node').length +
+  ' paths=' + document.querySelectorAll('.topo-svg path').length +
+  ' dataSpec=' + (el ? (el.dataset.spec||'').length : 0) +
+  ' text=' + (el ? el.textContent.trim().slice(0,30) : '');
+</script>
+</body></html>

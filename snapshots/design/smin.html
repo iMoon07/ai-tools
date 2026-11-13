@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><body style="margin:0">
+<svg id="s" width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+<path id="p" d="M 10 50 L 290 50" stroke="blue" fill="none"/>
+<circle id="c" r="5" fill="red">
+  <animateMotion id="am" dur="2s" repeatCount="indefinite" path="M 10 50 L 290 50"/>
+</circle>
+<circle id="d" r="5" fill="green">
+  <animateMotion id="am2" dur="2s" repeatCount="indefinite"><mpath id="mp" href="#p"/></animateMotion>
+</circle>
+</svg>
+<pre id="out"></pre>
+<script>
+function snap(t){var a=document.getElementById('c').getBoundingClientRect(),b=document.getElementById('d').getBoundingClientRect();
+document.getElementById('out').textContent=JSON.stringify({t:document.getElementById('s').getCurrentTime(),path:[Math.round(a.x),Math.round(a.y)],mpath:[Math.round(b.x),Math.round(b.y)],am:document.getElementById('am').getAttribute('path'),mp:document.getElementById('mp').getAttribute('href')});}
+setTimeout(function(){snap('a')},300);
+setTimeout(function(){window.__a=document.getElementById('out').textContent},350);
+setTimeout(function(){snap('b')},1200);
+setTimeout(function(){window.__b=document.getElementById('out').textContent},1250);
+setTimeout(function(){document.title='DONE'},1400);
+</script></body></html>

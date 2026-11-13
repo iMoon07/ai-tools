@@ -1,0 +1,235 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/ai-tools/vendor/mermaid.min.js"></script></head><body>
+<div class="diagram mermaid" data-k="0">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 40, &quot;rankSpacing&quot;: 50, &quot;padding&quot;: 10}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif&quot;, &quot;fontSize&quot;: &quot;14px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; } .cluster rect { rx: 12px; ry: 12px; } .edgeLabel rect { fill: #111827; } .edgeLabel span { color: #cbd5e1; }&quot;}}%%
+flowchart TD
+    C([&quot;🧑‍🦱 Pelanggan&lt;br/&gt;Datang dan memesan makanan&quot;]) --&gt;|&quot;1. Pesan makanan&lt;br/&gt;seperti HTTP Request&quot;| P[&quot;🧑‍🍳 Pelayan&lt;br/&gt;Menerima pesanan dan meneruskannya&quot;]
+    P --&gt;|&quot;2. Teruskan pesanan&lt;br/&gt;ke dapur&quot;| K[&quot;👨‍🍳 Koki&lt;br/&gt;Memasak sesuai pesanan&quot;]
+    K --&gt;|&quot;3. Ambil bahan&lt;br/&gt;jika diperlukan&quot;| G[(&quot;🥫 Gudang Bahan&lt;br/&gt;Menyimpan bahan makanan&quot;)]
+    G --&gt;|&quot;4. Kirim bahan&lt;br/&gt;ke koki&quot;| K
+    K --&gt;|&quot;5. Sajikan makanan&lt;br/&gt;ke pelayan&quot;| P
+    P --&gt;|&quot;6. Antar makanan&lt;br/&gt;ke pelanggan&lt;br/&gt;seperti HTTP Response&quot;| C
+
+    subgraph W[&quot;Warung / Satu Lokasi&quot;]
+        P
+        K
+        G
+    end
+
+    click C &quot;https://en.wikipedia.org/wiki/Web_browser&quot; &quot;Web browser&quot; _blank
+    click P &quot;https://en.wikipedia.org/wiki/Web_server&quot; &quot;Web server&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Runtime_system&quot; &quot;Runtime system&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Database&quot; &quot;Database&quot; _blank
+    click W &quot;https://en.wikipedia.org/wiki/Multitier_architecture&quot; &quot;Single-tier architecture&quot; _blank
+
+    classDef actor fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef role fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef store fill:#1f2937,stroke:#3fb950,color:#e6edf3,stroke-width:1.5px
+
+    class C actor
+    class P,K role
+    class G store
+    style W fill:transparent,stroke:#30363d,stroke-width:1px,color:#8b949e</div><div class="diagram mermaid" data-k="1">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 40, &quot;rankSpacing&quot;: 50, &quot;padding&quot;: 10}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif&quot;, &quot;fontSize&quot;: &quot;14px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; } .cluster rect { rx: 12px; ry: 12px; } .edgeLabel rect { fill: #111827; } .edgeLabel span { color: #cbd5e1; }&quot;}}%%
+flowchart LR
+    C([&quot;🧑‍🦱 Pelanggan&lt;br/&gt;Datang dan memesan makanan&quot;]) --&gt;|&quot;1. Pesan makanan&lt;br/&gt;seperti HTTP Request&quot;| P[&quot;🧑‍🍳 Pelayan&lt;br/&gt;Menerima pesanan dan meneruskannya&quot;]
+    P --&gt;|&quot;2. Teruskan pesanan&lt;br/&gt;ke dapur&quot;| K[&quot;👨‍🍳 Koki&lt;br/&gt;Memasak sesuai pesanan&quot;]
+    K --&gt;|&quot;3. Ambil bahan&lt;br/&gt;jika diperlukan&quot;| G[(&quot;🥫 Gudang Bahan&lt;br/&gt;Menyimpan bahan makanan&quot;)]
+    G --&gt;|&quot;4. Kirim bahan&lt;br/&gt;ke koki&quot;| K
+    K --&gt;|&quot;5. Sajikan makanan&lt;br/&gt;ke pelayan&quot;| P
+    P --&gt;|&quot;6. Antar makanan&lt;br/&gt;ke pelanggan&lt;br/&gt;seperti HTTP Response&quot;| C
+
+    subgraph W[&quot;Warung / Satu Lokasi&quot;]
+        P
+        K
+        G
+    end
+
+    click C &quot;https://en.wikipedia.org/wiki/Web_browser&quot; &quot;Web browser&quot; _blank
+    click P &quot;https://en.wikipedia.org/wiki/Web_server&quot; &quot;Web server&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Runtime_system&quot; &quot;Runtime system&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Database&quot; &quot;Database&quot; _blank
+    click W &quot;https://en.wikipedia.org/wiki/Multitier_architecture&quot; &quot;Single-tier architecture&quot; _blank
+
+    classDef actor fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef role fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef store fill:#1f2937,stroke:#3fb950,color:#e6edf3,stroke-width:1.5px
+
+    class C actor
+    class P,K role
+    class G store
+    style W fill:transparent,stroke:#30363d,stroke-width:1px,color:#8b949e</div><div class="diagram mermaid" data-k="2">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 40, &quot;rankSpacing&quot;: 50, &quot;padding&quot;: 10}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif&quot;, &quot;fontSize&quot;: &quot;14px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; } .cluster rect { rx: 12px; ry: 12px; } .edgeLabel rect { fill: #111827; } .edgeLabel span { color: #cbd5e1; }&quot;}}%%
+flowchart TD
+    A([&quot;🍜 Technology Stack&lt;br/&gt;= Resep dan bahan masakan&quot;]) --&gt; B{&quot;Pilih bahan sesuai menu&quot;}
+
+    B --&gt; C[&quot;🟨 JavaScript / TypeScript&lt;br/&gt;React, Node.js, MongoDB&quot;]
+    B --&gt; D[&quot;🐘 PHP&lt;br/&gt;Laravel, LAMP, LEMP&quot;]
+    B --&gt; E[&quot;🐍 Python&lt;br/&gt;Django, FastAPI, Flask&quot;]
+    B --&gt; F[&quot;🔷 .NET&lt;br/&gt;ASP.NET Core, Blazor&quot;]
+    B --&gt; G[&quot;☕ Java&lt;br/&gt;Spring Boot, Jakarta EE&quot;]
+    B --&gt; H[&quot;💎 Ruby&lt;br/&gt;Ruby on Rails&quot;]
+    B --&gt; I[&quot;🐹 Go&lt;br/&gt;Gin, Echo, Fiber&quot;]
+    B --&gt; J[&quot;🦀 Rust&lt;br/&gt;Actix, Axum, Rocket&quot;]
+    B --&gt; K[&quot;📊 Infrastruktur&lt;br/&gt;ELK, Prometheus + Grafana&quot;]
+
+    C --&gt; L([&quot;🍽️ Aplikasi web / API&lt;br/&gt;sesuai kebutuhan proyek&quot;])
+    D --&gt; L
+    E --&gt; L
+    F --&gt; L
+    G --&gt; L
+    H --&gt; L
+    I --&gt; L
+    J --&gt; L
+    K --&gt; L
+
+    click A &quot;https://en.wikipedia.org/wiki/Solution_stack&quot; &quot;Solution stack&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Software_requirements&quot; &quot;Software requirements&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/JavaScript&quot; &quot;JavaScript&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/PHP&quot; &quot;PHP&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot; &quot;Python&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/.NET&quot; &quot;.NET&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Java_(programming_language)&quot; &quot;Java&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Ruby_(programming_language)&quot; &quot;Ruby&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot; &quot;Go&quot; _blank
+    click J &quot;https://en.wikipedia.org/wiki/Rust_(programming_language)&quot; &quot;Rust&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Observability_(software)&quot; &quot;Observability&quot; _blank
+    click L &quot;https://en.wikipedia.org/wiki/Web_application&quot; &quot;Web application&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef tech fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H,I,J,K tech
+    class L out</div><div class="diagram mermaid" data-k="3">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 40, &quot;rankSpacing&quot;: 50, &quot;padding&quot;: 10}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif&quot;, &quot;fontSize&quot;: &quot;14px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; } .cluster rect { rx: 12px; ry: 12px; } .edgeLabel rect { fill: #111827; } .edgeLabel span { color: #cbd5e1; }&quot;}}%%
+flowchart LR
+    A([&quot;🍜 Technology Stack&lt;br/&gt;= Resep dan bahan masakan&quot;]) --&gt; B{&quot;Pilih bahan sesuai menu&quot;}
+
+    B --&gt; C[&quot;🟨 JavaScript / TypeScript&lt;br/&gt;React, Node.js, MongoDB&quot;]
+    B --&gt; D[&quot;🐘 PHP&lt;br/&gt;Laravel, LAMP, LEMP&quot;]
+    B --&gt; E[&quot;🐍 Python&lt;br/&gt;Django, FastAPI, Flask&quot;]
+    B --&gt; F[&quot;🔷 .NET&lt;br/&gt;ASP.NET Core, Blazor&quot;]
+    B --&gt; G[&quot;☕ Java&lt;br/&gt;Spring Boot, Jakarta EE&quot;]
+    B --&gt; H[&quot;💎 Ruby&lt;br/&gt;Ruby on Rails&quot;]
+    B --&gt; I[&quot;🐹 Go&lt;br/&gt;Gin, Echo, Fiber&quot;]
+    B --&gt; J[&quot;🦀 Rust&lt;br/&gt;Actix, Axum, Rocket&quot;]
+    B --&gt; K[&quot;📊 Infrastruktur&lt;br/&gt;ELK, Prometheus + Grafana&quot;]
+
+    C --&gt; L([&quot;🍽️ Aplikasi web / API&lt;br/&gt;sesuai kebutuhan proyek&quot;])
+    D --&gt; L
+    E --&gt; L
+    F --&gt; L
+    G --&gt; L
+    H --&gt; L
+    I --&gt; L
+    J --&gt; L
+    K --&gt; L
+
+    click A &quot;https://en.wikipedia.org/wiki/Solution_stack&quot; &quot;Solution stack&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Software_requirements&quot; &quot;Software requirements&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/JavaScript&quot; &quot;JavaScript&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/PHP&quot; &quot;PHP&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot; &quot;Python&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/.NET&quot; &quot;.NET&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Java_(programming_language)&quot; &quot;Java&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Ruby_(programming_language)&quot; &quot;Ruby&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot; &quot;Go&quot; _blank
+    click J &quot;https://en.wikipedia.org/wiki/Rust_(programming_language)&quot; &quot;Rust&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Observability_(software)&quot; &quot;Observability&quot; _blank
+    click L &quot;https://en.wikipedia.org/wiki/Web_application&quot; &quot;Web application&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef tech fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H,I,J,K tech
+    class L out</div><div class="diagram mermaid" data-k="4">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 40, &quot;rankSpacing&quot;: 50, &quot;padding&quot;: 10}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif&quot;, &quot;fontSize&quot;: &quot;14px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; } .cluster rect { rx: 12px; ry: 12px; } .edgeLabel rect { fill: #111827; } .edgeLabel span { color: #cbd5e1; }&quot;}}%%
+flowchart TD
+    A([&quot;🍜 Stack sudah siap&lt;br/&gt;resep + bahan + peralatan&quot;]) --&gt; B{&quot;📍 Jalankan di mana?&quot;}
+
+    B --&gt; C[&quot;🏠 Bare Metal&lt;br/&gt;Bangun warung sendiri&quot;]
+    B --&gt; D[&quot;🛏️ Virtual Machine&lt;br/&gt;Sewa kamar kost&quot;]
+    B --&gt; E[&quot;🍱 Container&lt;br/&gt;Sewa gerai food court&quot;]
+    B --&gt; F[&quot;🏪 PaaS&lt;br/&gt;Ikut franchise siap pakai&quot;]
+    B --&gt; G[&quot;🛒 Serverless&lt;br/&gt;Buka gerai saat ada pesanan&quot;]
+    B --&gt; H[&quot;🛵 Edge Computing&lt;br/&gt;Gerobak dekat pelanggan&quot;]
+
+    C --&gt; I([&quot;🧩 Semua komponen stack&lt;br/&gt;berjalan di satu tempat&quot;])
+    D --&gt; I
+    E --&gt; I
+    F --&gt; I
+    G --&gt; I
+    H --&gt; I
+
+    click A &quot;https://en.wikipedia.org/wiki/Software_deployment&quot; &quot;Software deployment&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Deployment_environment&quot; &quot;Deployment environment&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/Bare-metal_server&quot; &quot;Bare-metal server&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/Virtual_machine&quot; &quot;Virtual machine&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&quot; &quot;OS-level virtualization&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/Platform_as_a_service&quot; &quot;Platform as a service&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Serverless_computing&quot; &quot;Serverless computing&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Edge_computing&quot; &quot;Edge computing&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Multitier_architecture&quot; &quot;Single-tier architecture&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef host fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H host
+    class I out</div><div class="diagram mermaid" data-k="5">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 40, &quot;rankSpacing&quot;: 50, &quot;padding&quot;: 10}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif&quot;, &quot;fontSize&quot;: &quot;14px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; } .cluster rect { rx: 12px; ry: 12px; } .edgeLabel rect { fill: #111827; } .edgeLabel span { color: #cbd5e1; }&quot;}}%%
+flowchart LR
+    A([&quot;🍜 Stack sudah siap&lt;br/&gt;resep + bahan + peralatan&quot;]) --&gt; B{&quot;📍 Jalankan di mana?&quot;}
+
+    B --&gt; C[&quot;🏠 Bare Metal&lt;br/&gt;Bangun warung sendiri&quot;]
+    B --&gt; D[&quot;🛏️ Virtual Machine&lt;br/&gt;Sewa kamar kost&quot;]
+    B --&gt; E[&quot;🍱 Container&lt;br/&gt;Sewa gerai food court&quot;]
+    B --&gt; F[&quot;🏪 PaaS&lt;br/&gt;Ikut franchise siap pakai&quot;]
+    B --&gt; G[&quot;🛒 Serverless&lt;br/&gt;Buka gerai saat ada pesanan&quot;]
+    B --&gt; H[&quot;🛵 Edge Computing&lt;br/&gt;Gerobak dekat pelanggan&quot;]
+
+    C --&gt; I([&quot;🧩 Semua komponen stack&lt;br/&gt;berjalan di satu tempat&quot;])
+    D --&gt; I
+    E --&gt; I
+    F --&gt; I
+    G --&gt; I
+    H --&gt; I
+
+    click A &quot;https://en.wikipedia.org/wiki/Software_deployment&quot; &quot;Software deployment&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Deployment_environment&quot; &quot;Deployment environment&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/Bare-metal_server&quot; &quot;Bare-metal server&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/Virtual_machine&quot; &quot;Virtual machine&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&quot; &quot;OS-level virtualization&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/Platform_as_a_service&quot; &quot;Platform as a service&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Serverless_computing&quot; &quot;Serverless computing&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Edge_computing&quot; &quot;Edge computing&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Multitier_architecture&quot; &quot;Single-tier architecture&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef host fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H host
+    class I out</div>
+<pre id="report">pending</pre>
+<script>
+mermaid.initialize({startOnLoad:false,theme:'dark',securityLevel:'loose',fontFamily:'Inter, sans-serif'});
+mermaid.run({querySelector:'.mermaid'}).then(()=>{
+  const rows=[];
+  document.querySelectorAll('.diagram').forEach(d=>{
+    const svg=d.querySelector('svg'); const b=svg.getBBox();
+    const links=svg.querySelectorAll('a').length;
+    const urls=[...svg.querySelectorAll('a')].map(a=>a.getAttribute('href')||a.getAttribute('xlink:href')).filter(Boolean);
+    rows.push(`k=${d.dataset.k} ${Math.round(b.width)}x${Math.round(b.height)} links=${links} hasMultiTier=${urls.some(u=>u.includes('Multitier'))}`);
+  });
+  document.getElementById('report').textContent=rows.join('\n');
+}).catch(e=>{document.getElementById('report').textContent='ERR '+e.message;});
+</script></body></html>

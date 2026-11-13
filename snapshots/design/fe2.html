@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/shell.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#111827}.prose{width:700px}</style></head>
+<body><div class="prose"><div class="topology" data-spec='{"title": "Frontend / Backend", "columns": [{"nodes": ["browser"]}, {"nodes": ["cdn", "cache"]}, {"nodes": ["web"]}, {"nodes": ["app", "queue"]}, {"nodes": ["db", "redis"]}], "nodes": {"browser": {"label": "Browser", "sub": "fetch /api", "icon": "user", "kind": "client"}, "cdn": {"label": "CDN", "sub": "static", "icon": "cloud", "kind": "cloud"}, "cache": {"label": "Cache", "sub": "edge", "icon": "zap", "kind": "cloud"}, "web": {"label": "Web Server", "sub": "TLS", "icon": "server", "kind": "server"}, "app": {"label": "App Runtime", "sub": "Node", "icon": "nodejs", "kind": "process"}, "queue": {"label": "Queue", "sub": "jobs", "icon": "layers", "kind": "process"}, "db": {"label": "Database", "sub": "SQL", "icon": "database", "kind": "database"}, "redis": {"label": "Redis", "sub": "session", "icon": "redis", "kind": "database"}}, "edges": [{"from": "browser", "to": "cdn"}, {"from": "browser", "to": "cache"}, {"from": "cdn", "to": "web"}, {"from": "cache", "to": "web"}, {"from": "web", "to": "app"}, {"from": "web", "to": "queue"}, {"from": "app", "to": "db"}, {"from": "app", "to": "redis"}, {"from": "db", "to": "app", "back": true, "badge": "r1"}, {"from": "app", "to": "web", "back": true}, {"from": "web", "to": "browser", "back": true, "badge": "r2"}], "legend": [{"type": "flow", "label": "request"}, {"type": "back", "label": "response"}]}'></div></div>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<script>
+setTimeout(()=>{
+ const r=document.querySelector('.topology'); const c=r.querySelector('.topo-canvas'); const cb=c.getBoundingClientRect();
+ const nodes=[...r.querySelectorAll('.topo-node')].map(n=>{const b=n.getBoundingClientRect();return {id:n.dataset.node,x:b.x-cb.x,y:b.y-cb.y,w:b.width,h:b.height};});
+ let hits=0, ex=[];
+ [...r.querySelectorAll('path')].forEach(p=>{const L=p.getTotalLength();const n=Math.max(2,Math.ceil(L/3));
+   for(let i=0;i<=n;i++){const pt=p.getPointAtLength(L*i/n);
+     for(const nd of nodes){if(pt.x>nd.x+1&&pt.x<nd.x+nd.w-1&&pt.y>nd.y+1&&pt.y<nd.y+nd.h-1){hits++;if(ex.length<8)ex.push(nd.id);}}}});
+ const ns=[...r.querySelectorAll('.topo-node')];
+ const ov=[];for(let i=0;i<ns.length;i++)for(let j=i+1;j<ns.length;j++){const A=ns[i].getBoundingClientRect(),B=ns[j].getBoundingClientRect();if(A.left<B.right-1&&B.left<A.right-1&&A.top<B.bottom-1&&B.top<A.bottom-1)ov.push(ns[i].dataset.node+'/'+ns[j].dataset.node);}
+ document.getElementById('report').textContent=JSON.stringify({canvas:[c.offsetWidth,c.offsetHeight],zoom:c.style.zoom||'1',hits,ex,ov});
+},1200);
+</script><pre id="report">pending</pre></body></html>

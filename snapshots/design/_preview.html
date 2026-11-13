@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topology preview — Server Single-Tier Stack</title>
+<script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
+<link rel="stylesheet" href="./imoon07.github.io/css/shell.css">
+<link rel="stylesheet" href="./imoon07.github.io/css/article.css">
+<link rel="stylesheet" href="./imoon07.github.io/css/topology.css">
+<style>
+  body { margin: 0; background: #111827; }
+  .preview-bar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    padding: 10px 16px; background: #161b22; border-bottom: 1px solid #30363d;
+    font: 13px/1.4 system-ui, sans-serif; color: #e6edf3;
+  }
+  .preview-bar a { color: #58a6ff; text-decoration: none; padding: 3px 8px; border-radius: 6px; }
+  .preview-bar a[aria-current="page"] { background: #1f6feb33; }
+  #preview-status { margin-left: auto; color: #8b949e; }
+</style>
+</head>
+<body class="article-page">
+<nav class="preview-bar">
+  <strong>Preview</strong>
+  <a href="?lang=en" data-lang="en">EN</a>
+  <a href="?lang=id" data-lang="id">ID</a>
+  <a href="?lang=ms" data-lang="ms">MS</a>
+  <a href="?lang=tl" data-lang="tl">TL</a>
+  <span id="preview-status">loading…</span>
+</nav>
+<div class="site"><main class="article-layout" id="article-layout"><article class="article-column">
+  <div class="prose" id="content"></div>
+</article></article></main></div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const lang = (params.get('lang') || 'en').toLowerCase();
+document.querySelectorAll('.preview-bar a[data-lang]').forEach(a => {
+  if (a.dataset.lang === lang) a.setAttribute('aria-current', 'page');
+});
+
+const SANITIZE = {
+  ADD_TAGS: ['figure','figcaption','details','summary','mark','kbd','sub','sup','dl','dt','dd','iframe','section','video','source'],
+  ADD_ATTR: ['target','rel','align','id','loading','decoding','start','style','class','width','height','frameborder','allowfullscreen','allow','controls','poster','preload','muted','playsinline','loop','autoplay','colspan','rowspan','open','role','title','dir','lang','tabindex','name','value','type','checked','disabled','readonly','selected','multiple','spellcheck','referrerpolicy','sandbox','srcset','sizes','data-math'],
+  ALLOW_DATA_ATTR: true
+};
+
+const url = './Penjelajah-CyberSecurity/Experiments/foundations/server-architecture/server-single-tier-stack-' + lang + '.md';
+
+fetch(url)
+  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+  .then(md => {
+    const parsed = marked.parse(md, { gfm: true, breaks: false });
+    document.getElementById('content').innerHTML = DOMPurify.sanitize(parsed, SANITIZE);
+    if (window.Topology) Topology.init();
+    setTimeout(() => {
+      const topo = document.querySelectorAll('.topology').length;
+      const mermaid = document.querySelectorAll('.mermaid').length;
+      const nodes = document.querySelectorAll('.topo-node').length;
+      document.getElementById('preview-status').textContent =
+        topo + ' topology · ' + nodes + ' nodes · ' + mermaid + ' mermaid';
+    }, 800);
+  })
+  .catch(err => {
+    document.getElementById('preview-status').textContent = 'error: ' + err.message;
+    document.getElementById('content').innerHTML =
+      '<p class="article-error">Gagal memuat artikel: ' + err.message + '</p>';
+  });
+</script>
+<script src="./imoon07.github.io/js/markdown.js"></script>
+<script src="./imoon07.github.io/js/topology-icons.js"></script>
+<script src="./imoon07.github.io/js/topology.js"></script>
+</body>
+</html>

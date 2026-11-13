@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0}iframe{width:1440px;height:900px;border:0}</style>
+</head><body><iframe id="f" src="/imoon07.github.io/preview.html"></iframe>
+<pre id="report">{"panels":{"properties":{"open":true,"opacity":"1","visibility":"visible","l":1098,"r":1428,"t":66,"b":402,"stageSame":true},"assets":{"open":true,"opacity":"1","visibility":"visible","l":1108,"r":1438,"t":66,"b":765,"stageSame":true},"layers":{"open":true,"opacity":"1","visibility":"visible","l":54,"r":384,"t":66,"b":178,"stageSame":true},"scene":{"open":true,"opacity":"1","visibility":"visible","l":54,"r":384,"t":66,"b":816,"stageSame":true}},"logoTiles":96,"logoCount":"575","searchTiles":1,"err":0}</pre>
+<script>
+const f=document.getElementById('f'); const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function ready(){for(let i=0;i<100;i++){const d=f.contentDocument;if(d&&d.getElementById('stage')&&d.querySelector('#stage svg'))return d;await sleep(50);}throw new Error('not ready');}
+(async()=>{const d=await ready();const w=f.contentWindow;const out={};const stage=d.getElementById('stage');const before=stage.getBoundingClientRect().width;
+const names=['properties','assets','layers','scene'];out.panels={};
+for(const n of names){const el=d.getElementById('panel'+n[0].toUpperCase()+n.slice(1));const btn=d.querySelector('[data-panel="'+n+'"]');btn.click();await sleep(250);const r=el.getBoundingClientRect();const cs=w.getComputedStyle(el);out.panels[n]={open:el.classList.contains('is-open'),opacity:cs.opacity,visibility:cs.visibility,l:Math.round(r.left),r:Math.round(r.right),t:Math.round(r.top),b:Math.round(r.bottom),stageSame:stage.getBoundingClientRect().width===before};btn.click();await sleep(150);}
+out.logoTiles=d.querySelectorAll('#logoGrid .logo-tile').length;
+out.logoCount=d.getElementById('logoCount').textContent;
+d.querySelector('[data-panel="assets"]').click();await sleep(250);
+const search=d.getElementById('logoSearch');search.value='docker';search.dispatchEvent(new w.Event('input',{bubbles:true}));await sleep(200);out.searchTiles=d.querySelectorAll('#logoGrid .logo-tile').length;
+out.err=0;document.getElementById('report').textContent=JSON.stringify(out);
+})().catch(e=>{document.getElementById('report').textContent='ERR '+e.message+' | '+e.stack;});
+</script>
+</body></html>

@@ -1,0 +1,1 @@
+[3940942:3940942:1113/160357.042799:ERROR:gpu/command_buffer/service/gles2_cmd_decoder_passthrough.cc:1210] []Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader flag to opt in to lower security guarantees for trusted content.

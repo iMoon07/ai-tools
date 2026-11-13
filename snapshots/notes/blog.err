@@ -1,0 +1,4 @@
+[3417766:3417766:1113/090311.125348:WARNING:sandbox/policy/linux/sandbox_linux.cc:405] InitializeSandbox() called with multiple threads in process gpu-process.
+[3417720:3417720:1113/090311.401913:WARNING:components/dbus/xdg/portal.cc:126] Failed to register with org.freedesktop.host.portal.Registry
+[3417783:3417792:1113/090312.745938:WARNING:net/extras/sqlite/sqlite_persistent_store_backend_base.cc:181] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:231 to client_task_runner_.
+[3417783:3417792:1113/090312.745975:WARNING:net/extras/sqlite/sqlite_persistent_store_backend_base.cc:181] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:231 to client_task_runner_.

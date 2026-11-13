@@ -1,0 +1,9 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/alur.css"></head><body>
+<div class="alur" data-module="flow" data-spec='{"module": "flow", "title": "logos", "cable": "neon", "motion": "comet", "columns": [["c"], ["p"], ["a1", "a2"], ["db"]], "nodes": {"c": {"label": "Client", "logo": "i-si-github", "color": "blue"}, "p": {"label": "Edge", "logo": "i-si-nginx", "color": "cyan"}, "a1": {"label": "App", "logo": "i-si-nodejs", "color": "green"}, "a2": {"label": "Py", "logo": "i-si-python", "color": "amber"}, "db": {"label": "DB", "logos": ["i-si-postgresql", "i-si-redis"], "color": "purple"}}, "edges": [{"from": "c", "to": "p"}, {"from": "p", "to": "a1"}, {"from": "p", "to": "a2"}, {"from": "a1", "to": "db"}, {"from": "a2", "to": "db"}]}'></div><pre id="r">pending</pre>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/alur/kit.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/alur/cables.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/alur/motions.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/alur/core.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/alur/modules/flow.js"></script>
+<script>Alur.init();setTimeout(function(){var s=document.querySelector('.alur');document.getElementById('r').textContent=JSON.stringify({svg:!!s.querySelector('svg'),uses:s.querySelectorAll('use').length,sprite:!!document.getElementById('topology-sprite'),err:!!s.querySelector('.alur-error')});},700);</script></body></html>

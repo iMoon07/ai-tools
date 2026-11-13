@@ -1,0 +1,5 @@
+[3287260:3287260:1113/073002.779239:WARNING:sandbox/policy/linux/sandbox_linux.cc:405] InitializeSandbox() called with multiple threads in process gpu-process.
+[3287214:3287214:1113/073002.974853:WARNING:components/dbus/xdg/portal.cc:126] Failed to register with org.freedesktop.host.portal.Registry
+[3287214:3287214:1113/073003.486688:INFO:CONSOLE:21] "Uncaught TypeError: Cannot set properties of null (setting 'textContent')", source: http://localhost:8000/imoon07.github.io/__mobile_test.html (21)
+[3287264:3287291:1113/073003.532890:WARNING:net/extras/sqlite/sqlite_persistent_store_backend_base.cc:181] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:231 to client_task_runner_.
+[3287264:3287291:1113/073003.532929:WARNING:net/extras/sqlite/sqlite_persistent_store_backend_base.cc:181] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:231 to client_task_runner_.

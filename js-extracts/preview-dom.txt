@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alur — visual explainer playground</title>
+<link rel="stylesheet" href="css/alur.css">
+<style>
+  :root {
+    --bg: #0b0f14;
+    --panel: #111722;
+    --line: #21262d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.5 Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  header {
+    padding: 22px 24px 14px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: baseline;
+  }
+  header h1 { margin: 0; font-size: 20px; letter-spacing: -0.2px; }
+  header p { margin: 0; color: var(--muted); font-size: 12.5px; }
+  .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 18px;
+    padding: 18px 24px 40px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .wrap { grid-template-columns: 1fr; }
+  }
+  .stage-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 14px;
+  }
+  .stage-card .alur { margin: 0; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 14px;
+    display: grid;
+    gap: 12px;
+  }
+  .panel label {
+    display: grid;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  select, input[type="range"], textarea, button {
+    font: inherit;
+    color: var(--text);
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 9px;
+    width: 100%;
+  }
+  textarea {
+    min-height: 230px;
+    resize: vertical;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+  .row { display: flex; gap: 8px; }
+  .row > * { flex: 1; }
+  button {
+    cursor: pointer;
+    background: #1f6feb;
+    border-color: #1f6feb;
+    font-weight: 600;
+  }
+  button.ghost { background: #161b22; border-color: #30363d; }
+  button:hover { filter: brightness(1.08); }
+  .hint { color: var(--muted); font-size: 11.5px; margin: 0; }
+  .catalog { padding: 0 24px 50px; }
+  .catalog h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+  }
+  .demo {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 10px 6px;
+  }
+  .demo h3 { margin: 0 0 2px; font-size: 12.5px; }
+  .demo p { margin: 0 0 6px; color: var(--muted); font-size: 11px; min-height: 28px; }
+  .demo .alur { margin: 0; padding: 4px; border: 0; background: transparent; }
+  .badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: rgba(88,166,255,0.12);
+    color: var(--accent);
+    font-size: 10px;
+    vertical-align: middle;
+  }
+  footer { padding: 0 24px 40px; color: var(--muted); font-size: 12px; }
+  code { background: #161b22; padding: 1px 5px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Alur <span class="badge">playground</span></h1>
+  <p>Visual explainer engine — cables, motions, and live modules. Edit the spec, switch a cable, or surprise yourself.</p>
+</header>
+
+<div class="wrap">
+  <div class="stage-card">
+    <div id="stage" class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;title&quot;:&quot;Request path&quot;,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;flow&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;client&quot;],[&quot;proxy&quot;],[&quot;app1&quot;,&quot;app2&quot;],[&quot;db&quot;]],&quot;nodes&quot;:{&quot;client&quot;:{&quot;label&quot;:&quot;Client&quot;,&quot;sub&quot;:&quot;browser&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;proxy&quot;:{&quot;label&quot;:&quot;Reverse Proxy&quot;,&quot;sub&quot;:&quot;edge&quot;,&quot;color&quot;:&quot;cyan&quot;},&quot;app1&quot;:{&quot;label&quot;:&quot;App A&quot;,&quot;sub&quot;:&quot;node&quot;,&quot;color&quot;:&quot;green&quot;},&quot;app2&quot;:{&quot;label&quot;:&quot;App B&quot;,&quot;sub&quot;:&quot;node&quot;,&quot;color&quot;:&quot;amber&quot;},&quot;db&quot;:{&quot;label&quot;:&quot;Database&quot;,&quot;sub&quot;:&quot;postgres&quot;,&quot;color&quot;:&quot;purple&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;client&quot;,&quot;to&quot;:&quot;proxy&quot;,&quot;label&quot;:&quot;TLS&quot;},{&quot;from&quot;:&quot;proxy&quot;,&quot;to&quot;:&quot;app1&quot;},{&quot;from&quot;:&quot;proxy&quot;,&quot;to&quot;:&quot;app2&quot;},{&quot;from&quot;:&quot;app1&quot;,&quot;to&quot;:&quot;db&quot;},{&quot;from&quot;:&quot;app2&quot;,&quot;to&quot;:&quot;db&quot;}]}"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 860 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Request path"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 220 L 246 220" class="alur-cable alur-cable--solid" stroke="#58a6ff"></path><text x="246" y="214" class="alur-cable-label" fill="#58a6ff">TLS</text></g><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200" repeatCount="indefinite" path="M 190 220 L 246 220" rotate="auto" begin="0s"></animateMotion></circle><g class="alur-cable-group"><path d="M 402 220 L 430 220 L 430 181 L 458 181" class="alur-cable alur-cable--solid" stroke="#58a6ff"></path></g><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200" repeatCount="indefinite" path="M 402 220 L 430 220 L 430 181 L 458 181" rotate="auto" begin="0s"></animateMotion></circle><g class="alur-cable-group"><path d="M 402 220 L 430 220 L 430 259 L 458 259" class="alur-cable alur-cable--solid" stroke="#58a6ff"></path></g><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200" repeatCount="indefinite" path="M 402 220 L 430 220 L 430 259 L 458 259" rotate="auto" begin="0s"></animateMotion></circle><g class="alur-cable-group"><path d="M 614 181 L 642 181 L 642 220 L 670 220" class="alur-cable alur-cable--solid" stroke="#58a6ff"></path></g><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200" repeatCount="indefinite" path="M 614 181 L 642 181 L 642 220 L 670 220" rotate="auto" begin="0s"></animateMotion></circle><g class="alur-cable-group"><path d="M 614 259 L 642 259 L 642 220 L 670 220" class="alur-cable alur-cable--solid" stroke="#58a6ff"></path></g><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200" repeatCount="indefinite" path="M 614 259 L 642 259 L 642 220 L 670 220" rotate="auto" begin="0s"></animateMotion></circle></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 192)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">Client</text><text x="50" y="39" class="alur-node-sub">browser</text></g></g><g class="alur-node" transform="translate(246 192)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#39d0d8" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#39d0d8" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#39d0d8"></circle><text x="50" y="23" class="alur-node-label">Reverse Proxy</text><text x="50" y="39" class="alur-node-sub">edge</text></g></g><g class="alur-node" transform="translate(458 153)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">App A</text><text x="50" y="39" class="alur-node-sub">node</text></g></g><g class="alur-node" transform="translate(458 231)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#d29922" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#d29922" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#d29922"></circle><text x="50" y="23" class="alur-node-label">App B</text><text x="50" y="39" class="alur-node-sub">node</text></g></g><g class="alur-node" transform="translate(670 192)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#bc8cff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#bc8cff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#bc8cff"></circle><text x="50" y="23" class="alur-node-label">Database</text><text x="50" y="39" class="alur-node-sub">postgres</text></g></g></g></svg></div></div>
+    <p class="hint" style="margin-top:10px">Tip: the canvas is live. Change a control or edit the JSON, then press <strong>Render</strong>.</p>
+  </div>
+
+  <aside class="panel">
+    <label>Module
+      <select id="module">
+        <option value="flow">flow — layered flow</option>
+        <option value="reverse-proxy">reverse-proxy — one front, many backends</option>
+        <option value="chart">chart — bar / donut / gauge / line …</option>
+        <option value="pipeline">pipeline — ordered stages</option>
+        <option value="graph">graph — BFS frontier</option>
+      </select>
+    </label>
+    <label id="chartTypeRow" style="display:none">Chart type
+      <select id="chartType">
+        <option value="bar">bar</option>
+        <option value="hbar">hbar — ranking</option>
+        <option value="line">line — multi-series</option>
+        <option value="area">area</option>
+        <option value="stacked">stacked</option>
+        <option value="donut">donut</option>
+        <option value="gauge">gauge</option>
+        <option value="spark">spark</option>
+        <option value="kpi">kpi</option>
+        <option value="scatter">scatter</option>
+        <option value="waterfall">waterfall</option>
+        <option value="funnel">funnel</option>
+      </select>
+    </label>
+    <label>Cable
+      <select id="cable"><option value="solid">Solid</option><option value="dashed">Dashed</option><option value="dotted">Dotted</option><option value="dash">Dash</option><option value="double">Double</option><option value="glow">Glow</option><option value="neon">Neon</option><option value="ribbon">Ribbon</option><option value="circuit">Circuit</option><option value="bundle">Bundle</option><option value="broken">Broken</option><option value="relay">Relay</option><option value="pulse">Pulse</option><option value="beam">Beam</option></select>
+    </label>
+    <label>Motion
+      <select id="motion"><option value="flow">Flow</option><option value="flowMany">Flow ×N</option><option value="dash">Dash march</option><option value="draw">Draw</option><option value="comet">Comet</option><option value="packets">Packets</option><option value="relay">Relay</option><option value="pulse">Pulse</option><option value="breathe">Breathe</option><option value="blink">Blink</option><option value="orbit">Orbit</option><option value="grow">Grow</option><option value="spin">Spin</option></select>
+    </label>
+    <label>Speed <span id="speedVal">1.0×</span>
+      <input id="speed" type="range" min="0.25" max="3" step="0.25" value="1">
+    </label>
+    <div class="row">
+      <button id="render">Render</button>
+      <button id="surprise" class="ghost">Surprise</button>
+    </div>
+    <label>Spec JSON
+      <textarea id="spec" spellcheck="false"></textarea>
+    </label>
+    <div class="row">
+      <button id="apply" class="ghost">Apply JSON</button>
+      <button id="reset" class="ghost">Reset</button>
+    </div>
+    <p class="hint">Motion names follow the docs. Node motions (pulse, orbit, grow, spin) target the edge's target node.</p>
+  </aside>
+</div>
+
+<section class="catalog">
+  <h2>Cable styles — what each one looks like</h2>
+  <div id="cableCatalog" class="grid"><div class="demo"><h3>Solid</h3><p>Garis utuh, paling tenang. Plain line.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Dashed</h3><p>Garis putus-putus statis. Static dashes.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;dashed&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--dashed" stroke="#58a6ff" stroke-dasharray="8 7" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Dotted</h3><p>Titik-titik halus. Fine dots.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;dotted&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--dotted" stroke="#58a6ff" stroke-dasharray="1.5 6" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Dash</h3><p>Putus panjang, ritme cepat. Long dashes.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;dash&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--dash" stroke="#58a6ff" stroke-dasharray="14 6" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Double</h3><p>Dua lapis, terlihat seperti pipa. Tube look.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;double&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--double" stroke="#58a6ff" stroke-width="460"></path><path d="M 190 65 L 270 65" class="alur-cable alur-cable--double" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Glow</h3><p>Pendar lembut di tepi. Soft edge glow.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;glow&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--glow" stroke="#58a6ff" stroke-width="460"></path><path d="M 190 65 L 270 65" class="alur-cable alur-cable--glow" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Neon</h3><p>Inti terang + halo blur. Bright core + halo.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;neon&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--neon" stroke="#58a6ff" stroke-width="460"></path><path d="M 190 65 L 270 65" class="alur-cable alur-cable--neon" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Ribbon</h3><p>Pita lebar bergradasi. Wide gradient band.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;ribbon&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--ribbon" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Circuit</h3><p>Sudut 45°, jalur PCB. 45° PCB trace.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;circuit&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--circuit" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Bundle</h3><p>Tiga kabel paralel warna beda. Three parallel cables.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;bundle&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--bundle" stroke="#58a6ff" transform="translate(-4 -4)" stroke-width="460"></path><path d="M 190 65 L 270 65" class="alur-cable alur-cable--bundle" stroke="#58a6ff" transform="translate(0 0)" stroke-width="460"></path><path d="M 190 65 L 270 65" class="alur-cable alur-cable--bundle" stroke="#58a6ff" transform="translate(4 4)" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Broken</h3><p>Retak statis, seperti sambungan putus. Static break.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;broken&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--broken" stroke="#58a6ff" stroke-dasharray="12 9" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Relay</h3><p>Segmen menyala bergiliran: putus-nyambung. Segments light in turn.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;relay&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--relay" stroke="#58a6ff" stroke-dasharray="12 9" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Pulse</h3><p>Denyut ketebalan. Thickness pulse.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;pulse&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--pulse" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Beam</h3><p>Sorotan tebal transparan. Thick translucent beam.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;beam&quot;,&quot;motion&quot;:&quot;none&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--beam" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div></div>
+  <h2>Motion effects — what moves</h2>
+  <div id="motionCatalog" class="grid"><div class="demo"><h3>Flow</h3><p>Satu titik menyusuri kabel. One dot runs the cable.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;flow&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="0s"></animateMotion></circle></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Flow ×N</h3><p>Beberapa titik berbaris. Several staggered dots.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;flowMany&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200s" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="0.00s"></animateMotion></circle><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200s" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="-1066.67s"></animateMotion></circle><circle cx="0" cy="0" r="3.5" class="alur-dot alur-dot--flow" fill="#58a6ff"><animateMotion dur="3200s" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="-2133.33s"></animateMotion></circle></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Dash march</h3><p>Garis putus berjalan. Marching dashes.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;dash&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460" stroke-dasharray="10 12"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Draw</h3><p>Kabel tergambar lalu terhapus. Draw then erase.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;draw&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460" stroke-dasharray="80 80"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Comet</h3><p>Ekor cahaya menyusuri kabel. Light tail runs the cable.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;comet&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g><path d="M 190 65 L 270 65" class="alur-comet" stroke="#58a6ff" stroke-width="5" stroke-linecap="round" stroke-dasharray="16 96" style="filter: blur(3px)"></path></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Packets</h3><p>Paket data kotak melaju. Box packets travel.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;packets&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g><rect x="-5" y="-3" width="10" height="6" class="alur-packet" fill="#58a6ff" rx="1.5"><animateMotion dur="3200s" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="0.00s"></animateMotion></rect><rect x="-5" y="-3" width="10" height="6" class="alur-packet" fill="#58a6ff" rx="1.5"><animateMotion dur="3200s" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="-800.00s"></animateMotion></rect><rect x="-5" y="-3" width="10" height="6" class="alur-packet" fill="#58a6ff" rx="1.5"><animateMotion dur="3200s" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="-1600.00s"></animateMotion></rect><rect x="-5" y="-3" width="10" height="6" class="alur-packet" fill="#58a6ff" rx="1.5"><animateMotion dur="3200s" repeatCount="indefinite" path="M 190 65 L 270 65" rotate="auto" begin="-2400.00s"></animateMotion></rect></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Relay</h3><p>Segmen menyala bergiliran. Segments light in turn.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;relay&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g><path d="M 190 65 L 270 65" class="alur-relay" stroke="#58a6ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="14 94"></path></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Pulse</h3><p>Simpul membesar-mengecil. Node scales in and out.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;pulse&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Breathe</h3><p>Opasitas naik-turun. Opacity breathes.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;breathe&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Blink</h3><p>Kedip tegas. Hard blink.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;blink&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Orbit</h3><p>Titik mengorbit simpul. Dot orbits a node.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;orbit&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g><ellipse cx="348" cy="65" rx="88" ry="36" fill="none" stroke="#58a6ff" stroke-width="1" stroke-dasharray="3 5" opacity="0.6"></ellipse><circle cx="0" cy="0" r="3.5" class="alur-dot" fill="#58a6ff"><animateMotion dur="3200" repeatCount="indefinite" path="M 260 65 a 88 36 0 1 0 176 0 a 88 36 0 1 0 -176 0" rotate="auto" begin="0s"></animateMotion></circle></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Grow</h3><p>Batang tumbuh dari nol. Bar grows from zero.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;grow&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div><div class="demo"><h3>Spin</h3><p>Putar terus. Continuous rotation.</p><div class="alur" data-module="flow" data-spec="{&quot;module&quot;:&quot;flow&quot;,&quot;width&quot;:460,&quot;height&quot;:130,&quot;cable&quot;:&quot;solid&quot;,&quot;motion&quot;:&quot;spin&quot;,&quot;speed&quot;:1,&quot;columns&quot;:[[&quot;a&quot;],[&quot;b&quot;]],&quot;nodes&quot;:{&quot;a&quot;:{&quot;label&quot;:&quot;A&quot;,&quot;sub&quot;:&quot;input&quot;,&quot;color&quot;:&quot;blue&quot;},&quot;b&quot;:{&quot;label&quot;:&quot;B&quot;,&quot;sub&quot;:&quot;output&quot;,&quot;color&quot;:&quot;green&quot;}},&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;}]}" data-ready="1"><div class="alur-host"><svg class="alur-svg" viewBox="0 0 460 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Alur flow"><g class="alur-layer-edges"><g class="alur-cable-group"><path d="M 190 65 L 270 65" class="alur-cable alur-cable--solid" stroke="#58a6ff" stroke-width="460"></path></g></g><g class="alur-layer-nodes"><g class="alur-node" transform="translate(34 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#58a6ff" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#58a6ff" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#58a6ff"></circle><text x="50" y="23" class="alur-node-label">A</text><text x="50" y="39" class="alur-node-sub">input</text></g></g><g class="alur-node" transform="translate(270 37)"><g class="alur-node-inner"><rect x="0" y="0" width="156" height="56" class="alur-node-box" rx="11"></rect><rect x="0" y="0" width="4" height="56" class="alur-node-accent" fill="#3fb950" rx="2"></rect><circle cx="26" cy="28" r="11" class="alur-node-icon" fill="#3fb950" opacity="0.18"></circle><circle cx="26" cy="28" r="4.5" class="alur-node-icon-dot" fill="#3fb950"></circle><text x="50" y="23" class="alur-node-label">B</text><text x="50" y="39" class="alur-node-sub">output</text></g></g></g></svg></div></div></div></div>
+</section>
+
+<footer>
+  Engine source: <code>js/alur/</code> · Styles: <code>css/alur.css</code> · Docs: <code>docs/alur-guide.md</code>.
+  The blog-post-template folder stays Markdown-only; a <code>```alur</code> block is rendered by the site.
+</footer>
+
+<script src="js/topology-icons.js"></script>
+<script src="js/alur/kit.js"></script>
+<script src="js/alur/cables.js"></script>
+<script src="js/alur/motions.js"></script>
+<script src="js/alur/core.js"></script>
+<script src="js/alur/modules/flow.js"></script>
+<script src="js/alur/modules/reverse-proxy.js"></script>
+<script src="js/alur/modules/chart.js"></script>
+<script src="js/alur/modules/pipeline.js"></script>
+<script src="js/alur/modules/graph.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var CABLES = AlurCables.catalog;
+  var MOTIONS = AlurMotions.catalog;
+  var COLOR_KEYS = Object.keys(AlurKit.palette);
+  var CABLE_IDS = CABLES.map(function (c) { return c.id; });
+  var MOTION_IDS = MOTIONS.map(function (m) { return m.id; });
+
+  function flowPreset() {
+    return {
+      module: 'flow',
+      title: 'Request path',
+      cable: 'solid',
+      motion: 'flow',
+      speed: 1,
+      columns: [['client'], ['proxy'], ['app1', 'app2'], ['db']],
+      nodes: {
+        client: { label: 'Client', sub: 'browser', color: 'blue' },
+        proxy: { label: 'Reverse Proxy', sub: 'edge', color: 'cyan' },
+        app1: { label: 'App A', sub: 'node', color: 'green' },
+        app2: { label: 'App B', sub: 'node', color: 'amber' },
+        db: { label: 'Database', sub: 'postgres', color: 'purple' }
+      },
+      edges: [
+        { from: 'client', to: 'proxy', label: 'TLS' },
+        { from: 'proxy', to: 'app1' },
+        { from: 'proxy', to: 'app2' },
+        { from: 'app1', to: 'db' },
+        { from: 'app2', to: 'db' }
+      ]
+    };
+  }
+
+  function proxyPreset() {
+    return {
+      module: 'reverse-proxy',
+      title: 'Reverse Proxy: Single Front, Many Backends',
+      speed: 1
+    };
+  }
+
+  function chartPreset(type) {
+    var p = {
+      module: 'chart',
+      type: type || 'bar',
+      title: 'Alur chart — ' + (type || 'bar'),
+      height: 320,
+      color: 'blue'
+    };
+    if (type === 'donut') {
+      p.labels = ['Web', 'API', 'DB', 'Cache'];
+      p.data = [38, 27, 21, 14];
+      p.colors = ['blue', 'green', 'amber', 'purple'];
+      p.centerLabel = 'requests';
+    } else if (type === 'gauge') {
+      p.data = [68]; p.max = 100; p.unit = '%'; p.label = 'cache hit';
+    } else if (type === 'kpi') {
+      p.data = [128]; p.label = 'requests / sec'; p.delta = '+12.4%';
+    } else if (type === 'scatter') {
+      p.data = [[3, 5], [5, 8], [8, 7], [11, 12], [14, 13], [17, 18], [20, 17]];
+      p.xLabel = 'latency (ms)'; p.yLabel = 'rps';
+    } else if (type === 'waterfall') {
+      p.labels = ['Start', 'Add', 'Cache', 'Drop', 'End'];
+      p.data = [40, 18, 12, -9, 21];
+    } else if (type === 'funnel') {
+      p.labels = ['Visit', 'Signup', 'Active', 'Paid'];
+      p.data = [100, 62, 38, 17];
+      p.colors = ['blue', 'cyan', 'green', 'amber'];
+    } else if (type === 'line') {
+      p.series = [
+        { name: 'web', data: [12, 18, 15, 22, 28, 24, 31], color: 'blue' },
+        { name: 'api', data: [8, 11, 14, 12, 18, 21, 19], color: 'green' }
+      ];
+    } else if (type === 'stacked') {
+      p.labels = ['Mon', 'Tue', 'Wed', 'Thu'];
+      p.series = [
+        { name: 'web', data: [12, 14, 10, 16], color: 'blue' },
+        { name: 'api', data: [8, 9, 12, 11], color: 'green' },
+        { name: 'job', data: [5, 6, 4, 7], color: 'amber' }
+      ];
+    } else if (type === 'hbar') {
+      p.labels = ['Nginx', 'Postgres', 'Redis', 'PHP', 'Go'];
+      p.data = [42, 31, 24, 18, 12];
+      p.color = 'cyan';
+    } else {
+      p.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+      p.data = [12, 18, 15, 22, 28];
+    }
+    return p;
+  }
+
+  function pipelinePreset() {
+    return {
+      module: 'pipeline',
+      title: 'Request pipeline',
+      stages: [
+        { label: 'Client' },
+        { label: 'Edge', logo: 'i-si-nginx' },
+        { label: 'App', logos: ['i-si-nodejs', 'i-si-docker'] },
+        { label: 'DB', logo: 'i-si-postgresql' }
+      ],
+      color: 'cyan',
+      items: 4
+    };
+  }
+
+  function graphPreset() {
+    return {
+      module: 'graph',
+      title: 'BFS traversal',
+      color: 'green',
+      start: 'a',
+      nodes: [
+        { id: 'a', x: 140, y: 90, label: 'A' },
+        { id: 'b', x: 330, y: 60, label: 'B' },
+        { id: 'c', x: 330, y: 150, label: 'C' },
+        { id: 'd', x: 520, y: 40, label: 'D' },
+        { id: 'e', x: 520, y: 120, label: 'E' },
+        { id: 'f', x: 520, y: 200, label: 'F' },
+        { id: 'g', x: 710, y: 80, label: 'G' },
+        { id: 'h', x: 710, y: 170, label: 'H' }
+      ],
+      edges: [
+        { from: 'a', to: 'b', w: 4 }, { from: 'a', to: 'c', w: 2 },
+        { from: 'b', to: 'd', w: 5 }, { from: 'b', to: 'e', w: 3 },
+        { from: 'c', to: 'e', w: 2 }, { from: 'c', to: 'f', w: 6 },
+        { from: 'd', to: 'g', w: 4 }, { from: 'e', to: 'g', w: 2 },
+        { from: 'e', to: 'h', w: 5 }, { from: 'f', to: 'h', w: 3 }
+      ]
+    };
+  }
+
+  function presetFor(id) {
+    if (id === 'reverse-proxy') return proxyPreset();
+    if (id === 'chart') return chartPreset('bar');
+    if (id === 'pipeline') return pipelinePreset();
+    if (id === 'graph') return graphPreset();
+    return flowPreset();
+  }
+
+  var state = { spec: flowPreset() };
+  var stage = document.getElementById('stage');
+  var specBox = document.getElementById('spec');
+
+  function fillSelect(sel, items) {
+    items.forEach(function (it) {
+      var o = document.createElement('option');
+      o.value = it.id;
+      o.textContent = it.label;
+      sel.appendChild(o);
+    });
+  }
+
+  fillSelect(document.getElementById('cable'), CABLES);
+  fillSelect(document.getElementById('motion'), MOTIONS);
+
+  function syncControls() {
+    var s = state.spec;
+    document.getElementById('module').value = s.module || 'flow';
+    document.getElementById('chartTypeRow').style.display = s.module === 'chart' ? '' : 'none';
+    if (s.module === 'chart') document.getElementById('chartType').value = s.type || 'bar';
+    document.getElementById('cable').value = s.cable || 'solid';
+    document.getElementById('motion').value = s.motion || 'flow';
+    document.getElementById('speed').value = s.speed || 1;
+    document.getElementById('speedVal').textContent = (s.speed || 1).toFixed(2).replace(/0$/, '') + '×';
+    specBox.value = JSON.stringify(s, null, 2);
+  }
+
+  function render() {
+    if (stage.__alur) {
+      Alur.destroy(stage.__alur);
+      stage.__alur = null;
+    }
+    stage.innerHTML = '';
+    stage.setAttribute('data-module', state.spec.module || 'flow');
+    stage.setAttribute('data-spec', JSON.stringify(state.spec));
+    stage.removeAttribute('data-ready');
+    Alur.mount(stage);
+  }
+
+  function setAllEdges(patch) {
+    (state.spec.edges || []).forEach(function (e) {
+      Object.keys(patch).forEach(function (k) { e[k] = patch[k]; });
+    });
+  }
+
+  document.getElementById('render').addEventListener('click', function () {
+    render();
+  });
+
+  document.getElementById('module').addEventListener('change', function (ev) {
+    state.spec = presetFor(ev.target.value);
+    syncControls();
+    render();
+  });
+
+  document.getElementById('chartType').addEventListener('change', function (ev) {
+    state.spec = chartPreset(ev.target.value);
+    syncControls();
+    render();
+  });
+
+  document.getElementById('cable').addEventListener('change', function (ev) {
+    state.spec.cable = ev.target.value;
+    setAllEdges({ cable: ev.target.value });
+    syncControls();
+    render();
+  });
+
+  document.getElementById('motion').addEventListener('change', function (ev) {
+    state.spec.motion = ev.target.value;
+    setAllEdges({ motion: ev.target.value });
+    syncControls();
+    render();
+  });
+
+  document.getElementById('speed').addEventListener('input', function (ev) {
+    state.spec.speed = parseFloat(ev.target.value);
+    document.getElementById('speedVal').textContent = state.spec.speed.toFixed(2).replace(/0$/, '') + '×';
+    specBox.value = JSON.stringify(state.spec, null, 2);
+  });
+
+  document.getElementById('surprise').addEventListener('click', function () {
+    var edges = state.spec.edges || [];
+    edges.forEach(function (e) {
+      e.cable = CABLE_IDS[Math.floor(Math.random() * CABLE_IDS.length)];
+      e.motion = MOTION_IDS[Math.floor(Math.random() * MOTION_IDS.length)];
+      e.color = COLOR_KEYS[Math.floor(Math.random() * COLOR_KEYS.length)];
+    });
+    syncControls();
+    render();
+  });
+
+  document.getElementById('apply').addEventListener('click', function () {
+    try {
+      state.spec = JSON.parse(specBox.value);
+      syncControls();
+      render();
+    } catch (err) {
+      alert('Invalid JSON: ' + err.message);
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', function () {
+    state.spec = flowPreset();
+    syncControls();
+    render();
+  });
+
+  /* Catalog ------------------------------------------------------------- */
+
+  function miniSpec(cable, motion) {
+    return {
+      module: 'flow',
+      width: 460,
+      height: 130,
+      cable: cable || 'solid',
+      motion: motion || 'none',
+      speed: 1,
+      columns: [['a'], ['b']],
+      nodes: {
+        a: { label: 'A', sub: 'input', color: 'blue' },
+        b: { label: 'B', sub: 'output', color: 'green' }
+      },
+      edges: [{ from: 'a', to: 'b' }]
+    };
+  }
+
+  function makeDemo(host, title, note, spec) {
+    var card = document.createElement('div');
+    card.className = 'demo';
+    var h = document.createElement('h3');
+    h.textContent = title;
+    var p = document.createElement('p');
+    p.textContent = note;
+    var mount = document.createElement('div');
+    mount.className = 'alur';
+    mount.setAttribute('data-module', spec.module);
+    mount.setAttribute('data-spec', JSON.stringify(spec));
+    card.appendChild(h);
+    card.appendChild(p);
+    card.appendChild(mount);
+    host.appendChild(card);
+  }
+
+  var cableHost = document.getElementById('cableCatalog');
+  CABLES.forEach(function (c) {
+    makeDemo(cableHost, c.label, c.note, miniSpec(c.id, 'none'));
+  });
+
+  var motionHost = document.getElementById('motionCatalog');
+  MOTIONS.forEach(function (m) {
+    makeDemo(motionHost, m.label, m.note, miniSpec('solid', m.id));
+  });
+
+  Alur.init(document);
+  syncControls();
+  render();
+})();
+</script>
+
+</body></html>

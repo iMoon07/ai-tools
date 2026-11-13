@@ -1,0 +1,822 @@
+[
+  {
+    "label": "Bar",
+    "spec": {
+      "module": "chart",
+      "type": "bar",
+      "title": "Bar",
+      "labels": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May"
+      ],
+      "data": [
+        12,
+        18,
+        15,
+        22,
+        28
+      ],
+      "color": "blue"
+    }
+  },
+  {
+    "label": "Horizontal bar ranking",
+    "spec": {
+      "module": "chart",
+      "type": "hbar",
+      "title": "Horizontal bar ranking",
+      "labels": [
+        "Nginx",
+        "Postgres",
+        "Redis",
+        "PHP",
+        "Go"
+      ],
+      "data": [
+        42,
+        31,
+        24,
+        18,
+        12
+      ],
+      "color": "cyan"
+    }
+  },
+  {
+    "label": "Multi-series line",
+    "spec": {
+      "module": "chart",
+      "type": "line",
+      "title": "Multi-series line",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "series": [
+        {
+          "name": "web",
+          "data": [
+            12,
+            18,
+            15,
+            22,
+            28
+          ],
+          "color": "blue"
+        },
+        {
+          "name": "api",
+          "data": [
+            8,
+            11,
+            14,
+            12,
+            18
+          ],
+          "color": "green"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Area",
+    "spec": {
+      "module": "chart",
+      "type": "area",
+      "title": "Area",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "data": [
+        8,
+        12,
+        10,
+        16,
+        20
+      ],
+      "color": "cyan"
+    }
+  },
+  {
+    "label": "Stacked bar composition",
+    "spec": {
+      "module": "chart",
+      "type": "stacked",
+      "title": "Stacked bar composition",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu"
+      ],
+      "series": [
+        {
+          "name": "web",
+          "data": [
+            12,
+            14,
+            10,
+            16
+          ],
+          "color": "blue"
+        },
+        {
+          "name": "api",
+          "data": [
+            8,
+            9,
+            12,
+            11
+          ],
+          "color": "green"
+        },
+        {
+          "name": "job",
+          "data": [
+            5,
+            6,
+            4,
+            7
+          ],
+          "color": "amber"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Donut percent breakdown",
+    "spec": {
+      "module": "chart",
+      "type": "donut",
+      "title": "Donut percent breakdown",
+      "labels": [
+        "Web",
+        "API",
+        "DB",
+        "Cache"
+      ],
+      "data": [
+        38,
+        27,
+        21,
+        14
+      ],
+      "colors": [
+        "blue",
+        "green",
+        "amber",
+        "purple"
+      ],
+      "centerLabel": "requests"
+    }
+  },
+  {
+    "label": "Single-value percent gauge",
+    "spec": {
+      "module": "chart",
+      "type": "gauge",
+      "title": "Single-value percent gauge",
+      "data": [
+        68
+      ],
+      "max": 100,
+      "unit": "%",
+      "label": "cache hit",
+      "color": "cyan"
+    }
+  },
+  {
+    "label": "Spark line",
+    "spec": {
+      "module": "chart",
+      "type": "spark",
+      "title": "Spark line",
+      "data": [
+        3,
+        5,
+        4,
+        7,
+        6,
+        9,
+        8,
+        11
+      ],
+      "color": "green"
+    }
+  },
+  {
+    "label": "KPI callout",
+    "spec": {
+      "module": "chart",
+      "type": "kpi",
+      "title": "KPI callout",
+      "data": [
+        128
+      ],
+      "label": "requests / sec",
+      "delta": "+12.4%"
+    }
+  },
+  {
+    "label": "Scatter plot",
+    "spec": {
+      "module": "chart",
+      "type": "scatter",
+      "title": "Scatter plot",
+      "data": [
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          14,
+          13
+        ],
+        [
+          17,
+          18
+        ],
+        [
+          20,
+          17
+        ]
+      ],
+      "color": "purple"
+    }
+  },
+  {
+    "label": "Waterfall",
+    "spec": {
+      "module": "chart",
+      "type": "waterfall",
+      "title": "Waterfall",
+      "labels": [
+        "Start",
+        "Add",
+        "Cache",
+        "Drop",
+        "End"
+      ],
+      "data": [
+        40,
+        18,
+        12,
+        -9,
+        21
+      ],
+      "color": "blue"
+    }
+  },
+  {
+    "label": "Funnel conversion",
+    "spec": {
+      "module": "chart",
+      "type": "funnel",
+      "title": "Funnel conversion",
+      "labels": [
+        "Visit",
+        "Signup",
+        "Active",
+        "Paid"
+      ],
+      "data": [
+        100,
+        62,
+        38,
+        17
+      ],
+      "colors": [
+        "blue",
+        "cyan",
+        "green",
+        "amber"
+      ]
+    }
+  },
+  {
+    "label": "Bell curve with marker",
+    "spec": {
+      "module": "chart",
+      "type": "bell",
+      "title": "Bell curve with marker",
+      "mean": 0,
+      "sigma": 1,
+      "marker": 0.6,
+      "markerLabel": "p95",
+      "color": "blue"
+    }
+  },
+  {
+    "label": "Histogram",
+    "spec": {
+      "module": "chart",
+      "type": "histogram",
+      "title": "Histogram",
+      "bins": 8,
+      "data": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        3,
+        4,
+        4,
+        4,
+        5,
+        5,
+        6
+      ],
+      "color": "cyan"
+    }
+  },
+  {
+    "label": "Stacked area trend",
+    "spec": {
+      "module": "chart",
+      "type": "stackedArea",
+      "title": "Stacked area trend",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "series": [
+        {
+          "name": "web",
+          "data": [
+            8,
+            10,
+            9,
+            12,
+            14
+          ],
+          "color": "blue"
+        },
+        {
+          "name": "api",
+          "data": [
+            5,
+            6,
+            7,
+            6,
+            9
+          ],
+          "color": "green"
+        },
+        {
+          "name": "job",
+          "data": [
+            3,
+            4,
+            3,
+            5,
+            6
+          ],
+          "color": "amber"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Treemap",
+    "spec": {
+      "module": "chart",
+      "type": "treemap",
+      "title": "Treemap",
+      "labels": [
+        "Web",
+        "API",
+        "DB",
+        "Cache",
+        "Queue"
+      ],
+      "data": [
+        38,
+        27,
+        18,
+        11,
+        6
+      ],
+      "colors": [
+        "blue",
+        "green",
+        "amber",
+        "purple",
+        "pink"
+      ]
+    }
+  },
+  {
+    "label": "Box plot",
+    "spec": {
+      "module": "chart",
+      "type": "box",
+      "title": "Box plot",
+      "boxes": [
+        {
+          "label": "Web",
+          "min": 2,
+          "q1": 5,
+          "median": 8,
+          "q3": 11,
+          "max": 14
+        },
+        {
+          "label": "API",
+          "min": 3,
+          "q1": 6,
+          "median": 9,
+          "q3": 12,
+          "max": 16
+        },
+        {
+          "label": "DB",
+          "min": 1,
+          "q1": 4,
+          "median": 7,
+          "q3": 10,
+          "max": 13
+        }
+      ]
+    }
+  },
+  {
+    "label": "Range bar with thresholds",
+    "spec": {
+      "module": "chart",
+      "type": "range",
+      "title": "Range bar with thresholds",
+      "items": [
+        {
+          "label": "p50",
+          "from": 20,
+          "to": 60
+        },
+        {
+          "label": "p95",
+          "from": 70,
+          "to": 140
+        },
+        {
+          "label": "p99",
+          "from": 150,
+          "to": 260
+        }
+      ],
+      "color": "amber"
+    }
+  },
+  {
+    "label": "Density curve",
+    "spec": {
+      "module": "chart",
+      "type": "density",
+      "title": "Density curve",
+      "series": [
+        {
+          "name": "web",
+          "data": [
+            0.05,
+            0.2,
+            0.6,
+            0.9,
+            0.6,
+            0.2,
+            0.05
+          ],
+          "color": "blue"
+        },
+        {
+          "name": "api",
+          "data": [
+            0.1,
+            0.3,
+            0.5,
+            0.7,
+            0.5,
+            0.3,
+            0.1
+          ],
+          "color": "amber"
+        }
+      ]
+    }
+  },
+  {
+    "label": "Slope chart",
+    "spec": {
+      "module": "chart",
+      "type": "slope",
+      "title": "Slope chart",
+      "items": [
+        {
+          "label": "Web",
+          "before": 20,
+          "after": 48
+        },
+        {
+          "label": "API",
+          "before": 35,
+          "after": 28
+        },
+        {
+          "label": "DB",
+          "before": 12,
+          "after": 26
+        }
+      ],
+      "color": "cyan"
+    }
+  },
+  {
+    "label": "Two-axis combo",
+    "spec": {
+      "module": "chart",
+      "type": "combo",
+      "title": "Two-axis combo",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "bars": [
+        120,
+        140,
+        130,
+        160,
+        180
+      ],
+      "line": [
+        3,
+        4,
+        3.5,
+        5,
+        6
+      ],
+      "color": "blue"
+    }
+  },
+  {
+    "label": "Annotated timeline",
+    "spec": {
+      "module": "chart",
+      "type": "timeline",
+      "title": "Annotated timeline",
+      "events": [
+        {
+          "label": "deploy",
+          "at": 0.1
+        },
+        {
+          "label": "cache warm",
+          "at": 0.35
+        },
+        {
+          "label": "peak",
+          "at": 0.6
+        },
+        {
+          "label": "rollback drill",
+          "at": 0.85
+        }
+      ],
+      "color": "green"
+    }
+  },
+  {
+    "label": "Bubble chart",
+    "spec": {
+      "module": "chart",
+      "type": "bubble",
+      "title": "Bubble chart",
+      "data": [
+        [
+          3,
+          4,
+          2
+        ],
+        [
+          5,
+          7,
+          4
+        ],
+        [
+          8,
+          6,
+          3
+        ],
+        [
+          11,
+          9,
+          5
+        ],
+        [
+          14,
+          12,
+          6
+        ],
+        [
+          17,
+          11,
+          4
+        ]
+      ],
+      "color": "purple"
+    }
+  },
+  {
+    "label": "Dumbbell plot",
+    "spec": {
+      "module": "chart",
+      "type": "dumbbell",
+      "title": "Dumbbell plot",
+      "items": [
+        {
+          "label": "Web",
+          "a": 20,
+          "b": 48
+        },
+        {
+          "label": "API",
+          "a": 35,
+          "b": 28
+        },
+        {
+          "label": "DB",
+          "a": 12,
+          "b": 26
+        }
+      ]
+    }
+  },
+  {
+    "label": "Quadrant matrix",
+    "spec": {
+      "module": "chart",
+      "type": "quadrant",
+      "title": "Quadrant matrix",
+      "q1": "scale",
+      "q2": "invest",
+      "q3": "fix",
+      "q4": "watch",
+      "data": [
+        [
+          2,
+          8
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "color": "cyan"
+    }
+  },
+  {
+    "label": "Process flow steps",
+    "spec": {
+      "module": "chart",
+      "type": "process",
+      "title": "Process flow steps",
+      "steps": [
+        "plan",
+        "build",
+        "test",
+        "ship"
+      ],
+      "color": "green"
+    }
+  },
+  {
+    "label": "Cycle loop stages",
+    "spec": {
+      "module": "chart",
+      "type": "cycle",
+      "title": "Cycle loop stages",
+      "steps": [
+        "plan",
+        "build",
+        "test",
+        "ship"
+      ],
+      "color": "purple"
+    }
+  },
+  {
+    "label": "Progress bar stack",
+    "spec": {
+      "module": "chart",
+      "type": "progress",
+      "title": "Progress bar stack",
+      "items": [
+        {
+          "label": "Web",
+          "parts": [
+            {
+              "value": 60,
+              "color": "blue"
+            },
+            {
+              "value": 25,
+              "color": "green"
+            },
+            {
+              "value": 15,
+              "color": "amber"
+            }
+          ]
+        },
+        {
+          "label": "API",
+          "parts": [
+            {
+              "value": 40,
+              "color": "cyan"
+            },
+            {
+              "value": 35,
+              "color": "purple"
+            },
+            {
+              "value": 25,
+              "color": "pink"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "label": "Comparison table",
+    "spec": {
+      "module": "chart",
+      "type": "table",
+      "title": "Comparison table",
+      "columns": [
+        "Tool",
+        "Speed",
+        "Cost",
+        "Use"
+      ],
+      "rows": [
+        [
+          "Nginx",
+          "fast",
+          "low",
+          "edge"
+        ],
+        [
+          "Postgres",
+          "medium",
+          "medium",
+          "data"
+        ],
+        [
+          "Redis",
+          "fast",
+          "high",
+          "cache"
+        ]
+      ]
+    }
+  }
+]

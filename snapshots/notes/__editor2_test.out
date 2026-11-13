@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0}iframe{width:1440px;height:900px;border:0}</style>
+</head><body><iframe id="f" src="/imoon07.github.io/preview.html"></iframe>
+<pre id="report">{"count0":2,"sel1":1,"sel2":2,"countDup":4,"countPaste":6,"ctxOpen":true,"countCtx":7,"layerRows":7,"layersOpen":true,"minimapChanged":true,"paletteOpen":true,"paletteClosed":true,"err":0}</pre>
+<script>
+const f=document.getElementById('f'); const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function ready(){for(let i=0;i<100;i++){const d=f.contentDocument;if(d&&d.getElementById('stage')&&d.querySelector('#stage svg')&&d.getElementById('editorBar').style.display!=='none')return d;await sleep(50);}throw new Error('not ready');}
+function ptr(win,el,type,x,y,opts){el.dispatchEvent(new win.PointerEvent(type,Object.assign({bubbles:true,cancelable:true,clientX:x,clientY:y,pointerId:1,button:0},opts||{})));}
+function center(d,id){const el=d.querySelector('[data-node-id="'+id+'"]');const r=el.getBoundingClientRect();const fr=f.getBoundingClientRect();return {x:r.left+r.width/2+fr.left,y:r.top+r.height/2+fr.top};}
+(async()=>{
+ const d=await ready(); const w=f.contentWindow; const out={}; const stage=d.getElementById('stage');
+ const spec=()=>JSON.parse(stage.getAttribute('data-spec'));
+ d.getElementById('addBox').click(); await sleep(80); d.getElementById('addBox').click(); await sleep(200);
+ let ids=Object.keys(spec().nodes); out.count0=ids.length;
+ let c=center(d,ids[0]); ptr(w,d.querySelector('[data-node-id="'+ids[0]+'"]'),'pointerdown',c.x,c.y); ptr(w,w,'pointerup',c.x,c.y); await sleep(150);
+ out.sel1=d.querySelectorAll('#stage .is-selected').length;
+ c=center(d,ids[1]); ptr(w,d.querySelector('[data-node-id="'+ids[1]+'"]'),'pointerdown',c.x,c.y,{shiftKey:true}); ptr(w,w,'pointerup',c.x,c.y); await sleep(150);
+ out.sel2=d.querySelectorAll('#stage .is-selected').length;
+ // duplicate
+ w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'d',ctrlKey:true,bubbles:true})); await sleep(200);
+ out.countDup=Object.keys(spec().nodes).length;
+ // copy/paste
+ w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'c',ctrlKey:true,bubbles:true}));
+ w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'v',ctrlKey:true,bubbles:true})); await sleep(200);
+ out.countPaste=Object.keys(spec().nodes).length;
+ // context menu add box
+ const svg=d.querySelector('#stage svg');
+ ptr(w,svg,'contextmenu',0,0,{clientX:700,clientY:400}); // contextmenu handler reads clientX
+ await sleep(100);
+ out.ctxOpen=!d.getElementById('ctxMenu').hidden;
+ const add=d.querySelector('[data-cmd="add-box"]'); if(add) add.click(); await sleep(200);
+ out.countCtx=Object.keys(spec().nodes).length;
+ // layers
+ d.querySelector('[data-panel="layers"]').click(); await sleep(150);
+ out.layerRows=d.querySelectorAll('#layerList .layer-row').length;
+ out.layersOpen=d.getElementById('panelLayers').classList.contains('is-open');
+ // minimap click changes pan
+ const mm=d.getElementById('minimapSvg'); const before=stage.querySelector('svg').getAttribute('viewBox');
+ const r=mm.getBoundingClientRect(); mm.dispatchEvent(new w.MouseEvent('click',{bubbles:true,clientX:r.left+r.width*0.7,clientY:r.top+r.height*0.4}));
+ await sleep(150); out.minimapChanged=before!==stage.querySelector('svg').getAttribute('viewBox');
+ // palette escape
+ w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true})); await sleep(100);
+ out.paletteOpen=!d.getElementById('palette').hidden;
+ w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true})); await sleep(100);
+ out.paletteClosed=d.getElementById('palette').hidden;
+ out.err=0; document.getElementById('report').textContent=JSON.stringify(out);
+})().catch(e=>{document.getElementById('report').textContent='ERR '+e.message+' | '+e.stack;});
+</script>
+</body></html>

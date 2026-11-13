@@ -1,0 +1,5 @@
+(async()=>{
+const targets=await (await fetch('http://127.0.0.1:9224/json')).json();const page=targets.find(t=>t.type==='page');const ws=new WebSocket(page.webSocketDebuggerUrl);let id=0;const p=new Map();ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&p.has(m.id)){p.get(m.id)(m);p.delete(m.id)}};await new Promise(r=>ws.onopen=r);const send=(m,params={})=>new Promise(res=>{const i=++id;p.set(i,res);ws.send(JSON.stringify({id:i,method:m,params}))});const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true});return r.result&&r.result.result&&r.result.result.value};
+await send('Runtime.enable');await send('Page.enable');await send('Page.navigate',{url:'http://localhost:8000/imoon07.github.io/read.html?post=blog-post-template&lang=id'});await new Promise(r=>setTimeout(r,5000));
+console.log(await ev("({title:document.title,alur:document.querySelectorAll('.alur').length,topo:document.querySelectorAll('.topology').length,h1:document.querySelector('h1')&&document.querySelector('h1').textContent,body:document.body.innerText.slice(0,400)})"));
+ws.close();})();

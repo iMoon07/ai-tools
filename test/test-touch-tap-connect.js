@@ -1,0 +1,11 @@
+(async()=>{
+const targets=await (await fetch('http://127.0.0.1:9224/json')).json();const page=targets.find(t=>t.type==='page');const ws=new WebSocket(page.webSocketDebuggerUrl);let id=0;const p=new Map();const errs=[];ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&p.has(m.id)){p.get(m.id)(m);p.delete(m.id)}else if(m.method==='Runtime.exceptionThrown'){errs.push(m.params.exceptionDetails.text)}};await new Promise(r=>ws.onopen=r);const send=(m,params={})=>new Promise(res=>{const i=++id;p.set(i,res);ws.send(JSON.stringify({id:i,method:m,params}))});const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true});return r.result&&r.result.result&&r.result.result.value};
+const tap=(x,y)=>send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y,id:1,radiusX:2,radiusY:2,force:1}]}).then(()=>new Promise(r=>setTimeout(r,80))).then(()=>send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]}));
+await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await send('Page.navigate',{url:'http://localhost:8000/imoon07.github.io/preview.html'});await new Promise(r=>setTimeout(r,5000));
+const before=await ev("document.querySelectorAll('.alur-canvas-edge').length");
+const pts=await ev("(()=>{const ns=[...document.querySelectorAll('.alur-canvas-node')];const a=ns[0].getBoundingClientRect(),b=ns[ns.length-1].getBoundingClientRect();return {a:{x:Math.round(a.x+a.width/2),y:Math.round(a.y+a.height/2),id:ns[0].getAttribute('data-node-id')},b:{x:Math.round(b.x+b.width/2),y:Math.round(b.y+b.height/2),id:ns[ns.length-1].getAttribute('data-node-id')}}})()");
+await ev("document.querySelector('[data-tool=arrow]').click()");await new Promise(r=>setTimeout(r,200));
+await tap(pts.a.x,pts.a.y);await new Promise(r=>setTimeout(r,400));
+const mid=await ev("({tool:document.querySelector('.tool.is-on')?.getAttribute('data-tool'),status:document.getElementById('statusTool').textContent,cls:document.querySelectorAll('.alur-canvas-node.is-connect-from').length})");
+await tap(pts.b.x,pts.b.y);await new Promise(r=>setTimeout(r,600));
+const after=await ev("({edges:document.querySelectorAll('.alur-canvas-edge').length,tool:document.querySelector('.tool.is-on')?.getAttribute('data-tool')})");console.log({before,pts,mid,after,errs});ws.close();})();

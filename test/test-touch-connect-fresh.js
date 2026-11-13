@@ -1,0 +1,13 @@
+(async()=>{
+const targets=await (await fetch('http://127.0.0.1:9224/json')).json();const page=targets.find(t=>t.type==='page');const ws=new WebSocket(page.webSocketDebuggerUrl);let id=0;const p=new Map();const errs=[];ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&p.has(m.id)){p.get(m.id)(m);p.delete(m.id)}else if(m.method==='Runtime.exceptionThrown'){errs.push(m.params.exceptionDetails.text)}};await new Promise(r=>ws.onopen=r);const send=(m,params={})=>new Promise(res=>{const i=++id;p.set(i,res);ws.send(JSON.stringify({id:i,method:m,params}))});const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true});if(r.result.exceptionDetails)console.log('EXC',JSON.stringify(r.result.exceptionDetails).slice(0,900));return r.result&&r.result.result&&r.result.result.value};
+const tap=(x,y)=>send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y,id:1,radiusX:2,radiusY:2,force:1}]}).then(()=>new Promise(r=>setTimeout(r,100))).then(()=>send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]}));
+await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await send('Page.navigate',{url:'http://localhost:8000/imoon07.github.io/preview.html'});await new Promise(r=>setTimeout(r,5000));
+const before=await ev("({edges:document.querySelectorAll('.alur-canvas-edge').length,nodes:[...document.querySelectorAll('.alur-canvas-node')].map(n=>n.getAttribute('data-node-id'))})");
+const a=await ev("(()=>{const n=document.querySelector('.alur-canvas-node');const r=n.getBoundingClientRect();return {x:Math.round(r.x+r.width/2),y:Math.round(r.y+r.height/2),id:n.getAttribute('data-node-id')}})()");
+await tap(a.x,a.y);await new Promise(r=>setTimeout(r,400));
+const buttons=await ev("[...document.querySelectorAll('#shapePanelBody button')].map(b=>b.textContent.trim())");
+if(buttons.includes('Connect')) await ev("(()=>{[...document.querySelectorAll('#shapePanelBody button')].find(b=>b.textContent.trim()==='Connect').click()})()");await new Promise(r=>setTimeout(r,300));
+const mid=await ev("({status:document.getElementById('statusTool').textContent,panel:document.getElementById('shapePanel').hidden})");
+const b=await ev("(()=>{const ns=[...document.querySelectorAll('.alur-canvas-node')];const n=ns[ns.length-1];const r=n.getBoundingClientRect();return {x:Math.round(r.x+r.width/2),y:Math.round(r.y+r.height/2),id:n.getAttribute('data-node-id')}})()");
+await tap(b.x,b.y);await new Promise(r=>setTimeout(r,600));
+const after=await ev("({edges:document.querySelectorAll('.alur-canvas-edge').length,tool:document.querySelector('.tool.is-on')?.getAttribute('data-tool')})");console.log({before,a,buttons,mid,b,after,errs});ws.close();})();

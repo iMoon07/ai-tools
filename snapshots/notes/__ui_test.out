@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>html,body{margin:0}iframe{width:1440px;height:900px;border:0}</style>
+</head><body><iframe id="f" src="/imoon07.github.io/preview.html"></iframe><pre id="report">{"slashOpen":true,"slashClosed":true,"assetsOpen":true,"assetsClosed":true,"helpOpen":true,"helpClosed":true,"focus":true,"focusExit":true}</pre>
+<script>
+const f=document.getElementById('f'); const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+(async()=>{for(let i=0;i<100;i++){const d=f.contentDocument;if(d&&d.getElementById('stage')&&d.querySelector('#stage svg'))break;await sleep(50);}const d=f.contentDocument,w=f.contentWindow;await sleep(250);const out={};
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'/',bubbles:true}));await sleep(150);out.slashOpen=!d.getElementById('palette').hidden;
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await sleep(100);out.slashClosed=d.getElementById('palette').hidden;
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'l',bubbles:true}));await sleep(150);out.assetsOpen=d.getElementById('panelAssets').classList.contains('is-open');
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await sleep(100);out.assetsClosed=!d.getElementById('panelAssets').classList.contains('is-open');
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'?',bubbles:true}));await sleep(100);out.helpOpen=!d.getElementById('shortcutCard').hidden;
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'?',bubbles:true}));await sleep(100);out.helpClosed=d.getElementById('shortcutCard').hidden;
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'.',ctrlKey:true,bubbles:true}));await sleep(100);out.focus=d.body.classList.contains('focus-mode');
+w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await sleep(100);out.focusExit=!d.body.classList.contains('focus-mode');
+document.getElementById('report').textContent=JSON.stringify(out);
+})().catch(e=>document.getElementById('report').textContent='ERR '+e.message);
+</script>
+</body></html>

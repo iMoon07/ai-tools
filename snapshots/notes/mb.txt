@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/imoon07.github.io/preview.html" style="width:390px;height:844px;border:0"></iframe>
+<pre id="report">pending</pre>
+<script>
+var f = document.getElementById('f');
+function run() {
+  setTimeout(function () {
+    var w = f.contentWindow, d = f.contentDocument;
+    var wrap = d.querySelector('.wrap');
+    var out = {
+      innerWidth: w.innerWidth,
+      scrollWidth: d.documentElement.scrollWidth,
+      overflow: d.documentElement.scrollWidth > w.innerWidth + 1,
+      columns: w.getComputedStyle(wrap).gridTemplateColumns,
+      logoPanelVisible: !!d.getElementById('logoPanel') && d.getElementById('logoPanel').offsetParent !== null,
+      editorVisible: d.getElementById('editorPanel').offsetParent !== null,
+      stageWidth: d.getElementById('stage').getBoundingClientRect().width,
+      svg: !!d.querySelector('#stage svg'),
+      addBoxVisible: d.getElementById('addBox').offsetParent !== null
+    };
+    d.getElementById('report').textContent = JSON.stringify(out);
+  }, 400);
+}
+var tries = 0;
+(function wait() {
+  if (f.contentDocument && f.contentDocument.getElementById('module')) run();
+  else if (++tries < 60) setTimeout(wait, 50);
+})();
+</script></body></html>

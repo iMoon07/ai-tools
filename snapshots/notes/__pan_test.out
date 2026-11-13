@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0}iframe{width:1440px;height:900px;border:0}</style>
+</head><body><iframe id="f" src="/imoon07.github.io/preview.html"></iframe>
+<pre id="report">{"vb0":"0 -21.25 900 562.5","vbPan":"0 53.75 900 562.5","vbZoom":"39.77272727272731 76.47727272727275 818.1818181818181 511.3636363636363","zoom":"110%","vbSpace":"-5.681832053444566 53.75000832297587 818.1818181818181 511.3636363636363","err":0}</pre>
+<script>
+const f=document.getElementById('f'); const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function ready(){for(let i=0;i<100;i++){const d=f.contentDocument;if(d&&d.getElementById('stage')&&d.querySelector('#stage svg')&&d.getElementById('editorBar').style.display!=='none')return d;await sleep(50);}throw new Error('not ready');}
+(async()=>{
+ const d=await ready(); const w=f.contentWindow; const out={}; const stage=d.getElementById('stage'); const svg=stage.querySelector('svg');
+ await sleep(200);
+ const vb=()=>svg.getAttribute('viewBox');
+ out.vb0=vb();
+ stage.dispatchEvent(new w.WheelEvent('wheel',{bubbles:true,cancelable:true,deltaY:120,clientX:700,clientY:400}));
+ await sleep(150); out.vbPan=vb();
+ stage.dispatchEvent(new w.WheelEvent('wheel',{bubbles:true,cancelable:true,deltaY:-120,ctrlKey:true,clientX:700,clientY:400}));
+ await sleep(150); out.vbZoom=vb(); out.zoom=d.getElementById('zoomVal').textContent;
+ // space drag
+ w.dispatchEvent(new w.KeyboardEvent('keydown',{code:'Space',key:' ',bubbles:true}));
+ const r=svg.getBoundingClientRect();
+ const x=r.left+700,y=r.top+400;
+ stage.dispatchEvent(new w.PointerEvent('pointerdown',{bubbles:true,cancelable:true,clientX:x,clientY:y,pointerId:2,button:0}));
+ w.dispatchEvent(new w.PointerEvent('pointermove',{bubbles:true,cancelable:true,clientX:x+80,clientY:y+40,pointerId:2}));
+ w.dispatchEvent(new w.PointerEvent('pointerup',{bubbles:true,cancelable:true,clientX:x+80,clientY:y+40,pointerId:2}));
+ w.dispatchEvent(new w.KeyboardEvent('keyup',{code:'Space',key:' ',bubbles:true}));
+ await sleep(150); out.vbSpace=vb();
+ out.err=0; document.getElementById('report').textContent=JSON.stringify(out);
+})().catch(e=>{document.getElementById('report').textContent='ERR '+e.message+' | '+e.stack;});
+</script>
+</body></html>

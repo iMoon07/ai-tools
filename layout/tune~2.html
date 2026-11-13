@@ -1,0 +1,190 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="file:///home/moon/Projects/ai-tools/vendor/mermaid.min.js"></script></head><body>
+<div class="diagram mermaid" data-k="A">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 40, &quot;rankSpacing&quot;: 50, &quot;padding&quot;: 10}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;, &quot;fontSize&quot;: &quot;14px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; }&quot;}}%%
+flowchart TD
+    A([&quot;🍜 Technology Stack&lt;br/&gt;= Resep dan bahan masakan&quot;]) --&gt; B{&quot;Pilih bahan sesuai menu&quot;}
+
+    B --&gt; C[&quot;🟨 JavaScript / TypeScript&lt;br/&gt;React, Node.js, MongoDB&quot;]
+    B --&gt; D[&quot;🐘 PHP&lt;br/&gt;Laravel, LAMP, LEMP&quot;]
+    B --&gt; E[&quot;🐍 Python&lt;br/&gt;Django, FastAPI, Flask&quot;]
+    B --&gt; F[&quot;🔷 .NET&lt;br/&gt;ASP.NET Core, Blazor&quot;]
+    B --&gt; G[&quot;☕ Java&lt;br/&gt;Spring Boot, Jakarta EE&quot;]
+    B --&gt; H[&quot;💎 Ruby&lt;br/&gt;Ruby on Rails&quot;]
+    B --&gt; I[&quot;🐹 Go&lt;br/&gt;Gin, Echo, Fiber&quot;]
+    B --&gt; J[&quot;🦀 Rust&lt;br/&gt;Actix, Axum, Rocket&quot;]
+    B --&gt; K[&quot;📊 Infrastruktur&lt;br/&gt;ELK, Prometheus + Grafana&quot;]
+
+    C --&gt; L([&quot;🍽️ Aplikasi web / API&lt;br/&gt;sesuai kebutuhan proyek&quot;])
+    D --&gt; L
+    E --&gt; L
+    F --&gt; L
+    G --&gt; L
+    H --&gt; L
+    I --&gt; L
+    J --&gt; L
+    K --&gt; L
+
+    click A &quot;https://en.wikipedia.org/wiki/Solution_stack&quot; &quot;Solution stack&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Software_requirements&quot; &quot;Software requirements&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/JavaScript&quot; &quot;JavaScript&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/PHP&quot; &quot;PHP&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot; &quot;Python&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/.NET&quot; &quot;.NET&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Java_(programming_language)&quot; &quot;Java&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Ruby_(programming_language)&quot; &quot;Ruby&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot; &quot;Go&quot; _blank
+    click J &quot;https://en.wikipedia.org/wiki/Rust_(programming_language)&quot; &quot;Rust&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Observability_(software)&quot; &quot;Observability&quot; _blank
+    click L &quot;https://en.wikipedia.org/wiki/Web_application&quot; &quot;Web application&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef tech fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H,I,J,K tech
+    class L out</div><div class="diagram mermaid" data-k="B">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 20, &quot;rankSpacing&quot;: 30, &quot;padding&quot;: 6}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;, &quot;fontSize&quot;: &quot;12px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; }&quot;}}%%
+flowchart TD
+    A([&quot;🍜 Technology Stack&lt;br/&gt;= Resep dan bahan masakan&quot;]) --&gt; B{&quot;Pilih bahan sesuai menu&quot;}
+
+    B --&gt; C[&quot;🟨 JavaScript / TypeScript&lt;br/&gt;React, Node.js, MongoDB&quot;]
+    B --&gt; D[&quot;🐘 PHP&lt;br/&gt;Laravel, LAMP, LEMP&quot;]
+    B --&gt; E[&quot;🐍 Python&lt;br/&gt;Django, FastAPI, Flask&quot;]
+    B --&gt; F[&quot;🔷 .NET&lt;br/&gt;ASP.NET Core, Blazor&quot;]
+    B --&gt; G[&quot;☕ Java&lt;br/&gt;Spring Boot, Jakarta EE&quot;]
+    B --&gt; H[&quot;💎 Ruby&lt;br/&gt;Ruby on Rails&quot;]
+    B --&gt; I[&quot;🐹 Go&lt;br/&gt;Gin, Echo, Fiber&quot;]
+    B --&gt; J[&quot;🦀 Rust&lt;br/&gt;Actix, Axum, Rocket&quot;]
+    B --&gt; K[&quot;📊 Infrastruktur&lt;br/&gt;ELK, Prometheus + Grafana&quot;]
+
+    C --&gt; L([&quot;🍽️ Aplikasi web / API&lt;br/&gt;sesuai kebutuhan proyek&quot;])
+    D --&gt; L
+    E --&gt; L
+    F --&gt; L
+    G --&gt; L
+    H --&gt; L
+    I --&gt; L
+    J --&gt; L
+    K --&gt; L
+
+    click A &quot;https://en.wikipedia.org/wiki/Solution_stack&quot; &quot;Solution stack&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Software_requirements&quot; &quot;Software requirements&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/JavaScript&quot; &quot;JavaScript&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/PHP&quot; &quot;PHP&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot; &quot;Python&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/.NET&quot; &quot;.NET&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Java_(programming_language)&quot; &quot;Java&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Ruby_(programming_language)&quot; &quot;Ruby&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot; &quot;Go&quot; _blank
+    click J &quot;https://en.wikipedia.org/wiki/Rust_(programming_language)&quot; &quot;Rust&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Observability_(software)&quot; &quot;Observability&quot; _blank
+    click L &quot;https://en.wikipedia.org/wiki/Web_application&quot; &quot;Web application&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef tech fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H,I,J,K tech
+    class L out</div><div class="diagram mermaid" data-k="C">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 25, &quot;rankSpacing&quot;: 35, &quot;padding&quot;: 8}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;, &quot;fontSize&quot;: &quot;13px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; }&quot;}}%%
+flowchart TD
+    A([&quot;🍜 Technology Stack&lt;br/&gt;= Resep dan bahan masakan&quot;]) --&gt; B{&quot;Pilih bahan sesuai menu&quot;}
+
+    B --&gt; C[&quot;🟨 JavaScript / TypeScript&lt;br/&gt;React, Node.js, MongoDB&quot;]
+    B --&gt; D[&quot;🐘 PHP&lt;br/&gt;Laravel, LAMP, LEMP&quot;]
+    B --&gt; E[&quot;🐍 Python&lt;br/&gt;Django, FastAPI, Flask&quot;]
+    B --&gt; F[&quot;🔷 .NET&lt;br/&gt;ASP.NET Core, Blazor&quot;]
+    B --&gt; G[&quot;☕ Java&lt;br/&gt;Spring Boot, Jakarta EE&quot;]
+    B --&gt; H[&quot;💎 Ruby&lt;br/&gt;Ruby on Rails&quot;]
+    B --&gt; I[&quot;🐹 Go&lt;br/&gt;Gin, Echo, Fiber&quot;]
+    B --&gt; J[&quot;🦀 Rust&lt;br/&gt;Actix, Axum, Rocket&quot;]
+    B --&gt; K[&quot;📊 Infrastruktur&lt;br/&gt;ELK, Prometheus + Grafana&quot;]
+
+    C --&gt; L([&quot;🍽️ Aplikasi web / API&lt;br/&gt;sesuai kebutuhan proyek&quot;])
+    D --&gt; L
+    E --&gt; L
+    F --&gt; L
+    G --&gt; L
+    H --&gt; L
+    I --&gt; L
+    J --&gt; L
+    K --&gt; L
+
+    click A &quot;https://en.wikipedia.org/wiki/Solution_stack&quot; &quot;Solution stack&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Software_requirements&quot; &quot;Software requirements&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/JavaScript&quot; &quot;JavaScript&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/PHP&quot; &quot;PHP&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot; &quot;Python&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/.NET&quot; &quot;.NET&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Java_(programming_language)&quot; &quot;Java&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Ruby_(programming_language)&quot; &quot;Ruby&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot; &quot;Go&quot; _blank
+    click J &quot;https://en.wikipedia.org/wiki/Rust_(programming_language)&quot; &quot;Rust&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Observability_(software)&quot; &quot;Observability&quot; _blank
+    click L &quot;https://en.wikipedia.org/wiki/Web_application&quot; &quot;Web application&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef tech fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H,I,J,K tech
+    class L out</div><div class="diagram mermaid" data-k="D">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 15, &quot;rankSpacing&quot;: 25, &quot;padding&quot;: 4}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;, &quot;fontSize&quot;: &quot;12px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; }&quot;}}%%
+flowchart TD
+    A([&quot;🍜 Technology Stack&lt;br/&gt;= Resep dan bahan masakan&quot;]) --&gt; B{&quot;Pilih bahan sesuai menu&quot;}
+
+    B --&gt; C[&quot;🟨 JavaScript / TypeScript&lt;br/&gt;React, Node.js, MongoDB&quot;]
+    B --&gt; D[&quot;🐘 PHP&lt;br/&gt;Laravel, LAMP, LEMP&quot;]
+    B --&gt; E[&quot;🐍 Python&lt;br/&gt;Django, FastAPI, Flask&quot;]
+    B --&gt; F[&quot;🔷 .NET&lt;br/&gt;ASP.NET Core, Blazor&quot;]
+    B --&gt; G[&quot;☕ Java&lt;br/&gt;Spring Boot, Jakarta EE&quot;]
+    B --&gt; H[&quot;💎 Ruby&lt;br/&gt;Ruby on Rails&quot;]
+    B --&gt; I[&quot;🐹 Go&lt;br/&gt;Gin, Echo, Fiber&quot;]
+    B --&gt; J[&quot;🦀 Rust&lt;br/&gt;Actix, Axum, Rocket&quot;]
+    B --&gt; K[&quot;📊 Infrastruktur&lt;br/&gt;ELK, Prometheus + Grafana&quot;]
+
+    C --&gt; L([&quot;🍽️ Aplikasi web / API&lt;br/&gt;sesuai kebutuhan proyek&quot;])
+    D --&gt; L
+    E --&gt; L
+    F --&gt; L
+    G --&gt; L
+    H --&gt; L
+    I --&gt; L
+    J --&gt; L
+    K --&gt; L
+
+    click A &quot;https://en.wikipedia.org/wiki/Solution_stack&quot; &quot;Solution stack&quot; _blank
+    click B &quot;https://en.wikipedia.org/wiki/Software_requirements&quot; &quot;Software requirements&quot; _blank
+    click C &quot;https://en.wikipedia.org/wiki/JavaScript&quot; &quot;JavaScript&quot; _blank
+    click D &quot;https://en.wikipedia.org/wiki/PHP&quot; &quot;PHP&quot; _blank
+    click E &quot;https://en.wikipedia.org/wiki/Python_(programming_language)&quot; &quot;Python&quot; _blank
+    click F &quot;https://en.wikipedia.org/wiki/.NET&quot; &quot;.NET&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Java_(programming_language)&quot; &quot;Java&quot; _blank
+    click H &quot;https://en.wikipedia.org/wiki/Ruby_(programming_language)&quot; &quot;Ruby&quot; _blank
+    click I &quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot; &quot;Go&quot; _blank
+    click J &quot;https://en.wikipedia.org/wiki/Rust_(programming_language)&quot; &quot;Rust&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Observability_(software)&quot; &quot;Observability&quot; _blank
+    click L &quot;https://en.wikipedia.org/wiki/Web_application&quot; &quot;Web application&quot; _blank
+
+    classDef root fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef choice fill:#1f2937,stroke:#d29922,color:#e6edf3,stroke-width:1.5px
+    classDef tech fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef out fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+
+    class A root
+    class B choice
+    class C,D,E,F,G,H,I,J,K tech
+    class L out</div><pre id="report">pending</pre>
+<script>
+mermaid.initialize({startOnLoad:false,theme:'dark',securityLevel:'loose'});
+mermaid.run({querySelector:'.mermaid'}).then(()=>{
+ const rows=[];document.querySelectorAll('.diagram').forEach(d=>{const b=d.querySelector('svg').getBBox();
+ rows.push(`k=${d.dataset.k} ${Math.round(b.width)}x${Math.round(b.height)} fit=${Math.min(1,1076/${Math.round(b.width)},396/${Math.round(b.height)}).toFixed(2)}`);});
+ document.getElementById('report').textContent=rows.join('\n');
+}).catch(e=>{document.getElementById('report').textContent='ERR '+e.message;});
+</script></body></html>

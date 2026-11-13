@@ -1,0 +1,99 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#0d1117;padding:16px} .prose{max-width:900px;margin:0 auto}</style>
+</head><body><div class="prose"><div class="topology" data-spec='{
+  "vertical": true,
+  "title": "Memilih Platform untuk Menjalankan Stack",
+  "legend": {
+    "flow": "Aliran data"
+  },
+  "facilities": ["Peran", ["git-branch", "Choice"], ["server", "Platform"], ["layers", "Application"]],
+  "columns": [["B"], {"nodes": ["C", "D", "E", "F", "G", "H", "J", "K", "L"], "grid": 3}, ["I"]],
+  "nodes": {
+    "B": ["Jalankan di mana?", "", "git-branch", "choice", "https://en.wikipedia.org/wiki/Deployment_environment"],
+    "C": [
+      "Bare Metal",
+      "Bangun warung sendiri",
+      "hard-drive",
+      "host",
+      "https://en.wikipedia.org/wiki/Bare-metal_server"
+    ],
+    "D": ["Virtual Machine", "Sewa kamar kost", "monitor", "host", "https://en.wikipedia.org/wiki/Virtual_machine"],
+    "E": [
+      "Server Virtualisasi",
+      "Kelola banyak kamar dari kantor pusat",
+      "server-cog",
+      "host",
+      "https://en.wikipedia.org/wiki/Server_virtualization"
+    ],
+    "F": [
+      "Container",
+      "Sewa gerai food court",
+      "si-docker",
+      "host",
+      "https://en.wikipedia.org/wiki/Operating-system-level_virtualization"
+    ],
+    "G": ["PaaS", "Ikut franchise siap pakai", "cloud", "host", "https://en.wikipedia.org/wiki/Platform_as_a_service"],
+    "H": [
+      "Serverless",
+      "Buka gerai saat ada pesanan",
+      "zap",
+      "host",
+      "https://en.wikipedia.org/wiki/Serverless_computing"
+    ],
+    "J": [
+      "Shared Hosting",
+      "Warung pinggir jalan bersama",
+      "globe",
+      "host",
+      "https://en.wikipedia.org/wiki/Shared_web_hosting_service"
+    ],
+    "K": [
+      "Managed Hosting",
+      "Sewa toko dengan manajer",
+      "settings",
+      "host",
+      "https://en.wikipedia.org/wiki/Managed_hosting"
+    ],
+    "L": ["Edge Computing", "Gerobak dekat pelanggan", "radio", "host", "https://en.wikipedia.org/wiki/Edge_computing"],
+    "I": [
+      "Semua komponen stack",
+      "berjalan di satu tempat",
+      "layers",
+      "out",
+      "#satu-server-satu-tumpukan"
+    ]
+  },
+  "edges": [
+    ["B", "C"],
+    ["B", "D"],
+    ["B", "E"],
+    ["B", "F"],
+    ["B", "G"],
+    ["B", "H"],
+    ["B", "J"],
+    ["B", "K"],
+    ["B", "L"],
+    ["C", "I"],
+    ["D", "I"],
+    ["E", "I"],
+    ["F", "I"],
+    ["G", "I"],
+    ["H", "I"],
+    ["J", "I"],
+    ["K", "I"],
+    ["L", "I"]
+  ]
+}'></div></div><pre id="report">pending</pre>
+<script>
+Topology.init();
+setTimeout(function(){
+ var r=document.querySelectorAll('.topology')[0];
+ var cols=r.querySelector('.topo-columns');
+ var col=r.querySelector('.topo-col[data-grid]');
+ var out={root:r.clientWidth,colsW:cols.getBoundingClientRect().width,colsCss:getComputedStyle(cols).width,colW:col.getBoundingClientRect().width,colCss:getComputedStyle(col).width,gtc:getComputedStyle(col).gridTemplateColumns,pad:getComputedStyle(cols).padding,margin:getComputedStyle(col).margin};
+ document.getElementById('report').textContent=JSON.stringify(out);
+},800);
+</script></body></html>

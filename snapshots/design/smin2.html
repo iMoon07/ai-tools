@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><body style="margin:0">
+<svg id="s" width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+<path id="p" d="M 10 50 L 290 50" stroke="blue" fill="none"/>
+<circle id="c" cx="0" cy="0" r="5" fill="red">
+  <animateMotion dur="2s" repeatCount="indefinite" path="M 10 50 L 290 50"/>
+</circle>
+</svg>
+<pre id="out">pending</pre>
+<script>
+setTimeout(function(){
+ var a=document.getElementById('c').getBoundingClientRect();
+ document.getElementById('out').textContent=JSON.stringify({t:document.getElementById('s').getCurrentTime(),x:Math.round(a.x),y:Math.round(a.y)});
+},1200);
+</script></body></html>

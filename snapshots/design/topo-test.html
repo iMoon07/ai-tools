@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/shell.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<style>body{background:#111827;color:#e6edf3;font-family:Inter,system-ui,sans-serif;padding:20px}</style>
+</head><body>
+<div class="topology" data-spec='{"title":"Alur request","columns":[{"nodes":["client"]},{"nodes":["waiter"]},{"nodes":["chef"]},{"nodes":["pantry"]}],"nodes":{"client":{"label":"Pelanggan","sub":"Datang dan memesan makanan","icon":"user","kind":"actor","href":"https://en.wikipedia.org/wiki/Web_browser"},"waiter":{"label":"Pelayan","sub":"Menerima pesanan dan meneruskannya","icon":"server","kind":"process","href":"https://en.wikipedia.org/wiki/Web_server"},"chef":{"label":"Koki","sub":"Memasak sesuai pesanan","icon":"cpu","kind":"process","href":"https://en.wikipedia.org/wiki/Runtime_system"},"pantry":{"label":"Gudang Bahan","sub":"Menyimpan bahan makanan","icon":"database","kind":"store","href":"https://en.wikipedia.org/wiki/Database"}},"edges":[{"from":"client","to":"waiter","badge":"1"},{"from":"waiter","to":"chef","badge":"2"},{"from":"chef","to":"pantry","badge":"3"},{"from":"pantry","to":"chef","badge":"4","back":true},{"from":"chef","to":"waiter","badge":"5","back":true},{"from":"waiter","to":"client","badge":"6","back":true}],"groups":[{"label":"Warung / Satu Lokasi","nodes":["waiter","chef","pantry"]}]}'></div>
+<pre id="report">pending</pre>
+<script>
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const root = document.querySelector('.topology');
+    const nodes = root.querySelectorAll('.topo-node').length;
+    const paths = root.querySelectorAll('.topo-svg path').length;
+    const groups = root.querySelectorAll('.topo-group-rect').length;
+    const badges = root.querySelectorAll('.topo-svg g').length;
+    const canvas = root.querySelector('.topo-canvas');
+    const report = document.getElementById('report');
+    report.textContent = `nodes=${nodes} paths=${paths} groups=${groups} canvas=${canvas.offsetWidth}x${canvas.offsetHeight} stage=${root.querySelector('.topo-stage').clientWidth}x${root.querySelector('.topo-stage').clientHeight}`;
+  }, 300);
+});
+</script>
+</body></html>

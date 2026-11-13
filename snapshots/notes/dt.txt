@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/imoon07.github.io/preview.html" style="width:1400px;height:1100px;border:0"></iframe>
+<pre id="report">pending</pre>
+<script>
+var f = document.getElementById('f');
+function run() {
+  var w = f.contentWindow, d = f.contentDocument;
+  var out = {};
+  function ev(el, type) { el.dispatchEvent(new w.Event(type, { bubbles: true })); }
+  function ptr(el, type, x, y) {
+    el.dispatchEvent(new w.PointerEvent(type, {
+      bubbles: true, cancelable: true, clientX: x, clientY: y,
+      pointerId: 1, buttons: type === 'pointerup' ? 0 : 1
+    }));
+  }
+  function stage() { return d.getElementById('stage'); }
+  function svg() { return stage().querySelector('svg'); }
+  function nodes() { return stage().querySelectorAll('.alur-canvas-node').length; }
+  function edges() { return stage().querySelectorAll('[data-edge]').length; }
+  function drawings() { return stage().querySelectorAll('[data-drawing]').length; }
+  function tool(name) { d.querySelector('[data-tool="' + name + '"]').click(); }
+  function center(el) { var r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; }
+  function spec() { return JSON.parse(stage().getAttribute('data-spec')); }
+
+  out.initial = {
+    module: d.getElementById('module').value,
+    toolbar: d.getElementById('editorBar').style.display,
+    tool: d.getElementById('editorMode').textContent,
+    nodes: nodes(),
+    viewBox: svg().getAttribute('viewBox')
+  };
+
+  var sr = stage().getBoundingClientRect();
+  var sx = sr.left + 80, sy = sr.top + 80;
+
+  /* box tool: drag */
+  tool('box');
+  ptr(stage(), 'pointerdown', sx, sy);
+  ptr(w, 'pointermove', sx + 120, sy + 70);
+  ptr(w, 'pointerup', sx + 120, sy + 70);
+  var s1 = spec();
+  var n1 = Object.keys(s1.nodes)[0];
+  out.box = { nodes: nodes(), w: s1.nodes[n1].w, h: s1.nodes[n1].h, selected: s1.selected };
+
+  /* move */
+  var el = stage().querySelector('.alur-canvas-node');
+  var c = center(el);
+  ptr(el, 'pointerdown', c[0], c[1]);
+  ptr(w, 'pointermove', c[0] + 50, c[1] + 30);
+  ptr(w, 'pointerup', c[0] + 50, c[1] + 30);
+  var s2 = spec();
+  out.move = { x: s2.nodes[n1].x, y: s2.nodes[n1].y };
+
+  /* resize se */
+  var handle = stage().querySelector('[data-handle="se"]');
+  var hc = center(handle);
+  var before = { w: spec().nodes[n1].w, h: spec().nodes[n1].h };
+  ptr(handle, 'pointerdown', hc[0], hc[1]);
+  ptr(w, 'pointermove', hc[0] + 40, hc[1] + 30);
+  ptr(w, 'pointerup', hc[0] + 40, hc[1] + 30);
+  var s3 = spec();
+  out.resize = { before: before, after: { w: s3.nodes[n1].w, h: s3.nodes[n1].h } };
+
+  /* text tool: click */
+  tool('text');
+  ptr(stage(), 'pointerdown', sx + 300, sy + 40);
+  ptr(w, 'pointerup', sx + 300, sy + 40);
+  out.text = { nodes: nodes(), shape: spec().nodes[Object.keys(spec().nodes)[1]].shape };
+
+  /* draw */
+  tool('draw');
+  ptr(stage(), 'pointerdown', sx + 400, sy + 200);
+  ptr(w, 'pointermove', sx + 430, sy + 220);
+  ptr(w, 'pointermove', sx + 460, sy + 210);
+  ptr(w, 'pointerup', sx + 460, sy + 210);
+  out.draw = { drawings: drawings() };
+
+  /* arrow connect */
+  tool('arrow');
+  var ns = stage().querySelectorAll('.alur-canvas-node');
+  var c1 = center(ns[0]), c2 = center(ns[1]);
+  ptr(ns[0], 'pointerdown', c1[0], c1[1]);
+  ptr(ns[0], 'pointerup', c1[0], c1[1]);
+  ns = stage().querySelectorAll('.alur-canvas-node');
+  ptr(ns[1], 'pointerdown', c2[0], c2[1]);
+  ptr(ns[1], 'pointerup', c2[0], c2[1]);
+  out.arrow = { edges: edges() };
+
+  /* undo twice: arrow, draw */
+  d.getElementById('undoBtn').click();
+  d.getElementById('undoBtn').click();
+  out.undo = { edges: edges(), drawings: drawings() };
+
+  /* redo */
+  d.getElementById('redoBtn').click();
+  out.redo = { drawings: drawings() };
+
+  /* zoom */
+  var vb0 = svg().getAttribute('viewBox');
+  d.getElementById('zoomIn').click();
+  var vb1 = svg().getAttribute('viewBox');
+  out.zoom = { before: vb0, after: vb1, changed: vb0 !== vb1, label: d.getElementById('zoomVal').textContent };
+
+  /* pan tool */
+  tool('pan');
+  var vb2 = svg().getAttribute('viewBox');
+  ptr(stage(), 'pointerdown', sx, sy);
+  ptr(w, 'pointermove', sx + 60, sy + 40);
+  ptr(w, 'pointerup', sx + 60, sy + 40);
+  out.pan = { before: vb2, after: svg().getAttribute('viewBox') };
+
+  document.getElementById('report').textContent = JSON.stringify(out);
+}
+if (f.contentDocument && f.contentDocument.readyState === 'complete') run();
+else f.onload = run;
+</script></body></html>

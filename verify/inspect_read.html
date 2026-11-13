@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;background:#000;color:#0f0;font:12px monospace}
+  #frame{border:0;display:block}
+  #report{white-space:pre-wrap;padding:8px}
+</style>
+</head>
+<body>
+<iframe id="frame"></iframe>
+<pre id="report">pending</pre>
+<script>
+const q = new URLSearchParams(location.search);
+const src = q.get('src') || '/imoon07.github.io/read.html?url=/Penjelajah-CyberSecurity/blog-post-template/template-for-you-id.md';
+const w = Number(q.get('w') || 1280);
+const h = Number(q.get('h') || 1200);
+const frame = document.getElementById('frame');
+frame.style.width = w + 'px';
+frame.style.height = h + 'px';
+frame.src = src;
+function box(r) {
+  return {x: Math.round(r.left), y: Math.round(r.top), w: Math.round(r.width), h: Math.round(r.height),
+          right: Math.round(r.right), bottom: Math.round(r.bottom), cx: Math.round(r.left + r.width / 2), cy: Math.round(r.top + r.height / 2)};
+}
+function textOf(el) { return (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 180); }
+function inspect() {
+  const d = frame.contentDocument;
+  const win = frame.contentWindow;
+  const out = {viewport: [win.innerWidth, win.innerHeight], url: frame.src, topologies: [], alur: [], errors: []};
+  d.querySelectorAll('.topology').forEach((root, idx) => {
+    let spec = {};
+    try { spec = JSON.parse(root.getAttribute('data-spec') || '{}'); } catch (e) {}
+    const canvas = root.querySelector('.topo-canvas');
+    const cr = canvas ? canvas.getBoundingClientRect() : {left: 0, top: 0, width: 0, height: 0};
+    const nodes = [...root.querySelectorAll('.topo-node')].map(n => {
+      const b = box(n.getBoundingClientRect());
+      const label = n.querySelector('.topo-node-label');
+      const sub = n.querySelector('.topo-node-sub');
+      return {
+        id: n.dataset.node || '', cls: n.className, rect: b,
+        text: textOf(n),
+        label: label ? {text: textOf(label), font: getComputedStyle(label).fontSize, scroll: label.scrollWidth, client: label.clientWidth} : null,
+        sub: sub ? {text: textOf(sub), font: getComputedStyle(sub).fontSize, scroll: sub.scrollWidth, client: sub.clientWidth} : null,
+        scroll: [n.scrollWidth, n.clientWidth, n.scrollHeight, n.clientHeight],
+        outside: b.left < cr.left - 1 || b.right > cr.right + 1 || b.top < cr.top - 1 || b.bottom > cr.bottom + 1
+      };
+    });
+    const paths = [...root.querySelectorAll('.topo-svg path')].map(p => {
+      let bb = null;
+      try { const b = p.getBBox(); bb = {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)}; } catch (e) {}
+      return {cls: p.getAttribute('class'), d: p.getAttribute('d'), bbox: bb, stroke: getComputedStyle(p).stroke, width: getComputedStyle(p).strokeWidth};
+    });
+    const labels = [...root.querySelectorAll('.topo-group-label')].map(t => ({text: textOf(t), rect: box(t.getBoundingClientRect())}));
+    out.topologies.push({
+      idx, title: spec.title, vertical: spec.vertical, dense: spec.dense,
+      root: box(root.getBoundingClientRect()), canvas: box(cr), zoom: canvas ? canvas.style.zoom : null,
+      nodes, paths, labels,
+      footer: textOf(root.querySelector('.topo-footer')),
+      columns: [...root.querySelectorAll('.topo-col')].map(c => ({grid: c.dataset.grid || '', rect: box(c.getBoundingClientRect()), nodes: [...c.querySelectorAll('.topo-node')].map(n => n.dataset.node || '')}))
+    });
+  });
+  d.querySelectorAll('.alur').forEach((root, idx) => {
+    const svg = root.querySelector('.alur-svg');
+    out.alur.push({idx, title: root.getAttribute('data-title') || '', rect: box(root.getBoundingClientRect()), svg: svg ? box(svg.getBoundingClientRect()) : null, text: textOf(root).slice(0, 240)});
+  });
+  const body = d.body;
+  out.page = {scrollWidth: body.scrollWidth, clientWidth: body.clientWidth, scrollHeight: body.scrollHeight};
+  document.getElementById('report').textContent = JSON.stringify(out, null, 2);
+}
+frame.addEventListener('load', () => setTimeout(inspect, Number(q.get('wait') || 5000)));
+</script>
+</body>
+</html>

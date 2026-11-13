@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/ai-tools/vendor/marked.min.js"></script>
+<script src="file:///home/moon/Projects/ai-tools/vendor/purify.min.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/markdown.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/shell.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/article.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#111827}</style></head><body class="article-page">
+<div class="site"><main class="article-layout"><article class="article-column"><div class="prose" id="content"></div></article></article></main></div>
+<pre id="report">pending</pre>
+<script>
+const MD="```topology\n"+"{\n  \"vertical\": true,\n  \"title\": \"Alurnya\",\n  \"columns\": [[\"C\"], [\"P\"], [\"K\"], [\"G\"]],\n  \"nodes\": {\n    \"C\": [\"Pelanggan\", \"Datang dan memesan makanan\", \"customer\", \"actor\", \"https://en.wikipedia.org/wiki/Web_browser\"],\n    \"P\": [\"Pelayan\", \"Menerima pesanan dan meneruskannya\", \"waiter\", \"process\", \"https://en.wikipedia.org/wiki/Web_server\"],\n    \"K\": [\"Koki\", \"Memasak sesuai pesanan\", \"cook\", \"process\", \"https://en.wikipedia.org/wiki/Runtime_system\", \"cook\"],\n    \"G\": [\"Gudang Bahan\", \"Menyimpan bahan makanan\", \"warehouse\", \"store\", \"https://en.wikipedia.org/wiki/Database\"]\n  },\n  \"edges\": [[\"C\", \"P\", \"1\"], [\"P\", \"K\", \"2\"], [\"K\", \"G\", \"3\"], [\"G\", \"K\", \"4\", true], [\"K\", \"P\", \"5\", true], [\"P\", \"C\", \"6\", true]],\n  \"groups\": [[\"Warung / Satu Lokasi\", [\"P\", \"K\", \"G\"], \"store\"]],\n  \"legend\": {\n    \"flow\": \"Pesanan / permintaan\",\n    \"back\": \"Balasan / respons\"\n  },\n  \"facilities\": [\"Di tempat ini\", [\"store\", \"Warung\"], [\"cooking-pot\", \"Dapur\"], [\"utensils\", \"Meja makan\"], [\"warehouse\", \"Gudang bahan\"]]\n}"+"\n```\n";
+document.getElementById('content').innerHTML=DOMPurify.sanitize(marked.parse(MD,{gfm:true}),{ADD_TAGS:['figure','figcaption'],ADD_ATTR:['id','class','style','data-spec','aria-label','role','fill','r'],ALLOW_DATA_ATTR:true});
+Topology.init();
+setTimeout(function(){
+ var r=document.querySelector('.topology');var c=r.querySelector('.topo-canvas');var cr=c.getBoundingClientRect();
+ var nodes=[...r.querySelectorAll('.topo-node')].map(function(n){var b=n.getBoundingClientRect();return {id:n.dataset.node,x:Math.round(b.x-cr.x),y:Math.round(b.y-cr.y),w:Math.round(b.width),h:Math.round(b.height)};});
+ var paths=[...r.querySelectorAll('.topo-svg path')].map(function(p){return {cls:p.getAttribute('class'),d:(p.getAttribute('d')||'').slice(0,70)};});
+ document.getElementById('report').textContent=JSON.stringify({canvas:[c.offsetWidth,c.offsetHeight],nodes:nodes,paths:paths});
+},800);
+</script></body></html>

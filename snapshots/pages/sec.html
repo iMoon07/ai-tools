@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="file:///home/moon/Projects/ai-tools/vendor/mermaid.min.js"></script></head><body>
+<div class="diagram mermaid">%%{init: {&quot;theme&quot;: &quot;base&quot;, &quot;flowchart&quot;: {&quot;curve&quot;: &quot;basis&quot;, &quot;nodeSpacing&quot;: 10, &quot;rankSpacing&quot;: 14, &quot;padding&quot;: 4}, &quot;themeVariables&quot;: {&quot;fontFamily&quot;: &quot;Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif&quot;, &quot;fontSize&quot;: &quot;12px&quot;, &quot;background&quot;: &quot;transparent&quot;, &quot;primaryColor&quot;: &quot;#1f2937&quot;, &quot;primaryTextColor&quot;: &quot;#e6edf3&quot;, &quot;primaryBorderColor&quot;: &quot;#30363d&quot;, &quot;lineColor&quot;: &quot;#4b5563&quot;, &quot;textColor&quot;: &quot;#cbd5e1&quot;, &quot;mainBkg&quot;: &quot;#1f2937&quot;, &quot;nodeBorder&quot;: &quot;#30363d&quot;, &quot;clusterBkg&quot;: &quot;transparent&quot;, &quot;clusterBorder&quot;: &quot;#30363d&quot;, &quot;edgeLabelBackground&quot;: &quot;#111827&quot;}, &quot;themeCSS&quot;: &quot;.node rect, .node polygon, .node circle, .node ellipse { rx: 8px; ry: 8px; } .cluster rect { rx: 12px; ry: 12px; } .edgeLabel rect { fill: #111827; } .edgeLabel span { color: #cbd5e1; }&quot;, &quot;securityLevel&quot;: &quot;loose&quot;}}%%
+flowchart TD
+    C([&quot;🧑‍🦱 Pelanggan&lt;br/&gt;Datang dan memesan makanan&quot;]) --&gt;|&quot;1. Pesan makanan&lt;br/&gt;seperti HTTP Request&quot;| P[&quot;🧑‍🍳 Pelayan&lt;br/&gt;Menerima pesanan dan meneruskannya&quot;]
+    P --&gt;|&quot;2. Teruskan pesanan&lt;br/&gt;ke dapur&quot;| K[&quot;👨‍🍳 Koki&lt;br/&gt;Memasak sesuai pesanan&quot;]
+    K --&gt;|&quot;3. Ambil bahan&lt;br/&gt;jika diperlukan&quot;| G[(&quot;🥫 Gudang Bahan&lt;br/&gt;Menyimpan bahan makanan&quot;)]
+    G --&gt;|&quot;4. Kirim bahan&lt;br/&gt;ke koki&quot;| K
+    K --&gt;|&quot;5. Sajikan makanan&lt;br/&gt;ke pelayan&quot;| P
+    P --&gt;|&quot;6. Antar makanan&lt;br/&gt;ke pelanggan&lt;br/&gt;seperti HTTP Response&quot;| C
+
+    subgraph W[&quot;Warung / Satu Lokasi&quot;]
+        P
+        K
+        G
+    end
+
+    click C &quot;https://en.wikipedia.org/wiki/Web_browser&quot; &quot;Web browser&quot; _blank
+    click P &quot;https://en.wikipedia.org/wiki/Web_server&quot; &quot;Web server&quot; _blank
+    click K &quot;https://en.wikipedia.org/wiki/Runtime_system&quot; &quot;Runtime system&quot; _blank
+    click G &quot;https://en.wikipedia.org/wiki/Database&quot; &quot;Database&quot; _blank
+
+    classDef actor fill:#1f2937,stroke:#58a6ff,color:#e6edf3,stroke-width:1.5px
+    classDef role fill:#1f2937,stroke:#30363d,color:#e6edf3,stroke-width:1.5px
+    classDef store fill:#1f2937,stroke:#3fb950,color:#e6edf3,stroke-width:1.5px
+
+    class C actor
+    class P,K role
+    class G store
+    style W fill:transparent,stroke:#30363d,stroke-width:1px,color:#8b949e</div><pre id="report">pending</pre>
+<script>
+mermaid.initialize({startOnLoad:false,theme:'dark',securityLevel:'strict'});
+mermaid.run({querySelector:'.mermaid'}).then(()=>{
+ const svg=document.querySelector('svg');
+ document.getElementById('report').textContent='links=' + svg.querySelectorAll('a').length;
+}).catch(e=>{document.getElementById('report').textContent='ERR '+e.message;});
+</script></body></html>

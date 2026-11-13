@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<script src="file:///home/moon/Projects/ai-tools/vendor/marked.min.js"></script>
+<script src="file:///home/moon/Projects/ai-tools/vendor/purify.min.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/markdown.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology-icons.js"></script>
+<script src="file:///home/moon/Projects/imoon07.github.io/js/topology.js"></script>
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/shell.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/article.css">
+<link rel="stylesheet" href="file:///home/moon/Projects/imoon07.github.io/css/topology.css">
+<style>body{margin:0;background:#111827}</style></head><body class="article-page">
+<div class="site"><main class="article-layout"><article class="article-column"><div class="prose" id="content"></div></article></article></main></div>
+<pre id="report">pending</pre>
+<script>
+const MD="```topology\n"+"{\n  \"vertical\": true,\n  \"title\": \"The Flow\",\n  \"columns\": [[\"C\"], [\"P\"], [\"K\"], [\"G\"]],\n  \"nodes\": {\n    \"C\": [\"Customer\", \"Places an order\", \"customer\", \"actor\", \"https://en.wikipedia.org/wiki/Web_browser\"],\n    \"P\": [\"Waiter\", \"Takes the order and forwards it\", \"waiter\", \"process\", \"https://en.wikipedia.org/wiki/Web_server\"],\n    \"K\": [\"Chef\", \"Prepares the order\", \"cook\", \"process\", \"https://en.wikipedia.org/wiki/Runtime_system\", \"cook\"],\n    \"G\": [\"Pantry\", \"Stores ingredients\", \"warehouse\", \"store\", \"https://en.wikipedia.org/wiki/Database\"]\n  },\n  \"edges\": [[\"C\", \"P\", \"1\"], [\"P\", \"K\", \"2\"], [\"K\", \"G\", \"3\"], [\"G\", \"K\", \"4\", true], [\"K\", \"P\", \"5\", true], [\"P\", \"C\", \"6\", true]],\n  \"groups\": [[\"Eatery / Single Location\", [\"P\", \"K\", \"G\"], \"store\"]],\n  \"legend\": {\n    \"flow\": \"Order / request\",\n    \"back\": \"Return / response\"\n  },\n  \"facilities\": [\"In this place\", [\"store\", \"Eatery\"], [\"cooking-pot\", \"Kitchen\"], [\"utensils\", \"Dining area\"], [\"warehouse\", \"Storage\"]]\n}"+"\n```\n";
+document.getElementById('content').innerHTML=DOMPurify.sanitize(marked.parse(MD,{gfm:true}),{ADD_TAGS:['figure','figcaption'],ADD_ATTR:['id','class','style','data-spec','aria-label','role','fill','r'],ALLOW_DATA_ATTR:true});
+Topology.init();
+function snap(tag){var s=document.querySelector('.topo-svg');var d=document.querySelector('.topo-dot');var r=d.getBoundingClientRect();
+ return {tag:tag,t:s.getCurrentTime(),x:Math.round(r.x),y:Math.round(r.y),tr:d.getAttribute('transform'),ctm:String(d.getCTM()).slice(0,60)};}
+setTimeout(function(){window.__a=snap('a');},300);
+setTimeout(function(){window.__b=snap('b');},1200);
+setTimeout(function(){document.getElementById('report').textContent=JSON.stringify([window.__a,window.__b]);},1400);
+</script></body></html>

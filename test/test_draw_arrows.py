@@ -1,0 +1,36 @@
+import time,json
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+opts=Options(); opts.add_argument('--headless=new'); opts.add_argument('--no-sandbox'); opts.add_argument('--disable-dev-shm-usage'); opts.add_argument('--window-size=900,700'); opts.binary_location='/usr/bin/chromium'; opts.set_capability('goog:loggingPrefs',{'browser':'ALL'})
+d=webdriver.Chrome(options=opts, service=Service('/usr/bin/chromedriver')); d.set_window_size(900,700)
+d.get('http://localhost:8000/imoon07.github.io/draw.html'); time.sleep(1.2)
+spec={'module':'canvas','title':'logos','grid':True,'width':900,'height':520,'nodes':{
+ 'box':{'x':60,'y':60,'w':180,'h':90,'shape':'box','label':'Box','logos':['security:burp','security:distributor-logo-kali']},
+ 'circle':{'x':340,'y':60,'w':140,'h':140,'shape':'circle','label':'Circle'},
+ 'diamond':{'x':600,'y':60,'w':170,'h':120,'shape':'diamond','label':'Diamond'},
+ 'pill':{'x':120,'y':330,'w':200,'h':80,'shape':'pill','label':'Pill'},
+ 'round':{'x':420,'y':330,'w':180,'h':90,'shape':'box','edge':'round','label':'Round'}
+},'edges':[]}
+d.execute_script("document.getElementById('spec').value=arguments[0]; document.getElementById('apply').click();", json.dumps(spec)); time.sleep(1.2)
+# click-click box -> circle
+d.execute_script("document.querySelector('[data-tool=\"arrow\"]').click()"); time.sleep(.2)
+nodes=d.find_elements(By.CSS_SELECTOR,'.alur-canvas-node')
+nodes[0].click(); time.sleep(.2); nodes[1].click(); time.sleep(.5)
+print('click edges',d.execute_script("return Alur.instances().find(r=>r.spec.module==='canvas').spec.edges.length"))
+# drag from logo to pill
+logos=d.find_elements(By.CSS_SELECTOR,'.alur-logo-img'); pill=d.find_element(By.CSS_SELECTOR,'[data-node-id="pill"]')
+d.execute_script("document.querySelector('[data-tool=\"arrow\"]').click()"); time.sleep(.2)
+a=ActionChains(d); a.move_to_element(logos[0]).click_and_hold().move_by_offset(15,0).move_to_element(pill).release().perform(); time.sleep(.6)
+print('logo drag edges',d.execute_script("return Alur.instances().find(r=>r.spec.module==='canvas').spec.edges.length"))
+# line from circle to diamond
+d.execute_script("document.querySelector('[data-tool=\"line\"]').click()"); time.sleep(.2)
+circ=d.find_element(By.CSS_SELECTOR,'[data-node-id="circle"]'); diam=d.find_element(By.CSS_SELECTOR,'[data-node-id="diamond"]')
+a=ActionChains(d); a.move_to_element(circ).click_and_hold().move_by_offset(15,0).move_to_element(diam).release().perform(); time.sleep(.6)
+print('line edges',d.execute_script("return Alur.instances().find(r=>r.spec.module==='canvas').spec.edges.length"))
+print('heads',d.execute_script("return document.querySelectorAll('.alur-edge-head').length"))
+print('errors',[x for x in d.get_log('browser') if x['level']=='SEVERE' and 'favicon' not in x['message']])
+d.save_screenshot('/home/moon/Projects/ai-tools/js-extracts/draw-arrows.png')
+d.quit()
