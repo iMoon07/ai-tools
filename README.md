@@ -8,7 +8,7 @@ Location: `/home/moon/Projects/ai-tools` — **local only**, never published. On
 its output reaches the site: assets in `logo/` and the ` ```draw ` /
 ` ```topology ` blocks in articles.
 
-**Total:** 3264 files.
+**Total:** 3415 files.
 
 ## Layout
 
@@ -18,7 +18,7 @@ its output reaches the site: assets in `logo/` and the ` ```draw ` /
 | `assets/` | Extracted Unicons icons, ready for custom presets | 573 SVG |
 | `browser/` | CDP/Playwright scripts that open, drag, and inspect pages | `cdp-check*.js`, `cdp-dragdebug*.js` |
 | `fetch/` | Source asset downloaders (Thridy, Devfolio, Kali) | `thridy_fetch.py`, `fetch_kali_*.py` |
-| `generators/` | Logo and manifest builders | `build_logo_manifest.py`, `build_topology_icons.py` |
+| `generators/` | Logo and manifest builders, plus cross-language doc sync | `build_logo_manifest.py`, `build_topology_icons.py`, `sync_topology_templates.py`, `sync_server_stack_langs.py` |
 | `icons/` | Redrawn interface icons, 64×64 | `app-window.svg`, `bug-crawl.svg` |
 | `js-extracts/` | Site JS/HTML excerpts, flow captures, extraction notes | `alur-inline.js`, `alur-scene.md` |
 | `layout/` | Layout experiments (columns, diagnostics) as HTML + Python | `cols.py`, `diag.py` |
@@ -27,6 +27,7 @@ its output reaches the site: assets in `logo/` and the ` ```draw ` /
 | `test/` | Visual and asset function tests | `test_all_shapes_*.py` |
 | `vendor/` | Third-party libraries, mostly Unicons (line/solid/monochrome) | `unicons/`, `marked.min.js` |
 | `verify/` | Result audits (shapes, lines, arrows, plates, touch gestures) | `verify.py`, `audit-*.html`, `mobile_touch_scroll.py` |
+| `verify/canvas/` | Headless CDP probes for `draw.html` and `topology.html` (canvas, arrows, tables, charts, responsive) | `draw_everywhere.py`, `grid_toggle.py`, `topo_mobile.py`, `bleed_probe.py` |
 
 ## Typical workflow
 
@@ -42,6 +43,9 @@ its output reaches the site: assets in `logo/` and the ` ```draw ` /
 | Download Thridy 3D icons (security groups) | `python3 fetch/thridy_fetch.py --group hack,crime` |
 | Build the logo manifest for the site | `python3 generators/build_logo_manifest.py --site ../imoon07.github.io` |
 | Build the topology icon sprite | `python3 generators/build_topology_icons.py` |
+| Sync the template topology across en/id/ms/tl | `python3 generators/sync_topology_templates.py --check` |
+| Sync the server-stack diagram across en/id/ms/tl | `python3 generators/sync_server_stack_langs.py --check` |
+| Preview the site and docs over http or https | `python3 serve/serve.py --port 8123` |
 | Test shape/line interleaving | `python3 test/test_all_shapes_line.py` |
 | Check list scrolling on a touch viewport | `python3 verify/mobile_touch_scroll.py --url http://localhost:8000/draw.html --open ".mobile-fab,[data-mobile-panel='assets']" --control` |
 
