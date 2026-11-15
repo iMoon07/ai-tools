@@ -3,7 +3,7 @@ import json, subprocess, time, urllib.parse, urllib.request, sys, base64, shutil
 ROOT = "http://127.0.0.1:8778"
 PAGE = ROOT + "/imoon07.github.io/read.html?url="
 PORT = 9414
-PROF = "/tmp/kilo/prof-corpus3"
+PROF = "/tmp/alur-probes/prof-corpus3"
 DOCS = sorted(glob.glob("/home/moon/Projects/Penjelajah-CyberSecurity/**/*.md", recursive=True))
 DOCS = [d for d in DOCS if "```topology" in open(d, encoding="utf-8", errors="ignore").read()]
 DOCS = [d for d in DOCS if "server-single-tier-stack-en" in d or "template-for-you-preview" in d]

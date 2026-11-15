@@ -2,7 +2,7 @@ import json, subprocess, time, urllib.parse, urllib.request
 import websocket
 PORT=9360
 proc=subprocess.Popen(['chromium','--headless=new',f'--remote-debugging-port={PORT}',
- '--user-data-dir=/tmp/kilo/prof-th','--no-first-run','--no-default-browser-check','--disable-gpu',
+ '--user-data-dir=/tmp/alur-probes/prof-th','--no-first-run','--no-default-browser-check','--disable-gpu',
  '--window-size=1280,900','--remote-allow-origins=*','about:blank'],
  stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 def http(p,method='GET'):

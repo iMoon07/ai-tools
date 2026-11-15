@@ -1,7 +1,7 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil
 
 PORT = 9502
-PROF = "/tmp/kilo/prof-line3"
+PROF = "/tmp/alur-probes/prof-line3"
 shutil.rmtree(PROF, ignore_errors=True)
 proc = subprocess.Popen(["chromium", "--headless=new", f"--remote-debugging-port={PORT}",
     f"--user-data-dir={PROF}", "--no-first-run", "--no-default-browser-check",

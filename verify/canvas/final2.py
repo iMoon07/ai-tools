@@ -1,67 +1,78 @@
-import json, subprocess, time, urllib.parse, urllib.request, shutil, websocket
-PORT=9612; PROF="/tmp/kilo/prof-final2"
-shutil.rmtree(PROF, ignore_errors=True)
-proc=subprocess.Popen(["chromium","--headless=new",f"--remote-debugging-port={PORT}",
- f"--user-data-dir={PROF}","--no-first-run","--no-default-browser-check","--disable-gpu",
- "--window-size=1500,1000","--remote-allow-origins=*","about:blank"],
- stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-def http(p,method="GET"):
-    return json.loads(urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:{PORT}{p}",method=method),timeout=10).read())
+import json, time, urllib.request, subprocess, tempfile
+import websocket
+
+PORT = 9801
+tmp = tempfile.mkdtemp(prefix="final")
+proc = subprocess.Popen(["chromium", "--headless=new", "--disable-gpu", "--no-sandbox",
+    "--hide-scrollbars", "--remote-debugging-port=%d" % PORT, "--remote-allow-origins=*",
+    "--user-data-dir=" + tmp, "--window-size=1400,900", "about:blank"],
+    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 for _ in range(80):
-    try: http("/json/version"); break
-    except Exception: time.sleep(0.3)
-t=http("/json/new?"+urllib.parse.quote("about:blank",safe=""),method="PUT")
-ws=websocket.create_connection(t["webSocketDebuggerUrl"],timeout=90,suppress_origin=True)
-n=[0]; errs=[]
-def send(m,**p):
-    n[0]+=1; ws.send(json.dumps({"id":n[0],"method":m,"params":p}))
+    try:
+        urllib.request.urlopen("http://127.0.0.1:%d/json/version" % PORT, timeout=1).read(); break
+    except Exception:
+        time.sleep(0.25)
+tabs = json.loads(urllib.request.urlopen("http://127.0.0.1:%d/json" % PORT).read())
+page = [t for t in tabs if t["type"] == "page"][0]
+c = websocket.create_connection(page["webSocketDebuggerUrl"], timeout=30)
+i = [0]
+def cmd(m, **p):
+    i[0] += 1; c.send(json.dumps({"id": i[0], "method": m, "params": p}))
     while True:
-        r=json.loads(ws.recv())
-        if r.get("id")==n[0]:
-            if r.get("method")=="Runtime.exceptionThrown":
-                d=r["params"]["exceptionDetails"]; errs.append(d.get("text")); print("   [EXC]", d.get("text"), (d.get("exception") or {}).get("description","")[:200])
-            return r.get("result",{})
+        r = json.loads(c.recv())
+        if r.get("id") == i[0]: return r.get("result", {})
 def ev(e):
-    r=send("Runtime.evaluate",expression=e,returnByValue=True,awaitPromise=True)
-    res=r.get("result",{})
-    if res.get("subtype")=="error": print("[JSERR]", res.get("description","")[:200])
-    return res.get("value")
-def drag(x1,y1,x2,y2):
-    send("Input.dispatchMouseEvent",type="mousePressed",x=x1,y=y1,button="left",clickCount=1)
-    for i in range(1,7):
-        send("Input.dispatchMouseEvent",type="mouseMoved",x=x1+(x2-x1)*i/6,y=y1+(y2-y1)*i/6,button="left")
-    send("Input.dispatchMouseEvent",type="mouseReleased",x=x2,y=y2,button="left",clickCount=1)
-send("Runtime.enable"); send("Page.enable")
-send("Emulation.setDeviceMetricsOverride",width=1500,height=1000,deviceScaleFactor=1,mobile=False)
-send("Page.navigate",url="http://127.0.0.1:8123/draw.html"); time.sleep(4)
-ev("(()=>{const s=document.getElementById('preset'); s.value='canvas:blank'; s.dispatchEvent(new Event('change',{bubbles:true}));})()"); time.sleep(1.5)
-ev("(()=>{const b=[...document.querySelectorAll('#templateLibrary [data-tpl-module=reverse-proxy]')][0]; b.click();})()"); time.sleep(1.5)
-print("proxy:", ev("""JSON.stringify((()=>{const s=JSON.parse(localStorage.getItem('ruang.scene.v1')||'{}');
-  return {nodes:Object.keys(s.nodes||{}).length, edges:(s.edges||[]).length,
-          cables:(s.edges||[]).map(e=>e.cable||'-')};})())"""))
-print("cardNodes:", ev("document.querySelectorAll('#stage .alur-module-node').length"),
-      "boxes:", ev("document.querySelectorAll('#stage .alur-canvas-node').length"))
-# chart template
-ev("(()=>{const b=[...document.querySelectorAll('#templateLibrary [data-tpl-module=chart]')].pop(); b.click();})()"); time.sleep(1.5)
-c = ev("""(()=>{const g=document.querySelector('#stage .alur-chart-node'); if(!g) return null;
-  const r=g.getBoundingClientRect(); return {x:r.x+r.width/2,y:r.y+r.height/2,w:r.width,h:r.height};})()""")
-print("chart node box:", c)
-send("Input.dispatchMouseEvent",type="mousePressed",x=c['x'],y=c['y'],button="left",clickCount=1)
-send("Input.dispatchMouseEvent",type="mouseReleased",x=c['x'],y=c['y'],button="left",clickCount=1)
-time.sleep(0.8)
-print("inspector:", ev("""(()=>{const t=document.querySelector('#inspectorTitle');
-  const panel=document.querySelector('.inspector, #nodeInspector');
-  return JSON.stringify({title:t?t.textContent:null,
-    hasExpand:!!(panel&&panel.textContent.match(/Expand/)),
-    hasLabel:!!document.getElementById('nodeLabel'),
-    selected:document.querySelectorAll('#stage .is-selected').length});})()"""))
-# drag chart node
-send("Input.dispatchMouseEvent",type="mousePressed",x=c['x'],y=c['y'],button="left",clickCount=1)
-for i in range(1,7):
-    send("Input.dispatchMouseEvent",type="mouseMoved",x=c['x']+i*12,y=c['y']+i*8,button="left")
-send("Input.dispatchMouseEvent",type="mouseReleased",x=c['x']+72,y=c['y']+48,button="left",clickCount=1)
-time.sleep(0.8)
-print("after drag:", ev("""(()=>{const s=JSON.parse(localStorage.getItem('ruang.scene.v1')||'{}');
-  const n=Object.values(s.nodes||{}).find(x=>x.shape==='chart'); return n?JSON.stringify({x:n.x,y:n.y}):'gone';})()"""))
-print("exceptions:", len(errs))
-ws.close(); proc.terminate()
+    r = cmd("Runtime.evaluate", expression=e, returnByValue=True, awaitPromise=True).get("result", {})
+    return r.get("value") if r.get("subtype") != "error" else {"__err": r.get("description")}
+
+cmd("Page.enable"); cmd("Runtime.enable")
+cmd("Emulation.setDeviceMetricsOverride", width=1400, height=900, deviceScaleFactor=1, mobile=False)
+cmd("Page.navigate", url="http://127.0.0.1:8123/draw.html?cb=" + str(time.time()))
+time.sleep(3.6)
+ev("window.__errs=[];addEventListener('error',function(e){window.__errs.push(String(e.message));});")
+ev("document.querySelectorAll('.dock.is-open [data-close]').forEach(function(b){b.click();});")
+time.sleep(0.3)
+ST = ev("(function(){var r=document.getElementById('stage').getBoundingClientRect();return {x:r.x,y:r.y};})()")
+def ptr(t, x, y, b=1):
+    ev("(function(){var s=document.getElementById('stage');s.dispatchEvent(new PointerEvent(" + json.dumps(t) +
+       ",{bubbles:true,cancelable:true,clientX:%d,clientY:%d,button:0,buttons:%d,pointerId:1,pointerType:'mouse',isPrimary:true}));})()" % (x, y, b))
+def drag(x0, y0, x1, y1):
+    ptr("pointerdown", x0, y0)
+    for k in range(1, 11):
+        ptr("pointermove", x0 + (x1 - x0) * k / 10, y0 + (y1 - y0) * k / 10)
+    ptr("pointerup", x1, y1, 0); time.sleep(0.6)
+def panel():
+    return ev("(function(){var b=document.querySelector('#shapePanel .shape-head b');"
+              "var caps=[];document.querySelectorAll('#shapePanel .pp-cap').forEach(function(x){caps.push(x.textContent.trim());});"
+              "return (b?b.textContent.trim():'hidden')+' :: '+caps.join('|');})()")
+
+print('== sticky via TOOL (no inline editor) ==')
+ev("document.querySelector('[data-tool=\"sticky\"]').click()")
+drag(ST['x'] + 260, ST['y'] + 180, ST['x'] + 380, ST['y'] + 300)
+print('  panel:', panel())
+print('  dots :', ev("document.querySelectorAll('#shapePanel .pp-dot').length"))
+ev("(function(){var d=document.querySelectorAll('#shapePanel .pp-sw')[1];d.querySelectorAll('.pp-dot')[3].click();})()")
+time.sleep(0.6)
+print('  after Ink click:', panel())
+print('  spec ink:', ev("(function(){var s=JSON.parse(document.getElementById('stage').getAttribute('data-spec'));"
+                      "var k=null;Object.keys(s.nodes).forEach(function(x){if(s.nodes[x].shape==='sticky')k=x;});return s.nodes[k].textColor;})()"))
+
+print('== sticky via KEY N (inline editor open) ==')
+ev("document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'n',bubbles:true,cancelable:true}));")
+time.sleep(0.9)
+print('  textEdit:', ev("!!document.getElementById('inlineText')"))
+print('  panel   :', panel())
+print('  dots    :', ev("document.querySelectorAll('#shapePanel .pp-dot').length"))
+ev("(function(){var d=document.querySelectorAll('#shapePanel .pp-sw')[0];d.querySelectorAll('.pp-dot')[3].click();})()")
+time.sleep(0.6)
+print('  after Paper click:', panel())
+print('  dots now:', ev("document.querySelectorAll('#shapePanel .pp-dot').length"))
+
+print('== fill tool ==')
+ev("document.querySelector('[data-tool=\"fill\"]').click()")
+time.sleep(0.6)
+print('  panel:', panel())
+print('  dots :', ev("document.querySelectorAll('#shapePanel .pp-dot').length"))
+
+print('errs:', ev("window.__errs"))
+c.close(); proc.terminate()

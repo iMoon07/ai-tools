@@ -1,0 +1,6 @@
+site  : https://localhost:8443/
+docs  : https://localhost:8443/docs/
+        https://172.0.0.2:8443/docs/  (LAN)
+lan   : https://172.0.0.2:8443/
+127.0.0.1 - "GET /read.html HTTP/1.1" 200 -
+127.0.0.1 - "GET /read.html HTTP/1.1" 200 -

@@ -1,0 +1,716 @@
+# Server Single-Tier Stack: Pag-unawa sa Mga Bahagi, Teknolohiya, at Pag-deploy
+
+[🇮🇩 Baca dalam Bahasa Indonesia](server-single-tier-stack-id.md)
+[🇬🇧 Read in English](server-single-tier-stack-en.md)
+[🇲🇾 Baca dalam Bahasa Melayu](server-single-tier-stack-ms.md)
+
+## Isang Server, Isang Stack
+
+﷽
+
+![Server Single-Tier Stack: Memahami Komponen, Teknologi, dan Deployment](single-tier-stack.png)
+
+Ang **server single-tier stack** ay isang arkitektura kung saan ang [web server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server), [application runtime](https://en.wikipedia.org/wiki/Runtime_system), at [database](https://en.wikipedia.org/wiki/Database) ay sabay-sabay na tumatakbo sa **isang computer lamang**.
+
+Isipin mo ang isang maliit na karinderya kung saan ang kusina, bulwagan ng kainan, at bodega ay nasa iisang lugar lamang. Nag-order ang customer, naghahanda ang kusinero ng pagkain, at agad itong inihahain. Ang lahat ng gawain ay nagaganap sa parehong lugar.
+
+Ang konseptong ito ay katulad ng **single-tier stack**: ang mga pangunahing bahagi ng isang aplikasyon—ang web server, application runtime, at database—ay sabay-sabay na inihahanda at inihahain sa gumagamit, katulad ng pagkain na inilalabas mula sa kusina.
+
+Ngunit paano nga ba ito gumagana kapag ang isang bisita ay bumisita sa isang website na gawa gamit ang single-tier stack?
+
+## Daloy ng Proseso
+
+```topology
+{
+  "vertical": true,
+  "title": "Daloy ng Proseso",
+  "columns": [["C"], ["P"], ["K"], ["G"]],
+  "nodes": {
+    "C": ["Customer", "Nag-order ng pagkain", "customer", "actor", "https://en.wikipedia.org/wiki/Web_browser"],
+    "P": [
+      "Waiter",
+      "Tumatanggap ng order at ipinapasa ito",
+      "waiter",
+      "process",
+      "https://en.wikipedia.org/wiki/Web_server"
+    ],
+    "K": ["Kusinero", "Naghahanda ng order", "cook", "process", "https://en.wikipedia.org/wiki/Runtime_system", "cook"],
+    "G": ["Bodega", "Nagtatago ng mga sangkap", "warehouse", "store", "https://en.wikipedia.org/wiki/Database"]
+  },
+  "edges": [
+    ["C", "P"],
+    ["P", "K"],
+    ["K", "G"],
+    ["G", "K", "", true],
+    ["K", "P", "", true],
+    ["P", "C", "", true]
+  ],
+  "badges": false,
+  "groups": [["Karinderya / Isang Lugar Lamang", ["P", "K", "G"], "store"]],
+  "legend": {
+    "flow": "Order / hiling",
+    "back": "Sagot / tugon"
+  },
+  "facilities": [
+    "Dito",
+    ["store", "Karinderya"],
+    ["cooking-pot", "Kusina"],
+    ["utensils", "Pook kainan"],
+    ["warehouse", "Imbakan"]
+  ]
+}
+```
+
+Mula sa diagram ng karinderya, malinaw na ang lahat ng gawain ay nagaganap sa iisang lugar lamang. Sa likod ng isang simpleng pagkain, may mga tungkulin, patakaran, at kagamitan na nagtutulungan upang maiproseso nang tama ang order at maibalik ito sa customer.
+
+Ganun din ang nangyayari sa *single-tier stack*. Kapag ang browser ay nagpapadala ng kahilingan, ang mga bahagi sa loob ng iisang makina ang magtutulungan upang maproseso ito, kunin ang kinakailangang datos, at maibalik ang resulta sa gumagamit.
+
+## Mga Pangunahing Bahagi
+
+| Bahagi | Analohiya sa Karinderya | Tungkulin |
+| --- | --- | --- |
+| [Operating System (OS)](https://en.wikipedia.org/wiki/Operating_system) | Gusali ng karinderya | Ang pundasyon. Pinamamahalaan nito ang hardware, memory, proseso, at mga resource ng server. |
+| [Web Server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server) | Waiter | Tumatanggap ng mga kahilingan na HTTP/HTTPS, ipinapasa ito sa application, at ibinabalik ang tugon sa client. |
+| [Application Runtime](https://en.wikipedia.org/wiki/Runtime_system) | Kusinero | Isinasagawa ang application code upang maproseso ang lohika ng aplikasyon at gawing handa nang ihain ang resulta. |
+| [Database](https://en.wikipedia.org/wiki/Database) | Bodega / Pantry | Nagtatago, nag-oorganisa, at kumukuha ng datos na kinakailangan ng aplikasyon. Hindi ito palaging kinakailangan kung ang aplikasyon ay hindi nangangailangan ng permanenteng pag-iimbak ng datos. |
+
+## Mga Komponenteng Pantulong
+
+| Bahagi | Analohiya sa Karinderya | Tungkulin |
+| --- | --- | --- |
+| [Web Client](https://en.wikipedia.org/wiki/Web_browser) | Customer | Ang application sa panig ng gumagamit (halimbawa, web browser) na nagpapadala ng HTTP request sa server at nagpapakita ng HTTP response. |
+| [TLS (Transport Layer Security) & TLS Certificate](https://en.wikipedia.org/wiki/Transport_Layer_Security) | Selyadong packaging & opisyal na lisensya ng karinderya | Nagbibigay ng seguridad sa komunikasyon sa pamamagitan ng HTTPS gamit ang encryption, server authentication, at data integrity. Ang SSL ang dating bersyon na hindi na nire-rekomenda. Tinutulungan ng certificate ang browser na i-verify ang identidad ng server. Para sa pampublikong website, ang paggamit ng HTTPS na may TLS 1.2 o TLS 1.3 ay naging pamantayan na. |
+| [Cache (opsyonal)](https://en.wikipedia.org/wiki/Cache_(computing)) | Mga pagkain na handa na sa display | Pansamantalang nagtatago ng mga madalas na ginagamit na datos upang mapabilis ang access at mabawasan ang load sa server. |
+
+> *Tala:* Ang mga komponenteng pantulong ay hindi palaging kinakailangan upang gumana ang isang aplikasyon. Depende ito sa layunin ng aplikasyon, nais na karanasan ng user, mga kinakailangan sa seguridad, at sa deployment environment. Ang iba ay halos kinakailangan na (halimbawa, HTTPS para sa pampublikong website), habang ang iba naman ay idinadagdag lamang kung nagbibigay ng malinaw na benepisyo (halimbawa, caching para sa mas mabilis na performance).
+
+Sanggunian: [MDN — Paano Gumagana ang Web](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
+
+<!-- topology:core-components -->
+
+```topology
+{
+  "vertical": true,
+  "title": "Pangunahing Bahagi at mga Pantulong",
+  "legend": {
+    "flow": "Request",
+    "back": "Response"
+  },
+  "columns": [
+    [
+      "W"
+    ],
+    [
+      "T"
+    ],
+    [
+      "S"
+    ],
+    [
+      "A"
+    ],
+    {
+      "nodes": [
+        "H",
+        "D"
+      ],
+      "grid": 2
+    }
+  ],
+  "nodes": {
+    "W": [
+      "Web Client",
+      "Ang customer",
+      "customer",
+      "client",
+      "https://en.wikipedia.org/wiki/Web_browser"
+    ],
+    "T": [
+      "TLS at Certificate",
+      "Selyadong pakete at lisensya",
+      "lock",
+      "security",
+      "https://en.wikipedia.org/wiki/Transport_Layer_Security"
+    ],
+    "S": [
+      "Web Server",
+      "Ang waiter",
+      "waiter",
+      "server",
+      "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server"
+    ],
+    "A": [
+      "Application Runtime",
+      "Ang chef",
+      "cook",
+      "process",
+      "https://en.wikipedia.org/wiki/Runtime_system"
+    ],
+    "H": [
+      "Cache",
+      "Mga pagkaing nakahanda",
+      "package",
+      "store",
+      "https://en.wikipedia.org/wiki/Cache_(computing)"
+    ],
+    "D": [
+      "Database",
+      "Ang pantry",
+      "warehouse",
+      "database",
+      "https://en.wikipedia.org/wiki/Database"
+    ]
+  },
+  "edges": [
+    [
+      "W",
+      "T"
+    ],
+    [
+      "T",
+      "S"
+    ],
+    [
+      "S",
+      "A"
+    ],
+    [
+      "A",
+      "H"
+    ],
+    [
+      "A",
+      "D"
+    ],
+    [
+      "D",
+      "A",
+      "",
+      true
+    ],
+    [
+      "A",
+      "S",
+      "",
+      true
+    ],
+    [
+      "S",
+      "T",
+      "",
+      true
+    ],
+    [
+      "T",
+      "W",
+      "",
+      true
+    ]
+  ],
+  "badges": false,
+  "facilities": [
+    "Isang machine",
+    [
+      "server",
+      "Pangunahing"
+    ],
+    [
+      "security",
+      "Transport"
+    ],
+    [
+      "package",
+      "Opsyonal"
+    ]
+  ]
+}
+```
+
+Hindi iginuhit ang OS bilang sariling kahon: ito ang sahig na kinatatayuan ng lahat ng nasa itaas. Lahat ng komponente sa diyagram ay tumatakbo sa iisang operating system, kaya ang OS ang gusali, at ang web server, runtime, at database ang mga kuwarto sa loob nito.
+
+<!-- /topology:core-components -->
+## Mga Kombinasyon ng Technology Stack
+
+Ang technology stack ay katulad ng resipe at mga sangkap nito. Sa larangan ng computing, ang pagpili ng operating system, web server, programming language, framework, at database ay bumubuo ng isang natatanging kaayusan na tinatawag na [solution stack](https://en.wikipedia.org/wiki/Solution_stack).
+
+Ang bawat stack ay may sariling komposisyon at layunin na iniangkop sa pangangailangan ng aplikasyon. Narito ang ilan sa mga pinakakaraniwang ginagamit na technology stack, kasama ang kanilang mga bahagi at paggamit:
+
+```topology
+{
+  "title": "Solution Stack",
+  "dense": true,
+  "components": {
+    "actix": ["Actix Web", "si-actix", "https://actix.rs/"],
+    "angular": ["Angular", "si-angular", "https://angular.dev/"],
+    "apache": ["Apache", "si-apache", "https://httpd.apache.org/"],
+    "axum": ["Axum", "si-axum", "https://github.com/tokio-rs/axum"],
+    "blazor": ["Blazor", "si-blazor", "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor"],
+    "bun": ["Bun", "si-bun", "https://bun.sh/"],
+    "chronograf": ["Chronograf", "si-chronograf", "https://www.influxdata.com/chronograf/"],
+    "django": ["Django", "si-django", "https://www.djangoproject.com/"],
+    "dotnet": [".NET", "si-dotnet", "https://dotnet.microsoft.com/"],
+    "echo": ["Echo", "si-echo", "https://echo.labstack.com/"],
+    "elasticsearch": ["Elasticsearch", "si-elasticsearch", "https://www.elastic.co/elasticsearch"],
+    "express": ["Express", "si-express", "https://expressjs.com/"],
+    "fastapi": ["FastAPI", "si-fastapi", "https://fastapi.tiangolo.com/"],
+    "fiber": ["Fiber", "si-fiber", "https://gofiber.io/"],
+    "flask": ["Flask", "si-flask", "https://flask.palletsprojects.com/"],
+    "freebsd": ["FreeBSD", "si-freebsd", "https://www.freebsd.org/"],
+    "gin": ["Gin", "si-gin", "https://gin-gonic.com/"],
+    "go": ["Go", "si-go", "https://go.dev/"],
+    "grafana": ["Grafana", "si-grafana", "https://grafana.com/"],
+    "iis": ["IIS", "si-iis", "https://www.iis.net/"],
+    "influxdb": ["InfluxDB", "si-influxdb", "https://www.influxdata.com/"],
+    "jakartaee": ["Jakarta EE", "si-jakartaee", "https://jakarta.ee/"],
+    "jamstack": ["JAMstack", "si-jamstack", "https://jamstack.org/"],
+    "javascript": ["JavaScript", "si-javascript", "https://developer.mozilla.org/en-US/docs/Web/JavaScript"],
+    "kapacitor": ["Kapacitor", "si-kapacitor", "https://www.influxdata.com/kapacitor/"],
+    "kibana": ["Kibana", "si-kibana", "https://www.elastic.co/kibana"],
+    "laravel": ["Laravel", "si-laravel", "https://laravel.com/"],
+    "linux": ["Linux", "si-linux", "https://www.kernel.org/"],
+    "logstash": ["Logstash", "si-logstash", "https://www.elastic.co/logstash"],
+    "mariadb": ["MariaDB", "si-mariadb", "https://mariadb.org/"],
+    "mongodb": ["MongoDB", "si-mongodb", "https://www.mongodb.com/"],
+    "mysql": ["MySQL", "si-mysql", "https://www.mysql.com/"],
+    "nextdotjs": ["Next.js", "si-nextdotjs", "https://nextjs.org/"],
+    "nginx": ["Nginx", "si-nginx", "https://nginx.org/"],
+    "nodejs": ["Node.js", "si-nodejs", "https://nodejs.org/"],
+    "openjdk": ["Java", "si-openjdk", "https://openjdk.org/"],
+    "perl": ["Perl", "si-perl", "https://www.perl.org/"],
+    "php": ["PHP", "si-php", "https://www.php.net/"],
+    "postgresql": ["PostgreSQL", "si-postgresql", "https://www.postgresql.org/"],
+    "prisma": ["Prisma", "si-prisma", "https://www.prisma.io/"],
+    "prometheus": ["Prometheus", "si-prometheus", "https://prometheus.io/"],
+    "pyramid": ["Pyramid", "si-pyramid", "https://trypyramid.com/"],
+    "python": ["Python", "si-python", "https://www.python.org/"],
+    "quarkus": ["Quarkus", "si-quarkus", "https://quarkus.io/"],
+    "react": ["React", "si-react", "https://react.dev/"],
+    "rocket": ["Rocket", "si-rocket", "https://rocket.rs/"],
+    "ruby": ["Ruby", "si-ruby", "https://www.ruby-lang.org/"],
+    "rubyonrails": ["Ruby on Rails", "si-rubyonrails", "https://rubyonrails.org/"],
+    "rust": ["Rust", "si-rust", "https://www.rust-lang.org/"],
+    "sinatra": ["Sinatra", "si-sinatra", "https://sinatrarb.com/"],
+    "spring": ["Spring", "si-spring", "https://spring.io/projects/spring-boot"],
+    "sqlite": ["SQLite", "si-sqlite", "https://www.sqlite.org/"],
+    "symfony": ["Symfony", "si-symfony", "https://symfony.com/"],
+    "tailwindcss": ["Tailwind CSS", "si-tailwindcss", "https://tailwindcss.com/"],
+    "telegraf": ["Telegraf", "si-telegraf", "https://www.influxdata.com/telegraf/"],
+    "trpc": ["tRPC", "si-trpc", "https://trpc.io/"],
+    "typescript": ["TypeScript", "si-typescript", "https://www.typescriptlang.org/"],
+    "vue": ["Vue.js", "si-vue", "https://vuejs.org/"],
+    "wazuh-dashboard": ["Dashboard", "layout-dashboard", "https://documentation.wazuh.com/current/user-manual/wazuh-dashboard/index.html"],
+    "wazuh-indexer": ["Indexer", "si-opensearch", "https://documentation.wazuh.com/current/user-manual/wazuh-indexer/index.html"],
+    "wazuh-manager": ["Manager", "si-wazuh", "https://documentation.wazuh.com/current/user-manual/manager/index.html"],
+    "windows": ["Windows", "si-windows", "https://www.microsoft.com/windows"]
+  },
+  "columns": [
+    ["js", "mean", "mern", "mevn", "pern", "nextjs", "t3", "jamstack", "bun"],
+    ["php", "laravel", "symfony", "lamp", "lemp", "wamp", "wimp", "famp", "xampp"],
+    ["python", "django", "fastapi", "flask", "pyramid"],
+    ["dotnet", "aspnet", "blazor"],
+    ["java", "spring", "jakarta", "quarkus"],
+    ["ruby", "rails", "sinatra"],
+    ["go", "gin", "echo", "fiber", "gostd"],
+    ["rust", "actix", "axum", "rocket"],
+    ["infra", "wazuh", "elk", "promgraf", "tick"]
+  ],
+  "nodes": {
+    "js": ["JS / TS", "", ["javascript", "typescript"], "out", "https://en.wikipedia.org/wiki/JavaScript"],
+    "mean": ["MEAN", "", ["mongodb", "express", "angular", "nodejs"], "tech", "https://www.mongodb.com/resources/languages/mean-stack"],
+    "mern": ["MERN", "", ["mongodb", "express", "react", "nodejs"], "tech", "https://www.mongodb.com/resources/languages/mern-stack"],
+    "mevn": ["MEVN", "", ["mongodb", "express", "vue", "nodejs"], "tech", "https://www.mongodb.com/resources/languages/mern-stack"],
+    "pern": ["PERN", "", ["postgresql", "express", "react", "nodejs"], "tech", "https://www.digitalocean.com/community/tutorials/how-to-build-a-pern-stack-application"],
+    "nextjs": ["Next.js", "", ["react", "nextdotjs", "nodejs"], "tech", "https://nextjs.org/"],
+    "t3": ["T3", "", ["typescript", "trpc", "prisma", "nextdotjs", "tailwindcss"], "tech", "https://create.t3.gg/"],
+    "jamstack": ["JAMstack", "", ["javascript", "jamstack"], "tech", "https://jamstack.org/what-is-jamstack/"],
+    "bun": ["Bun", "", ["bun", "sqlite"], "tech", "https://bun.sh/"],
+    "php": ["PHP", "", ["php"], "out", "https://en.wikipedia.org/wiki/PHP"],
+    "laravel": ["Laravel", "", ["php", "laravel"], "tech", "https://laravel.com/"],
+    "symfony": ["Symfony", "", ["php", "symfony"], "tech", "https://symfony.com/"],
+    "lamp": ["LAMP", "", ["linux", "apache", "mysql", "php"], "tech", "https://en.wikipedia.org/wiki/LAMP_(software_bundle)"],
+    "lemp": ["LEMP", "", ["linux", "nginx", "mysql", "php"], "tech", "https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-22-04"],
+    "wamp": ["WAMP", "", ["windows", "apache", "mysql", "php"], "tech", "https://en.wikipedia.org/wiki/WAMP"],
+    "wimp": ["WIMP", "", ["windows", "iis", "mysql", "php"], "tech", "https://learn.microsoft.com/en-us/iis/"],
+    "famp": ["FAMP", "", ["freebsd", "apache", "mysql", "php"], "tech", "https://en.wikipedia.org/wiki/FAMP"],
+    "xampp": ["XAMPP", "", ["apache", "mariadb", "php", "perl"], "tech", "https://www.apachefriends.org/"],
+    "python": ["Python", "", ["python"], "out", "https://en.wikipedia.org/wiki/Python_(programming_language)"],
+    "django": ["Django", "", ["python", "django"], "tech", "https://www.djangoproject.com/"],
+    "fastapi": ["FastAPI", "", ["python", "fastapi"], "tech", "https://fastapi.tiangolo.com/"],
+    "flask": ["Flask", "", ["python", "flask"], "tech", "https://flask.palletsprojects.com/"],
+    "pyramid": ["Pyramid", "", ["python", "pyramid"], "tech", "https://trypyramid.com/"],
+    "dotnet": [".NET", "", ["dotnet"], "out", "https://en.wikipedia.org/wiki/.NET"],
+    "aspnet": ["ASP.NET Core", "", ["dotnet"], "tech", "https://learn.microsoft.com/en-us/aspnet/core/"],
+    "blazor": ["Blazor", "", ["dotnet", "blazor"], "tech", "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor"],
+    "java": ["Java", "", ["openjdk"], "out", "https://en.wikipedia.org/wiki/Java_(programming_language)"],
+    "spring": ["Java-Spring", "", ["openjdk", "spring"], "tech", "https://spring.io/projects/spring-boot"],
+    "jakarta": ["Jakarta EE", "", ["openjdk", "jakartaee"], "tech", "https://jakarta.ee/"],
+    "quarkus": ["Quarkus", "", ["openjdk", "quarkus"], "tech", "https://quarkus.io/"],
+    "ruby": ["Ruby", "", ["ruby"], "out", "https://en.wikipedia.org/wiki/Ruby_(programming_language)"],
+    "rails": ["Ruby on Rails", "", ["ruby", "rubyonrails"], "tech", "https://rubyonrails.org/"],
+    "sinatra": ["Sinatra", "", ["ruby", "sinatra"], "tech", "https://sinatrarb.com/"],
+    "go": ["Go", "", ["go"], "out", "https://en.wikipedia.org/wiki/Go_(programming_language)"],
+    "gin": ["Gin", "", ["go", "gin"], "tech", "https://gin-gonic.com/"],
+    "echo": ["Echo", "", ["go", "echo"], "tech", "https://echo.labstack.com/"],
+    "fiber": ["Fiber", "", ["go", "fiber"], "tech", "https://docs.gofiber.io/"],
+    "gostd": ["Go Stdlib", "", ["go"], "tech", "https://go.dev/"],
+    "rust": ["Rust", "", ["rust"], "out", "https://en.wikipedia.org/wiki/Rust_(programming_language)"],
+    "actix": ["Actix Web", "", ["rust", "actix"], "tech", "https://actix.rs/"],
+    "axum": ["Axum", "", ["rust", "axum"], "tech", "https://github.com/tokio-rs/axum"],
+    "rocket": ["Rocket", "", ["rust", "rocket"], "tech", "https://rocket.rs/"],
+    "infra": ["Infra", "", "server", "out", "https://en.wikipedia.org/wiki/IT_infrastructure"],
+    "wazuh": ["Wazuh", "", ["wazuh-manager", "wazuh-indexer", "wazuh-dashboard"], "tech", "https://wazuh.com/"],
+    "elk": ["Elastic Stack (ELK)", "", ["elasticsearch", "logstash", "kibana"], "tech", "https://www.elastic.co/elastic-stack"],
+    "promgraf": ["Prometheus + Grafana", "", ["prometheus", "grafana"], "tech", "https://prometheus.io/"],
+    "tick": ["TICK Stack", "", ["telegraf", "influxdb", "chronograf", "kapacitor"], "tech", "https://docs.influxdata.com/influxdb/v2/get-started/"]
+  },
+  "root": ["Solution Stack", "", "layers", "out", "https://en.wikipedia.org/wiki/Solution_stack"]
+}
+```
+
+### 1. JavaScript & TypeScript Stack
+
+Ang stack na ito ay gumagamit ng JavaScript o TypeScript upang bumuo ng parehong user interface (frontend) at server logic (backend). Sa tulong ng Node.js, Bun, o Deno, ang JavaScript ay maaaring tumakbo sa server, na nagpapahintulot sa isang wika na masakop ang kabuuang stack ng aplikasyon.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [MEAN](https://www.mongodb.com/resources/languages/mean-stack) | [MongoDB](https://www.mongodb.com/), [Express.js](https://expressjs.com/), [Angular](https://angular.dev/), [Node.js](https://nodejs.org/) | Gumagamit ng Angular para sa SPA frontend, Express.js bilang backend framework, Node.js bilang runtime, at MongoDB bilang NoSQL database. Angkop para sa enterprise applications na nangangailangan ng matibay na estruktura at built-in na suporta sa TypeScript sa pamamagitan ng Angular. |
+| [MERN](https://www.mongodb.com/resources/languages/mern-stack) | [MongoDB](https://www.mongodb.com/), [Express.js](https://expressjs.com/), [React](https://react.dev/), [Node.js](https://nodejs.org/) | Gumagamit ng React para sa component-based na frontend, Express.js para sa API backend, Node.js bilang runtime, at MongoDB bilang database. Lubos na popular para sa modernong web at mobile backends dahil sa flexibility ng React at malawak na npm ecosystem. |
+| [MEVN](https://www.mongodb.com/resources/languages/mern-stack) | [MongoDB](https://www.mongodb.com/), [Express.js](https://expressjs.com/), [Vue.js](https://vuejs.org/), [Node.js](https://nodejs.org/) | Gumagamit ng Vue.js bilang progressive frontend framework, Express.js para sa backend, Node.js bilang runtime, at MongoDB bilang database. Kilala sa pagiging magaan, madaling matutunan, at reaktibo na angkop para sa medium-scale na mga aplikasyon. |
+| [PERN](https://www.digitalocean.com/community/tutorials/how-to-build-a-pern-stack-application) | [PostgreSQL](https://www.postgresql.org/), [Express.js](https://expressjs.com/), [React](https://react.dev/), [Node.js](https://nodejs.org/) | Pinapalitan ang MongoDB ng PostgreSQL na relational (ACID-compliant) na database, habang pinapanatili ang React, Express.js, at Node.js. Angkop para sa mga aplikasyon na nangangailangan ng integridad ng datos, masalimuot na queries, at mahigpit na relasyon sa pagitan ng mga talahanayan. |
+| [Next.js Stack](https://nextjs.org/) | [Next.js](https://nextjs.org/), [React](https://react.dev/), [Node.js](https://nodejs.org/), PostgreSQL o MySQL | Isang React framework na sumusuporta sa Server-Side Rendering (SSR), Static Site Generation (SSG), at API routes sa isang proyekto lamang. Angkop para sa SEO-driven na mga aplikasyon, mabilis na pag-load ng pahina, at full-stack na pag-develop sa iisang repository. |
+| [T3 Stack](https://create.t3.gg/) | [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/), [tRPC](https://trpc.io/), [Next.js](https://nextjs.org/), [Prisma](https://www.prisma.io/), [PostgreSQL](https://www.postgresql.org/) | Isang full-stack TypeScript stack na nagpapatupad ng end-to-end na type safety mula database hanggang frontend. Inaalis ng tRPC ang pangangailangan na manu-manong bumuo ng REST APIs, ang Prisma ay nagbibigay ng type-safe na ORM, at ang Tailwind ay humahawak sa styling. Angkop para sa mga koponan na binibigyang-priyoridad ang type safety at mabilis na pag-develop. |
+| [JAMstack](https://jamstack.org/what-is-jamstack/) | JavaScript, API, Markup | Isang architectural approach na naghihiwalay sa frontend markup sa backend. Ang JavaScript ay tumatakbo sa client, ang datos ay kinukuha sa pamamagitan ng APIs, at ang markup ay pre-built sa panahon ng build. Angkop para sa content sites, static e-commerce, at mga aplikasyon na nangangailangan ng mataas na seguridad at scalability nang walang tradisyonal na server. |
+| [Bun Stack](https://bun.sh/) | [Bun](https://bun.sh/), [Elysia](https://elysiajs.com/) o [Hono](https://hono.dev/), SQLite o PostgreSQL, React o Vue | Gumagamit ng Bun bilang JavaScript runtime na pumapalit sa Node.js na may mas mabilis na startup at mas mababang memory usage. Pinagsasama sa mga lightweight na framework tulad ng Elysia o Hono at relational database. Angkop para sa microservices, serverless, at mga aplikasyon na sensitibo sa latency o resources. Ang ecosystem nito ay mas bata pa kumpara sa Node.js. |
+
+### 2. PHP Stack
+
+Ang PHP-centric na stack ay karaniwang ginagamit sa web development, kadalasang pinapatakbo sa server kasama ang web server at relational database.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [Laravel](https://laravel.com/) | [PHP](https://www.php.net/), [Laravel](https://laravel.com/docs), MySQL o PostgreSQL, Nginx o Apache | Isang modernong PHP framework na nag-aalok ng routing, authentication, Eloquent ORM, Blade templating, at iba pa. Angkop para sa web applications mula sa maliliit na proyekto hanggang sa malalaking sistema, na may malawak na dokumentasyon at organisadong paraan ng pag-develop. |
+| [Symfony](https://symfony.com/) | [PHP](https://www.php.net/), [Symfony](https://symfony.com/doc/current/index.html), iba't ibang database, Nginx o Apache | Isang modular at reusable na set ng PHP components na malawakang ginagamit bilang pundasyon ng maraming framework, kabilang ang Laravel. Lubos na flexible at angkop para sa malalaking enterprise applications na nangangailangan ng ganap na kontrol sa arkitektura. |
+| [LAMP](https://cloud.google.com/mysql/lamp) | [Linux](https://www.kernel.org/), [Apache](https://httpd.apache.org/), [MySQL](https://mariadb.org/) o [MariaDB](https://mariadb.org/), [PHP](https://www.php.net/) | Ang klasikong stack para sa dynamic na web applications. Ang Linux ang OS, Apache ang web server, MySQL/MariaDB ang database, at PHP ang programming language. Malawak na suportado ng mga hosting provider at madaling i-deploy. |
+| [LEMP](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-22-04) | [Linux](https://www.kernel.org/), [Nginx](https://nginx.org/), [MySQL](https://mariadb.org/) o [MariaDB](https://mariadb.org/), [PHP](https://www.php.net/) | Isang variant ng LAMP na pumapalit sa Apache ng Nginx. Ang Nginx ay mas mahusay sa pag-handle ng concurrent connections at paglingkod ng static content, kaya angkop ito para sa high-traffic na mga aplikasyon o mga nangangailangan ng mas mahusay na performance ng web server. |
+| [WAMP](https://en.wikipedia.org/wiki/WAMP) | [Windows](https://www.microsoft.com/windows), [Apache](https://httpd.apache.org/), [MySQL](https://mariadb.org/) o [MariaDB](https://mariadb.org/), [PHP](https://www.php.net/) | Isang Windows-based na PHP stack na dinisenyo para sa local na pag-develop at pag-host. Angkop para sa mga environment na nakabatay sa Microsoft infrastructure. |
+| [WIMP](https://learn.microsoft.com/en-us/iis/) | [Windows](https://www.microsoft.com/windows), [IIS](https://www.iis.net/), [MySQL](https://mariadb.org/) o [MariaDB](https://mariadb.org/), [PHP](https://www.php.net/) | Isang Windows-based na stack na gumagamit ng IIS (Internet Information Services) bilang kapalit ng Apache. Angkop para sa mga organisasyon na integrated sa Microsoft ecosystem na gustong patakbuhin ang PHP sa Windows Server. |
+| [FAMP](https://en.wikipedia.org/wiki/FAMP) | [FreeBSD](https://www.freebsd.org/), [Apache](https://httpd.apache.org/), [MySQL](https://mariadb.org/) o [MariaDB](https://mariadb.org/), [PHP](https://www.php.net/) | Isang variant ng LAMP na gumagamit ng FreeBSD bilang operating system. Kilala sa stability, seguridad, at efficiency sa networking, kaya angkop ito para sa mga server kung saan priority ang robustness ng OS na nakabatay sa BSD. |
+| [XAMPP](https://www.apachefriends.org/) | Cross-platform, [Apache](https://httpd.apache.org/), [MariaDB](https://mariadb.org/) o [MySQL](https://mariadb.org/), [PHP](https://www.php.net/), [Perl](https://www.perl.org/) | Isang all-in-one, madaling i-install na web development package para sa Windows, Linux, at macOS. Pangunahing ginagamit para sa pag-aaral at local na prototyping bago i-deploy sa production. |
+
+### 3. Python Stack
+
+Isang Python-based na stack para sa web development, mula sa micro-framework hanggang sa full-stack framework na mayaman sa built-in na functionality.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [Django](https://www.djangoproject.com/) | [Python](https://www.python.org/), [Django](https://www.djangoproject.com/), PostgreSQL o MySQL, Nginx o Apache, Gunicorn | Isang "batteries included" na framework na nag-aalok ng admin panel, authentication, ORM, at matibay na seguridad na feature sa labas ng kahon. Angkop para sa malalaking web applications na nangangailangan ng mabilis na pag-develop at mataas na pamantayan ng seguridad. |
+| [FastAPI](https://fastapi.tiangolo.com/) | [Python](https://www.python.org/), [FastAPI](https://fastapi.tiangolo.com/), PostgreSQL o MySQL, Nginx, Uvicorn | Isang modernong API framework na may automatic na data validation sa pamamagitan ng Pydantic at interactive na dokumentasyon gamit ang Swagger/OpenAPI. Napakataas ng performance nito sa async support, kaya angkop ito para sa microservices at machine learning APIs. |
+| [Flask](https://flask.palletsprojects.com/) | [Python](https://www.python.org/), [Flask](https://flask.palletsprojects.com/), iba't ibang database, Nginx o Apache, Gunicorn | Isang lightweight, flexible na micro-framework na nagbibigay ng ganap na kontrol sa mga developer nang hindi nagpapataw ng rigid na estruktura. Angkop para sa maliliit na aplikasyon, prototypes, o mga serbisyo na nangangailangan ng maximum na customization. |
+| [Pyramid](https://trypyramid.com/) | [Python](https://www.python.org/), [Pyramid](https://trypyramid.com/), iba't ibang database | Isang flexible na framework na maaaring mag-scale mula sa minimal na aplikasyon hanggang sa malalaking sistema. Pinapayagan nito ang mga developer na pumili ng mga bahagi ayon sa pangangailangan at angkop ito para sa mga proyekto na unti-unting lumalaki sa paglipas ng panahon. |
+
+### 4. .NET Stack
+
+Binuo sa C# at sa .NET ecosystem, ang stack na ito ay ginagamit upang bumuo ng web applications, APIs, at backend services.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/) | [C#](https://learn.microsoft.com/en-us/dotnet/csharp/), [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/), SQL Server o PostgreSQL, IIS o Nginx | Isang high-performance, cross-platform na framework mula sa Microsoft para sa pagbuo ng web apps, REST APIs, at backend services. Tumatakbo sa Windows, Linux, at macOS, kaya angkop ito para sa mga enterprise environment sa loob ng Microsoft ecosystem. |
+| [Blazor Stack](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | [C#](https://learn.microsoft.com/en-us/dotnet/csharp/), [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor), [.NET](https://dotnet.microsoft.com/), SQL Server o PostgreSQL | Nagbibigay-daan sa interactive na web UI gamit ang C# sa halip na JavaScript, sa pamamagitan ng Blazor WebAssembly (client-side) o Blazor Server (server-side). Angkop para sa .NET teams na gustong bumuo ng rich na frontend nang hindi masyadong umaasa sa JavaScript. |
+
+### 5. Java Stack
+
+Isang stack na binuo sa Java, karaniwang ginagamit para sa scalable na backend systems at enterprise-grade na mga aplikasyon.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [Java-Spring](https://spring.io/projects/spring-boot) | [Java](https://dev.java/), [Spring Boot](https://spring.io/projects/spring-boot), iba't ibang database, Tomcat | Ang pinakakaraniwang ginagamit na Java framework para sa pagbuo ng backends at microservices. Pinapadali ng Spring Boot ang configuration at nagbibigay ng production-ready na mga feature tulad ng health checks, metrics, at externalized configuration. |
+| [Jakarta EE](https://jakarta.ee/) | [Java](https://dev.java/), [Jakarta EE](https://jakarta.ee/), iba't ibang database, application server | Isang open enterprise Java standard para sa malalaking aplikasyon, na sumasakop sa web, enterprise beans, at messaging. Karaniwang ginagamit sa banking, telecommunications, at public sector kung saan mahalaga ang open standards. |
+| [Quarkus](https://quarkus.io/) | [Java](https://dev.java/), [Quarkus](https://quarkus.io/), iba't ibang database | Isang Java framework na na-optimize para sa Kubernetes at serverless environment, na nag-aalok ng mabilis na startup time at mababang memory consumption. Angkop para sa cloud-native na microservices, lalo na kapag na-compile sa GraalVM native images. |
+
+### 6. Ruby Stack
+
+Isang stack na nakasentro sa Ruby, kilala sa matibay na konvensyon at pagbibigay-diin sa mabilis na web development.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [Ruby on Rails](https://rubyonrails.org/) | [Ruby](https://www.ruby-lang.org/), [Rails](https://guides.rubyonrails.org/getting_started.html), PostgreSQL o MySQL, Puma o Unicorn | Isang full-stack na framework na sumusunod sa "Convention over Configuration". Nagbibigay ito ng migrations, scaffolding, asset pipelines, at iba pa sa labas ng kahon. Angkop para sa startups at MVPs na nangangailangan ng pag-develop sa napakataas na bilis. |
+| [Sinatra](https://sinatrarb.com/) | [Ruby](https://www.ruby-lang.org/), [Sinatra](https://sinatrarb.com/), iba't ibang database | Isang minimal, lightweight na Ruby micro-framework. Angkop para sa pagbuo ng mga simpleng serbisyo, maliliit na APIs, o mga aplikasyon na hindi nangangailangan ng buong estruktura ng Rails. |
+
+### 7. Go Stack
+
+Isang stack na binuo sa Go (Golang), dinisenyo para sa high-performance na backends, APIs, at microservices.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [Gin](https://gin-gonic.com/) | [Go](https://go.dev/), [Gin](https://gin-gonic.com/), iba't ibang database | Isang mabilis, lightweight na web framework na katulad ng Express.js. Angkop para sa pagbuo ng REST APIs at microservices na may mataas na performance at mabilis na compilation. |
+| [Echo](https://echo.labstack.com/) | [Go](https://go.dev/), [Echo](https://echo.labstack.com/), iba't ibang database | Isang high-performance na framework na may mga malalaking feature tulad ng middleware, routing, and validation. Kilala sa mahusay na memory usage at angkop para sa high-throughput na mga aplikasyon. |
+| [Fiber](https://docs.gofiber.io/) | [Go](https://go.dev/), [Fiber](https://docs.gofiber.io/), iba't ibang database | Inspired ng Express.js at binuo sa ibabaw ng Fasthttp, ang Fiber ay napakabilis at napakagaan. Angkop para sa microservices at mga aplikasyon na kritikal sa low latency at minimal na resource usage. |
+| [Go Standard Library](https://go.dev/) | [Go](https://go.dev/), `net/http`, iba't ibang database | Isang framework-free na paraan gamit ang built-in na standard library ng Go. Nagbibigay ng maximum na kontrol, minimal na dependencies, at angkop para sa lightweight na mga aplikasyon nang walang unnecessary overhead. |
+
+### 8. Rust Stack
+
+Isang stack na binuo sa Rust, na binibigyang-priyoridad ang memory safety, concurrency, at system-level na performance.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [Actix Web](https://actix.rs/) | [Rust](https://www.rust-lang.org/), [Actix Web](https://actix.rs/), iba't ibang database | Isa sa mga pinakamabilis na web framework ng Rust, binuo sa actor model. Angkop para sa mga aplikasyon na nangangailangan ng memory safety, mataas na concurrency, at maximum na performance nang walang garbage collector. |
+| [Axum](https://github.com/tokio-rs/axum) | [Rust](https://www.rust-lang.org/), [Axum](https://github.com/tokio-rs/axum), [Tokio](https://tokio.rs/), iba't ibang database | Isang modular, type-safe na web framework mula sa Tokio ecosystem. Sinusuri nito ang async/await ng Rust at angkop para sa pagbuo ng mahusay at maayos na maipamamalas na asynchronous APIs. |
+| [Rocket](https://rocket.rs/) | [Rust](https://www.rust-lang.org/), [Rocket](https://rocket.rs/), iba't ibang database | Isang developer-friendly na Rust framework na binibigyang-diin ang ergonomics. Nagbibigay ng mga feature tulad ng templating, form handling, at database integration na may malinis at declarative na syntax. |
+
+### 9. Infrastructure at Observability
+
+Ang mga stack na ito ay nagsasama ng operating system, web server, database, o mga supporting tools para sa infrastructure management at application observability.
+
+
+
+| Stack | Mga Pangunahing Bahagi | Paglalarawan |
+| --- | --- | --- |
+| [Wazuh](https://wazuh.com/) | [Wazuh Server](https://documentation.wazuh.com/current/) (manager, indexer, dashboard), [Wazuh Agent](https://documentation.wazuh.com/current/), [Elasticsearch](https://www.elastic.co/elasticsearch) o [OpenSearch](https://opensearch.org/) (opsyonal), [Kibana](https://www.elastic.co/kibana) o [Wazuh Dashboard](https://documentation.wazuh.com/current/) (opsyonal) | Isang open-source na platform para sa intrusion detection, security monitoring (XDR/SIEM), log analysis, file integrity monitoring, at threat response. Angkop para sa centralized na security monitoring sa mga server at endpoints. |
+| [Elastic Stack (ELK)](https://www.elastic.co/elastic-stack) | [Elasticsearch](https://www.elastic.co/elasticsearch), [Logstash](https://www.elastic.co/logstash), [Kibana](https://www.elastic.co/kibana) | Ginagamit upang mangolekta, maghanap, magsuri, at mag-visualize ng mga log at system metrics. Angkop para sa monitoring, troubleshooting, at Security Information and Event Management (SIEM). |
+| [Prometheus + Grafana](https://prometheus.io/) | [Prometheus](https://prometheus.io/), [Grafana](https://grafana.com/), iba't ibang exporter | Isang open-source na monitoring stack na nangongolekta ng time-series metrics mula sa mga sistema at aplikasyon at nag-visualize nito sa pamamagitan ng Grafana dashboards. Angkop para sa infrastructure monitoring at alerting. |
+| [TICK Stack](https://docs.influxdata.com/influxdb/v2/get-started/) | [Telegraf](https://docs.influxdata.com/telegraf/), [InfluxDB](https://www.influxdata.com/products/influxdb/), [Chronograf](https://docs.influxdata.com/chronograf/), [Kapacitor](https://docs.influxdata.com/kapacitor/) | Isang stack para sa pagkolekta, pag-iimbak, pag-visualize, at pagproseso ng time-series data. Karaniwang ginagamit sa infrastructure monitoring, IoT, at pagsubaybay sa application metrics sa paglipas ng panahon. |
+
+> *Tala:* Ang pagpili ng tamang mga sangkap ay nagreresulta sa masarap na pagkain na nagpapanatili sa mga customer na bumalik. Gayunpaman, ang bawat pagpili ay may trade-off—ganun din sa technology stacks. Hindi ito isang kumpleto o obligatoryong listahan; ang mga bahagi sa loob ng isang stack ay maaaring palitan upang umangkop sa mga partikular na pangangailangan.
+
+## Pagpili ng Platform para Patakbuhin ang Stack
+
+Matapos pumili ng technology stack, ang susunod na hakbang ay tukuyin ang **platform kung saan tatakbo ang stack**. Ang mga pagpipilian ay mula sa pisikal na server (_bare metal_), _virtual machine_ (VM), _container_, hanggang sa mga cloud service tulad ng PaaS at _serverless_.
+
+Sa konteksto ng server, ang pagpiling ito ang magtatakda kung paano tatakbo ang aplikasyon, paano ipapamigay ang mga computing resource, at paano pamamahalaan ang imprastruktura. Sanggunian: [Wikipedia — Computing platform](https://en.wikipedia.org/wiki/Computing_platform).
+
+```topology
+{
+  "vertical": true,
+  "title": "Pagpili ng Platform para Patakbuhin ang Stack",
+  "legend": {
+    "flow": "Daloy ng data"
+  },
+  "facilities": ["Mga Papel", ["git-branch", "Choice"], ["server", "Platform"], ["layers", "Application"]],
+  "columns": [["B"], {"nodes": ["C", "D", "E", "F", "G", "H", "J", "K", "L"], "grid": 3}, ["I"]],
+  "nodes": {
+    "B": ["Saan ito patatakbuhin?", "", "git-branch", "choice", "https://en.wikipedia.org/wiki/Deployment_environment"],
+    "C": [
+      "Bare Metal",
+      "Bumuo ng sarili mong karinderya",
+      "hard-drive",
+      "host",
+      "https://en.wikipedia.org/wiki/Bare-metal_server"
+    ],
+    "D": [
+      "Virtual Machine",
+      "Umupa ng pribadong kwarto",
+      "monitor",
+      "host",
+      "https://en.wikipedia.org/wiki/Virtual_machine"
+    ],
+    "E": [
+      "Server Virtualization",
+      "Pangasiwaan ang maraming kwarto sa isang tanggapan",
+      "server-cog",
+      "host",
+      "https://en.wikipedia.org/wiki/Server_virtualization"
+    ],
+    "F": [
+      "Container",
+      "Umupa ng stall sa food court",
+      "si-docker",
+      "host",
+      "https://en.wikipedia.org/wiki/Operating-system-level_virtualization"
+    ],
+    "G": [
+      "PaaS",
+      "Sumali sa ready-to-use na franchise",
+      "cloud",
+      "host",
+      "https://en.wikipedia.org/wiki/Platform_as_a_service"
+    ],
+    "H": [
+      "Serverless",
+      "Buksan ang stall lamang kapag may order",
+      "zap",
+      "host",
+      "https://en.wikipedia.org/wiki/Serverless_computing"
+    ],
+    "J": [
+      "Shared Hosting",
+      "Karinderya sa bangketa na pinagsasaluhan",
+      "globe",
+      "host",
+      "https://en.wikipedia.org/wiki/Shared_web_hosting_service"
+    ],
+    "K": [
+      "Managed Hosting",
+      "Umupa ng tindahan na may manager",
+      "settings",
+      "host",
+      "https://en.wikipedia.org/wiki/Managed_hosting"
+    ],
+    "L": [
+      "Edge Computing",
+      "Gumamit ng food cart malapit sa mga customer",
+      "radio",
+      "host",
+      "https://en.wikipedia.org/wiki/Edge_computing"
+    ],
+    "I": [
+      "Lahat ng bahagi ng stack",
+      "tumatakbo sa iisang lugar",
+      "layers",
+      "out",
+      "#isang-server-isang-stack"
+    ]
+  },
+  "edges": [
+    ["B", "C"],
+    ["B", "D"],
+    ["B", "E"],
+    ["B", "F"],
+    ["B", "G"],
+    ["B", "H"],
+    ["B", "J"],
+    ["B", "K"],
+    ["B", "L"],
+    ["C", "I"],
+    ["D", "I"],
+    ["E", "I"],
+    ["F", "I"],
+    ["G", "I"],
+    ["H", "I"],
+    ["J", "I"],
+    ["K", "I"],
+    ["L", "I"]
+  ]
+}
+```
+
+Isipin mo na nakakuha ka na ng resipe, mga sangkap, at mga kagamitan upang magbukas ng karinderya. Ngayon, kailangan mong magpasya kung saan ito mag-ooperate: bumuo ng sarili mong lugar, umupa ng puwang, makipag-share ng mga pasilidad sa iba pang mga vendor, o magbukas ng pansamantala lamang ayon sa pangangailangan.
+
+Sa mundo ng server, ang mga pagpipilian na ito ay may katumbas na pagkakatulad:
+
+| Environment | Analohiya sa Karinderya | Paglalarawan | Mga Halimbawa |
+| --- | --- | --- | --- |
+| **Bare Metal / Dedicated Server** | Bumuo ng karinderya sa sariling lupa. May ganap kang kontrol sa lahat, mula sa dingding hanggang sa kalan. | Ang OS at mga aplikasyon ay direktang tumatakbo sa pisikal na hardware nang walang hypervisor. | [IBM Bare Metal Servers](https://www.ibm.com/think/topics/bare-metal-servers), [OVHcloud Dedicated Server](https://www.ovhcloud.com/en/bare-metal/) |
+| **Virtual Machine (VM) - Desktop** | Umupa ng pribadong kwarto sa boarding house. Sarili mo lamang ito, at maaari mo itong i-reset anumang oras kung may mangyari. | Isang virtual na computer na may sariling OS na tumatakbo sa personal mong makina. | [VirtualBox](https://www.virtualbox.org/), [VMware Workstation](https://www.vmware.com/products/workstation-pro.html), [VMware Fusion](https://www.vmware.com/products/fusion.html) |
+| **Server Virtualization Platform** | Ang may-ari ng boarding house ay namamahala ng dose-dosenang kwarto mula sa isang central office. | Namamahala ng maramihang VM sa production server sa pamamagitan ng centralized na interface. | [VMware vSphere / ESXi](https://www.vmware.com/products/vsphere.html), [Proxmox VE](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) |
+| **Container** | Umupa ng stall sa food court. Nagbabahagi ka ng mga pasilidad sa kusina, ngunit ang iyong stall ay hiwalay at madaling ilipat. | Ang mga aplikasyon ay tumatakbo sa mga hiwalay na package na nagbabahagi ng host OS kernel. | [Docker](https://www.docker.com/), [Podman](https://podman.io/) |
+| **PaaS (Platform as a Service)** | Magbukas ng ready-to-use na franchise. Dalhin lamang ang iyong resipe; ang tindahan, kuryente, at infrastructure ay ibinibigay na. | Pinamamahalaan ng provider ang infrastructure; kailangan mo lamang na i-upload ang iyong code. | [Heroku](https://www.heroku.com/), [Render](https://render.com/), [Railway](https://railway.app/) |
+| **Serverless / FaaS** | Isang pop-up stall sa isang event. Buksan lamang kapag may customer, isara kapag wala, at bayaran ayon sa order. | Ang code ay tumatakbo on demand nang walang permanenteng server na pinamamahalaan. | [AWS Lambda](https://aws.amazon.com/lambda/), [Azure Functions](https://learn.microsoft.com/azure/azure-functions/), [Cloudflare Workers](https://workers.cloudflare.com/) |
+| **Shared Hosting** | Isang stall sa gilid ng kalsada na pinagsasaluhan ng maraming vendor. Mura, ngunit siksikan at limitado ang kontrol. | Maramihang user ang nagbabahagi ng parehong server resources. | [cPanel](https://cpanel.net/), [Hostinger](https://www.hostinger.com/) |
+| **Managed Hosting** | Umupa ng tindahan na may manager na humahawak sa pang-araw-araw na operasyon. | Karamihan ng server management at operasyon ay pinamamahalaan ng provider. | [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/), [DigitalOcean App Platform](https://www.digitalocean.com/products/app-platform) |
+| **Edge Computing** | Isang food cart na nakaparada malapit sa mga customer upang mas mabilis na maihain ang pagkain. | Ang pagproseso ay isinasagawa nang mas malapit sa mga user upang mabawasan ang latency. | [Cloudflare Workers](https://workers.cloudflare.com/), [AWS Wavelength](https://aws.amazon.com/wavelength/) |
+
+### Mga Pangunahing Pagkakaiba
+
+- **VMware Workstation at Fusion** ay para sa lokal na desktop virtualization, angkop para sa pag-aaral sa bahay.
+- **VMware ESXi/vSphere at Proxmox VE** ay para sa production server virtualization, angkop para sa pamamahala ng maraming VM sa malaking sukat.
+- **Bare Metal** ay tumutukoy sa system na direktang tumatakbo sa pisikal na hardware. Ang **Dedicated Server** naman ay tumutukoy sa pisikal na server na eksklusibong inuupahan sa isang customer. Magkaugnay ang mga ito, ngunit hindi magkapareho.
+
+### Kaugnayan sa Single-Tier Stack
+
+Ang arkitekturang **single-tier** ay nangangahulugan na ang lahat ng bahagi ng stack ([web server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server), [application runtime](https://en.wikipedia.org/wiki/Runtime_system), at [database](https://en.wikipedia.org/wiki/Database)) ay nasa **iisang lugar** — halimbawa, sa loob ng isang VM, isang _container_, o isang pisikal na server.
+
+Gayunpaman, ang single-tier ay **hindi nangangailangan** ng VM o _container_. Maaari rin itong patakbuhin sa _bare metal_, _dedicated server_, o kahit sa PaaS, hangga't ang lahat ng bahagi ay nananatili sa iisang platform.
+
+Mahalaga na pag-iba-ibahin ang mga sumusunod:
+
+- **Platform** = lugar kung saan tatakbo ang stack (_bare metal_, VM, _container_, PaaS, _serverless_, atbp.).
+- **Tier architecture** = paraan ng paghahati ng mga bahagi ng aplikasyon (_single-tier_, _multi-tier_, atbp.).
+
+Ang pagpili ng platform ay nakakaapekto sa gastos sa pagpapatakbo, kakayahang umangkop, scalability, seguridad, at maintainability. Walang iisang pinakamainam na opsyon — ito ay nakadepende sa pangangailangan ng proyekto.
+
+## Mga Tip para sa Pagsisimula
+
+1. **Unawain ang daloy ng aplikasyon**  
+   Alamin kung paano nagpapadala ang browser ng [HTTP request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) sa [web server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server), paano ito pinoproseso ng aplikasyon, paano ito nakikipag-ugnayan sa [database](https://en.wikipedia.org/wiki/Database) kung kinakailangan, at kung paano ito bumabalik bilang [HTTP response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). Subukan ang isang simpleng aplikasyon at obserbahan ang mga status code tulad ng `200 OK`, `404 Not Found`, at `500 Internal Server Error` upang makilala ang pagkakaiba ng matagumpay at hindi matagumpay na kahilingan.  
+   Sanggunian: [MDN — Paano Gumagana ang Web](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works)
+
+2. **Pumili ng angkop na *technology stack***  
+   Pumili ng *stack* batay sa pangangailangan ng aplikasyon, kakayahan ng koponan, dokumentasyon, seguridad, performance, at gastos. Para sa pag-aaral, mas mainam na magsimula sa simpleng *stack* tulad ng [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) o [LEMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)#LEMP) para sa PHP, o [MERN](https://www.mongodb.com/resources/languages/mern-stack) para sa JavaScript. Unawain muna ang tungkulin ng bawat bahagi bago magdagdag ng karagdagang teknolohiya.
+
+3. **Magsimula sa lokal na kapaligiran**  
+   Bago ito i-deploy sa pampublikong server, buuin at patakbuhin ang *stack* sa iyong sariling kompyuter gamit ang lokal na instalasyon, [VirtualBox](https://www.virtualbox.org/) para sa *virtual machine* (VM), o [Docker](https://www.docker.com/) para sa *container*. Subukan itong patakbuhin, ihinto, at patakbuhin muli upang maunawaan ang configuration, dependencies, at resource na kinakailangan.  
+   Pansinin ang pagkakaiba: ang VM ay may sariling guest OS, samantalang ang *container* ay nagbabahagi ng kernel ng *host*.  
+   Sanggunian: [Docker — What is a Container?](https://www.docker.com/resources/what-container/)
+
+4. **Subukan ang aplikasyon matapos itong patakbuhin**  
+   Hindi sapat na gumagana ang stack — kailangang siguraduhin na tama rin ang aplikasyon. I-access ito sa browser, suriin ang HTTP response, tiyakin na naproseso ng maayos ang kahilingan, at subukan ang read/write sa database kung kinakailangan.  
+   Upang sanayin ang *troubleshooting*, ihinto ang isa sa mga bahagi sa test environment, obserbahan ang errors at logs, pagkatapos ay patakbuhin ito muli at tiyakin na nakabangon nang maayos ang aplikasyon.  
+   Sanggunian: [Docker — Run Your First Container](https://docs.docker.com/get-started/)
+
+5. **Unawain ang HTTP at HTTPS bago magpatupad ng TLS**  
+   Magsimula sa pag-aaral ng pagkakaiba ng HTTP at HTTPS. Sa test environment, i-access ang aplikasyon sa HTTP, pagkatapos ay paganahin ang HTTPS gamit ang test certificate. Obserbahan ang pagkakaiba ng protocol, certificate validation, at mga babala ng browser sa mga hindi pinagkakatiwalaang o invalid na certificate.  
+   Kapag naunawaan na ito, gumamit ng valid na certificate para sa HTTPS bago ilantad ang website sa publiko. Pinoprotektahan ng [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) ang komunikasyon sa pamamagitan ng encryption, server authentication, at data integrity, ngunit hindi nito awtomatikong sinisiguro ang seguridad ng application code, authentication, o database.  
+   Sanggunian: [OWASP — Transport Layer Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html)
+
+6. **Sukatin ang performance bago mag-optimize**  
+   Itala ang CPU, RAM, disk usage, response time, at logs habang normal na tumatakbo ang aplikasyon. Pagkatapos, magsagawa ng controlled load test at ihambing ang resulta. Obserbahan kung tataas ang resource usage o babagal ang response time.  
+   Kung may suliranin, baguhin lamang ang isang bagay sa bawat pagkakataon, sukatin muli, at huwag agad magdagdag ng [cache](https://en.wikipedia.org/wiki/Cache_(computing)) o resources nang hindi batay sa datos.  
+   Sanggunian: [Prometheus — Overview](https://prometheus.io/docs/introduction/overview/)
+
+7. **Subukan ang cache at backup recovery**  
+   Kung madalas basahin ang parehong data, ihambing ang response time at database load bago at pagkatapos gumamit ng cache. Siguruhin na nananatiling consistent ang data sa cache kapag nagbago ang orihinal na data.  
+   Para sa mahahalagang data, gumawa ng backup ng database at app files, at subukan itong i-restore sa test environment. Tiyakin na nababasa at magagamit muli ang restored na data — ang pagkakaroon lamang ng backup ay hindi sapat na patunay na kaya itong ma-restore nang maayos.  
+   Sanggunian: [PostgreSQL — Backup and Restore](https://www.postgresql.org/docs/current/backup.html)
+
+8. **Idokumento ang configuration at mga pagbabago**  
+   Itala ang bersyon ng software, dependencies, mahahalagang configuration, at mga hakbang sa pagpapatakbo ng aplikasyon. Gumamit ng [Git](https://git-scm.com/) upang subaybayan ang mga pagbabago sa code.  
+   Bilang pagsasanay, subukan na muling buuin ang environment batay lamang sa dokumentasyon — kung kaya mong gawin ito nang hindi umaasa sa memorya, sapat na ang dokumentasyon.  
+   Sanggunian: [Pro Git — About Version Control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+
+9. **Alamin ang mga limitasyon ng single-tier stack**  
+   Sa single-tier na arkitektura, ang [web server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server), [application runtime](https://en.wikipedia.org/wiki/Runtime_system), at [database](https://en.wikipedia.org/wiki/Database) ay sabay-sabay na tumatakbo sa iisang makina. Kaya't ang pagkasira o pagkaubos ng resources sa makinang iyon ay maaaring makaapekto sa buong aplikasyon.  
+   Subukan ito sa ligtas na test environment sa pamamagitan ng paghinto sa isa sa mga bahagi o pagsagawa ng load simulation.  
+   Kung lumalaki na ang pangangailangan ng aplikasyon, suriin ang mga opsyon tulad ng optimization, capacity upgrade, redundancy, o paghihiwalay ng mga bahagi batay sa nasusukat na pangangailangan, availability goals, at gastos.  
+   Sanggunian: [Red Hat — What Is High Availability?](https://www.redhat.com/en/topics/availability/what-is-high-availability)
+
+## Formula sa Pagpili ng Stack at Deployment Environment
+
+- **Para sa pag-aaral:** personal na interes + kadalian ng paggamit + dokumentasyon + availability ng mga learning resources.
+- **Para sa bagong proyekto:** pangangailangan ng aplikasyon + dami at pattern ng mga user + kakayahan ng koponan + seguridad + performance testing + operational costs.
+- **Para sa paglipat ng stack o deployment:** mga isyu sa kasalukuyang sistema + nasusukat na benepisyo ng paglipat + gastos at panganib + compatibility + epekto sa mga user + long-term na suporta.
+
+**Sa esensya:** Pumili ng iyong stack at deployment environment batay sa pangangailangan ng aplikasyon, sukat ng mga user, kakayahan ng koponan, seguridad, gastos, at mga resulta ng pagsubok. Upang matuto mula sa real-world na praktika, pag-aralan ang mga engineering case studies mula sa mga kumpanya na nakaharap sa mga katulad na hamon.
+
+### Mga Sanggunian sa Stack sa Tunay na Mundo
+
+Ang pagpili ng technology stack ay maaaring nakakalito dahil sa napakaraming wika, framework, database, at mga tool na magagamit. Higit pa sa paghahambing ng mga feature, ang pagkatuto mula sa mga kumpanya na nakabuo at nagpatakbo ng mga sistema sa malakiang sukat ay napakahalaga:
+
+- [Uber Engineering](https://www.uber.com/us/en/blog/engineering/) — Arkitektura ng backend at scalability
+- [Shopify Engineering](https://shopify.engineering/) — Monoliths at database scalability
+- [Cloudflare Blog](https://blog.cloudflare.com/) — Infrastructure ng server at networking
+- [Netflix TechBlog](https://netflixtechblog.medium.com/) — Distributed systems at reliability
+- [Stripe Engineering](https://stripe.com/blog/engineering) — Backend, APIs, at data consistency
+- [Discord Blog](https://discord.com/category/engineering) — Real-time systems at performance optimization
+- [AWS Architecture Blog](https://aws.amazon.com/blogs/architecture/) — Cloud architecture at pag-deploy
+
+**Tip:** Bigyang-pansin ang dahilan sa likod ng mga pagpili ng teknolohiya, ang mga problemang naranasan, at ang mga trade-off na isinasaalang-alang. Gawing gabay ang kanilang karanasan, at i-adjust ito upang umangkop sa pangangailangan ng iyong sariling proyekto.
+
+## Konklusyon
+
+Ang **Server Single-Tier Stack** ay isang arkitektura kung saan ang mga pangunahing bahagi ng aplikasyon—[web server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server), [application runtime](https://en.wikipedia.org/wiki/Runtime_system), at [database](https://en.wikipedia.org/wiki/Database)—ay sabay-sabay na tumatakbo sa iisang makina lamang.
+
+Katulad ito ng isang karinderya na nasa iisang lugar: ang browser ay nagpapadala ng [HTTP Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) sa server, pinoproseso ito ng aplikasyon (at kumukuha ng datos mula sa database kung kinakailangan), at ibinabalik ang resulta bilang [HTTP Response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) sa gumagamit.
+
+Sa pamamagitan ng pagkakaiba ng *mga pangunahing bahagi* (OS, web server, application runtime, at database) at *mga komponenteng pantulong* (web client, TLS & TLS certificate, at cache), mas madali nating matutukoy kung ano ang kinakailangan para gumana ang aplikasyon at kung ano ang maaaring idagdag para mapataas ang seguridad, performance, o karanasan ng gumagamit.
+
+Marami nang pagpipilian na *technology stack* gaya ng LAMP, MERN, Django, Spring Boot, at iba pa na maaaring piliin ayon sa pangangailangan. Maaari rin itong patakbuhin sa iba't ibang *platform* tulad ng *bare metal*, VM, *container*, PaaS, at *serverless*.
+
+Bagama't simple, madali matutunan, i-configure, at i-test, ang arkitekturang ito ay may limitadong resources at may panganib na maging *Single Point of Failure* (SPOF) dahil ang lahat ng bahagi ay nakadepende sa iisang makina lamang.
+
+**Sa madaling salita:** Magsimula sa *single-tier* na arkitektura upang magkaroon ng matibay na pundasyon sa pag-unawa kung paano gumagana ang server. Piliin ang angkop na *stack* at *platform*, sundin ang mga pinakamahusay na kasanayan sa seguridad, magsagawa ng sapat na pagsubok, at gumawa ng dokumentasyon. Kapag lumaki na ang aplikasyon at nangangailangan ng mas mataas na scalability at availability, saka lamang isaalang-alang ang paglipat sa *multi-tier* na arkitektura.

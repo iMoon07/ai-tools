@@ -3,7 +3,7 @@ import json, subprocess, time, urllib.parse, urllib.request, base64, shutil, os
 MD = "http://127.0.0.1:8123/docs/Experiments/foundations/server-architecture/server-single-tier-stack-en.md"
 PAGE = "http://127.0.0.1:8123/read.html?url=" + urllib.parse.quote(MD, safe="")
 PORT = 9421
-PROF = "/tmp/kilo/prof-shot"
+PROF = "/tmp/alur-probes/prof-shot"
 shutil.rmtree(PROF, ignore_errors=True)
 proc = subprocess.Popen(["chromium", "--headless=new", f"--remote-debugging-port={PORT}",
     f"--user-data-dir={PROF}", "--no-first-run", "--no-default-browser-check",
@@ -44,7 +44,7 @@ pad = 16
 shot = send("Page.captureScreenshot", format="png", captureBeyondViewport=False,
             clip={"x": max(0, b["x"] - pad), "y": max(0, b["y"] - pad),
                   "width": b["w"] + 2 * pad, "height": b["h"] + 2 * pad, "scale": 1})
-out = "/tmp/kilo/core-components.png"
+out = "/tmp/alur-probes/core-components.png"
 open(out, "wb").write(base64.b64decode(shot["data"]))
 print(out, os.path.getsize(out), "bytes")
 proc.terminate()

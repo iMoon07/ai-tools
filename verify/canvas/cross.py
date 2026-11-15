@@ -1,5 +1,5 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil, websocket
-PORT=9614; PROF="/tmp/kilo/prof-cross"
+PORT=9614; PROF="/tmp/alur-probes/prof-cross"
 shutil.rmtree(PROF, ignore_errors=True)
 proc=subprocess.Popen(["chromium","--headless=new",f"--remote-debugging-port={PORT}",
  f"--user-data-dir={PROF}","--no-first-run","--no-default-browser-check","--disable-gpu",

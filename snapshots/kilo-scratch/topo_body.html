@@ -1,0 +1,710 @@
+<style>
+  :root {
+    --bg: #0a0e13;
+    --bg-2: #0e141b;
+    --bg-3: #131b25;
+    --panel: #0f151d;
+    --line: #1e2833;
+    --line-2: #2b3948;
+    --text: #e6edf3;
+    --muted: #93a1b1;
+    --dim: #66748a;
+    --accent: #58a6ff;
+    --accent-ink: #06101c;
+    --back: #3fb950;
+    --danger: #f85149;
+    --bar: 52px;
+    --panel-h: 0px;
+    --r-sm: 8px;
+    --r: 12px;
+    --ring: 0 0 0 3px rgba(88, 166, 255, 0.22);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 13px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  .mono, code, kbd, .inp.code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  /* =============================================================== top bar */
+
+  .topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--bar);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px 0 12px;
+    background: rgba(10, 14, 19, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    z-index: 60;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .brand-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--line-2);
+  }
+
+  .brand-name {
+    font-size: 13px;
+    font-weight: 680;
+    letter-spacing: -0.15px;
+    white-space: nowrap;
+  }
+
+  .brand-name span { color: var(--accent); }
+
+  .doc-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 380px;
+    height: 30px;
+    padding: 0 9px;
+    border: 1px solid transparent;
+    border-radius: var(--r-sm);
+    background: transparent;
+    color: var(--text);
+    font: 600 13.5px/1 inherit;
+  }
+
+  .doc-title:hover { background: var(--bg-3); }
+
+  .doc-title:focus {
+    outline: none;
+    background: var(--bg-3);
+    border-color: var(--accent);
+    box-shadow: var(--ring);
+  }
+
+  .top-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 22px;
+    padding: 0 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--muted);
+    font-size: 10.5px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  .top-status::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--back);
+  }
+
+  .top-nav { display: flex; gap: 2px; margin-left: auto; flex: 0 0 auto; }
+
+  .top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 30px;
+    padding: 0 9px;
+    border-radius: var(--r-sm);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 550;
+    white-space: nowrap;
+  }
+
+  .top-link:hover { background: var(--bg-3); color: var(--text); }
+
+  /* ================================================================ buttons */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 11px;
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-sm);
+    background: var(--bg-3);
+    color: var(--text);
+    font: 600 12px/1 inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.14s, border-color 0.14s, color 0.14s, transform 0.1s;
+  }
+
+  .btn:hover { background: #18222e; border-color: #3a4c60; }
+  .btn:active { transform: translateY(1px); }
+  .btn:focus-visible { outline: none; box-shadow: var(--ring); }
+
+  .btn--primary { background: var(--accent); border-color: transparent; color: var(--accent-ink); }
+  .btn--primary:hover { background: #79b8ff; border-color: transparent; }
+
+  .btn--ghost { background: transparent; border-color: transparent; color: var(--muted); }
+  .btn--ghost:hover { background: var(--bg-3); color: var(--text); }
+
+  .btn--sm { height: 28px; padding: 0 9px; font-size: 11.5px; }
+
+  .btn--icon { width: 28px; padding: 0; }
+
+  .btn--danger { color: var(--danger); background: transparent; border-color: transparent; }
+  .btn--danger:hover { background: rgba(248, 81, 73, 0.12); color: #ff7b72; }
+
+  /* ================================================================= canvas */
+
+  #stage {
+    position: fixed;
+    top: var(--bar);
+    left: 0;
+    right: 0;
+    bottom: var(--panel-h);
+    overflow: auto;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(rgba(88, 166, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88, 166, 255, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: -1px -1px;
+    transition: bottom 0.2s ease;
+  }
+
+  #stage.is-guides {
+    background-image:
+      linear-gradient(rgba(88, 166, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88, 166, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(rgba(88, 166, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88, 166, 255, 0.1) 1px, transparent 1px);
+    background-size: 22px 22px, 22px 22px, 110px 110px, 110px 110px;
+  }
+
+  #board {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 20px;
+  }
+
+  /* 670px = --article-measure di css/article.css: editor dan artikel selebar
+     sama, jadi yang di kanvas persis yang terbit. */
+  #preview {
+    width: 100%;
+    max-width: 670px;
+    margin: 0 auto;
+  }
+
+  #preview .tp { margin: 0; }
+
+  #empty {
+    max-width: 360px;
+    margin: 0;
+    padding: 22px 20px;
+    border: 1px dashed var(--line-2);
+    border-radius: var(--r);
+    color: var(--muted);
+    font-size: 12.5px;
+    text-align: center;
+  }
+
+  #empty b { color: var(--text); }
+
+  #board.is-empty #preview { display: none; }
+
+  /* Node di kanvas jadi target drop logo. */
+  #preview .tp-node.is-drop {
+    border-color: var(--back) !important;
+    background: rgba(63, 185, 80, 0.1) !important;
+  }
+
+  /* ================================================================== panel */
+
+  #panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--panel-h);
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    border-top: 1px solid var(--line-2);
+    z-index: 70;
+    transition: height 0.2s ease;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    height: 44px;
+    padding: 0 8px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+    flex: 0 0 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .panel-head::-webkit-scrollbar { display: none; }
+
+  .acc-h {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: 600 12px/1 inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.14s;
+  }
+
+  .acc-h:hover { color: var(--text); }
+
+  .acc-h.is-on { color: var(--text); }
+
+  .acc-h.is-on::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: -1px;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
+    background: var(--accent);
+  }
+
+  .acc-h .n {
+    min-width: 17px;
+    padding: 1px 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--muted);
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .panel-head .spacer { flex: 1 1 auto; }
+
+  .panel-body {
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: 14px 16px 18px;
+    overscroll-behavior: contain;
+  }
+
+  .sec { display: none; }
+  .sec.is-on { display: block; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+  .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .field > span { font-size: 11px; color: var(--muted); }
+
+  .hint { margin: 0 0 12px; color: var(--muted); font-size: 12px; }
+  .hint b { color: var(--text); font-weight: 600; }
+
+  .hint code {
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: var(--bg-3);
+    color: var(--text);
+    font-size: 11px;
+  }
+
+  .inp {
+    width: 100%;
+    height: 30px;
+    padding: 0 9px;
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-sm);
+    background: var(--bg);
+    color: var(--text);
+    font: 12.5px/1.4 inherit;
+  }
+
+  .inp:hover { border-color: #3a4c60; }
+
+  .inp:focus { outline: none; border-color: var(--accent); box-shadow: var(--ring); }
+
+  select.inp { appearance: none; cursor: pointer; }
+
+  textarea.inp {
+    height: auto;
+    min-height: 150px;
+    padding: 9px;
+    line-height: 1.6;
+    resize: vertical;
+    white-space: pre;
+    overflow: auto;
+    font-size: 12px;
+  }
+
+  .switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .switch input {
+    appearance: none;
+    width: 30px;
+    height: 17px;
+    border-radius: 999px;
+    background: var(--line-2);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.15s;
+    flex: 0 0 auto;
+  }
+
+  .switch input::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #c9d4e0;
+    transition: transform 0.15s;
+  }
+
+  .switch input:checked { background: var(--accent); }
+  .switch input:checked::after { transform: translateX(13px); background: #fff; }
+
+  .seg {
+    display: inline-flex;
+    padding: 2px;
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-sm);
+    background: var(--bg);
+    gap: 2px;
+  }
+
+  .seg button {
+    flex: 1 1 0;
+    height: 24px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    font: 600 11.5px/1 inherit;
+    cursor: pointer;
+  }
+
+  .seg button:hover { color: var(--text); }
+  .seg button.is-on { background: var(--accent); color: var(--accent-ink); }
+
+  /* ------------------------------------------------------------------ cards */
+
+  #nodeList, #edgeList { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--bg-2);
+    padding: 10px;
+    transition: border-color 0.14s, background 0.14s;
+  }
+
+  .card:hover { border-color: var(--line-2); }
+  .card.is-on { border-color: var(--accent); background: rgba(88, 166, 255, 0.06); }
+  .card.is-drop { border-color: var(--back); background: rgba(63, 185, 80, 0.08); }
+
+  .card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+
+  .card-head b {
+    font-size: 12.5px;
+    font-weight: 620;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+  .id { font-size: 10.5px; color: var(--dim); }
+
+  .edge-line {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .arw { color: var(--dim); font-size: 13px; line-height: 1; }
+
+  .swatches { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .sw {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 1px solid var(--line-2);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .sw:hover { transform: translateY(-1px); }
+  .sw.is-on { box-shadow: var(--ring); border-color: var(--accent); }
+
+  .sw--none {
+    background:
+      linear-gradient(45deg, transparent 44%, var(--danger) 44%, var(--danger) 56%, transparent 56%),
+      var(--bg-3);
+  }
+
+  /* ------------------------------------------------------------------ logos */
+
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 8px;
+  }
+
+  .tile {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    padding: 6px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    background: var(--bg-2);
+    cursor: grab;
+    transition: border-color 0.14s, background 0.14s, transform 0.1s;
+  }
+
+  .tile:hover { border-color: var(--accent); background: rgba(88, 166, 255, 0.08); }
+  .tile:active { cursor: grabbing; transform: scale(0.96); }
+  .tile img { max-width: 26px; max-height: 26px; object-fit: contain; pointer-events: none; }
+
+  /* ----------------------------------------------------------------- status */
+
+  .code-status { min-height: 15px; margin: 8px 0 0; font-size: 11.5px; color: var(--dim); }
+  .code-status.is-ok { color: var(--back); }
+  .code-status.is-bad { color: var(--danger); }
+
+  /* ------------------------------------------------------------------ toast */
+
+  #toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(var(--panel-h) + 16px);
+    transform: translate(-50%, 8px);
+    padding: 7px 13px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: var(--panel);
+    color: var(--text);
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s, transform 0.18s;
+    z-index: 90;
+    max-width: calc(100vw - 32px);
+  }
+
+  #toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ============================================================== responsive */
+
+  @media (max-width: 1100px) {
+    .brand-name { display: none; }
+    .top-link span.lbl { display: none; }
+  }
+
+  @media (max-width: 700px) {
+    .doc-title { max-width: none; font-size: 13px; }
+    .top-status { display: none; }
+    #board { padding: 16px 10px; }
+    .panel-body { padding: 12px 12px 16px; }
+    .grid2, .grid3 { grid-template-columns: 1fr; }
+    .acc-h { padding: 0 9px; font-size: 11.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html#home" title="Topology Lab — home">
+    <img class="brand-avatar" src="assets/foto-raja.jpg" alt="" decoding="async">
+    <span class="brand-name">Topology Lab<span>.</span></span>
+  </a>
+
+  <input id="docTitle" class="doc-title" value="Topology" aria-label="Diagram title" spellcheck="false">
+  <span id="topStatus" class="top-status">0 nodes · 0 edges</span>
+
+  <nav class="top-nav" aria-label="Site">
+    <a class="top-link" href="index.html#home" title="Home">⌂<span class="lbl">Home</span></a>
+    <a class="top-link" href="references.html?ref=index" title="Docs">▤<span class="lbl">Docs</span></a>
+    <a class="top-link" href="about.html" title="About">☺<span class="lbl">About</span></a>
+    <a class="top-link" href="draw.html" title="Canvas editor">✎<span class="lbl">Draw</span></a>
+  </nav>
+
+  <button class="btn btn--primary btn--sm" id="copyBtn" aria-label="Copy the topology block">Copy</button>
+</header>
+
+<main id="stage">
+  <div id="board">
+    <div id="preview" class="topology"></div>
+    <p id="empty">No nodes yet. Add one from <b>Nodes</b>, or load a <b>starter</b>.</p>
+  </div>
+</main>
+
+<section id="panel" aria-label="Diagram editor">
+  <div class="panel-head" role="tablist" aria-label="Editor sections">
+    <button class="acc-h is-on" data-sec="diagram" role="tab">Diagram</button>
+    <button class="acc-h" data-sec="nodes" role="tab">Nodes <span class="n" id="nNodes">0</span></button>
+    <button class="acc-h" data-sec="edges" role="tab">Edges <span class="n" id="nEdges">0</span></button>
+    <button class="acc-h" data-sec="logos" role="tab">Logos</button>
+    <button class="acc-h" data-sec="source" role="tab">Source</button>
+    <span class="spacer"></span>
+    <button class="icon-btn" id="panelToggle" title="Collapse panel" aria-label="Collapse panel">▾</button>
+  </div>
+
+  <div class="panel-body">
+    <!-- ---------------------------------------------------------- diagram -->
+    <div class="sec is-on" data-sec="diagram">
+      <div class="grid3">
+        <label class="field"><span>Title</span>
+          <input id="fTitle" class="inp" type="text" placeholder="Diagram title">
+        </label>
+
+        <div class="field"><span>Direction</span>
+          <div class="seg" id="fVertical" role="group">
+            <button type="button" data-v="1" class="is-on">Vertical</button>
+            <button type="button" data-v="0">Horizontal</button>
+          </div>
+        </div>
+
+        <div class="field"><span>Flow labels</span>
+          <div class="grid2">
+            <input id="fFlow" class="inp" type="text" placeholder="Request" aria-label="Flow label">
+            <input id="fBack" class="inp" type="text" placeholder="Response" aria-label="Back label">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:12px">
+        <label class="switch"><input id="fBadges" type="checkbox"> Edge numbers</label>
+        <label class="switch"><input id="guidesBtn" type="checkbox"> Alignment guides</label>
+        <span style="flex:1 1 auto"></span>
+        <button class="btn btn--sm" id="applyCtx">Apply labels to all edges</button>
+        <button class="btn btn--sm btn--ghost" id="clearCtx">Clear</button>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------ nodes -->
+    <div class="sec" data-sec="nodes">
+      <div class="grid2" style="margin-bottom:12px">
+        <label class="field"><span>Insert a starter</span>
+          <select id="presetSel" class="inp" title="Insert a starter diagram — replaces the current one">
+            <option value="">Choose a starter…</option>
+          </select>
+        </label>
+        <div class="field"><span>&nbsp;</span>
+          <button class="btn" id="addNode" style="width:100%">＋ Add node</button>
+        </div>
+      </div>
+      <p class="hint">Click a card to select it. Drag a logo from <b>Logos</b> straight onto a node in the canvas.</p>
+      <div id="nodeList"></div>
+    </div>
+
+    <!-- ------------------------------------------------------------ edges -->
+    <div class="sec" data-sec="edges">
+      <p class="hint">One edge per row. <b>Label</b> is the text on the wire. <b>Back</b> draws the return path, routed on its own channel.</p>
+      <div id="edgeList"></div>
+      <button class="btn btn--sm" id="addEdge" style="width:100%">＋ Add edge</button>
+
+      <div class="grid2" style="margin-top:14px">
+        <div class="field"><span>New edge colour</span><div class="swatches" id="defSwatches"></div></div>
+        <div class="grid2">
+          <label class="field"><span>Width</span>
+            <input id="defWidth" class="inp" type="number" min="1" max="8" step="0.5" value="2">
+          </label>
+          <label class="field"><span>Style</span>
+            <select id="defDash" class="inp">
+              <option value="solid">solid</option>
+              <option value="dashed">dashed</option>
+              <option value="dotted">dotted</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <label class="field" style="margin-top:10px;max-width:220px"><span>Motion</span>
+        <select id="defMotion" class="inp">
+          <option value="flow">flow — dots travel</option>
+          <option value="none">none — static</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- ------------------------------------------------------------ logos -->
+    <div class="sec" data-sec="logos">
+      <p class="hint">Drag a logo onto a node in the canvas, or click it to apply it to the selected node.</p>
+      <div class="grid2" style="margin-bottom:10px">
+        <input id="logoSearch" class="inp" type="search" placeholder="Search logos — docker, nginx, burp…">
+        <select id="logoCat" class="inp"></select>
+      </div>
+      <div id="logoGrid" class="logo-grid"></div>
+    </div>
+
+    <!-- ----------------------------------------------------------- source -->
+    <div class="sec" data-sec="source">
+      <p class="hint">This text is the whole diagram. Edit it and the canvas follows as you type. Indent with <b>two spaces</b>.</p>
+      <textarea id="specBox" class="inp code" spellcheck="false" wrap="off"></textarea>
+      <div class="row" style="margin-top:8px">
+        <button class="btn btn--sm" id="exportBtn">Export .md</button>
+        <span class="code-status" id="codeStatus"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>

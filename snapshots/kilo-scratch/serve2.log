@@ -1,0 +1,36 @@
+127.0.0.1 - - [14/Nov/2026 09:28:36] "GET /read.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /read.html?post=reverse-shell-server-side&lang=en HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /css/shell.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /css/topology.css?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /css/alur.css?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/blog-data.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /css/article.css HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/markdown.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/topology-icons.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/logo-manifest.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/topology.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/cables.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/kit.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/logos.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/motions.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/core.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/draw-tabs.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/modules/canvas.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/modules/flow.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/modules/chart.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/modules/reverse-proxy.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/modules/pipeline.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/alur/modules/graph.js?v=4 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /js/read.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /assets/foto-raja.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:38] "GET /assets/logos.png HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:44] "GET /read.html?post=reverse-shell-server-side&lang=id HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:44] "GET /js/blog-data.js HTTP/1.1" 304 -
+127.0.0.1 - - [14/Nov/2026 09:28:44] "GET /js/read.js HTTP/1.1" 304 -
+127.0.0.1 - - [14/Nov/2026 09:28:58] "GET /read.html?post=linux-enumeration-investigation&lang=en HTTP/1.1" 200 -
+127.0.0.1 - - [14/Nov/2026 09:28:58] "GET /js/blog-data.js HTTP/1.1" 304 -
+127.0.0.1 - - [14/Nov/2026 09:28:58] "GET /js/read.js HTTP/1.1" 304 -
+127.0.0.1 - - [14/Nov/2026 09:31:20] code 404, message File not found
+127.0.0.1 - - [14/Nov/2026 09:31:20] "GET /imoon07.github.io/read.html HTTP/1.1" 404 -
+127.0.0.1 - - [14/Nov/2026 09:31:20] code 404, message File not found
+127.0.0.1 - - [14/Nov/2026 09:31:20] "GET /Penjelajah-CyberSecurity/Experiments/foundations/server-architecture/server-single-tier-stack-en.md HTTP/1.1" 404 -

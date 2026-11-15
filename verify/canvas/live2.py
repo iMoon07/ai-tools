@@ -1,5 +1,5 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil, base64
-PORT=9554; PROF="/tmp/kilo/prof-live2"
+PORT=9554; PROF="/tmp/alur-probes/prof-live2"
 shutil.rmtree(PROF, ignore_errors=True)
 proc=subprocess.Popen(["chromium","--headless=new",f"--remote-debugging-port={PORT}",
  f"--user-data-dir={PROF}","--no-first-run","--no-default-browser-check","--disable-gpu",
@@ -34,5 +34,5 @@ for W,H,name in [(1500,1000,'desk'),(390,844,'mob')]:
     print(name, "status:", ev("document.getElementById('codeStatus').textContent"))
     if name=='desk':
         sh=send("Page.captureScreenshot",format="png")
-        open("/tmp/kilo/topo_topology_tab.png","wb").write(base64.b64decode(sh["data"]))
+        open("/tmp/alur-probes/topo_topology_tab.png","wb").write(base64.b64decode(sh["data"]))
 ws.close(); proc.terminate()

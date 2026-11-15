@@ -3,7 +3,7 @@ import json, subprocess, time, urllib.parse, urllib.request, sys, os, base64, sh
 MD = "http://127.0.0.1:8778/Penjelajah-CyberSecurity/Experiments/foundations/server-architecture/server-single-tier-stack-en.md"
 PAGE = "http://127.0.0.1:8778/imoon07.github.io/read.html?url=" + urllib.parse.quote(MD, safe="")
 PORT = 9411
-PROF = "/tmp/kilo/prof-topo"
+PROF = "/tmp/alur-probes/prof-topo"
 
 shutil.rmtree(PROF, ignore_errors=True)
 proc = subprocess.Popen(
@@ -95,7 +95,7 @@ def measure(width, height, label):
         for h in b["hits"][:14]:
             print("   -", h["cls"], "| hits", h["nodes"], "|", h["d"])
     shot = send("Page.captureScreenshot", format="png", captureBeyondViewport=False)
-    open(f"/tmp/kilo/topo_{label}.png", "wb").write(base64.b64decode(shot["data"]))
+    open(f"/tmp/alur-probes/topo_{label}.png", "wb").write(base64.b64decode(shot["data"]))
     ws.close()
 
 measure(1280, 1000, "desktop")

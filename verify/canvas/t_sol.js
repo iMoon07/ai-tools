@@ -1,0 +1,11 @@
+const fs=require('fs');
+global.window={};
+global.window.TOPOLOGY_SPRITE=fs.readFileSync('/home/moon/Projects/imoon07.github.io/js/topology-icons.js','utf8');
+global.window.ALUR_LOGO_MANIFEST=JSON.parse(fs.readFileSync('/home/moon/Projects/imoon07.github.io/js/logo-manifest.js','utf8').replace(/^[\s\S]*?=\s*/,'').replace(/;\s*$/,''));
+require('/home/moon/Projects/imoon07.github.io/js/topo-lang.js');
+const T=window.Topo;
+const txt=fs.readFileSync(process.argv[2],'utf8');
+const blocks=[...txt.matchAll(/```topology\n([\s\S]*?)\n```/g)].map(m=>m[1]);
+const s=T.parse(blocks[+process.argv[3]]);
+console.log('nodes',Object.keys(s.nodes).length,'cols',s.columns.length);
+console.log(s.columns.slice(0,12).map(c=>Array.isArray(c)?c.length:c.label+':'+c.nodes.length).join(' '));

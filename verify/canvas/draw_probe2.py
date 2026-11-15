@@ -1,7 +1,7 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil
 
 PORT = 9432
-PROF = "/tmp/kilo/prof-draw2"
+PROF = "/tmp/alur-probes/prof-draw2"
 BASE = "http://127.0.0.1:8123/draw.html"
 shutil.rmtree(PROF, ignore_errors=True)
 proc = subprocess.Popen(["chromium", "--headless=new", f"--remote-debugging-port={PORT}",

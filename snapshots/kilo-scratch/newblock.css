@@ -1,0 +1,136 @@
+  @media (max-width: 760px) {
+    .topbar {
+      top: calc(6px + env(safe-area-inset-top));
+      left: 6px;
+      right: 6px;
+      max-width: none;
+      padding: 5px 6px;
+      transform: none;
+      gap: 5px;
+    }
+    .brand { padding: 0 2px; }
+    .brand-text { display: none; }
+    .brand-avatar { width: 26px; height: 26px; }
+    .doc-title { width: auto; max-width: 40vw; font-size: 12px; }
+    .top-status { display: none; }
+    .top-nav {
+      display: flex;
+      margin-left: auto;
+      padding-left: 0;
+      border-left: 0;
+      gap: 0;
+    }
+    .top-link { padding: 6px 7px; min-height: 34px; }
+    .top-link .lbl { display: none; }
+    .top-link .ico { font-size: 15px; }
+    .icon-btn { width: 30px; height: 30px; }
+
+    .tool-rail {
+      top: calc(52px + env(safe-area-inset-top));
+      bottom: auto;
+      left: 6px;
+      right: 6px;
+      width: auto;
+      max-width: none;
+      padding: 5px;
+      gap: 3px;
+      border-radius: 14px;
+      background: rgba(13, 17, 23, .94);
+      z-index: 38;
+    }
+    .tool { width: 36px; height: 36px; flex: 0 0 auto; border-radius: 10px; }
+    .tool.mobile-panel { display: inline-flex; }
+    .tool-sep { align-self: stretch; margin: 4px 2px; }
+
+    .view-bar {
+      left: 6px;
+      right: 6px;
+      bottom: calc(8px + env(safe-area-inset-bottom));
+      transform: none;
+      justify-content: center;
+      padding: 4px 6px;
+      border-radius: 14px;
+      background: rgba(13, 17, 23, .94);
+    }
+    .view-bar .view-title { display: none; }
+    .zoom-cluster { margin-left: 0; }
+
+    .dock,
+    .dock[data-side="left"],
+    .dock[data-side="right"] {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: auto;
+      height: 68%;
+      max-height: none;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 16px 16px 0 0;
+      z-index: 45;
+      transform: translateY(100%);
+      visibility: hidden;
+      transition: transform .22s cubic-bezier(.22, .61, .36, 1), visibility .22s;
+      box-shadow: 0 -20px 50px -30px #000;
+    }
+    .dock.is-open,
+    .dock[data-side="left"].is-open,
+    .dock[data-side="right"].is-open {
+      transform: translateY(0);
+      visibility: visible;
+    }
+    .dock-head { cursor: default; border-radius: 16px 16px 0 0; }
+    .dock-body { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+
+    .shape-panel {
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: auto;
+      height: 68%;
+      max-height: none;
+      border-radius: 16px 16px 0 0;
+      overflow-y: auto;
+      z-index: 46;
+    }
+    .shape-head {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: rgba(13, 17, 23, .96);
+      border-radius: 16px 16px 0 0;
+    }
+
+    #panelAssets .dock-body { min-height: 0; }
+    #logoPanel > .asset-section:last-child .logo-grid {
+      max-height: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    #logoCats {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    #logoCats::-webkit-scrollbar { display: none; }
+    #logoCats .chip { flex: 0 0 auto; }
+
+    .dock .ghost,
+    .shape-panel .ghost { min-height: 40px; }
+
+    .shortcut-card {
+      left: 6px;
+      right: 6px;
+      bottom: calc(62px + env(safe-area-inset-bottom));
+      width: auto;
+      max-height: 52vh;
+    }
+
+    .stage-status,
+    .minimap { display: none; }
+
+    .empty-hint { bottom: calc(70px + env(safe-area-inset-bottom)); }
+  }

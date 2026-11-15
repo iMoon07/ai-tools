@@ -1,7 +1,7 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil, os
 
 PORT = 9441
-PROF = "/tmp/kilo/prof-round"
+PROF = "/tmp/alur-probes/prof-round"
 shutil.rmtree(PROF, ignore_errors=True)
 proc = subprocess.Popen(["chromium", "--headless=new", f"--remote-debugging-port={PORT}",
     f"--user-data-dir={PROF}", "--no-first-run", "--no-default-browser-check",
@@ -71,9 +71,9 @@ time.sleep(2)
 print("4. rendered after edit:", ev("(()=>{const e=document.querySelector('.alur-module-embed[data-module=topology]');const h=e&&(e.closest('.alur-topology')||e.parentElement);return e?e.querySelectorAll('.topo-node').length+' nodes, grid='+(h?h.className:'?'):'none'})()"))
 
 spec2 = ev("document.getElementById('spec').value")
-os.makedirs("/tmp/kilo/rt", exist_ok=True)
+os.makedirs("/tmp/alur-probes/rt", exist_ok=True)
 md = "# round trip\n\n```draw\n" + spec2 + "\n```\n"
-open("/tmp/kilo/rt/rt.md", "w").write(md)
+open("/tmp/alur-probes/rt/rt.md", "w").write(md)
 
 # serve it from the docs dir so read.html can fetch it same-origin
 dst = "/home/moon/Projects/Penjelajah-CyberSecurity/.tmp-rt.md"

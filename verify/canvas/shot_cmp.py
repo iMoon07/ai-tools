@@ -1,5 +1,5 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil, websocket, base64
-PORT=9629; PROF="/tmp/kilo/prof-shotcmp"
+PORT=9629; PROF="/tmp/alur-probes/prof-shotcmp"
 shutil.rmtree(PROF, ignore_errors=True)
 proc=subprocess.Popen(["chromium","--headless=new",f"--remote-debugging-port={PORT}",
  f"--user-data-dir={PROF}","--no-first-run","--no-default-browser-check","--disable-gpu",
@@ -30,6 +30,6 @@ ev("(()=>{const s=document.getElementById('preset'); s.value='canvas:blank'; s.d
 ev("document.querySelector('[data-scene-module=table]').click()"); time.sleep(1.2)
 ev("document.querySelector('[data-scene-module=chart]').click()"); time.sleep(2.0)
 r = send("Page.captureScreenshot",format="png")
-open('/tmp/kilo/cmp.png','wb').write(base64.b64decode(r['data']))
+open('/tmp/alur-probes/cmp.png','wb').write(base64.b64decode(r['data']))
 print("saved", ev("JSON.stringify({grid:!!document.querySelector('.alur-canvas-grid'), vb:document.querySelector('#stage svg').getAttribute('viewBox')})"))
 ws.close(); proc.terminate()

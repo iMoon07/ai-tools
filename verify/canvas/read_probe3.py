@@ -1,7 +1,7 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil
 
 PORT = 9434
-PROF = "/tmp/kilo/prof-read3"
+PROF = "/tmp/alur-probes/prof-read3"
 MD = "http://127.0.0.1:8123/docs/.tmp-topology-test.md"
 PAGE = "http://127.0.0.1:8123/read.html?url=" + urllib.parse.quote(MD, safe="")
 shutil.rmtree(PROF, ignore_errors=True)

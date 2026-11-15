@@ -1,0 +1,882 @@
+[
+  {
+    "name": "Scene.ts",
+    "path": "packages/element/src/Scene.ts",
+    "sha": "ef032889ffc93d855b35e06e62d8a2350ae8a67f",
+    "size": 12805,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/Scene.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/Scene.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/ef032889ffc93d855b35e06e62d8a2350ae8a67f",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/Scene.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/Scene.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/ef032889ffc93d855b35e06e62d8a2350ae8a67f",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/Scene.ts"
+    }
+  },
+  {
+    "name": "__tests__",
+    "path": "packages/element/src/__tests__",
+    "sha": "85852fe761a2377a0019c18fd3e1af8ad03d3cd8",
+    "size": 0,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/__tests__?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/tree/master/packages/element/src/__tests__",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/trees/85852fe761a2377a0019c18fd3e1af8ad03d3cd8",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/__tests__?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/trees/85852fe761a2377a0019c18fd3e1af8ad03d3cd8",
+      "html": "https://github.com/excalidraw/excalidraw/tree/master/packages/element/src/__tests__"
+    }
+  },
+  {
+    "name": "align.ts",
+    "path": "packages/element/src/align.ts",
+    "sha": "683dcd823557482a93c02133c774d472b61b3700",
+    "size": 2575,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/align.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/align.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/683dcd823557482a93c02133c774d472b61b3700",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/align.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/align.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/683dcd823557482a93c02133c774d472b61b3700",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/align.ts"
+    }
+  },
+  {
+    "name": "arrowEndpointText.ts",
+    "path": "packages/element/src/arrowEndpointText.ts",
+    "sha": "f6b1d583d98904649be35f40f353788be2abdde9",
+    "size": 9483,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/arrowEndpointText.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/arrowEndpointText.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f6b1d583d98904649be35f40f353788be2abdde9",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/arrowEndpointText.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/arrowEndpointText.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f6b1d583d98904649be35f40f353788be2abdde9",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/arrowEndpointText.ts"
+    }
+  },
+  {
+    "name": "arrowheads.ts",
+    "path": "packages/element/src/arrowheads.ts",
+    "sha": "7e76b2b3bfe7df1699babd9bfa3a9b1ac67aca80",
+    "size": 778,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/arrowheads.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/arrowheads.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/7e76b2b3bfe7df1699babd9bfa3a9b1ac67aca80",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/arrowheads.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/arrowheads.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/7e76b2b3bfe7df1699babd9bfa3a9b1ac67aca80",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/arrowheads.ts"
+    }
+  },
+  {
+    "name": "arrows",
+    "path": "packages/element/src/arrows",
+    "sha": "0ca1f54ba041dedc399d2c37aca85216fca1817c",
+    "size": 0,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/arrows?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/tree/master/packages/element/src/arrows",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/trees/0ca1f54ba041dedc399d2c37aca85216fca1817c",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/arrows?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/trees/0ca1f54ba041dedc399d2c37aca85216fca1817c",
+      "html": "https://github.com/excalidraw/excalidraw/tree/master/packages/element/src/arrows"
+    }
+  },
+  {
+    "name": "binding.ts",
+    "path": "packages/element/src/binding.ts",
+    "sha": "c31f423bd3506031832cd61e00c1342d1f206990",
+    "size": 102558,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/binding.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/binding.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c31f423bd3506031832cd61e00c1342d1f206990",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/binding.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/binding.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c31f423bd3506031832cd61e00c1342d1f206990",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/binding.ts"
+    }
+  },
+  {
+    "name": "bounds.ts",
+    "path": "packages/element/src/bounds.ts",
+    "sha": "fbdf930a20e8412909235e67ec73274868209d01",
+    "size": 52139,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/bounds.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/bounds.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/fbdf930a20e8412909235e67ec73274868209d01",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/bounds.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/bounds.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/fbdf930a20e8412909235e67ec73274868209d01",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/bounds.ts"
+    }
+  },
+  {
+    "name": "bucketFill.ts",
+    "path": "packages/element/src/bucketFill.ts",
+    "sha": "11837168b1c0ad9c9c5cd6f629365790dc06f375",
+    "size": 68917,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/bucketFill.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/bucketFill.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/11837168b1c0ad9c9c5cd6f629365790dc06f375",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/bucketFill.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/bucketFill.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/11837168b1c0ad9c9c5cd6f629365790dc06f375",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/bucketFill.ts"
+    }
+  },
+  {
+    "name": "collision.ts",
+    "path": "packages/element/src/collision.ts",
+    "sha": "bc07024a18fa51f01a23f51519dac51fa00f4124",
+    "size": 27892,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/collision.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/collision.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/bc07024a18fa51f01a23f51519dac51fa00f4124",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/collision.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/collision.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/bc07024a18fa51f01a23f51519dac51fa00f4124",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/collision.ts"
+    }
+  },
+  {
+    "name": "comparisons.ts",
+    "path": "packages/element/src/comparisons.ts",
+    "sha": "73418daa7cd21aeac4a684f34a2ae7062eab3d8b",
+    "size": 1965,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/comparisons.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/comparisons.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/73418daa7cd21aeac4a684f34a2ae7062eab3d8b",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/comparisons.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/comparisons.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/73418daa7cd21aeac4a684f34a2ae7062eab3d8b",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/comparisons.ts"
+    }
+  },
+  {
+    "name": "containerCache.ts",
+    "path": "packages/element/src/containerCache.ts",
+    "sha": "432cd4e318aa470b5d8b246332b98c9d7754319c",
+    "size": 823,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/containerCache.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/containerCache.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/432cd4e318aa470b5d8b246332b98c9d7754319c",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/containerCache.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/containerCache.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/432cd4e318aa470b5d8b246332b98c9d7754319c",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/containerCache.ts"
+    }
+  },
+  {
+    "name": "convertToShape.ts",
+    "path": "packages/element/src/convertToShape.ts",
+    "sha": "38ca1e83de16c4bad9750618585863bd65ee422b",
+    "size": 26633,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/convertToShape.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/convertToShape.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/38ca1e83de16c4bad9750618585863bd65ee422b",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/convertToShape.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/convertToShape.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/38ca1e83de16c4bad9750618585863bd65ee422b",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/convertToShape.ts"
+    }
+  },
+  {
+    "name": "cropElement.ts",
+    "path": "packages/element/src/cropElement.ts",
+    "sha": "c920d211498ee19d2b26bd667e6e82f21b3ea4f3",
+    "size": 9451,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/cropElement.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/cropElement.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c920d211498ee19d2b26bd667e6e82f21b3ea4f3",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/cropElement.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/cropElement.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c920d211498ee19d2b26bd667e6e82f21b3ea4f3",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/cropElement.ts"
+    }
+  },
+  {
+    "name": "delta.ts",
+    "path": "packages/element/src/delta.ts",
+    "sha": "8b45b705e1468d1143f37b425a8330941363dcb6",
+    "size": 71077,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/delta.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/delta.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/8b45b705e1468d1143f37b425a8330941363dcb6",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/delta.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/delta.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/8b45b705e1468d1143f37b425a8330941363dcb6",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/delta.ts"
+    }
+  },
+  {
+    "name": "distance.ts",
+    "path": "packages/element/src/distance.ts",
+    "sha": "1206569c3e403e95d4249a59b0c1da68516639b8",
+    "size": 5070,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/distance.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/distance.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/1206569c3e403e95d4249a59b0c1da68516639b8",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/distance.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/distance.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/1206569c3e403e95d4249a59b0c1da68516639b8",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/distance.ts"
+    }
+  },
+  {
+    "name": "distribute.ts",
+    "path": "packages/element/src/distribute.ts",
+    "sha": "ccaab049e949dfa4ffefb113ee7cced2575dd4fc",
+    "size": 3413,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/distribute.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/distribute.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/ccaab049e949dfa4ffefb113ee7cced2575dd4fc",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/distribute.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/distribute.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/ccaab049e949dfa4ffefb113ee7cced2575dd4fc",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/distribute.ts"
+    }
+  },
+  {
+    "name": "dragElements.ts",
+    "path": "packages/element/src/dragElements.ts",
+    "sha": "60dd54f49791fd2396c015deb99d29d446bcd161",
+    "size": 12192,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/dragElements.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/dragElements.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/60dd54f49791fd2396c015deb99d29d446bcd161",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/dragElements.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/dragElements.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/60dd54f49791fd2396c015deb99d29d446bcd161",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/dragElements.ts"
+    }
+  },
+  {
+    "name": "duplicate.ts",
+    "path": "packages/element/src/duplicate.ts",
+    "sha": "431186eb2984e900868261e44bdc09dd3be14817",
+    "size": 21125,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/duplicate.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/duplicate.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/431186eb2984e900868261e44bdc09dd3be14817",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/duplicate.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/duplicate.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/431186eb2984e900868261e44bdc09dd3be14817",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/duplicate.ts"
+    }
+  },
+  {
+    "name": "elbowArrow.ts",
+    "path": "packages/element/src/elbowArrow.ts",
+    "sha": "0831af5eab1b1d10dc139dff8a31c909c1e9abb5",
+    "size": 69199,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/elbowArrow.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/elbowArrow.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/0831af5eab1b1d10dc139dff8a31c909c1e9abb5",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/elbowArrow.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/elbowArrow.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/0831af5eab1b1d10dc139dff8a31c909c1e9abb5",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/elbowArrow.ts"
+    }
+  },
+  {
+    "name": "elementLink.ts",
+    "path": "packages/element/src/elementLink.ts",
+    "sha": "8781e696d5798d29e71cb866787f7e87b30a111a",
+    "size": 2212,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/elementLink.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/elementLink.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/8781e696d5798d29e71cb866787f7e87b30a111a",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/elementLink.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/elementLink.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/8781e696d5798d29e71cb866787f7e87b30a111a",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/elementLink.ts"
+    }
+  },
+  {
+    "name": "embeddable.ts",
+    "path": "packages/element/src/embeddable.ts",
+    "sha": "013c76f1cf654496694dc195ae8684494386ddc7",
+    "size": 16504,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/embeddable.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/embeddable.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/013c76f1cf654496694dc195ae8684494386ddc7",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/embeddable.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/embeddable.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/013c76f1cf654496694dc195ae8684494386ddc7",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/embeddable.ts"
+    }
+  },
+  {
+    "name": "flowchart.ts",
+    "path": "packages/element/src/flowchart.ts",
+    "sha": "172c95d29055184517d9c12a4a4fcf50ae097c85",
+    "size": 21752,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/flowchart.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/flowchart.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/172c95d29055184517d9c12a4a4fcf50ae097c85",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/flowchart.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/flowchart.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/172c95d29055184517d9c12a4a4fcf50ae097c85",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/flowchart.ts"
+    }
+  },
+  {
+    "name": "fractionalIndex.ts",
+    "path": "packages/element/src/fractionalIndex.ts",
+    "sha": "0ff49777a1306370326d366eec60518f15e82298",
+    "size": 15093,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/fractionalIndex.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/fractionalIndex.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/0ff49777a1306370326d366eec60518f15e82298",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/fractionalIndex.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/fractionalIndex.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/0ff49777a1306370326d366eec60518f15e82298",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/fractionalIndex.ts"
+    }
+  },
+  {
+    "name": "frame.ts",
+    "path": "packages/element/src/frame.ts",
+    "sha": "d68fd8fa30d820e8dbcead4c385b58c2408fb848",
+    "size": 32685,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/frame.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/frame.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/d68fd8fa30d820e8dbcead4c385b58c2408fb848",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/frame.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/frame.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/d68fd8fa30d820e8dbcead4c385b58c2408fb848",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/frame.ts"
+    }
+  },
+  {
+    "name": "groups.ts",
+    "path": "packages/element/src/groups.ts",
+    "sha": "f241abec60a3a92dc8250a92915d2f1004a389e4",
+    "size": 9365,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/groups.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/groups.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f241abec60a3a92dc8250a92915d2f1004a389e4",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/groups.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/groups.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f241abec60a3a92dc8250a92915d2f1004a389e4",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/groups.ts"
+    }
+  },
+  {
+    "name": "heading.ts",
+    "path": "packages/element/src/heading.ts",
+    "sha": "a115a8f1e1a1cd4c6fcb2da09bf63b1420e6dbf7",
+    "size": 7263,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/heading.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/heading.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/a115a8f1e1a1cd4c6fcb2da09bf63b1420e6dbf7",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/heading.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/heading.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/a115a8f1e1a1cd4c6fcb2da09bf63b1420e6dbf7",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/heading.ts"
+    }
+  },
+  {
+    "name": "image.ts",
+    "path": "packages/element/src/image.ts",
+    "sha": "c28a270e7ad10e9f7ea2110755a9fa16496a5df1",
+    "size": 4777,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/image.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/image.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c28a270e7ad10e9f7ea2110755a9fa16496a5df1",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/image.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/image.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c28a270e7ad10e9f7ea2110755a9fa16496a5df1",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/image.ts"
+    }
+  },
+  {
+    "name": "index.ts",
+    "path": "packages/element/src/index.ts",
+    "sha": "8732bd9ecf54d0b058afef008216d1eada860704",
+    "size": 3476,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/index.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/index.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/8732bd9ecf54d0b058afef008216d1eada860704",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/index.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/index.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/8732bd9ecf54d0b058afef008216d1eada860704",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/index.ts"
+    }
+  },
+  {
+    "name": "linearElementEditor.ts",
+    "path": "packages/element/src/linearElementEditor.ts",
+    "sha": "e3b395fff3acfdcc0279f426a417556e52e38b4d",
+    "size": 83946,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/linearElementEditor.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/linearElementEditor.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/e3b395fff3acfdcc0279f426a417556e52e38b4d",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/linearElementEditor.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/linearElementEditor.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/e3b395fff3acfdcc0279f426a417556e52e38b4d",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/linearElementEditor.ts"
+    }
+  },
+  {
+    "name": "listMarker.ts",
+    "path": "packages/element/src/listMarker.ts",
+    "sha": "a73ea91700dff529241b8d42f1cddb3c6a43dc35",
+    "size": 10681,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/listMarker.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/listMarker.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/a73ea91700dff529241b8d42f1cddb3c6a43dc35",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/listMarker.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/listMarker.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/a73ea91700dff529241b8d42f1cddb3c6a43dc35",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/listMarker.ts"
+    }
+  },
+  {
+    "name": "mutateElement.ts",
+    "path": "packages/element/src/mutateElement.ts",
+    "sha": "033b6275a1cc6c6148e32dae6bac805ae5eb9808",
+    "size": 5556,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/mutateElement.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/mutateElement.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/033b6275a1cc6c6148e32dae6bac805ae5eb9808",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/mutateElement.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/mutateElement.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/033b6275a1cc6c6148e32dae6bac805ae5eb9808",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/mutateElement.ts"
+    }
+  },
+  {
+    "name": "newElement.ts",
+    "path": "packages/element/src/newElement.ts",
+    "sha": "75b98c9cedde260deaf162a2d583716ee4f84ee9",
+    "size": 19011,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/newElement.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/newElement.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/75b98c9cedde260deaf162a2d583716ee4f84ee9",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/newElement.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/newElement.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/75b98c9cedde260deaf162a2d583716ee4f84ee9",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/newElement.ts"
+    }
+  },
+  {
+    "name": "positionElementsOnGrid.ts",
+    "path": "packages/element/src/positionElementsOnGrid.ts",
+    "sha": "017ee1fd99d33f4608c753cc78db09493a163fbd",
+    "size": 3929,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/positionElementsOnGrid.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/positionElementsOnGrid.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/017ee1fd99d33f4608c753cc78db09493a163fbd",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/positionElementsOnGrid.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/positionElementsOnGrid.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/017ee1fd99d33f4608c753cc78db09493a163fbd",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/positionElementsOnGrid.ts"
+    }
+  },
+  {
+    "name": "renderElement.ts",
+    "path": "packages/element/src/renderElement.ts",
+    "sha": "97cf4bbf3a952b10459db8ced3d1f9da5fbdacf1",
+    "size": 45803,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/renderElement.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/renderElement.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/97cf4bbf3a952b10459db8ced3d1f9da5fbdacf1",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/renderElement.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/renderElement.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/97cf4bbf3a952b10459db8ced3d1f9da5fbdacf1",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/renderElement.ts"
+    }
+  },
+  {
+    "name": "renderEnvironment.ts",
+    "path": "packages/element/src/renderEnvironment.ts",
+    "sha": "56cb7af50e1e434a972ce73560980caf70e09962",
+    "size": 4690,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/renderEnvironment.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/renderEnvironment.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/56cb7af50e1e434a972ce73560980caf70e09962",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/renderEnvironment.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/renderEnvironment.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/56cb7af50e1e434a972ce73560980caf70e09962",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/renderEnvironment.ts"
+    }
+  },
+  {
+    "name": "resizeElements.ts",
+    "path": "packages/element/src/resizeElements.ts",
+    "sha": "81394fd3799184c98abc74f2f929f72c0a1a69ab",
+    "size": 45847,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/resizeElements.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/resizeElements.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/81394fd3799184c98abc74f2f929f72c0a1a69ab",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/resizeElements.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/resizeElements.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/81394fd3799184c98abc74f2f929f72c0a1a69ab",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/resizeElements.ts"
+    }
+  },
+  {
+    "name": "resizeTest.ts",
+    "path": "packages/element/src/resizeTest.ts",
+    "sha": "a124707d28fea315bfb4198660b249637db9478f",
+    "size": 7692,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/resizeTest.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/resizeTest.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/a124707d28fea315bfb4198660b249637db9478f",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/resizeTest.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/resizeTest.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/a124707d28fea315bfb4198660b249637db9478f",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/resizeTest.ts"
+    }
+  },
+  {
+    "name": "selection.ts",
+    "path": "packages/element/src/selection.ts",
+    "sha": "c9b07f23dc6334616ea83486cd20d4b7e6dd34f9",
+    "size": 7591,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/selection.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/selection.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c9b07f23dc6334616ea83486cd20d4b7e6dd34f9",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/selection.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/selection.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/c9b07f23dc6334616ea83486cd20d4b7e6dd34f9",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/selection.ts"
+    }
+  },
+  {
+    "name": "shape.ts",
+    "path": "packages/element/src/shape.ts",
+    "sha": "b85a63d710eb5deb6ec4386486a8b2946bfa9c3a",
+    "size": 41929,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/shape.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/shape.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/b85a63d710eb5deb6ec4386486a8b2946bfa9c3a",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/shape.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/shape.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/b85a63d710eb5deb6ec4386486a8b2946bfa9c3a",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/shape.ts"
+    }
+  },
+  {
+    "name": "showSelectedShapeActions.ts",
+    "path": "packages/element/src/showSelectedShapeActions.ts",
+    "sha": "6f918cfbdf7c45d8cfd51f21f2fef6e0c6d8a7dd",
+    "size": 823,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/showSelectedShapeActions.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/showSelectedShapeActions.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/6f918cfbdf7c45d8cfd51f21f2fef6e0c6d8a7dd",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/showSelectedShapeActions.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/showSelectedShapeActions.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/6f918cfbdf7c45d8cfd51f21f2fef6e0c6d8a7dd",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/showSelectedShapeActions.ts"
+    }
+  },
+  {
+    "name": "sizeHelpers.ts",
+    "path": "packages/element/src/sizeHelpers.ts",
+    "sha": "30c0d2a249994fa2116ef5e9cd65f3ffd301894c",
+    "size": 7685,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/sizeHelpers.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/sizeHelpers.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/30c0d2a249994fa2116ef5e9cd65f3ffd301894c",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/sizeHelpers.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/sizeHelpers.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/30c0d2a249994fa2116ef5e9cd65f3ffd301894c",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/sizeHelpers.ts"
+    }
+  },
+  {
+    "name": "sortElements.ts",
+    "path": "packages/element/src/sortElements.ts",
+    "sha": "581541c2edb2af92bc606529847079763d8328ef",
+    "size": 3672,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/sortElements.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/sortElements.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/581541c2edb2af92bc606529847079763d8328ef",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/sortElements.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/sortElements.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/581541c2edb2af92bc606529847079763d8328ef",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/sortElements.ts"
+    }
+  },
+  {
+    "name": "stickyNote.ts",
+    "path": "packages/element/src/stickyNote.ts",
+    "sha": "d68bd1ba6f30ad221e0f98e6b0f3545ef6374228",
+    "size": 29997,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/stickyNote.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/stickyNote.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/d68bd1ba6f30ad221e0f98e6b0f3545ef6374228",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/stickyNote.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/stickyNote.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/d68bd1ba6f30ad221e0f98e6b0f3545ef6374228",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/stickyNote.ts"
+    }
+  },
+  {
+    "name": "store.ts",
+    "path": "packages/element/src/store.ts",
+    "sha": "38235e752c0a63141264f8d6562e0612d71b0caf",
+    "size": 29265,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/store.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/store.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/38235e752c0a63141264f8d6562e0612d71b0caf",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/store.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/store.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/38235e752c0a63141264f8d6562e0612d71b0caf",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/store.ts"
+    }
+  },
+  {
+    "name": "textElement.ts",
+    "path": "packages/element/src/textElement.ts",
+    "sha": "297a716a17af400a944add5c8ea0078eca87f419",
+    "size": 18446,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/textElement.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/textElement.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/297a716a17af400a944add5c8ea0078eca87f419",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/textElement.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/textElement.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/297a716a17af400a944add5c8ea0078eca87f419",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/textElement.ts"
+    }
+  },
+  {
+    "name": "textMeasurements.ts",
+    "path": "packages/element/src/textMeasurements.ts",
+    "sha": "f5081f3eab2ad04b9219667dd674326f79c1ba91",
+    "size": 8613,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/textMeasurements.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/textMeasurements.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f5081f3eab2ad04b9219667dd674326f79c1ba91",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/textMeasurements.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/textMeasurements.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f5081f3eab2ad04b9219667dd674326f79c1ba91",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/textMeasurements.ts"
+    }
+  },
+  {
+    "name": "textWrapping.ts",
+    "path": "packages/element/src/textWrapping.ts",
+    "sha": "7f5064456c10a149e74368394c2f6af0c580d16e",
+    "size": 22268,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/textWrapping.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/textWrapping.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/7f5064456c10a149e74368394c2f6af0c580d16e",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/textWrapping.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/textWrapping.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/7f5064456c10a149e74368394c2f6af0c580d16e",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/textWrapping.ts"
+    }
+  },
+  {
+    "name": "transform.ts",
+    "path": "packages/element/src/transform.ts",
+    "sha": "db58a7a9bf1aa2bd9ce4eaf1700d70cf9f0c4d81",
+    "size": 36830,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/transform.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/transform.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/db58a7a9bf1aa2bd9ce4eaf1700d70cf9f0c4d81",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/transform.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/transform.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/db58a7a9bf1aa2bd9ce4eaf1700d70cf9f0c4d81",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/transform.ts"
+    }
+  },
+  {
+    "name": "transformHandles.ts",
+    "path": "packages/element/src/transformHandles.ts",
+    "sha": "7ef56849ce338b318b9215cbbc728805d73430e3",
+    "size": 8726,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/transformHandles.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/transformHandles.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/7ef56849ce338b318b9215cbbc728805d73430e3",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/transformHandles.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/transformHandles.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/7ef56849ce338b318b9215cbbc728805d73430e3",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/transformHandles.ts"
+    }
+  },
+  {
+    "name": "typeChecks.ts",
+    "path": "packages/element/src/typeChecks.ts",
+    "sha": "b02c97515f5f49c7383c613b5773391f621c48a0",
+    "size": 11787,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/typeChecks.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/typeChecks.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/b02c97515f5f49c7383c613b5773391f621c48a0",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/typeChecks.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/typeChecks.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/b02c97515f5f49c7383c613b5773391f621c48a0",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/typeChecks.ts"
+    }
+  },
+  {
+    "name": "types.ts",
+    "path": "packages/element/src/types.ts",
+    "sha": "68891be19f8ba4021759292698cd63be5ef94af0",
+    "size": 14954,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/types.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/types.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/68891be19f8ba4021759292698cd63be5ef94af0",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/types.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/types.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/68891be19f8ba4021759292698cd63be5ef94af0",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/types.ts"
+    }
+  },
+  {
+    "name": "utils.ts",
+    "path": "packages/element/src/utils.ts",
+    "sha": "79a72183a8bbf4c86063c31bd25273c9ff22ec36",
+    "size": 24877,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/utils.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/utils.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/79a72183a8bbf4c86063c31bd25273c9ff22ec36",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/utils.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/utils.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/79a72183a8bbf4c86063c31bd25273c9ff22ec36",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/utils.ts"
+    }
+  },
+  {
+    "name": "visualdebug.ts",
+    "path": "packages/element/src/visualdebug.ts",
+    "sha": "1dea8cf568cc2701c8a133470713c0fc14638ed9",
+    "size": 5742,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/visualdebug.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/visualdebug.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/1dea8cf568cc2701c8a133470713c0fc14638ed9",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/visualdebug.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/visualdebug.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/1dea8cf568cc2701c8a133470713c0fc14638ed9",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/visualdebug.ts"
+    }
+  },
+  {
+    "name": "zindex.ts",
+    "path": "packages/element/src/zindex.ts",
+    "sha": "f18bc9b27bf4d615f0b52e355d120cc0beb4b4aa",
+    "size": 18951,
+    "url": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/zindex.ts?ref=master",
+    "html_url": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/zindex.ts",
+    "git_url": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f18bc9b27bf4d615f0b52e355d120cc0beb4b4aa",
+    "download_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/master/packages/element/src/zindex.ts",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/excalidraw/excalidraw/contents/packages/element/src/zindex.ts?ref=master",
+      "git": "https://api.github.com/repos/excalidraw/excalidraw/git/blobs/f18bc9b27bf4d615f0b52e355d120cc0beb4b4aa",
+      "html": "https://github.com/excalidraw/excalidraw/blob/master/packages/element/src/zindex.ts"
+    }
+  }
+]

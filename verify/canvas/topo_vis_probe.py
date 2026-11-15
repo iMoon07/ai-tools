@@ -1,5 +1,5 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil, base64
-PORT=9551; PROF="/tmp/kilo/prof-vis"
+PORT=9551; PROF="/tmp/alur-probes/prof-vis"
 shutil.rmtree(PROF, ignore_errors=True)
 proc=subprocess.Popen(["chromium","--headless=new",f"--remote-debugging-port={PORT}",
  f"--user-data-dir={PROF}","--no-first-run","--no-default-browser-check","--disable-gpu",
@@ -27,11 +27,11 @@ send("Emulation.setDeviceMetricsOverride",width=1500,height=1000,deviceScaleFact
 send("Page.navigate",url="http://127.0.0.1:8123/topology.html")
 time.sleep(4)
 shot=send("Page.captureScreenshot",format="png",captureBeyondViewport=False)
-open("/tmp/kilo/topo_ui_desktop.png","wb").write(base64.b64decode(shot["data"]))
+open("/tmp/alur-probes/topo_ui_desktop.png","wb").write(base64.b64decode(shot["data"]))
 # also capture the edges pane
 send("Runtime.evaluate",expression="document.querySelector('.dock-tab[data-pane=edges]').click()")
 time.sleep(1)
 shot=send("Page.captureScreenshot",format="png",captureBeyondViewport=False)
-open("/tmp/kilo/topo_ui_edges.png","wb").write(base64.b64decode(shot["data"]))
+open("/tmp/alur-probes/topo_ui_edges.png","wb").write(base64.b64decode(shot["data"]))
 print("shots saved")
 ws.close(); proc.terminate()

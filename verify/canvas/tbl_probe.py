@@ -1,5 +1,5 @@
 import json, subprocess, time, urllib.parse, urllib.request, shutil
-PORT=9559; PROF="/tmp/kilo/prof-tbl"
+PORT=9559; PROF="/tmp/alur-probes/prof-tbl"
 shutil.rmtree(PROF, ignore_errors=True)
 proc=subprocess.Popen(["chromium","--headless=new",f"--remote-debugging-port={PORT}",
  f"--user-data-dir={PROF}","--no-first-run","--no-default-browser-check","--disable-gpu",
@@ -36,7 +36,7 @@ spec = {"module":"canvas","title":"Table demo","grid":True,"width":760,"height":
    "rows":[["alpha","one"],["beta","two"]]}},
  "edges":[]}
 md = "# Table demo\n\n```draw\n" + json.dumps(spec) + "\n```\n"
-open('/tmp/kilo/tbl.md','w').write(md)
+open('/tmp/alur-probes/tbl.md','w').write(md)
 # serve via data url? read.html fetches by path. Write into project temp instead.
 import shutil as sh
 dst='/home/moon/Projects/imoon07.github.io/docs/references/tmp-tbl.md'

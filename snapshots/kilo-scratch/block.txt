@@ -1,0 +1,114 @@
+  @media (max-width: 760px) {
+    .topbar {
+      top: calc(6px + env(safe-area-inset-top));
+      left: 6px;
+      right: 6px;
+      max-width: none;
+      padding: 5px 6px;
+      transform: none;
+    }
+    .brand-text,
+    .top-nav,
+    .top-status,
+    #focusMode {
+      display: none !important;
+    }
+    .doc-title {
+      width: auto;
+      max-width: 44vw;
+      font-size: 12px;
+    }
+    .top-actions .icon-btn {
+      width: 30px;
+      height: 30px;
+    }
+
+    .tool-rail {
+      top: auto;
+      bottom: calc(8px + env(safe-area-inset-bottom));
+      left: 8px;
+      right: 8px;
+      max-width: none;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(13, 17, 23, 0.94);
+      box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.95);
+      z-index: 40;
+    }
+    .tool {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+    }
+    .tool.mobile-panel { display: inline-flex; }
+    .tool-sep {
+      align-self: stretch;
+      margin: 4px 3px;
+    }
+    .zoom-cluster {
+      margin-left: auto;
+    }
+
+    .dock,
+    .dock[data-side="left"],
+    .dock[data-side="right"] {
+      top: auto;
+      bottom: calc(84px + env(safe-area-inset-bottom));
+      left: 8px;
+      right: 8px;
+      width: auto;
+      max-height: calc(100vh - 166px - env(safe-area-inset-bottom));
+      border-radius: 16px;
+      z-index: 35;
+      transform: translateY(10px);
+    }
+    .dock.is-open,
+    .dock[data-side="left"].is-open,
+    .dock[data-side="right"].is-open {
+      transform: none;
+    }
+    /* Assets memakai aturan yang sama dengan panel bawah lain: tidak ada
+       override lebar di sini, supaya tidak menyusut jadi setengah layar. */
+    /* The Assets sheet also carries the Scene section, so the grid must not
+       claim the whole height: cap it and let the sheet scroll the rest. */
+    #panelAssets .dock-body { min-height: 0; }
+    #logoPanel > .asset-section:last-child .logo-grid {
+      max-height: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    #logoCats {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    #logoCats::-webkit-scrollbar { display: none; }
+    #logoCats .chip { flex: 0 0 auto; }
+    .shape-panel {
+      top: auto;
+      left: 8px;
+      right: 8px;
+      bottom: calc(84px + env(safe-area-inset-bottom));
+      width: auto;
+      max-height: 42vh;
+      border-radius: 16px;
+      overflow-y: auto;
+      z-index: 36;
+    }
+    .shape-head {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: rgba(13, 17, 23, 0.96);
+    }
+
+    .dock .ghost,
+    .shape-panel .ghost {
+      min-height: 40px;
+    }
+    .empty-hint {
+      bottom: calc(92px + env(safe-area-inset-bottom));
+    }
+  }
