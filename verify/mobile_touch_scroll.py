@@ -37,7 +37,7 @@ class Cdp:
         self.ws = None
         self.proc = subprocess.Popen(
             [CHROME, '--headless=new', f'--remote-debugging-port={port}',
-             f'--user-data-dir=/tmp/kilo/mob/prof-{port}', '--no-first-run',
+             f'--user-data-dir=/tmp/alur-probes/mob/prof-{port}', '--no-first-run',
              '--no-default-browser-check', '--disable-gpu', '--window-size=390,844',
              '--remote-allow-origins=*', 'about:blank'],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

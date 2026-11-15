@@ -1,5 +1,5 @@
 import subprocess, time, json, urllib.request, websocket, os, shutil, sys
-profile='/tmp/kilo/cdp-profile'
+profile='/tmp/alur-probes/cdp-profile'
 shutil.rmtree(profile, ignore_errors=True)
 chrome=subprocess.Popen(['/usr/bin/chromium','--headless=new','--no-sandbox','--disable-gpu','--remote-debugging-port=9222','--remote-allow-origins=*','--user-data-dir='+profile,'--window-size=1200,800','about:blank'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 try:

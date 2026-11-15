@@ -7,7 +7,7 @@ await new Promise(r=>ws.onopen=r);
 const send=(m,params={})=>new Promise(res=>{const i=++id;p.set(i,res);ws.send(JSON.stringify({id:i,method:m,params}))});
 const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true}); if(r.result.exceptionDetails)console.log('EXC',JSON.stringify(r.result.exceptionDetails).slice(0,600)); return r.result&&r.result.result&&r.result.result.value};
 await send('Runtime.enable'); await send('Page.enable');
-await send('Page.navigate',{url:'file:///tmp/kilo/charttest/line.html'});
+await send('Page.navigate',{url:'file:///tmp/alur-probes/charttest/line.html'});
 await new Promise(r=>setTimeout(r,1200));
 console.log('dots',await ev("document.querySelectorAll('.alur-line-dot').length"),'segs',await ev("document.querySelectorAll('.alur-donut-seg').length"));
 const dot=await ev("(()=>{const b=document.querySelectorAll('.alur-line-dot')[2];const r=b.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}})()");

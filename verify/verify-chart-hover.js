@@ -7,7 +7,7 @@ await new Promise(r=>ws.onopen=r);
 const send=(m,params={})=>new Promise(res=>{const i=++id;p.set(i,res);ws.send(JSON.stringify({id:i,method:m,params}))});
 const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true}); if(r.result.exceptionDetails)console.log('EXC',JSON.stringify(r.result.exceptionDetails).slice(0,600)); return r.result&&r.result.result&&r.result.result.value};
 await send('Runtime.enable'); await send('Page.enable');
-await send('Page.navigate',{url:'file:///tmp/kilo/charttest/index.html'});
+await send('Page.navigate',{url:'file:///tmp/alur-probes/charttest/index.html'});
 await new Promise(r=>setTimeout(r,1200));
 console.log('bars',await ev("document.querySelectorAll('.alur-bar').length"));
 console.log('tips',await ev("document.querySelectorAll('[data-tip]').length"));

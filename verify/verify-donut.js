@@ -7,7 +7,7 @@ await new Promise(r=>ws.onopen=r);
 const send=(m,params={})=>new Promise(res=>{const i=++id;p.set(i,res);ws.send(JSON.stringify({id:i,method:m,params}))});
 const ev=async e=>{const r=await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true}); return r.result&&r.result.result&&r.result.result.value};
 await send('Runtime.enable'); await send('Page.enable');
-await send('Page.navigate',{url:'file:///tmp/kilo/charttest/line.html'}); await new Promise(r=>setTimeout(r,1000));
+await send('Page.navigate',{url:'file:///tmp/alur-probes/charttest/line.html'}); await new Promise(r=>setTimeout(r,1000));
 const pt=await ev("(()=>{const s=document.querySelectorAll('.alur-donut-seg')[1];const r=s.getBoundingClientRect();const cx=r.left+r.width/2, cy=r.top+r.height/2;return {x:cx,y:r.top+2,cx,cy,w:r.width,h:r.height}})()");
 console.log('pt',pt);
 await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:pt.x,y:pt.y,buttons:0}); await new Promise(r=>setTimeout(r,300));

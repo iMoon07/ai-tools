@@ -91,7 +91,7 @@ def main():
 
     srv = Server((args.host, args.port), partial(Handler, directory=SITE))
     if args.tls:
-        cert_dir = "/tmp/kilo"
+        cert_dir = "/tmp/alur-probes"
         os.makedirs(cert_dir, exist_ok=True)
         crt, key = make_cert(cert_dir)
         ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)

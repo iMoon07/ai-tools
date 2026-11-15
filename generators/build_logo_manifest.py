@@ -22,7 +22,9 @@ from pathlib import Path
 DEFAULT_SITE = Path("/home/moon/Projects/imoon07.github.io")
 DEFAULT_LOGO = Path("/home/moon/Projects/logo")
 REMOTE_BASE = "https://raw.githubusercontent.com/iMoon07/logo-svg/main/"
-CATEGORIES = ("profession", "programming", "security", "stack")
+# "motion" holds the animated SMIL set (build_motion.py); it rides the same
+# remote path as the static logos.
+CATEGORIES = ("profession", "programming", "security", "stack", "motion")
 
 FILL = re.compile(r'(?:fill|stroke)\s*[:=]\s*["\']?(#[0-9a-fA-F]{3,8}|[a-zA-Z]+)')
 HEX = re.compile(r'^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$')
@@ -60,7 +62,7 @@ def luma(rgb):
 def is_dark(path):
     """True when every explicit fill/stroke colour is dark, or when the file
     declares no colour at all (SVG defaults to black)."""
-    if path.suffix.lower() == ".png":
+    if path.suffix.lower() in (".png", ".webp", ".gif"):
         return False
     try:
         text = path.read_text(encoding="utf-8", errors="ignore")
@@ -96,7 +98,7 @@ def main():
         if not folder.is_dir():
             continue
         for path in sorted(folder.iterdir()):
-            if not path.is_file() or path.suffix.lower() not in (".svg", ".png"):
+            if not path.is_file() or path.suffix.lower() not in (".svg", ".png", ".webp", ".gif"):
                 continue
             name = path.stem
             entries.append({

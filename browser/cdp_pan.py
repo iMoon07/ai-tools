@@ -1,5 +1,5 @@
 import subprocess,time,json,urllib.request,websocket,shutil
-profile='/tmp/kilo/cdp-profile3'; shutil.rmtree(profile,ignore_errors=True)
+profile='/tmp/alur-probes/cdp-profile3'; shutil.rmtree(profile,ignore_errors=True)
 c=subprocess.Popen(['/usr/bin/chromium','--headless=new','--no-sandbox','--disable-gpu','--remote-debugging-port=9224','--remote-allow-origins=*','--user-data-dir='+profile,'--window-size=1200,800','about:blank'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 try:
  for _ in range(100):

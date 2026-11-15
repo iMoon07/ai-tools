@@ -27,7 +27,7 @@ http://localhost:8123/blog.html
 
 ## HTTPS
 
-`--tls` membuat cert self-signed di `/tmp/kilo/{cert,key}.pem` (CN=localhost,
+`--tls` membuat cert self-signed di `/tmp/alur-probes/{cert,key}.pem` (CN=localhost,
 SAN `DNS:localhost,IP:127.0.0.1`) dan memakainya ulang selama file masih ada.
 Browser akan memperingatkan sekali; klik *Advanced → Proceed*. Untuk akses dari
 HP/LAN, buka `https://<ip-lan>:8443/` dan tambahkan `--host 0.0.0.0` (default).

@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, "/tmp/kilo")
+sys.path.insert(0, "/tmp/alur-probes")
 import convert2 as C
 
 ROOT = C.ROOT
