@@ -67,6 +67,8 @@ python3 -m playwright install chromium
 | Test shape/line interleaving | `python3 test/test_all_shapes_line.py` |
 | Check list scrolling on a touch viewport | `python3 verify/mobile_touch_scroll.py --url http://localhost:8000/draw.html --open ".mobile-fab,[data-mobile-panel='assets']" --control` |
 | Run every canvas probe | `for f in verify/canvas/*.py; do python3 "$f"; done` |
+| Audit the home page panels on a phone viewport | `python3 verify/pages/home_mobile1.py 390 844` |
+| Check the certificate PDF cards | `python3 verify/pages/pdf_card1.py 390 m` |
 | Kill the headless browsers that run leaves behind | `python3 browser/kill_headless.py --kill` |
 | Search the web without solving a captcha | `python3 fetch/google_search.py "anubis lottie" --engines google,ddg` |
 | Pull IconScout Lottie animations by tag | `python3 fetch/iconscout_pull.py --tag security --tag network --download` |
@@ -84,6 +86,10 @@ python3 -m playwright install chromium
   under their prefixed names, kept as the check set), `assets/motion/webp`
   (Lottie clips rendered to animated WebP) and `assets/lottie/json` (the raw
   IconScout downloads with `meta.json` credits).
+- `verify/pages/` drives the home page (`index.html`) panels: mobile layout,
+  certificate cards, and the row logos (`logos_row3.py`).
+- `snapshots/brand/` keeps the untouched source logos the row marks were cut from,
+  so a crop can be redone without hitting the network again.
 - `snapshots/` keeps the evidence a run produced: `snapshots/iconscout` (listing
   HTML, JSON-LD, `links.json`, per-batch `lottie-meta/*.json`),
   `snapshots/google` (SERP dumps), `snapshots/logo` (deployed manifest copies),

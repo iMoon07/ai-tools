@@ -1,0 +1,4096 @@
+{
+ "saved": [
+  {
+   "slug": "brute-ratel",
+   "category": "security-enterprise",
+   "domain": "bruteratel.com",
+   "ext": "png",
+   "bytes": 7582,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "core-impact",
+   "category": "security-enterprise",
+   "domain": "coresecurity.com",
+   "ext": "png",
+   "bytes": 2160,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "scythe",
+   "category": "security-enterprise",
+   "domain": "scythe.io",
+   "ext": "png",
+   "bytes": 5425,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "picus-security",
+   "category": "security-enterprise",
+   "domain": "picussecurity.com",
+   "ext": "png",
+   "bytes": 939,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "invicti",
+   "category": "security-enterprise",
+   "domain": "invicti.com",
+   "ext": "png",
+   "bytes": 8742,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "acunetix",
+   "category": "security-enterprise",
+   "domain": "acunetix.com",
+   "ext": "png",
+   "bytes": 18237,
+   "size": [
+    196,
+    196
+   ]
+  },
+  {
+   "slug": "veracode",
+   "category": "security-enterprise",
+   "domain": "veracode.com",
+   "ext": "png",
+   "bytes": 3631,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "blackduck",
+   "category": "security-enterprise",
+   "domain": "blackduck.com",
+   "ext": "png",
+   "bytes": 49897,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "mend",
+   "category": "security-enterprise",
+   "domain": "mend.io",
+   "ext": "png",
+   "bytes": 15108,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "aikido",
+   "category": "security-enterprise",
+   "domain": "aikido.dev",
+   "ext": "png",
+   "bytes": 1259,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "socket-security",
+   "category": "security-enterprise",
+   "domain": "socket.dev",
+   "ext": "png",
+   "bytes": 5857,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "contrast-security",
+   "category": "security-enterprise",
+   "domain": "contrastsecurity.com",
+   "ext": "png",
+   "bytes": 956,
+   "size": [
+    98,
+    52
+   ]
+  },
+  {
+   "slug": "gitguardian",
+   "category": "security-enterprise",
+   "domain": "gitguardian.com",
+   "ext": "png",
+   "bytes": 8934,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "sentinelone",
+   "category": "security-enterprise",
+   "domain": "sentinelone.com",
+   "ext": "png",
+   "bytes": 1392,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "trend-micro",
+   "category": "security-enterprise",
+   "domain": "trendmicro.com",
+   "ext": "png",
+   "bytes": 3118,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "eset",
+   "category": "security-enterprise",
+   "domain": "eset.com",
+   "ext": "png",
+   "bytes": 8201,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "withsecure",
+   "category": "security-enterprise",
+   "domain": "withsecure.com",
+   "ext": "png",
+   "bytes": 3690,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "huntress",
+   "category": "security-enterprise",
+   "domain": "huntress.com",
+   "ext": "png",
+   "bytes": 7093,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "cylance",
+   "category": "security-enterprise",
+   "domain": "cylance.com",
+   "ext": "png",
+   "bytes": 6453,
+   "size": [
+    200,
+    200
+   ]
+  },
+  {
+   "slug": "carbon-black",
+   "category": "security-enterprise",
+   "domain": "carbonblack.com",
+   "ext": "png",
+   "bytes": 4730,
+   "size": [
+    96,
+    96
+   ]
+  },
+  {
+   "slug": "qradar",
+   "category": "security-enterprise",
+   "domain": "ibm.com",
+   "ext": "png",
+   "bytes": 2379,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "microsoft-sentinel",
+   "category": "security-enterprise",
+   "domain": "microsoft.com",
+   "ext": "png",
+   "bytes": 426,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "google-secops",
+   "category": "security-enterprise",
+   "domain": "cloud.google.com",
+   "ext": "png",
+   "bytes": 11237,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "exabeam",
+   "category": "security-enterprise",
+   "domain": "exabeam.com",
+   "ext": "png",
+   "bytes": 2055,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "securonix",
+   "category": "security-enterprise",
+   "domain": "securonix.com",
+   "ext": "png",
+   "bytes": 18296,
+   "size": [
+    248,
+    248
+   ]
+  },
+  {
+   "slug": "devo",
+   "category": "security-enterprise",
+   "domain": "devo.com",
+   "ext": "png",
+   "bytes": 4670,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "ibm-resilient",
+   "category": "security-enterprise",
+   "domain": "ibm.com",
+   "ext": "png",
+   "bytes": 2379,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "splunk-soar",
+   "category": "security-enterprise",
+   "domain": "splunk.com",
+   "ext": "png",
+   "bytes": 30441,
+   "size": [
+    196,
+    196
+   ]
+  },
+  {
+   "slug": "tines",
+   "category": "security-enterprise",
+   "domain": "tines.io",
+   "ext": "png",
+   "bytes": 2786,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "swimlane",
+   "category": "security-enterprise",
+   "domain": "swimlane.com",
+   "ext": "png",
+   "bytes": 4929,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "torq",
+   "category": "security-enterprise",
+   "domain": "torq.io",
+   "ext": "png",
+   "bytes": 1091,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "cortex-analyser",
+   "category": "security-enterprise",
+   "domain": "cortex.io",
+   "ext": "png",
+   "bytes": 1751,
+   "size": [
+    176,
+    176
+   ]
+  },
+  {
+   "slug": "opencti",
+   "category": "security-enterprise",
+   "domain": "filigran.io",
+   "ext": "png",
+   "bytes": 1906,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "misp",
+   "category": "security-enterprise",
+   "domain": "misp-project.org",
+   "ext": "png",
+   "bytes": 8429,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "anomali",
+   "category": "security-enterprise",
+   "domain": "anomali.com",
+   "ext": "png",
+   "bytes": 2071,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "recorded-future",
+   "category": "security-enterprise",
+   "domain": "recordedfuture.com",
+   "ext": "png",
+   "bytes": 102862,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "flashpoint",
+   "category": "security-enterprise",
+   "domain": "flashpoint.io",
+   "ext": "png",
+   "bytes": 3385,
+   "size": [
+    150,
+    150
+   ]
+  },
+  {
+   "slug": "threatconnect",
+   "category": "security-enterprise",
+   "domain": "threatconnect.com",
+   "ext": "png",
+   "bytes": 1070,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "threatquotient",
+   "category": "security-enterprise",
+   "domain": "threatquotient.com",
+   "ext": "png",
+   "bytes": 6020,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "panther",
+   "category": "security-enterprise",
+   "domain": "panther.com",
+   "ext": "png",
+   "bytes": 4325,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "elastic-security",
+   "category": "security-enterprise",
+   "domain": "elastic.co",
+   "ext": "png",
+   "bytes": 9662,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "fortigate",
+   "category": "security-enterprise",
+   "domain": "fortinet.com",
+   "ext": "png",
+   "bytes": 945,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "checkpoint",
+   "category": "security-enterprise",
+   "domain": "checkpoint.com",
+   "ext": "png",
+   "bytes": 10662,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "cisco-secure",
+   "category": "security-enterprise",
+   "domain": "cisco.com",
+   "ext": "svg",
+   "bytes": 2655,
+   "size": null
+  },
+  {
+   "slug": "juniper-networks",
+   "category": "security-enterprise",
+   "domain": "juniper.net",
+   "ext": "svg",
+   "bytes": 545,
+   "size": null
+  },
+  {
+   "slug": "watchguard",
+   "category": "security-enterprise",
+   "domain": "watchguard.com",
+   "ext": "png",
+   "bytes": 7539,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "forcepoint",
+   "category": "security-enterprise",
+   "domain": "forcepoint.com",
+   "ext": "png",
+   "bytes": 383,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "barracuda",
+   "category": "security-enterprise",
+   "domain": "barracuda.com",
+   "ext": "png",
+   "bytes": 1011,
+   "size": [
+    152,
+    152
+   ]
+  },
+  {
+   "slug": "imperva",
+   "category": "security-enterprise",
+   "domain": "imperva.com",
+   "ext": "png",
+   "bytes": 896,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "radware",
+   "category": "security-enterprise",
+   "domain": "radware.com",
+   "ext": "png",
+   "bytes": 1890,
+   "size": [
+    114,
+    114
+   ]
+  },
+  {
+   "slug": "darktrace",
+   "category": "security-enterprise",
+   "domain": "darktrace.com",
+   "ext": "png",
+   "bytes": 2070,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "vectra",
+   "category": "security-enterprise",
+   "domain": "vectra.ai",
+   "ext": "png",
+   "bytes": 5854,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "corelight",
+   "category": "security-enterprise",
+   "domain": "corelight.com",
+   "ext": "png",
+   "bytes": 1535,
+   "size": [
+    96,
+    96
+   ]
+  },
+  {
+   "slug": "netscout",
+   "category": "security-enterprise",
+   "domain": "netscout.com",
+   "ext": "png",
+   "bytes": 20751,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "arbor-networks",
+   "category": "security-enterprise",
+   "domain": "netscout.com",
+   "ext": "png",
+   "bytes": 20751,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "orca-security",
+   "category": "security-enterprise",
+   "domain": "orca.security",
+   "ext": "png",
+   "bytes": 3421,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "aqua-security",
+   "category": "security-enterprise",
+   "domain": "aqua.com",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "prisma-cloud",
+   "category": "security-enterprise",
+   "domain": "prisma.paloaltonetworks.com",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "lacework",
+   "category": "security-enterprise",
+   "domain": "lacework.net",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "armo",
+   "category": "security-enterprise",
+   "domain": "armosec.io",
+   "ext": "png",
+   "bytes": 8168,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "defender-for-cloud",
+   "category": "security-enterprise",
+   "domain": "microsoft.com",
+   "ext": "png",
+   "bytes": 426,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "aws-security-hub",
+   "category": "security-enterprise",
+   "domain": "aws.amazon.com",
+   "ext": "png",
+   "bytes": 1734,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "guardduty",
+   "category": "security-enterprise",
+   "domain": "aws.amazon.com",
+   "ext": "png",
+   "bytes": 1734,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "aws-inspector",
+   "category": "security-enterprise",
+   "domain": "aws.amazon.com",
+   "ext": "png",
+   "bytes": 1734,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "security-command-center",
+   "category": "security-enterprise",
+   "domain": "cloud.google.com",
+   "ext": "png",
+   "bytes": 11237,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "upwind",
+   "category": "security-enterprise",
+   "domain": "upwind.io",
+   "ext": "png",
+   "bytes": 4822,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "cyscale",
+   "category": "security-enterprise",
+   "domain": "cyscale.com",
+   "ext": "png",
+   "bytes": 4779,
+   "size": [
+    64,
+    64
+   ]
+  },
+  {
+   "slug": "kubescape",
+   "category": "security-enterprise",
+   "domain": "kubescape.io",
+   "ext": "png",
+   "bytes": 4249,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "beyondtrust",
+   "category": "security-enterprise",
+   "domain": "beyondtrust.com",
+   "ext": "png",
+   "bytes": 2249,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "delinea",
+   "category": "security-enterprise",
+   "domain": "delinea.com",
+   "ext": "png",
+   "bytes": 2502,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "ping-identity",
+   "category": "security-enterprise",
+   "domain": "pingidentity.com",
+   "ext": "svg",
+   "bytes": 6999,
+   "size": null
+  },
+  {
+   "slug": "sailpoint",
+   "category": "security-enterprise",
+   "domain": "sailpoint.com",
+   "ext": "png",
+   "bytes": 2041,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "saviynt",
+   "category": "security-enterprise",
+   "domain": "saviynt.com",
+   "ext": "png",
+   "bytes": 2282,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "one-identity",
+   "category": "security-enterprise",
+   "domain": "oneidentity.com",
+   "ext": "png",
+   "bytes": 17457,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "strongdm",
+   "category": "security-enterprise",
+   "domain": "strongdm.com",
+   "ext": "png",
+   "bytes": 2502,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "akeyless",
+   "category": "security-enterprise",
+   "domain": "akeyless.io",
+   "ext": "png",
+   "bytes": 1577,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "magnet-forensics",
+   "category": "security-enterprise",
+   "domain": "magnetforensics.com",
+   "ext": "png",
+   "bytes": 14044,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "encase",
+   "category": "security-enterprise",
+   "domain": "opentext.com",
+   "ext": "png",
+   "bytes": 31119,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "ftk",
+   "category": "security-enterprise",
+   "domain": "exterro.com",
+   "ext": "png",
+   "bytes": 4059,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "cellebrite",
+   "category": "security-enterprise",
+   "domain": "cellebrite.com",
+   "ext": "png",
+   "bytes": 2396,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "oxygen-forensics",
+   "category": "security-enterprise",
+   "domain": "oxygen-forensic.com",
+   "ext": "png",
+   "bytes": 3389,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "binalyze",
+   "category": "security-enterprise",
+   "domain": "binalyze.com",
+   "ext": "png",
+   "bytes": 5178,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "axiom",
+   "category": "security-enterprise",
+   "domain": "magnetforensics.com",
+   "ext": "png",
+   "bytes": 14044,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "vanta",
+   "category": "security-enterprise",
+   "domain": "vanta.com",
+   "ext": "png",
+   "bytes": 8497,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "drata",
+   "category": "security-enterprise",
+   "domain": "drata.com",
+   "ext": "png",
+   "bytes": 1729,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "secureframe",
+   "category": "security-enterprise",
+   "domain": "secureframe.com",
+   "ext": "png",
+   "bytes": 1934,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "eramba",
+   "category": "security-enterprise",
+   "domain": "eramba.org",
+   "ext": "png",
+   "bytes": 1687,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "anyrun",
+   "category": "security-enterprise",
+   "domain": "any.run",
+   "ext": "png",
+   "bytes": 9579,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "joe-sandbox",
+   "category": "security-enterprise",
+   "domain": "joxeankoret.com",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "hybrid-analysis",
+   "category": "security-enterprise",
+   "domain": "hybrid-analysis.com",
+   "ext": "png",
+   "bytes": 285478,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "ida-pro",
+   "category": "security-enterprise",
+   "domain": "hex-rays.com",
+   "ext": "png",
+   "bytes": 3801,
+   "size": [
+    57,
+    57
+   ]
+  },
+  {
+   "slug": "binary-ninja",
+   "category": "security-enterprise",
+   "domain": "binary.ninja",
+   "ext": "png",
+   "bytes": 4723,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "shodan",
+   "category": "security-enterprise",
+   "domain": "shodan.io",
+   "ext": "png",
+   "bytes": 5635,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "censys",
+   "category": "security-enterprise",
+   "domain": "censys.io",
+   "ext": "png",
+   "bytes": 12773,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "sucuri",
+   "category": "security-enterprise",
+   "domain": "sucuri.net",
+   "ext": "png",
+   "bytes": 10389,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "stackpath",
+   "category": "security-enterprise",
+   "domain": "stackpath.com",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "signal-sciences",
+   "category": "security-enterprise",
+   "domain": "signalsciences.com",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "wallarm",
+   "category": "security-enterprise",
+   "domain": "wallarm.com",
+   "ext": "svg",
+   "bytes": 1646,
+   "size": null
+  },
+  {
+   "slug": "aws-waf",
+   "category": "security-enterprise",
+   "domain": "aws.amazon.com",
+   "ext": "png",
+   "bytes": 1734,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "azure-front-door",
+   "category": "security-enterprise",
+   "domain": "azure.microsoft.com",
+   "ext": "png",
+   "bytes": 426,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "section-io",
+   "category": "security-enterprise",
+   "domain": "section.io",
+   "ext": "png",
+   "bytes": 2222,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "edgecast",
+   "category": "security-enterprise",
+   "domain": "edgecast.com",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "edgio",
+   "category": "security-enterprise",
+   "domain": "edgio.com",
+   "ext": "svg",
+   "bytes": 569,
+   "size": null
+  },
+  {
+   "slug": "imperva-waf",
+   "category": "security-enterprise",
+   "domain": "imperva.com",
+   "ext": "png",
+   "bytes": 896,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "modshield",
+   "category": "security-enterprise",
+   "domain": "modshield.com",
+   "ext": "png",
+   "bytes": 1965,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "barikode",
+   "category": "security-enterprise",
+   "domain": "barikode.com",
+   "ext": "png",
+   "bytes": 3307,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "logpoint",
+   "category": "security-enterprise",
+   "domain": "logpoint.com",
+   "ext": "png",
+   "bytes": 4380,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "sumo-logic",
+   "category": "security-enterprise",
+   "domain": "sumologic.com",
+   "ext": "png",
+   "bytes": 1903,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "chronicle",
+   "category": "security-enterprise",
+   "domain": "chronicle.security",
+   "ext": "png",
+   "bytes": 11237,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "arcsight",
+   "category": "security-enterprise",
+   "domain": "microfocus.com",
+   "ext": "png",
+   "bytes": 31119,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "elastic-siem",
+   "category": "security-enterprise",
+   "domain": "elastic.co",
+   "ext": "png",
+   "bytes": 9662,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "cribl",
+   "category": "security-enterprise",
+   "domain": "cribl.io",
+   "ext": "png",
+   "bytes": 803,
+   "size": [
+    150,
+    150
+   ]
+  },
+  {
+   "slug": "scalyr",
+   "category": "security-enterprise",
+   "domain": "dataset.com",
+   "ext": "png",
+   "bytes": 1392,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "humio",
+   "category": "security-enterprise",
+   "domain": "humio.com",
+   "ext": "png",
+   "bytes": 2262,
+   "size": [
+    117,
+    121
+   ]
+  },
+  {
+   "slug": "logz-io",
+   "category": "security-enterprise",
+   "domain": "logz.io",
+   "ext": "png",
+   "bytes": 10082,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "mezmo",
+   "category": "security-enterprise",
+   "domain": "mezmo.com",
+   "ext": "png",
+   "bytes": 1768,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "papertrail",
+   "category": "security-enterprise",
+   "domain": "papertrailapp.com",
+   "ext": "png",
+   "bytes": 8550,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "cisco-firepower",
+   "category": "security-enterprise",
+   "domain": "cisco.com",
+   "ext": "svg",
+   "bytes": 2655,
+   "size": null
+  },
+  {
+   "slug": "cisco-securex",
+   "category": "security-enterprise",
+   "domain": "cisco.com",
+   "ext": "svg",
+   "bytes": 2655,
+   "size": null
+  },
+  {
+   "slug": "alert-logic",
+   "category": "security-enterprise",
+   "domain": "alertlogic.com",
+   "ext": "png",
+   "bytes": 1302,
+   "size": [
+    64,
+    64
+   ]
+  },
+  {
+   "slug": "tripwire",
+   "category": "security-enterprise",
+   "domain": "tripwire.com",
+   "ext": "png",
+   "bytes": 2160,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "tufin",
+   "category": "security-enterprise",
+   "domain": "tufin.com",
+   "ext": "png",
+   "bytes": 1691,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "algosec",
+   "category": "security-enterprise",
+   "domain": "algosec.com",
+   "ext": "png",
+   "bytes": 2365,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "inspector-2",
+   "category": "security-enterprise",
+   "domain": "aws.amazon.com",
+   "ext": "png",
+   "bytes": 1734,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "stamus",
+   "category": "security-enterprise",
+   "domain": "stamusnetworks.com",
+   "ext": "png",
+   "bytes": 4188,
+   "size": [
+    226,
+    256
+   ]
+  },
+  {
+   "slug": "selks",
+   "category": "security-enterprise",
+   "domain": "stamusnetworks.com",
+   "ext": "png",
+   "bytes": 4188,
+   "size": [
+    226,
+    256
+   ]
+  },
+  {
+   "slug": "jumpcloud",
+   "category": "security-enterprise",
+   "domain": "jumpcloud.com",
+   "ext": "png",
+   "bytes": 5484,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "ory",
+   "category": "security-enterprise",
+   "domain": "ory.sh",
+   "ext": "png",
+   "bytes": 2139,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "openiam",
+   "category": "security-enterprise",
+   "domain": "openiam.com",
+   "ext": "png",
+   "bytes": 1844,
+   "size": [
+    65,
+    65
+   ]
+  },
+  {
+   "slug": "midpoint",
+   "category": "security-enterprise",
+   "domain": "evolveum.com",
+   "ext": "png",
+   "bytes": 1078,
+   "size": [
+    72,
+    72
+   ]
+  },
+  {
+   "slug": "microsoft-entra",
+   "category": "security-enterprise",
+   "domain": "microsoft.com",
+   "ext": "png",
+   "bytes": 426,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "rsa-securid",
+   "category": "security-enterprise",
+   "domain": "rsa.com",
+   "ext": "png",
+   "bytes": 5717,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "thales-safenet",
+   "category": "security-enterprise",
+   "domain": "cpl.thalesgroup.com",
+   "ext": "png",
+   "bytes": 6351,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "semperis",
+   "category": "security-enterprise",
+   "domain": "semperis.com",
+   "ext": "png",
+   "bytes": 9059,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "authomize",
+   "category": "security-enterprise",
+   "domain": "authomize.com",
+   "ext": "png",
+   "bytes": 2502,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "veza",
+   "category": "security-enterprise",
+   "domain": "veza.com",
+   "ext": "png",
+   "bytes": 4384,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "empowerid",
+   "category": "security-enterprise",
+   "domain": "empowerid.com",
+   "ext": "png",
+   "bytes": 1585,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "helloid",
+   "category": "security-enterprise",
+   "domain": "tools4ever.com",
+   "ext": "png",
+   "bytes": 5973,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "okta-asa",
+   "category": "security-enterprise",
+   "domain": "okta.com",
+   "ext": "png",
+   "bytes": 3534,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "ping-da",
+   "category": "security-enterprise",
+   "domain": "pingidentity.com",
+   "ext": "svg",
+   "bytes": 6999,
+   "size": null
+  },
+  {
+   "slug": "arctic-wolf",
+   "category": "security-enterprise",
+   "domain": "arcticwolf.com",
+   "ext": "png",
+   "bytes": 6453,
+   "size": [
+    200,
+    200
+   ]
+  },
+  {
+   "slug": "red-canary",
+   "category": "security-enterprise",
+   "domain": "redcanary.com",
+   "ext": "png",
+   "bytes": 3839,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "expel",
+   "category": "security-enterprise",
+   "domain": "expel.io",
+   "ext": "png",
+   "bytes": 2734,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "critical-start",
+   "category": "security-enterprise",
+   "domain": "criticalstart.com",
+   "ext": "png",
+   "bytes": 5188,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "deepwatch",
+   "category": "security-enterprise",
+   "domain": "deepwatch.com",
+   "ext": "png",
+   "bytes": 5787,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "esentire",
+   "category": "security-enterprise",
+   "domain": "esentire.com",
+   "ext": "png",
+   "bytes": 899,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "reliaquest",
+   "category": "security-enterprise",
+   "domain": "reliaquest.com",
+   "ext": "png",
+   "bytes": 1760,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "binary-defense",
+   "category": "security-enterprise",
+   "domain": "binarydefense.com",
+   "ext": "png",
+   "bytes": 2410,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "proficio",
+   "category": "security-enterprise",
+   "domain": "proficio.com",
+   "ext": "png",
+   "bytes": 3567,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "cybereason",
+   "category": "security-enterprise",
+   "domain": "cybereason.com",
+   "ext": "png",
+   "bytes": 1302,
+   "size": [
+    64,
+    64
+   ]
+  },
+  {
+   "slug": "tanium",
+   "category": "security-enterprise",
+   "domain": "tanium.com",
+   "ext": "png",
+   "bytes": 1666,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "threatlocker",
+   "category": "security-enterprise",
+   "domain": "threatlocker.com",
+   "ext": "png",
+   "bytes": 5529,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "ahnlab",
+   "category": "security-enterprise",
+   "domain": "ahnlab.com",
+   "ext": "png",
+   "bytes": 1782,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "gdata",
+   "category": "security-enterprise",
+   "domain": "gdata-software.com",
+   "ext": "png",
+   "bytes": 1917,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "f-secure",
+   "category": "security-enterprise",
+   "domain": "f-secure.com",
+   "ext": "png",
+   "bytes": 1500,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "eset-protect",
+   "category": "security-enterprise",
+   "domain": "eset.com",
+   "ext": "png",
+   "bytes": 8201,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "kasm",
+   "category": "security-enterprise",
+   "domain": "kasmweb.com",
+   "ext": "png",
+   "bytes": 9694,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "proofpoint",
+   "category": "security-enterprise",
+   "domain": "proofpoint.com",
+   "ext": "png",
+   "bytes": 2781,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "mimecast",
+   "category": "security-enterprise",
+   "domain": "mimecast.com",
+   "ext": "png",
+   "bytes": 1564,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "abnormal-security",
+   "category": "security-enterprise",
+   "domain": "abnormal.ai",
+   "ext": "png",
+   "bytes": 1913,
+   "size": [
+    196,
+    196
+   ]
+  },
+  {
+   "slug": "material-security",
+   "category": "security-enterprise",
+   "domain": "material.security",
+   "ext": "png",
+   "bytes": 1270,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "hornetsecurity",
+   "category": "security-enterprise",
+   "domain": "hornetsecurity.com",
+   "ext": "png",
+   "bytes": 2440,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "perception-point",
+   "category": "security-enterprise",
+   "domain": "perception-point.io",
+   "ext": "png",
+   "bytes": 945,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "ironscales",
+   "category": "security-enterprise",
+   "domain": "ironscales.com",
+   "ext": "png",
+   "bytes": 17595,
+   "size": [
+    250,
+    250
+   ]
+  },
+  {
+   "slug": "spamhaus",
+   "category": "security-enterprise",
+   "domain": "spamhaus.org",
+   "ext": "png",
+   "bytes": 2324,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "mailprotector",
+   "category": "security-enterprise",
+   "domain": "mailprotector.com",
+   "ext": "png",
+   "bytes": 1119,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "valimail",
+   "category": "security-enterprise",
+   "domain": "valimail.com",
+   "ext": "png",
+   "bytes": 7586,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "agari",
+   "category": "security-enterprise",
+   "domain": "agari.com",
+   "ext": "png",
+   "bytes": 2160,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "twilio-sendgrid",
+   "category": "security-enterprise",
+   "domain": "sendgrid.com",
+   "ext": "png",
+   "bytes": 2537,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "sweet-security",
+   "category": "security-enterprise",
+   "domain": "sweet.security",
+   "ext": "png",
+   "bytes": 7270,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "gem-security",
+   "category": "security-enterprise",
+   "domain": "gem.security",
+   "ext": "png",
+   "bytes": 2019,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "authomize-2",
+   "category": "security-enterprise",
+   "domain": "authomize.com",
+   "ext": "png",
+   "bytes": 2502,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "token-security",
+   "category": "security-enterprise",
+   "domain": "token.security",
+   "ext": "png",
+   "bytes": 5208,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "salt-security",
+   "category": "security-enterprise",
+   "domain": "salt.security",
+   "ext": "png",
+   "bytes": 12471,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "traceable",
+   "category": "security-enterprise",
+   "domain": "traceable.ai",
+   "ext": "png",
+   "bytes": 1964,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "orca",
+   "category": "security-enterprise",
+   "domain": "orca.security",
+   "ext": "png",
+   "bytes": 3421,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "Ermetic",
+   "category": "security-enterprise",
+   "domain": "ermetic.com",
+   "ext": "png",
+   "bytes": 6816,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "stacklet",
+   "category": "security-enterprise",
+   "domain": "stacklet.io",
+   "ext": "png",
+   "bytes": 11068,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "bigid",
+   "category": "security-enterprise",
+   "domain": "bigid.com",
+   "ext": "png",
+   "bytes": 31699,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "cyera",
+   "category": "security-enterprise",
+   "domain": "cyera.io",
+   "ext": "png",
+   "bytes": 7252,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "sentra",
+   "category": "security-enterprise",
+   "domain": "sentra.io",
+   "ext": "png",
+   "bytes": 3253,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "varonis",
+   "category": "security-enterprise",
+   "domain": "varonis.com",
+   "ext": "png",
+   "bytes": 1943,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "trusta",
+   "category": "security-enterprise",
+   "domain": "trusta.ai",
+   "ext": "png",
+   "bytes": 3020,
+   "size": [
+    96,
+    96
+   ]
+  },
+  {
+   "slug": "titaniam",
+   "category": "security-enterprise",
+   "domain": "titaniam.com",
+   "ext": "png",
+   "bytes": 6908,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "zerofox",
+   "category": "security-enterprise",
+   "domain": "zerofox.com",
+   "ext": "png",
+   "bytes": 2359,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "intel-471",
+   "category": "security-enterprise",
+   "domain": "intel471.com",
+   "ext": "png",
+   "bytes": 2045,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "kela",
+   "category": "security-enterprise",
+   "domain": "kela.ai",
+   "ext": "png",
+   "bytes": 6348,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "darkowl",
+   "category": "security-enterprise",
+   "domain": "darkowl.com",
+   "ext": "png",
+   "bytes": 3597,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "dataminr",
+   "category": "security-enterprise",
+   "domain": "dataminr.com",
+   "ext": "png",
+   "bytes": 1070,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "recorded-future-2",
+   "category": "security-enterprise",
+   "domain": "recordedfuture.com",
+   "ext": "png",
+   "bytes": 102862,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "flashpoint-2",
+   "category": "security-enterprise",
+   "domain": "flashpoint.io",
+   "ext": "png",
+   "bytes": 3385,
+   "size": [
+    150,
+    150
+   ]
+  },
+  {
+   "slug": "lookingglass",
+   "category": "security-enterprise",
+   "domain": "lookingglasscyber.com",
+   "ext": "png",
+   "bytes": 1879,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "eclypsium",
+   "category": "security-enterprise",
+   "domain": "eclypsium.com",
+   "ext": "png",
+   "bytes": 4103,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "bolster",
+   "category": "security-enterprise",
+   "domain": "bolster.ai",
+   "ext": "png",
+   "bytes": 1093,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "fortify",
+   "category": "security-enterprise",
+   "domain": "microfocus.com",
+   "ext": "png",
+   "bytes": 31119,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "rapid7",
+   "category": "security-enterprise",
+   "domain": "rapid7.com",
+   "ext": "png",
+   "bytes": 1443,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "whitesource",
+   "category": "security-enterprise",
+   "domain": "mend.io",
+   "ext": "png",
+   "bytes": 15108,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "appdeep",
+   "category": "security-enterprise",
+   "domain": "aquasec.com",
+   "ext": "png",
+   "bytes": 7469,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "bearer",
+   "category": "security-enterprise",
+   "domain": "bearer.com",
+   "ext": "png",
+   "bytes": 9069,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "jericho",
+   "category": "security-enterprise",
+   "domain": "jerichoforge.com",
+   "ext": "png",
+   "bytes": 2183,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "cycode",
+   "category": "security-enterprise",
+   "domain": "cycode.com",
+   "ext": "png",
+   "bytes": 6556,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "armorcode",
+   "category": "security-enterprise",
+   "domain": "armorcode.com",
+   "ext": "png",
+   "bytes": 1007,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "legit-security",
+   "category": "security-enterprise",
+   "domain": "legitsecurity.com",
+   "ext": "png",
+   "bytes": 1109,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "apiiro",
+   "category": "security-enterprise",
+   "domain": "apiiro.com",
+   "ext": "png",
+   "bytes": 9376,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "cycode-2",
+   "category": "security-enterprise",
+   "domain": "cycode.com",
+   "ext": "png",
+   "bytes": 6556,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "endor-labs",
+   "category": "security-enterprise",
+   "domain": "endorlabs.com",
+   "ext": "png",
+   "bytes": 1158,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "phylum",
+   "category": "security-enterprise",
+   "domain": "phylum.io",
+   "ext": "png",
+   "bytes": 3631,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "socket-2",
+   "category": "security-enterprise",
+   "domain": "socket.dev",
+   "ext": "png",
+   "bytes": 5857,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "hashicorp-vault",
+   "category": "security-enterprise",
+   "domain": "vaultproject.io",
+   "ext": "png",
+   "bytes": 784,
+   "size": [
+    96,
+    96
+   ]
+  },
+  {
+   "slug": "keeper-security",
+   "category": "security-enterprise",
+   "domain": "keepersecurity.com",
+   "ext": "png",
+   "bytes": 8886,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "cyberark-conjur",
+   "category": "security-enterprise",
+   "domain": "cyberark.com",
+   "ext": "png",
+   "bytes": 4613,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "delinea-secret-server",
+   "category": "security-enterprise",
+   "domain": "delinea.com",
+   "ext": "png",
+   "bytes": 2502,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "aws-secrets-manager",
+   "category": "security-enterprise",
+   "domain": "aws.amazon.com",
+   "ext": "png",
+   "bytes": 1734,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "azure-key-vault",
+   "category": "security-enterprise",
+   "domain": "azure.microsoft.com",
+   "ext": "png",
+   "bytes": 426,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "gcp-secret-manager",
+   "category": "security-enterprise",
+   "domain": "cloud.google.com",
+   "ext": "png",
+   "bytes": 11237,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "hyperproof",
+   "category": "security-enterprise",
+   "domain": "hyperproof.io",
+   "ext": "png",
+   "bytes": 7619,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "auditboard",
+   "category": "security-enterprise",
+   "domain": "auditboard.com",
+   "ext": "png",
+   "bytes": 983,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "logicgate",
+   "category": "security-enterprise",
+   "domain": "logicgate.com",
+   "ext": "png",
+   "bytes": 4866,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "servicenow-irm",
+   "category": "security-enterprise",
+   "domain": "servicenow.com",
+   "ext": "png",
+   "bytes": 2916,
+   "size": [
+    128,
+    128
+   ]
+  },
+  {
+   "slug": "sprinto",
+   "category": "security-enterprise",
+   "domain": "sprinto.com",
+   "ext": "png",
+   "bytes": 1288,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "anecdotes",
+   "category": "security-enterprise",
+   "domain": "anecdotes.ai",
+   "ext": "png",
+   "bytes": 5598,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "thoropass",
+   "category": "security-enterprise",
+   "domain": "thoropass.com",
+   "ext": "png",
+   "bytes": 6538,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "conveyor",
+   "category": "security-enterprise",
+   "domain": "conveyor.com",
+   "ext": "png",
+   "bytes": 8146,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "socure",
+   "category": "security-enterprise",
+   "domain": "socure.com",
+   "ext": "png",
+   "bytes": 4943,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "alloy",
+   "category": "security-enterprise",
+   "domain": "alloy.com",
+   "ext": "png",
+   "bytes": 5845,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "persona",
+   "category": "security-enterprise",
+   "domain": "withpersona.com",
+   "ext": "png",
+   "bytes": 950,
+   "size": [
+    200,
+    200
+   ]
+  },
+  {
+   "slug": "jumio",
+   "category": "security-enterprise",
+   "domain": "jumio.com",
+   "ext": "png",
+   "bytes": 810,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "id-me",
+   "category": "security-enterprise",
+   "domain": "id.me",
+   "ext": "png",
+   "bytes": 4688,
+   "size": [
+    152,
+    152
+   ]
+  },
+  {
+   "slug": "clear",
+   "category": "security-enterprise",
+   "domain": "clearme.com",
+   "ext": "png",
+   "bytes": 8879,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "nuix",
+   "category": "security-enterprise",
+   "domain": "nuix.com",
+   "ext": "png",
+   "bytes": 3168,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "msab-xry",
+   "category": "security-enterprise",
+   "domain": "msab.com",
+   "ext": "png",
+   "bytes": 3627,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "passware",
+   "category": "security-enterprise",
+   "domain": "passware.com",
+   "ext": "png",
+   "bytes": 1118,
+   "size": [
+    64,
+    64
+   ]
+  },
+  {
+   "slug": "elcomsoft",
+   "category": "security-enterprise",
+   "domain": "elcomsoft.com",
+   "ext": "png",
+   "bytes": 2049,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "magnet-axiom-2",
+   "category": "security-enterprise",
+   "domain": "magnetforensics.com",
+   "ext": "png",
+   "bytes": 14044,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "exterro",
+   "category": "security-enterprise",
+   "domain": "exterro.com",
+   "ext": "png",
+   "bytes": 4059,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "accessdata",
+   "category": "security-enterprise",
+   "domain": "accessdata.com",
+   "ext": "png",
+   "bytes": 4059,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "sumuri",
+   "category": "security-enterprise",
+   "domain": "sumuri.com",
+   "ext": "png",
+   "bytes": 994,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "cellebrite-2",
+   "category": "security-enterprise",
+   "domain": "cellebrite.com",
+   "ext": "png",
+   "bytes": 2396,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "synack",
+   "category": "security-enterprise",
+   "domain": "synack.com",
+   "ext": "png",
+   "bytes": 3064,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "cobalt-io",
+   "category": "security-enterprise",
+   "domain": "cobalt.io",
+   "ext": "png",
+   "bytes": 918,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "yeswehack",
+   "category": "security-enterprise",
+   "domain": "yeswehack.com",
+   "ext": "png",
+   "bytes": 2412,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "intruder",
+   "category": "security-enterprise",
+   "domain": "intruder.io",
+   "ext": "png",
+   "bytes": 9691,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "immuniweb",
+   "category": "security-enterprise",
+   "domain": "immuniweb.com",
+   "ext": "png",
+   "bytes": 15092,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "pentest-tools",
+   "category": "security-enterprise",
+   "domain": "pentest-tools.com",
+   "ext": "png",
+   "bytes": 7513,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "outpost24",
+   "category": "security-enterprise",
+   "domain": "outpost24.com",
+   "ext": "png",
+   "bytes": 17745,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "holm-security",
+   "category": "security-enterprise",
+   "domain": "holmsecurity.com",
+   "ext": "png",
+   "bytes": 4502,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "cycraft",
+   "category": "security-enterprise",
+   "domain": "cycraft.com",
+   "ext": "png",
+   "bytes": 1651,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "cloudrise",
+   "category": "security-enterprise",
+   "domain": "cloudrise.tech",
+   "ext": "png",
+   "bytes": 1315,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "magnet-respond",
+   "category": "security-enterprise",
+   "domain": "magnetforensics.com",
+   "ext": "png",
+   "bytes": 14044,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "magnet-verdict",
+   "category": "security-enterprise",
+   "domain": "magnetforensics.com",
+   "ext": "png",
+   "bytes": 14044,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "cellebrite-pathfinder",
+   "category": "security-enterprise",
+   "domain": "cellebrite.com",
+   "ext": "png",
+   "bytes": 2396,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "cellebrite-premium",
+   "category": "security-enterprise",
+   "domain": "cellebrite.com",
+   "ext": "png",
+   "bytes": 2396,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "cellebrite-ufed",
+   "category": "security-enterprise",
+   "domain": "cellebrite.com",
+   "ext": "png",
+   "bytes": 2396,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "cellebrite-cloud",
+   "category": "security-enterprise",
+   "domain": "cellebrite.com",
+   "ext": "png",
+   "bytes": 2396,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "oxygen-detective",
+   "category": "security-enterprise",
+   "domain": "oxygen-forensic.com",
+   "ext": "png",
+   "bytes": 3389,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "oxygen-phone-detective",
+   "category": "security-enterprise",
+   "domain": "oxygen-forensic.com",
+   "ext": "png",
+   "bytes": 3389,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "oxygen-corporate",
+   "category": "security-enterprise",
+   "domain": "oxygen-forensic.com",
+   "ext": "png",
+   "bytes": 3389,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "ftk-enterprise",
+   "category": "security-enterprise",
+   "domain": "exterro.com",
+   "ext": "png",
+   "bytes": 4059,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "ftk-lab",
+   "category": "security-enterprise",
+   "domain": "exterro.com",
+   "ext": "png",
+   "bytes": 4059,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "encase-endpoint",
+   "category": "security-enterprise",
+   "domain": "opentext.com",
+   "ext": "png",
+   "bytes": 31119,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "encase-enterprise",
+   "category": "security-enterprise",
+   "domain": "opentext.com",
+   "ext": "png",
+   "bytes": 31119,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "guidance-software",
+   "category": "security-enterprise",
+   "domain": "guidancesoftware.com",
+   "ext": "png",
+   "bytes": 31119,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "nuix-workstation",
+   "category": "security-enterprise",
+   "domain": "nuix.com",
+   "ext": "png",
+   "bytes": 3168,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "nuix-discover",
+   "category": "security-enterprise",
+   "domain": "nuix.com",
+   "ext": "png",
+   "bytes": 3168,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "paraben-e3",
+   "category": "security-enterprise",
+   "domain": "paraben.com",
+   "ext": "png",
+   "bytes": 2331,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "paraben-p2",
+   "category": "security-enterprise",
+   "domain": "paraben.com",
+   "ext": "png",
+   "bytes": 2331,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "adf-solutions",
+   "category": "security-enterprise",
+   "domain": "adfsolutions.com",
+   "ext": "png",
+   "bytes": 3417,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "teel-technologies",
+   "category": "security-enterprise",
+   "domain": "teeltech.com",
+   "ext": "png",
+   "bytes": 4648,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "sumuri-artifact",
+   "category": "security-enterprise",
+   "domain": "sumuri.com",
+   "ext": "png",
+   "bytes": 994,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "magnet-ai",
+   "category": "security-enterprise",
+   "domain": "magnetforensics.com",
+   "ext": "png",
+   "bytes": 14044,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "cybertriage",
+   "category": "security-enterprise",
+   "domain": "cybertriage.com",
+   "ext": "png",
+   "bytes": 2642,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "velociraptor-ir",
+   "category": "security-enterprise",
+   "domain": "docs.velociraptor.app",
+   "ext": "png",
+   "bytes": 5874,
+   "size": [
+    73,
+    117
+   ]
+  },
+  {
+   "slug": "salvationdata",
+   "category": "security-enterprise",
+   "domain": "salvationdata.com",
+   "ext": "png",
+   "bytes": 16641,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "mobiledit",
+   "category": "security-enterprise",
+   "domain": "mobiledit.com",
+   "ext": "png",
+   "bytes": 6114,
+   "size": [
+    100,
+    100
+   ]
+  },
+  {
+   "slug": "lantern",
+   "category": "security-enterprise",
+   "domain": "katanaforensics.com",
+   "ext": "png",
+   "bytes": 809,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "katana-forensics",
+   "category": "security-enterprise",
+   "domain": "katanaforensics.com",
+   "ext": "png",
+   "bytes": 809,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "trustedsec",
+   "category": "security-enterprise",
+   "domain": "trustedsec.com",
+   "ext": "png",
+   "bytes": 2379,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "volatility3",
+   "category": "security-enterprise",
+   "domain": "volatilityfoundation.org",
+   "ext": "png",
+   "bytes": 5341,
+   "size": [
+    200,
+    200
+   ]
+  },
+  {
+   "slug": "r-studio",
+   "category": "security-enterprise",
+   "domain": "r-studio.com",
+   "ext": "png",
+   "bytes": 1482,
+   "size": [
+    64,
+    64
+   ]
+  },
+  {
+   "slug": "ufs-explorer",
+   "category": "security-enterprise",
+   "domain": "ufsexplorer.com",
+   "ext": "png",
+   "bytes": 17820,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "prodiscover",
+   "category": "security-enterprise",
+   "domain": "techpathways.com",
+   "ext": "png",
+   "bytes": 2936,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "ontrack",
+   "category": "security-enterprise",
+   "domain": "ontrack.com",
+   "ext": "png",
+   "bytes": 4427,
+   "size": [
+    96,
+    96
+   ]
+  },
+  {
+   "slug": "hindsight",
+   "category": "security-enterprise",
+   "domain": "obsidianforensics.com",
+   "ext": "png",
+   "bytes": 1931,
+   "size": [
+    180,
+    180
+   ]
+  },
+  {
+   "slug": "dumpzilla",
+   "category": "security-enterprise",
+   "domain": "dumpzilla.org",
+   "ext": "png",
+   "bytes": 583405,
+   "size": [
+    1080,
+    1080
+   ]
+  },
+  {
+   "slug": "registry-explorer",
+   "category": "security-enterprise",
+   "domain": "ericzimmerman.github.io",
+   "ext": "png",
+   "bytes": 2307,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "eric-zimmerman-tools",
+   "category": "security-enterprise",
+   "domain": "ericzimmerman.github.io",
+   "ext": "png",
+   "bytes": 2307,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "mftecmd",
+   "category": "security-enterprise",
+   "domain": "ericzimmerman.github.io",
+   "ext": "png",
+   "bytes": 2307,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "timeline-explorer",
+   "category": "security-enterprise",
+   "domain": "ericzimmerman.github.io",
+   "ext": "png",
+   "bytes": 2307,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "PECmd",
+   "category": "security-enterprise",
+   "domain": "ericzimmerman.github.io",
+   "ext": "png",
+   "bytes": 2307,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "pecmd",
+   "category": "security-enterprise",
+   "domain": "ericzimmerman.github.io",
+   "ext": "png",
+   "bytes": 2307,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "remnux",
+   "category": "security-enterprise",
+   "domain": "remnux.org",
+   "ext": "png",
+   "bytes": 97,
+   "size": [
+    50,
+    50
+   ]
+  },
+  {
+   "slug": "sift-workstation",
+   "category": "security-enterprise",
+   "domain": "digital-forensics.sans.org",
+   "ext": "png",
+   "bytes": 4704,
+   "size": [
+    96,
+    96
+   ]
+  },
+  {
+   "slug": "dfir-iris",
+   "category": "security-enterprise",
+   "domain": "dfir-iris.org",
+   "ext": "png",
+   "bytes": 7411,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "opencti-2",
+   "category": "security-enterprise",
+   "domain": "filigran.io",
+   "ext": "png",
+   "bytes": 1906,
+   "size": [
+    48,
+    48
+   ]
+  },
+  {
+   "slug": "intelowl",
+   "category": "security-enterprise",
+   "domain": "intelowlproject.github.io",
+   "ext": "png",
+   "bytes": 8905,
+   "size": [
+    232,
+    240
+   ]
+  },
+  {
+   "slug": "yeti-2",
+   "category": "security-enterprise",
+   "domain": "yeti-platform.io",
+   "ext": "png",
+   "bytes": 6123,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "alienvault",
+   "category": "security-enterprise",
+   "domain": "cybersecurity.att.com",
+   "ext": "png",
+   "bytes": 2148,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "hybrid-analysis-2",
+   "category": "security-enterprise",
+   "domain": "hybrid-analysis.com",
+   "ext": "png",
+   "bytes": 285478,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "relativity",
+   "category": "security-enterprise",
+   "domain": "relativity.com",
+   "ext": "png",
+   "bytes": 1666,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "everlaw",
+   "category": "security-enterprise",
+   "domain": "everlaw.com",
+   "ext": "png",
+   "bytes": 2160,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "logikcull",
+   "category": "security-enterprise",
+   "domain": "logikcull.com",
+   "ext": "png",
+   "bytes": 3164,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "disco-e",
+   "category": "security-enterprise",
+   "domain": "csdisco.com",
+   "ext": "png",
+   "bytes": 3196,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "exterro-review",
+   "category": "security-enterprise",
+   "domain": "exterro.com",
+   "ext": "png",
+   "bytes": 4059,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "kcura",
+   "category": "security-enterprise",
+   "domain": "kcura.com",
+   "ext": "png",
+   "bytes": 1666,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "onelog",
+   "category": "security-enterprise",
+   "domain": "onelog.com",
+   "ext": "png",
+   "bytes": 8357,
+   "size": [
+    100,
+    101
+   ]
+  },
+  {
+   "slug": "celebrite-mobile",
+   "category": "security-enterprise",
+   "domain": "cellebrite.com",
+   "ext": "png",
+   "bytes": 2396,
+   "size": [
+    144,
+    144
+   ]
+  },
+  {
+   "slug": "mobiledit-forensic",
+   "category": "security-enterprise",
+   "domain": "mobiledit.com",
+   "ext": "png",
+   "bytes": 6114,
+   "size": [
+    100,
+    100
+   ]
+  },
+  {
+   "slug": "mvt",
+   "category": "security-enterprise",
+   "domain": "mvt.re",
+   "ext": "png",
+   "bytes": 3336,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "imhex",
+   "category": "security-enterprise",
+   "domain": "imhex.werwolv.net",
+   "ext": "png",
+   "bytes": 2336,
+   "size": [
+    200,
+    200
+   ]
+  },
+  {
+   "slug": "binary-ninja-cloud",
+   "category": "security-enterprise",
+   "domain": "binary.ninja",
+   "ext": "png",
+   "bytes": 4723,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "flare-floss",
+   "category": "security-enterprise",
+   "domain": "mandiant.com",
+   "ext": "png",
+   "bytes": 11237,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "capa",
+   "category": "security-enterprise",
+   "domain": "mandiant.com",
+   "ext": "png",
+   "bytes": 11237,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "yara-x",
+   "category": "security-enterprise",
+   "domain": "virustotal.com",
+   "ext": "png",
+   "bytes": 14277,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "sandboxie",
+   "category": "security-enterprise",
+   "domain": "sandboxie-plus.com",
+   "ext": "png",
+   "bytes": 8007,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "cuckoo",
+   "category": "security-enterprise",
+   "domain": "cuckoosandbox.org",
+   "ext": "png",
+   "bytes": 3299,
+   "size": [
+    64,
+    64
+   ]
+  },
+  {
+   "slug": "remnux-2",
+   "category": "security-enterprise",
+   "domain": "remnux.org",
+   "ext": "png",
+   "bytes": 97,
+   "size": [
+    50,
+    50
+   ]
+  },
+  {
+   "slug": "mandiant-advantage",
+   "category": "security-enterprise",
+   "domain": "mandiant.com",
+   "ext": "png",
+   "bytes": 11237,
+   "size": [
+    192,
+    192
+   ]
+  },
+  {
+   "slug": "crowdstrike-falcon-x",
+   "category": "security-enterprise",
+   "domain": "crowdstrike.com",
+   "ext": "svg",
+   "bytes": 1923,
+   "size": null
+  },
+  {
+   "slug": "recorded-future-3",
+   "category": "security-enterprise",
+   "domain": "recordedfuture.com",
+   "ext": "png",
+   "bytes": 102862,
+   "size": [
+    256,
+    256
+   ]
+  },
+  {
+   "slug": "virustotal-2",
+   "category": "security-enterprise",
+   "domain": "virustotal.com",
+   "ext": "png",
+   "bytes": 14277,
+   "size": [
+    192,
+    192
+   ]
+  }
+ ],
+ "exists": [
+  {
+   "slug": "shuffle"
+  },
+  {
+   "slug": "cloudflare"
+  },
+  {
+   "slug": "gcore"
+  },
+  {
+   "slug": "opensearch"
+  },
+  {
+   "slug": "datadog"
+  },
+  {
+   "slug": "auth0"
+  },
+  {
+   "slug": "fusionauth"
+  },
+  {
+   "slug": "keycloak"
+  },
+  {
+   "slug": "dashlane"
+  },
+  {
+   "slug": "bitwarden"
+  },
+  {
+   "slug": "1password"
+  },
+  {
+   "slug": "opentext"
+  },
+  {
+   "slug": "hackerone"
+  },
+  {
+   "slug": "bugcrowd"
+  },
+  {
+   "slug": "intigriti"
+  },
+  {
+   "slug": "volatility"
+  },
+  {
+   "slug": "bulk-extractor"
+  },
+  {
+   "slug": "timesketch"
+  },
+  {
+   "slug": "iris"
+  },
+  {
+   "slug": "yeti"
+  },
+  {
+   "slug": "virustotal"
+  },
+  {
+   "slug": "ghidra"
+  },
+  {
+   "slug": "ollydbg"
+  },
+  {
+   "slug": "yara"
+  },
+  {
+   "slug": "clamav"
+  }
+ ],
+ "missing": [
+  {
+   "slug": "cobalt-strike",
+   "name": "Cobalt Strike",
+   "category": "security-enterprise",
+   "domain": "cobaltstrike.com"
+  },
+  {
+   "slug": "outflank",
+   "name": "Outflank",
+   "category": "security-enterprise",
+   "domain": "outflank.nl"
+  },
+  {
+   "slug": "safebreach",
+   "name": "SafeBreach",
+   "category": "security-enterprise",
+   "domain": "safebreach.com"
+  },
+  {
+   "slug": "cortex-xdr",
+   "name": "Cortex XDR",
+   "category": "security-enterprise",
+   "domain": "paloaltonetworks.com"
+  },
+  {
+   "slug": "palo-alto-cortex",
+   "name": "Cortex",
+   "category": "security-enterprise",
+   "domain": "paloaltonetworks.com"
+  },
+  {
+   "slug": "cortex-xsoar",
+   "name": "Cortex XSOAR",
+   "category": "security-enterprise",
+   "domain": "paloaltonetworks.com"
+  },
+  {
+   "slug": "palo-alto-networks",
+   "name": "Palo Alto Networks",
+   "category": "security-enterprise",
+   "domain": "paloaltonetworks.com"
+  },
+  {
+   "slug": "extrahop",
+   "name": "ExtraHop",
+   "category": "security-enterprise",
+   "domain": "extrahop.com"
+  },
+  {
+   "slug": "kubearmor",
+   "name": "KubeArmor",
+   "category": "security-enterprise",
+   "domain": "kubearmor.io"
+  },
+  {
+   "slug": "x-ways",
+   "name": "X-Ways",
+   "category": "security-enterprise",
+   "domain": "x-ways.net"
+  },
+  {
+   "slug": "belkasoft",
+   "name": "Belkasoft",
+   "category": "security-enterprise",
+   "domain": "belkasoft.com"
+  },
+  {
+   "slug": "onetrust",
+   "name": "OneTrust",
+   "category": "security-enterprise",
+   "domain": "onetrust.com"
+  },
+  {
+   "slug": "wordfence",
+   "name": "Wordfence",
+   "category": "security-enterprise",
+   "domain": "wordfence.com"
+  },
+  {
+   "slug": "naxsi",
+   "name": "Naxsi",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "shadowd",
+   "name": "Shadowd",
+   "category": "security-enterprise",
+   "domain": "shadowd.zia.io"
+  },
+  {
+   "slug": "libinjection",
+   "name": "Libinjection",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "eeye",
+   "name": "Eeye",
+   "category": "security-enterprise",
+   "domain": "eeye.com"
+  },
+  {
+   "slug": "lastline",
+   "name": "Lastline",
+   "category": "security-enterprise",
+   "domain": "lastline.com"
+  },
+  {
+   "slug": "ironnet",
+   "name": "Ironnet",
+   "category": "security-enterprise",
+   "domain": "ironnetworks.com"
+  },
+  {
+   "slug": "malcolm",
+   "name": "Malcolm",
+   "category": "security-enterprise",
+   "domain": "idaholab.org"
+  },
+  {
+   "slug": "onelogin",
+   "name": "Onelogin",
+   "category": "security-enterprise",
+   "domain": "onelogin.com"
+  },
+  {
+   "slug": "zitadel",
+   "name": "Zitadel",
+   "category": "security-enterprise",
+   "domain": "zitadel.com"
+  },
+  {
+   "slug": "hid-digitalpersona",
+   "name": "Hid Digitalpersona",
+   "category": "security-enterprise",
+   "domain": "hidglobal.com"
+  },
+  {
+   "slug": "silverfort",
+   "name": "Silverfort",
+   "category": "security-enterprise",
+   "domain": "silverfort.io"
+  },
+  {
+   "slug": "comodo",
+   "name": "Comodo",
+   "category": "security-enterprise",
+   "domain": "comodo.com"
+  },
+  {
+   "slug": "avanan",
+   "name": "Avanan",
+   "category": "security-enterprise",
+   "domain": "avanan.com"
+  },
+  {
+   "slug": "dig-security",
+   "name": "Dig Security",
+   "category": "security-enterprise",
+   "domain": "dig.security"
+  },
+  {
+   "slug": "aim-security",
+   "name": "Aim Security",
+   "category": "security-enterprise",
+   "domain": "aim.security"
+  },
+  {
+   "slug": "noname-security",
+   "name": "Noname Security",
+   "category": "security-enterprise",
+   "domain": "noname.security"
+  },
+  {
+   "slug": "prisma-access",
+   "name": "Prisma Access",
+   "category": "security-enterprise",
+   "domain": "paloaltonetworks.com"
+  },
+  {
+   "slug": "capsule8",
+   "name": "Capsule8",
+   "category": "security-enterprise",
+   "domain": "capsule8.com"
+  },
+  {
+   "slug": "inland",
+   "name": "Inland",
+   "category": "security-enterprise",
+   "domain": "inland.io"
+  },
+  {
+   "slug": "normalyze",
+   "name": "Normalyze",
+   "category": "security-enterprise",
+   "domain": "normalyze.io"
+  },
+  {
+   "slug": "polar-security",
+   "name": "Polar Security",
+   "category": "security-enterprise",
+   "domain": "polar.security"
+  },
+  {
+   "slug": "securedoc",
+   "name": "Securedoc",
+   "category": "security-enterprise",
+   "domain": "securedoc.ai"
+  },
+  {
+   "slug": "blight",
+   "name": "Blight",
+   "category": "security-enterprise",
+   "domain": "blight.com"
+  },
+  {
+   "slug": "cybersixgill",
+   "name": "Cybersixgill",
+   "category": "security-enterprise",
+   "domain": "cybersixgill.com"
+  },
+  {
+   "slug": "cybelangel",
+   "name": "Cybelangel",
+   "category": "security-enterprise",
+   "domain": "cybelangel.com"
+  },
+  {
+   "slug": "synopsys",
+   "name": "Synopsys",
+   "category": "security-enterprise",
+   "domain": "synopsys.com"
+  },
+  {
+   "slug": "coverity",
+   "name": "Coverity",
+   "category": "security-enterprise",
+   "domain": "synopsys.com"
+  },
+  {
+   "slug": "safebase",
+   "name": "Safebase",
+   "category": "security-enterprise",
+   "domain": "safebase.us"
+  },
+  {
+   "slug": "onfido",
+   "name": "Onfido",
+   "category": "security-enterprise",
+   "domain": "onfido.com"
+  },
+  {
+   "slug": "detectify",
+   "name": "Detectify",
+   "category": "security-enterprise",
+   "domain": "detectify.com"
+  },
+  {
+   "slug": "probely",
+   "name": "Probely",
+   "category": "security-enterprise",
+   "domain": "probely.com"
+  },
+  {
+   "slug": "belkasoft-evidence-center",
+   "name": "Belkasoft Evidence Center",
+   "category": "security-enterprise",
+   "domain": "belkasoft.com"
+  },
+  {
+   "slug": "belkasoft-x",
+   "name": "Belkasoft X",
+   "category": "security-enterprise",
+   "domain": "belkasoft.com"
+  },
+  {
+   "slug": "x-ways-forensics",
+   "name": "X Ways Forensics",
+   "category": "security-enterprise",
+   "domain": "x-ways.net"
+  },
+  {
+   "slug": "winhex",
+   "name": "Winhex",
+   "category": "security-enterprise",
+   "domain": "x-ways.net"
+  },
+  {
+   "slug": "digital-intelligence",
+   "name": "Digital Intelligence",
+   "category": "security-enterprise",
+   "domain": "digitalintel.com"
+  },
+  {
+   "slug": "blackbag",
+   "name": "Blackbag",
+   "category": "security-enterprise",
+   "domain": "blackbag.tech"
+  },
+  {
+   "slug": "kroll-kape",
+   "name": "Kroll Kape",
+   "category": "security-enterprise",
+   "domain": "kroll.com"
+  },
+  {
+   "slug": "kape",
+   "name": "Kape",
+   "category": "security-enterprise",
+   "domain": "kroll.com"
+  },
+  {
+   "slug": "cado",
+   "name": "Cado",
+   "category": "security-enterprise",
+   "domain": "cado.com"
+  },
+  {
+   "slug": "grayshift",
+   "name": "Grayshift",
+   "category": "security-enterprise",
+   "domain": "grayshift.com"
+  },
+  {
+   "slug": "graykey",
+   "name": "Graykey",
+   "category": "security-enterprise",
+   "domain": "grayshift.com"
+  },
+  {
+   "slug": "fox-forensics",
+   "name": "Fox Forensics",
+   "category": "security-enterprise",
+   "domain": "fox-forensics.com.sg"
+  },
+  {
+   "slug": "rekall",
+   "name": "Rekall",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "memprocfs",
+   "name": "Memprocfs",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "photorec",
+   "name": "Photorec",
+   "category": "security-enterprise",
+   "domain": "cgsecurity.org"
+  },
+  {
+   "slug": "testdisk",
+   "name": "Testdisk",
+   "category": "security-enterprise",
+   "domain": "cgsecurity.org"
+  },
+  {
+   "slug": "dmde",
+   "name": "Dmde",
+   "category": "security-enterprise",
+   "domain": "dmde.com"
+  },
+  {
+   "slug": "hex-works",
+   "name": "Hex Works",
+   "category": "security-enterprise",
+   "domain": "hex-works.com"
+  },
+  {
+   "slug": "winhex-2",
+   "name": "Winhex 2",
+   "category": "security-enterprise",
+   "domain": "x-ways.net"
+  },
+  {
+   "slug": "stellar-data",
+   "name": "Stellar Data",
+   "category": "security-enterprise",
+   "domain": "stellarinfo.co"
+  },
+  {
+   "slug": "kernel-data",
+   "name": "Kernel Data",
+   "category": "security-enterprise",
+   "domain": "kerneldatarecovery.com"
+  },
+  {
+   "slug": "reclai.me",
+   "name": "Reclai.Me",
+   "category": "security-enterprise",
+   "domain": "reclai.me"
+  },
+  {
+   "slug": "reclai",
+   "name": "Reclai",
+   "category": "security-enterprise",
+   "domain": "reclai.me"
+  },
+  {
+   "slug": "ddrescue",
+   "name": "Ddrescue",
+   "category": "security-enterprise",
+   "domain": "gnu.org"
+  },
+  {
+   "slug": "pytsk",
+   "name": "Pytsk",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "regripper",
+   "name": "Regripper",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "bstrings",
+   "name": "Bstrings",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "iis-forensics",
+   "name": "Iis Forensics",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "log2timeline",
+   "name": "Log2Timeline",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "plaso",
+   "name": "Plaso",
+   "category": "security-enterprise",
+   "domain": "plaso-project.org"
+  },
+  {
+   "slug": "df-timewolf",
+   "name": "Df Timewolf",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "artifact-essentials",
+   "name": "Artifact Essentials",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "acla",
+   "name": "Acla",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "ir-responder",
+   "name": "Ir Responder",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "tsurugih",
+   "name": "Tsurugih",
+   "category": "security-enterprise",
+   "domain": "tsurugih.com"
+  },
+  {
+   "slug": "thehive-ir",
+   "name": "Thehive Ir",
+   "category": "security-enterprise",
+   "domain": "thehive-project.com"
+  },
+  {
+   "slug": "cortex-ir",
+   "name": "Cortex Ir",
+   "category": "security-enterprise",
+   "domain": "thehive-project.com"
+  },
+  {
+   "slug": "unpacme",
+   "name": "Unpacme",
+   "category": "security-enterprise",
+   "domain": "unpac.me"
+  },
+  {
+   "slug": "xact",
+   "name": "Xact",
+   "category": "security-enterprise",
+   "domain": "xactip.com"
+  },
+  {
+   "slug": "aleapp",
+   "name": "Aleapp",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "ileapp",
+   "name": "Ileapp",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "autopsy-mobile",
+   "name": "Autopsy Mobile",
+   "category": "security-enterprise",
+   "domain": "sleuthkit.org"
+  },
+  {
+   "slug": "sherlock",
+   "name": "Sherlock",
+   "category": "security-enterprise",
+   "domain": null
+  },
+  {
+   "slug": "x64dbg",
+   "name": "X64Dbg",
+   "category": "security-enterprise",
+   "domain": "x64dbg.com"
+  },
+  {
+   "slug": "010-editor",
+   "name": "010 Editor",
+   "category": "security-enterprise",
+   "domain": "010editor.com"
+  },
+  {
+   "slug": "capev2",
+   "name": "Capev2",
+   "category": "security-enterprise",
+   "domain": null
+  }
+ ],
+ "failed": []
+}

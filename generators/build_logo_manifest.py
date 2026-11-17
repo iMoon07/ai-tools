@@ -24,7 +24,9 @@ DEFAULT_LOGO = Path("/home/moon/Projects/logo")
 REMOTE_BASE = "https://raw.githubusercontent.com/iMoon07/logo-svg/main/"
 # "motion" holds the animated SMIL set (build_motion.py); it rides the same
 # remote path as the static logos.
-CATEGORIES = ("profession", "programming", "security", "stack", "motion")
+CATEGORIES = ("profession", "programming", "security", "security-tools",
+              "security-enterprise", "stack", "motion", "security-icons",
+              "security-3d", "security-illustration", "brands")
 
 FILL = re.compile(r'(?:fill|stroke)\s*[:=]\s*["\']?(#[0-9a-fA-F]{3,8}|[a-zA-Z]+)')
 HEX = re.compile(r'^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$')
@@ -97,19 +99,28 @@ def main():
         folder = root / cat
         if not folder.is_dir():
             continue
-        for path in sorted(folder.iterdir()):
+        # categories may be flat or split into sub-groups (security-enterprise)
+        for path in sorted(folder.rglob("*")):
             if not path.is_file() or path.suffix.lower() not in (".svg", ".png", ".webp", ".gif"):
                 continue
             name = path.stem
-            entries.append({
-                "id": "%s:%s" % (cat, name),
+            # the picker chip has always been "brand"; keep the folder name as is
+            key = "brand" if cat == "brands" else cat
+            group = path.parent.relative_to(folder).as_posix()
+            rel = ("%s/%s" % (group, path.name)) if group not in ("", ".") else path.name
+            entry = {
+                "id": "%s:%s" % (key, name),
                 "name": name,
-                "category": cat,
-                "file": "%s/%s" % (cat, path.name),
+                "category": key,
+                "file": "%s/%s" % (cat, rel),
                 "ext": path.suffix.lower().lstrip("."),
                 "dark": is_dark(path),
                 "search": ("%s %s" % (name, cat)).lower(),
-            })
+            }
+            if group not in ("", "."):
+                entry["group"] = group
+                entry["search"] = ("%s %s %s" % (name, cat, group.replace("-", " "))).lower()
+            entries.append(entry)
 
     brand_dir = site / "assets" / "brands"
     brand_entries = []
@@ -131,7 +142,9 @@ def main():
     entries.extend(brand_entries)
 
     entries.sort(key=lambda e: (e["name"], e["category"]))
-    categories = list(CATEGORIES) + (["brand"] if brand_entries else [])
+    categories = [("brand" if c == "brands" else c) for c in CATEGORIES]
+    if brand_entries and "brand" not in categories:
+        categories.append("brand")
     data = {
         "base": REMOTE_BASE,
         "source": "iMoon07/logo-svg",

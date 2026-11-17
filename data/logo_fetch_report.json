@@ -1,0 +1,1666 @@
+{
+ "fetched": [
+  {
+   "slug": "gcore",
+   "category": "security-enterprise",
+   "icon": "simple-icons:Gcore",
+   "bytes": 938,
+   "mono": false
+  },
+  {
+   "slug": "datadog",
+   "category": "security-enterprise",
+   "icon": "simple-icons:Datadog",
+   "bytes": 3013,
+   "mono": false
+  },
+  {
+   "slug": "auth0",
+   "category": "security-enterprise",
+   "icon": "simple-icons:Auth0",
+   "bytes": 364,
+   "mono": false
+  },
+  {
+   "slug": "fusionauth",
+   "category": "security-enterprise",
+   "icon": "simple-icons:FusionAuth",
+   "bytes": 1410,
+   "mono": false
+  },
+  {
+   "slug": "dashlane",
+   "category": "security-enterprise",
+   "icon": "simple-icons:Dashlane",
+   "bytes": 1152,
+   "mono": false
+  },
+  {
+   "slug": "opentext",
+   "category": "security-enterprise",
+   "icon": "simple-icons:OpenText",
+   "bytes": 2144,
+   "mono": true
+  },
+  {
+   "slug": "hackerone",
+   "category": "security-enterprise",
+   "icon": "simple-icons:HackerOne",
+   "bytes": 798,
+   "mono": false
+  },
+  {
+   "slug": "bugcrowd",
+   "category": "security-enterprise",
+   "icon": "simple-icons:Bugcrowd",
+   "bytes": 1258,
+   "mono": false
+  },
+  {
+   "slug": "intigriti",
+   "category": "security-enterprise",
+   "icon": "simple-icons:Intigriti",
+   "bytes": 2162,
+   "mono": false
+  },
+  {
+   "slug": "iris",
+   "category": "security-enterprise",
+   "icon": "simple-icons:IRIS",
+   "bytes": 1604,
+   "mono": false
+  },
+  {
+   "slug": "yeti",
+   "category": "security-enterprise",
+   "icon": "simple-icons:Yeti",
+   "bytes": 373,
+   "mono": false
+  }
+ ],
+ "exists": [
+  {
+   "slug": "cloudflare",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "opensearch",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "keycloak",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "bitwarden",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "1password",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "volatility",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "bulk-extractor",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "timesketch",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "virustotal",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ghidra",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ollydbg",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "yara",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "clamav",
+   "category": "security-enterprise"
+  }
+ ],
+ "missing": [
+  {
+   "slug": "wordfence",
+   "name": "Wordfence",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sucuri",
+   "name": "Sucuri",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "signal-sciences",
+   "name": "Signal Sciences",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "wallarm",
+   "name": "Wallarm",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "azure-front-door",
+   "name": "Azure Front Door",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "section-io",
+   "name": "Section Io",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "edgecast",
+   "name": "Edgecast",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "imperva-waf",
+   "name": "Imperva Waf",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "modshield",
+   "name": "Modshield",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "barikode",
+   "name": "Barikode",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "naxsi",
+   "name": "Naxsi",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "shadowd",
+   "name": "Shadowd",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "libinjection",
+   "name": "Libinjection",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "logpoint",
+   "name": "Logpoint",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "arcsight",
+   "name": "Arcsight",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "elastic-siem",
+   "name": "Elastic Siem",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cribl",
+   "name": "Cribl",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "scalyr",
+   "name": "Scalyr",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "humio",
+   "name": "Humio",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "logz-io",
+   "name": "Logz Io",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "papertrail",
+   "name": "Papertrail",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cisco-firepower",
+   "name": "Cisco Firepower",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cisco-securex",
+   "name": "Cisco Securex",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "alert-logic",
+   "name": "Alert Logic",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "eeye",
+   "name": "Eeye",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "tufin",
+   "name": "Tufin",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "algosec",
+   "name": "Algosec",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "lastline",
+   "name": "Lastline",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ironnet",
+   "name": "Ironnet",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "inspector-2",
+   "name": "Inspector 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "stamus",
+   "name": "Stamus",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "selks",
+   "name": "Selks",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "jumpcloud",
+   "name": "Jumpcloud",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "openiam",
+   "name": "Openiam",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "rsa-securid",
+   "name": "Rsa Securid",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "thales-safenet",
+   "name": "Thales Safenet",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "hid-digitalpersona",
+   "name": "Hid Digitalpersona",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "silverfort",
+   "name": "Silverfort",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "semperis",
+   "name": "Semperis",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "authomize",
+   "name": "Authomize",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "veza",
+   "name": "Veza",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "empowerid",
+   "name": "Empowerid",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "helloid",
+   "name": "Helloid",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "okta-asa",
+   "name": "Okta Asa",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ping-da",
+   "name": "Ping Da",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "arctic-wolf",
+   "name": "Arctic Wolf",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "red-canary",
+   "name": "Red Canary",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "expel",
+   "name": "Expel",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "critical-start",
+   "name": "Critical Start",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "deepwatch",
+   "name": "Deepwatch",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "esentire",
+   "name": "Esentire",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "reliaquest",
+   "name": "Reliaquest",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "binary-defense",
+   "name": "Binary Defense",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "proficio",
+   "name": "Proficio",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cybereason",
+   "name": "Cybereason",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "tanium",
+   "name": "Tanium",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "threatlocker",
+   "name": "Threatlocker",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "comodo",
+   "name": "Comodo",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "gdata",
+   "name": "Gdata",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "eset-protect",
+   "name": "Eset Protect",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "proofpoint",
+   "name": "Proofpoint",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "mimecast",
+   "name": "Mimecast",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "abnormal-security",
+   "name": "Abnormal Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "material-security",
+   "name": "Material Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "hornetsecurity",
+   "name": "Hornetsecurity",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "avanan",
+   "name": "Avanan",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "perception-point",
+   "name": "Perception Point",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ironscales",
+   "name": "Ironscales",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "spamhaus",
+   "name": "Spamhaus",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "mailprotector",
+   "name": "Mailprotector",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "valimail",
+   "name": "Valimail",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "agari",
+   "name": "Agari",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "twilio-sendgrid",
+   "name": "Twilio Sendgrid",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sweet-security",
+   "name": "Sweet Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "dig-security",
+   "name": "Dig Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "gem-security",
+   "name": "Gem Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "authomize-2",
+   "name": "Authomize 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "aim-security",
+   "name": "Aim Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "noname-security",
+   "name": "Noname Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "salt-security",
+   "name": "Salt Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "traceable",
+   "name": "Traceable",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "Ermetic",
+   "name": "Ermetic",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "prisma-access",
+   "name": "Prisma Access",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "stacklet",
+   "name": "Stacklet",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "capsule8",
+   "name": "Capsule8",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "inland",
+   "name": "Inland",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "bigid",
+   "name": "Bigid",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cyera",
+   "name": "Cyera",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sentra",
+   "name": "Sentra",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "varonis",
+   "name": "Varonis",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "normalyze",
+   "name": "Normalyze",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "polar-security",
+   "name": "Polar Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "trusta",
+   "name": "Trusta",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "titaniam",
+   "name": "Titaniam",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "securedoc",
+   "name": "Securedoc",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "zerofox",
+   "name": "Zerofox",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "intel-471",
+   "name": "Intel 471",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "kela",
+   "name": "Kela",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cybersixgill",
+   "name": "Cybersixgill",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "darkowl",
+   "name": "Darkowl",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "dataminr",
+   "name": "Dataminr",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "recorded-future-2",
+   "name": "Recorded Future 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "flashpoint-2",
+   "name": "Flashpoint 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "lookingglass",
+   "name": "Lookingglass",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "eclypsium",
+   "name": "Eclypsium",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cybelangel",
+   "name": "Cybelangel",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "fortify",
+   "name": "Fortify",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "synopsys",
+   "name": "Synopsys",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "coverity",
+   "name": "Coverity",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "rapid7",
+   "name": "Rapid7",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "appdeep",
+   "name": "Appdeep",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "jericho",
+   "name": "Jericho",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cycode",
+   "name": "Cycode",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "armorcode",
+   "name": "Armorcode",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "legit-security",
+   "name": "Legit Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "apiiro",
+   "name": "Apiiro",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cycode-2",
+   "name": "Cycode 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "endor-labs",
+   "name": "Endor Labs",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "socket-2",
+   "name": "Socket 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cyberark-conjur",
+   "name": "Cyberark Conjur",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "delinea-secret-server",
+   "name": "Delinea Secret Server",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "azure-key-vault",
+   "name": "Azure Key Vault",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "gcp-secret-manager",
+   "name": "Gcp Secret Manager",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "hyperproof",
+   "name": "Hyperproof",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "auditboard",
+   "name": "Auditboard",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "logicgate",
+   "name": "Logicgate",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "servicenow-irm",
+   "name": "Servicenow Irm",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sprinto",
+   "name": "Sprinto",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "anecdotes",
+   "name": "Anecdotes",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "thoropass",
+   "name": "Thoropass",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "safebase",
+   "name": "Safebase",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "socure",
+   "name": "Socure",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "onfido",
+   "name": "Onfido",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "jumio",
+   "name": "Jumio",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "nuix",
+   "name": "Nuix",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "msab-xry",
+   "name": "Msab Xry",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "passware",
+   "name": "Passware",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "elcomsoft",
+   "name": "Elcomsoft",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "magnet-axiom-2",
+   "name": "Magnet Axiom 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "exterro",
+   "name": "Exterro",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "accessdata",
+   "name": "Accessdata",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sumuri",
+   "name": "Sumuri",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cellebrite-2",
+   "name": "Cellebrite 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "synack",
+   "name": "Synack",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cobalt-io",
+   "name": "Cobalt Io",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "yeswehack",
+   "name": "Yeswehack",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "detectify",
+   "name": "Detectify",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "probely",
+   "name": "Probely",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "immuniweb",
+   "name": "Immuniweb",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "pentest-tools",
+   "name": "Pentest Tools",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "outpost24",
+   "name": "Outpost24",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "holm-security",
+   "name": "Holm Security",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cycraft",
+   "name": "Cycraft",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cloudrise",
+   "name": "Cloudrise",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "magnet-respond",
+   "name": "Magnet Respond",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "magnet-verdict",
+   "name": "Magnet Verdict",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cellebrite-pathfinder",
+   "name": "Cellebrite Pathfinder",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cellebrite-premium",
+   "name": "Cellebrite Premium",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cellebrite-ufed",
+   "name": "Cellebrite Ufed",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cellebrite-cloud",
+   "name": "Cellebrite Cloud",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "oxygen-detective",
+   "name": "Oxygen Detective",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "oxygen-phone-detective",
+   "name": "Oxygen Phone Detective",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "oxygen-corporate",
+   "name": "Oxygen Corporate",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "belkasoft-evidence-center",
+   "name": "Belkasoft Evidence Center",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "belkasoft-x",
+   "name": "Belkasoft X",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ftk-enterprise",
+   "name": "Ftk Enterprise",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ftk-lab",
+   "name": "Ftk Lab",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "encase-endpoint",
+   "name": "Encase Endpoint",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "encase-enterprise",
+   "name": "Encase Enterprise",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "guidance-software",
+   "name": "Guidance Software",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "nuix-workstation",
+   "name": "Nuix Workstation",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "nuix-discover",
+   "name": "Nuix Discover",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "x-ways-forensics",
+   "name": "X Ways Forensics",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "winhex",
+   "name": "Winhex",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "paraben-e3",
+   "name": "Paraben E3",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "paraben-p2",
+   "name": "Paraben P2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "adf-solutions",
+   "name": "Adf Solutions",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "digital-intelligence",
+   "name": "Digital Intelligence",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "teel-technologies",
+   "name": "Teel Technologies",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sumuri-artifact",
+   "name": "Sumuri Artifact",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "blackbag",
+   "name": "Blackbag",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "kroll-kape",
+   "name": "Kroll Kape",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "kape",
+   "name": "Kape",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "magnet-ai",
+   "name": "Magnet Ai",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cado",
+   "name": "Cado",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cybertriage",
+   "name": "Cybertriage",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "velociraptor-ir",
+   "name": "Velociraptor Ir",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "grayshift",
+   "name": "Grayshift",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "graykey",
+   "name": "Graykey",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "salvationdata",
+   "name": "Salvationdata",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "mobiledit",
+   "name": "Mobiledit",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "katana-forensics",
+   "name": "Katana Forensics",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "trustedsec",
+   "name": "Trustedsec",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "fox-forensics",
+   "name": "Fox Forensics",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "volatility3",
+   "name": "Volatility3",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "rekall",
+   "name": "Rekall",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "memprocfs",
+   "name": "Memprocfs",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "testdisk",
+   "name": "Testdisk",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "r-studio",
+   "name": "R Studio",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ufs-explorer",
+   "name": "Ufs Explorer",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "dmde",
+   "name": "Dmde",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "hex-works",
+   "name": "Hex Works",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "winhex-2",
+   "name": "Winhex 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "prodiscover",
+   "name": "Prodiscover",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ontrack",
+   "name": "Ontrack",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "stellar-data",
+   "name": "Stellar Data",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "kernel-data",
+   "name": "Kernel Data",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "reclai.me",
+   "name": "Reclai.Me",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "reclai",
+   "name": "Reclai",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ddrescue",
+   "name": "Ddrescue",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "dumpzilla",
+   "name": "Dumpzilla",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "pytsk",
+   "name": "Pytsk",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "regripper",
+   "name": "Regripper",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "registry-explorer",
+   "name": "Registry Explorer",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "eric-zimmerman-tools",
+   "name": "Eric Zimmerman Tools",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "mftecmd",
+   "name": "Mftecmd",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "timeline-explorer",
+   "name": "Timeline Explorer",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "PECmd",
+   "name": "Pecmd",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "pecmd",
+   "name": "Pecmd",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "bstrings",
+   "name": "Bstrings",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "iis-forensics",
+   "name": "Iis Forensics",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "log2timeline",
+   "name": "Log2Timeline",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "plaso",
+   "name": "Plaso",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "df-timewolf",
+   "name": "Df Timewolf",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "artifact-essentials",
+   "name": "Artifact Essentials",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "acla",
+   "name": "Acla",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ir-responder",
+   "name": "Ir Responder",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "remnux",
+   "name": "Remnux",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sift-workstation",
+   "name": "Sift Workstation",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "tsurugih",
+   "name": "Tsurugih",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "thehive-ir",
+   "name": "Thehive Ir",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "cortex-ir",
+   "name": "Cortex Ir",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "opencti-2",
+   "name": "Opencti 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "yeti-2",
+   "name": "Yeti 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "unpacme",
+   "name": "Unpacme",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "alienvault",
+   "name": "Alienvault",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "hybrid-analysis-2",
+   "name": "Hybrid Analysis 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "everlaw",
+   "name": "Everlaw",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "logikcull",
+   "name": "Logikcull",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "disco-e",
+   "name": "Disco E",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "exterro-review",
+   "name": "Exterro Review",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "kcura",
+   "name": "Kcura",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "onelog",
+   "name": "Onelog",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "celebrite-mobile",
+   "name": "Celebrite Mobile",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "mobiledit-forensic",
+   "name": "Mobiledit Forensic",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "aleapp",
+   "name": "Aleapp",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "ileapp",
+   "name": "Ileapp",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "autopsy-mobile",
+   "name": "Autopsy Mobile",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "x64dbg",
+   "name": "X64Dbg",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "imhex",
+   "name": "Imhex",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "010-editor",
+   "name": "010 Editor",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "binary-ninja-cloud",
+   "name": "Binary Ninja Cloud",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "flare-floss",
+   "name": "Flare Floss",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "capa",
+   "name": "Capa",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "yara-x",
+   "name": "Yara X",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "sandboxie",
+   "name": "Sandboxie",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "capev2",
+   "name": "Capev2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "remnux-2",
+   "name": "Remnux 2",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "mandiant-advantage",
+   "name": "Mandiant Advantage",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "crowdstrike-falcon-x",
+   "name": "Crowdstrike Falcon X",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "recorded-future-3",
+   "name": "Recorded Future 3",
+   "category": "security-enterprise"
+  },
+  {
+   "slug": "virustotal-2",
+   "name": "Virustotal 2",
+   "category": "security-enterprise"
+  }
+ ],
+ "failed": [
+  {
+   "slug": "stackpath",
+   "icon": "cib:stackpath",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "aws-waf",
+   "icon": "logos:aws-waf",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "edgio",
+   "icon": "logos:edgio",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "sumo-logic",
+   "icon": "thesvg-color:sumo-logic",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "chronicle",
+   "icon": "thesvg-color:google-chronicle",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "mezmo",
+   "icon": "thesvg-color:mezmo",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "tripwire",
+   "icon": "iconoven:tripwire",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "malcolm",
+   "icon": "selfhst:malcolm-networking",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "onelogin",
+   "icon": "thesvg-color:onelogin",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "zitadel",
+   "icon": "selfhst:zitadel",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "ory",
+   "icon": "thesvg-color:ory",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "midpoint",
+   "icon": "system-uicons:midpoint",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "microsoft-entra",
+   "icon": "selfhst:microsoft-entra-id",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "ahnlab",
+   "icon": "arcticons:ahnlab-v3-plus",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "f-secure",
+   "icon": "cib:f-secure",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "kasm",
+   "icon": "selfhst:kasm-workspaces",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "token-security",
+   "icon": "iconoven:security-token",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "orca",
+   "icon": "openmoji:orca",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "blight",
+   "icon": "uix:blight",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "bolster",
+   "icon": "uix:yoga-bolster",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "whitesource",
+   "icon": "streamline-logos:whitesource-logo-1",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "bearer",
+   "icon": "uix:cheque-bearer",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "phylum",
+   "icon": "selfhst:phylum",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "hashicorp-vault",
+   "icon": "selfhst:hashicorp-vault",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "keeper-security",
+   "icon": "uix:security-keeper-box",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "aws-secrets-manager",
+   "icon": "logos:aws-secrets-manager",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "conveyor",
+   "icon": "temaki:conveyor",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "alloy",
+   "icon": "file-icons:alloy",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "persona",
+   "icon": "iconoven:persona",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "id-me",
+   "icon": "arcticons:id-me",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "clear",
+   "icon": "mdi:clear",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "intruder",
+   "icon": "uix:intruder-alert",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "lantern",
+   "icon": "iconoven:lantern",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "photorec",
+   "icon": "file-icons:photorec",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "hindsight",
+   "icon": "selfhst:hindsight",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "dfir-iris",
+   "icon": "selfhst:dfir-iris",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "intelowl",
+   "icon": "selfhst:intelowl",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "relativity",
+   "icon": "tdesign:relativity",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "xact",
+   "icon": "arcticons:xact",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "mvt",
+   "icon": "gis:mvt",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "sherlock",
+   "icon": "logos:sherlock",
+   "why": "HTTP Error 403: Forbidden"
+  },
+  {
+   "slug": "cuckoo",
+   "icon": "iconoven:cuckoo-clock",
+   "why": "HTTP Error 403: Forbidden"
+  }
+ ],
+ "mono": [
+  {
+   "slug": "opentext",
+   "category": "security-enterprise",
+   "icon": "simple-icons:OpenText"
+  }
+ ]
+}

@@ -1,0 +1,489 @@
+# slug	folder	Display Name	domain (kosong = cari via Wikidata)
+suricata	security-tools	Suricata	suricata.io
+zeek	security-tools	Zeek	zeek.org
+modsecurity	security-tools	ModSecurity	modsecurity.org
+owasp-crs	security-tools	OWASP CRS	coreruleset.org
+coraza	security-tools	Coraza	coraza.io
+arkime	security-tools	Arkime	arkime.com
+fail2ban	security-tools	Fail2ban	fail2ban.org
+ossec	security-tools	OSSEC	ossec.net
+opensnitch	security-tools	OpenSnitch	opensnitch.io
+ntopng	security-tools	ntopng	ntopng.com
+zeek-network-monitor	security-tools	Zeek NSM	zeek.org
+sliver	security-tools	Sliver	sliver.sh
+mythic	security-tools	Mythic	docs.mythic-c2.net
+empire	security-tools	PowerShell Empire	bc-security.com
+poshc2	security-tools	PoshC2	poshc2.readthedocs.io
+caldera	security-tools	MITRE Caldera	caldera.mitre.org
+atomic-red-team	security-tools	Atomic Red Team	atomicredteam.io
+infection-monkey	security-tools	Infection Monkey	guardicore.com
+stratus-red-team	security-tools	Stratus Red Team	stratus-red-team.cloud
+nuclei	security-tools	Nuclei	projectdiscovery.io
+naabu	security-tools	Naabu	projectdiscovery.io
+httpx	security-tools	httpx	projectdiscovery.io
+netexec	security-tools	NetExec	netexec.cloud
+certipy	security-tools	Certipy	github.com
+coercer	security-tools	Coercer	github.com
+adckiller	security-tools	ADCSKiller	github.com
+prowler	security-tools	Prowler	prowler.com
+scoutsuite	security-tools	ScoutSuite	github.com
+grype	security-tools	Grype	anchore.com
+syft	security-tools	Syft	anchore.com
+checkov	security-tools	Checkov	bridgecrew.io
+terrascan	security-tools	Terrascan	runecast.com
+semgrep	security-tools	Semgrep	semgrep.dev
+gitleaks	security-tools	Gitleaks	gitleaks.io
+trufflehog	security-tools	TruffleHog	trufflesecurity.com
+detect-secrets	security-tools	detect-secrets	github.com
+spectral	security-tools	Spectral	stoplight.io
+opengrep	security-tools	Opengrep	opengrep.dev
+osv-scanner	security-tools	OSV-Scanner	google.github.io
+dependency-check	security-tools	OWASP Dependency-Check	owasp.org
+sleuth-kit	security-tools	Sleuth Kit	sleuthkit.org
+velociraptor	security-tools	Velociraptor	docs.velociraptor.app
+plaso	security-tools	Plaso	plaso-project.org
+grr	security-tools	GRR	github.com
+cape-sandbox	security-tools	CAPE Sandbox	capev2.readthedocs.io
+mobsf	security-tools	MobSF	mobsf.org
+frida	security-tools	Frida	frida.re
+objection	security-tools	Objection	github.com
+jadx	security-tools	JADX	github.com
+apktool	security-tools	apktool	apktool.org
+radare2	security-tools	radare2	rada.re
+cutter	security-tools	Cutter	cutter.re
+ghidra	security-tools	Ghidra	ghidra-sre.org
+cobalt-strike	security-enterprise	Cobalt Strike	cobaltstrike.com
+brute-ratel	security-enterprise	Brute Ratel	bruteratel.com
+core-impact	security-enterprise	Core Impact	coresecurity.com
+outflank	security-enterprise	Outflank	outflank.nl
+scythe	security-enterprise	Scythe	scythe.io
+picus-security	security-enterprise	Picus Security	picussecurity.com
+safebreach	security-enterprise	SafeBreach	safebreach.com
+invicti	security-enterprise	Invicti	invicti.com
+acunetix	security-enterprise	Acunetix	acunetix.com
+veracode	security-enterprise	Veracode	veracode.com
+blackduck	security-enterprise	Black Duck	blackduck.com
+mend	security-enterprise	Mend	mend.io
+aikido	security-enterprise	Aikido Security	aikido.dev
+socket-security	security-enterprise	Socket	socket.dev
+contrast-security	security-enterprise	Contrast Security	contrastsecurity.com
+gitguardian	security-enterprise	GitGuardian	gitguardian.com
+sentinelone	security-enterprise	SentinelOne	sentinelone.com
+cortex-xdr	security-enterprise	Cortex XDR	paloaltonetworks.com
+palo-alto-cortex	security-enterprise	Cortex	paloaltonetworks.com
+trend-micro	security-enterprise	Trend Micro	trendmicro.com
+eset	security-enterprise	ESET	eset.com
+withsecure	security-enterprise	WithSecure	withsecure.com
+huntress	security-enterprise	Huntress	huntress.com
+cylance	security-enterprise	BlackBerry Cylance	cylance.com
+carbon-black	security-enterprise	Carbon Black	carbonblack.com
+qradar	security-enterprise	IBM QRadar	ibm.com
+microsoft-sentinel	security-enterprise	Microsoft Sentinel	microsoft.com
+google-secops	security-enterprise	Google SecOps	cloud.google.com
+exabeam	security-enterprise	Exabeam	exabeam.com
+securonix	security-enterprise	Securonix	securonix.com
+devo	security-enterprise	Devo	devo.com
+ibm-resilient	security-enterprise	IBM Resilient	ibm.com
+cortex-xsoar	security-enterprise	Cortex XSOAR	paloaltonetworks.com
+splunk-soar	security-enterprise	Splunk SOAR	splunk.com
+tines	security-enterprise	Tines	tines.io
+swimlane	security-enterprise	Swimlane	swimlane.com
+torq	security-enterprise	Torq	torq.io
+shuffle	security-enterprise	Shuffle	shuffler.io
+cortex-analyser	security-enterprise	Cortex	 cortex.io
+opencti	security-enterprise	OpenCTI	filigran.io
+misp	security-enterprise	MISP	misp-project.org
+anomali	security-enterprise	Anomali	anomali.com
+recorded-future	security-enterprise	Recorded Future	recordedfuture.com
+flashpoint	security-enterprise	Flashpoint	flashpoint.io
+threatconnect	security-enterprise	ThreatConnect	threatconnect.com
+threatquotient	security-enterprise	ThreatQuotient	threatquotient.com
+panther	security-enterprise	Panther	panther.com
+elastic-security	security-enterprise	Elastic Security	elastic.co
+palo-alto-networks	security-enterprise	Palo Alto Networks	paloaltonetworks.com
+fortigate	security-enterprise	FortiGate	fortinet.com
+checkpoint	security-enterprise	Check Point	checkpoint.com
+cisco-secure	security-enterprise	Cisco Secure	cisco.com
+juniper-networks	security-enterprise	Juniper Networks	juniper.net
+watchguard	security-enterprise	WatchGuard	watchguard.com
+forcepoint	security-enterprise	Forcepoint	forcepoint.com
+barracuda	security-enterprise	Barracuda	barracuda.com
+imperva	security-enterprise	Imperva	imperva.com
+radware	security-enterprise	Radware	radware.com
+darktrace	security-enterprise	Darktrace	darktrace.com
+extrahop	security-enterprise	ExtraHop	extrahop.com
+vectra	security-enterprise	Vectra AI	vectra.ai
+corelight	security-enterprise	Corelight	corelight.com
+netscout	security-enterprise	NETSCOUT	netscout.com
+arbor-networks	security-enterprise	Arbor Networks	netscout.com
+orca-security	security-enterprise	Orca Security	orca.security
+aqua-security	security-enterprise	Aqua Security	aqua.com
+prisma-cloud	security-enterprise	Prisma Cloud	prisma.paloaltonetworks.com
+lacework	security-enterprise	Lacework	lacework.net
+armo	security-enterprise	ARMO	armosec.io
+defender-for-cloud	security-enterprise	Defender for Cloud	microsoft.com
+aws-security-hub	security-enterprise	AWS Security Hub	aws.amazon.com
+guardduty	security-enterprise	GuardDuty	aws.amazon.com
+aws-inspector	security-enterprise	AWS Inspector	aws.amazon.com
+security-command-center	security-enterprise	Security Command Center	cloud.google.com
+upwind	security-enterprise	Upwind Security	upwind.io
+cyscale	security-enterprise	Cyscale	cyscale.com
+kubescape	security-enterprise	Kubescape	kubescape.io
+kubearmor	security-enterprise	KubeArmor	kubearmor.io
+beyondtrust	security-enterprise	BeyondTrust	beyondtrust.com
+delinea	security-enterprise	Delinea	delinea.com
+ping-identity	security-enterprise	Ping Identity	pingidentity.com
+sailpoint	security-enterprise	SailPoint	sailpoint.com
+saviynt	security-enterprise	Saviynt	saviynt.com
+one-identity	security-enterprise	One Identity	oneidentity.com
+strongdm	security-enterprise	StrongDM	strongdm.com
+akeyless	security-enterprise	Akeyless	akeyless.io
+magnet-forensics	security-enterprise	Magnet Forensics	magnetforensics.com
+encase	security-enterprise	EnCase	opentext.com
+ftk	security-enterprise	FTK	exterro.com
+x-ways	security-enterprise	X-Ways	x-ways.net
+cellebrite	security-enterprise	Cellebrite	cellebrite.com
+oxygen-forensics	security-enterprise	Oxygen Forensics	oxygen-forensic.com
+belkasoft	security-enterprise	Belkasoft	belkasoft.com
+binalyze	security-enterprise	Binalyze	binalyze.com
+axiom	security-enterprise	Magnet AXIOM	magnetforensics.com
+vanta	security-enterprise	Vanta	vanta.com
+drata	security-enterprise	Drata	drata.com
+secureframe	security-enterprise	Secureframe	secureframe.com
+onetrust	security-enterprise	OneTrust	onetrust.com
+eramba	security-enterprise	Eramba	eramba.org
+anyrun	security-enterprise	ANY.RUN	any.run
+joe-sandbox	security-enterprise	Joe Sandbox	joxeankoret.com
+hybrid-analysis	security-enterprise	Hybrid Analysis	hybrid-analysis.com
+ida-pro	security-enterprise	IDA Pro	hex-rays.com
+binary-ninja	security-enterprise	Binary Ninja	binary.ninja
+shodan	security-enterprise	Shodan	shodan.io
+censys	security-enterprise	Censys	censys.io
+cloudflare	security-enterprise	Cloudflare	cloudflare.com
+wordfence	security-enterprise	Wordfence	wordfence.com
+sucuri	security-enterprise	Sucuri	sucuri.net
+stackpath	security-enterprise	Stackpath	stackpath.com
+signal-sciences	security-enterprise	Signal Sciences	signalsciences.com
+wallarm	security-enterprise	Wallarm	wallarm.com
+aws-waf	security-enterprise	Aws Waf	aws.amazon.com
+azure-front-door	security-enterprise	Azure Front Door	azure.microsoft.com
+gcore	security-enterprise	Gcore	gcore.com
+section-io	security-enterprise	Section Io	section.io
+edgecast	security-enterprise	Edgecast	edgecast.com
+edgio	security-enterprise	Edgio	edgio.com
+imperva-waf	security-enterprise	Imperva Waf	imperva.com
+modshield	security-enterprise	Modshield	modshield.com
+barikode	security-enterprise	Barikode	barikode.com
+naxsi	security-enterprise	Naxsi	github.com
+shadowd	security-enterprise	Shadowd	shadowd.zia.io
+libinjection	security-enterprise	Libinjection	github.com
+logpoint	security-enterprise	Logpoint	logpoint.com
+sumo-logic	security-enterprise	Sumo Logic	sumologic.com
+chronicle	security-enterprise	Chronicle	chronicle.security
+arcsight	security-enterprise	Arcsight	microfocus.com
+opensearch	security-enterprise	Opensearch	opensearch.org
+elastic-siem	security-enterprise	Elastic Siem	elastic.co
+datadog	security-enterprise	Datadog	datadoghq.com
+cribl	security-enterprise	Cribl	cribl.io
+scalyr	security-enterprise	Scalyr	dataset.com
+humio	security-enterprise	Humio	humio.com
+logz-io	security-enterprise	Logz Io	logz.io
+mezmo	security-enterprise	Mezmo	mezmo.com
+papertrail	security-enterprise	Papertrail	papertrailapp.com
+cisco-firepower	security-enterprise	Cisco Firepower	cisco.com
+cisco-securex	security-enterprise	Cisco Securex	cisco.com
+alert-logic	security-enterprise	Alert Logic	alertlogic.com
+eeye	security-enterprise	Eeye	eeye.com
+tripwire	security-enterprise	Tripwire	tripwire.com
+tufin	security-enterprise	Tufin	tufin.com
+algosec	security-enterprise	Algosec	algosec.com
+lastline	security-enterprise	Lastline	lastline.com
+ironnet	security-enterprise	Ironnet	ironnetworks.com
+inspector-2	security-enterprise	Inspector 2	aws.amazon.com
+stamus	security-enterprise	Stamus	stamusnetworks.com
+selks	security-enterprise	Selks	stamusnetworks.com
+malcolm	security-enterprise	Malcolm	idaholab.org
+auth0	security-enterprise	Auth0	auth0.com
+onelogin	security-enterprise	Onelogin	onelogin.com
+jumpcloud	security-enterprise	Jumpcloud	jumpcloud.com
+zitadel	security-enterprise	Zitadel	zitadel.com
+ory	security-enterprise	Ory	ory.sh
+fusionauth	security-enterprise	Fusionauth	fusionauth.io
+keycloak	security-enterprise	Keycloak	keycloak.org
+openiam	security-enterprise	Openiam	openiam.com
+midpoint	security-enterprise	Midpoint	evolveum.com
+microsoft-entra	security-enterprise	Microsoft Entra	microsoft.com
+rsa-securid	security-enterprise	Rsa Securid	rsa.com
+thales-safenet	security-enterprise	Thales Safenet	cpl.thalesgroup.com
+hid-digitalpersona	security-enterprise	Hid Digitalpersona	hidglobal.com
+silverfort	security-enterprise	Silverfort	silverfort.io
+semperis	security-enterprise	Semperis	semperis.com
+authomize	security-enterprise	Authomize	authomize.com
+veza	security-enterprise	Veza	veza.com
+empowerid	security-enterprise	Empowerid	empowerid.com
+helloid	security-enterprise	Helloid	tools4ever.com
+okta-asa	security-enterprise	Okta Asa	okta.com
+ping-da	security-enterprise	Ping Da	pingidentity.com
+arctic-wolf	security-enterprise	Arctic Wolf	arcticwolf.com
+red-canary	security-enterprise	Red Canary	redcanary.com
+expel	security-enterprise	Expel	expel.io
+critical-start	security-enterprise	Critical Start	criticalstart.com
+deepwatch	security-enterprise	Deepwatch	deepwatch.com
+esentire	security-enterprise	Esentire	esentire.com
+reliaquest	security-enterprise	Reliaquest	reliaquest.com
+binary-defense	security-enterprise	Binary Defense	binarydefense.com
+proficio	security-enterprise	Proficio	proficio.com
+cybereason	security-enterprise	Cybereason	cybereason.com
+tanium	security-enterprise	Tanium	tanium.com
+threatlocker	security-enterprise	Threatlocker	threatlocker.com
+comodo	security-enterprise	Comodo	comodo.com
+ahnlab	security-enterprise	Ahnlab	ahnlab.com
+gdata	security-enterprise	Gdata	gdata-software.com
+f-secure	security-enterprise	F Secure	f-secure.com
+eset-protect	security-enterprise	Eset Protect	eset.com
+kasm	security-enterprise	Kasm	kasmweb.com
+proofpoint	security-enterprise	Proofpoint	proofpoint.com
+mimecast	security-enterprise	Mimecast	mimecast.com
+abnormal-security	security-enterprise	Abnormal Security	abnormal.ai
+material-security	security-enterprise	Material Security	material.security
+hornetsecurity	security-enterprise	Hornetsecurity	hornetsecurity.com
+avanan	security-enterprise	Avanan	avanan.com
+perception-point	security-enterprise	Perception Point	perception-point.io
+ironscales	security-enterprise	Ironscales	ironscales.com
+spamhaus	security-enterprise	Spamhaus	spamhaus.org
+mailprotector	security-enterprise	Mailprotector	mailprotector.com
+valimail	security-enterprise	Valimail	valimail.com
+agari	security-enterprise	Agari	agari.com
+twilio-sendgrid	security-enterprise	Twilio Sendgrid	sendgrid.com
+sweet-security	security-enterprise	Sweet Security	sweet.security
+dig-security	security-enterprise	Dig Security	dig.security
+gem-security	security-enterprise	Gem Security	gem.security
+authomize-2	security-enterprise	Authomize 2	authomize.com
+token-security	security-enterprise	Token Security	token.security
+aim-security	security-enterprise	Aim Security	aim.security
+noname-security	security-enterprise	Noname Security	noname.security
+salt-security	security-enterprise	Salt Security	salt.security
+traceable	security-enterprise	Traceable	traceable.ai
+orca	security-enterprise	Orca	orca.security
+ Ermetic	security-enterprise	 Ermetic	ermetic.com
+prisma-access	security-enterprise	Prisma Access	paloaltonetworks.com
+stacklet	security-enterprise	Stacklet	stacklet.io
+capsule8	security-enterprise	Capsule8	capsule8.com
+inland	security-enterprise	Inland	inland.io
+bigid	security-enterprise	Bigid	bigid.com
+cyera	security-enterprise	Cyera	cyera.io
+sentra	security-enterprise	Sentra	sentra.io
+varonis	security-enterprise	Varonis	varonis.com
+normalyze	security-enterprise	Normalyze	normalyze.io
+polar-security	security-enterprise	Polar Security	polar.security
+trusta	security-enterprise	Trusta	trusta.ai
+titaniam	security-enterprise	Titaniam	titaniam.com
+securedoc	security-enterprise	Securedoc	securedoc.ai
+zerofox	security-enterprise	Zerofox	zerofox.com
+intel-471	security-enterprise	Intel 471	intel471.com
+kela	security-enterprise	Kela	kela.ai
+blight	security-enterprise	Blight	blight.com
+cybersixgill	security-enterprise	Cybersixgill	cybersixgill.com
+darkowl	security-enterprise	Darkowl	darkowl.com
+dataminr	security-enterprise	Dataminr	dataminr.com
+recorded-future-2	security-enterprise	Recorded Future 2	recordedfuture.com
+flashpoint-2	security-enterprise	Flashpoint 2	flashpoint.io
+lookingglass	security-enterprise	Lookingglass	lookingglasscyber.com
+eclypsium	security-enterprise	Eclypsium	eclypsium.com
+cybelangel	security-enterprise	Cybelangel	cybelangel.com
+bolster	security-enterprise	Bolster	bolster.ai
+fortify	security-enterprise	Fortify	microfocus.com
+synopsys	security-enterprise	Synopsys	synopsys.com
+coverity	security-enterprise	Coverity	synopsys.com
+rapid7	security-enterprise	Rapid7	rapid7.com
+whitesource	security-enterprise	Whitesource	mend.io
+appdeep	security-enterprise	Appdeep	aquasec.com
+bearer	security-enterprise	Bearer	bearer.com
+jericho	security-enterprise	Jericho	jerichoforge.com
+cycode	security-enterprise	Cycode	cycode.com
+armorcode	security-enterprise	Armorcode	armorcode.com
+legit-security	security-enterprise	Legit Security	legitsecurity.com
+apiiro	security-enterprise	Apiiro	apiiro.com
+cycode-2	security-enterprise	Cycode 2	cycode.com
+endor-labs	security-enterprise	Endor Labs	endorlabs.com
+phylum	security-enterprise	Phylum	phylum.io
+socket-2	security-enterprise	Socket 2	socket.dev
+hashicorp-vault	security-enterprise	Hashicorp Vault	vaultproject.io
+keeper-security	security-enterprise	Keeper Security	keepersecurity.com
+dashlane	security-enterprise	Dashlane	dashlane.com
+bitwarden	security-enterprise	Bitwarden	bitwarden.com
+1password	security-enterprise	1Password	1password.com
+cyberark-conjur	security-enterprise	Cyberark Conjur	cyberark.com
+delinea-secret-server	security-enterprise	Delinea Secret Server	delinea.com
+aws-secrets-manager	security-enterprise	Aws Secrets Manager	aws.amazon.com
+azure-key-vault	security-enterprise	Azure Key Vault	azure.microsoft.com
+gcp-secret-manager	security-enterprise	Gcp Secret Manager	cloud.google.com
+hyperproof	security-enterprise	Hyperproof	hyperproof.io
+auditboard	security-enterprise	Auditboard	auditboard.com
+logicgate	security-enterprise	Logicgate	logicgate.com
+servicenow-irm	security-enterprise	Servicenow Irm	servicenow.com
+sprinto	security-enterprise	Sprinto	sprinto.com
+anecdotes	security-enterprise	Anecdotes	anecdotes.ai
+thoropass	security-enterprise	Thoropass	thoropass.com
+safebase	security-enterprise	Safebase	safebase.us
+conveyor	security-enterprise	Conveyor	conveyor.com
+socure	security-enterprise	Socure	socure.com
+alloy	security-enterprise	Alloy	alloy.com
+persona	security-enterprise	Persona	withpersona.com
+onfido	security-enterprise	Onfido	onfido.com
+jumio	security-enterprise	Jumio	jumio.com
+id-me	security-enterprise	Id Me	id.me
+clear	security-enterprise	Clear	clearme.com
+nuix	security-enterprise	Nuix	nuix.com
+msab-xry	security-enterprise	Msab Xry	msab.com
+passware	security-enterprise	Passware	passware.com
+elcomsoft	security-enterprise	Elcomsoft	elcomsoft.com
+magnet-axiom-2	security-enterprise	Magnet Axiom 2	magnetforensics.com
+opentext	security-enterprise	Opentext	opentext.com
+exterro	security-enterprise	Exterro	exterro.com
+accessdata	security-enterprise	Accessdata	accessdata.com
+sumuri	security-enterprise	Sumuri	sumuri.com
+cellebrite-2	security-enterprise	Cellebrite 2	cellebrite.com
+hackerone	security-enterprise	Hackerone	hackerone.com
+bugcrowd	security-enterprise	Bugcrowd	bugcrowd.com
+synack	security-enterprise	Synack	synack.com
+cobalt-io	security-enterprise	Cobalt Io	cobalt.io
+yeswehack	security-enterprise	Yeswehack	yeswehack.com
+intigriti	security-enterprise	Intigriti	intigriti.com
+detectify	security-enterprise	Detectify	detectify.com
+intruder	security-enterprise	Intruder	intruder.io
+probely	security-enterprise	Probely	probely.com
+immuniweb	security-enterprise	Immuniweb	immuniweb.com
+pentest-tools	security-enterprise	Pentest Tools	pentest-tools.com
+outpost24	security-enterprise	Outpost24	outpost24.com
+holm-security	security-enterprise	Holm Security	holmsecurity.com
+cycraft	security-enterprise	Cycraft	cycraft.com
+cloudrise	security-enterprise	Cloudrise	cloudrise.tech
+magnet-respond	security-enterprise	Magnet Respond	magnetforensics.com
+magnet-verdict	security-enterprise	Magnet Verdict	magnetforensics.com
+cellebrite-pathfinder	security-enterprise	Cellebrite Pathfinder	cellebrite.com
+cellebrite-premium	security-enterprise	Cellebrite Premium	cellebrite.com
+cellebrite-ufed	security-enterprise	Cellebrite Ufed	cellebrite.com
+cellebrite-cloud	security-enterprise	Cellebrite Cloud	cellebrite.com
+oxygen-detective	security-enterprise	Oxygen Detective	oxygen-forensic.com
+oxygen-phone-detective	security-enterprise	Oxygen Phone Detective	oxygen-forensic.com
+oxygen-corporate	security-enterprise	Oxygen Corporate	oxygen-forensic.com
+belkasoft-evidence-center	security-enterprise	Belkasoft Evidence Center	belkasoft.com
+belkasoft-x	security-enterprise	Belkasoft X	belkasoft.com
+ftk-enterprise	security-enterprise	Ftk Enterprise	exterro.com
+ftk-lab	security-enterprise	Ftk Lab	exterro.com
+encase-endpoint	security-enterprise	Encase Endpoint	opentext.com
+encase-enterprise	security-enterprise	Encase Enterprise	opentext.com
+guidance-software	security-enterprise	Guidance Software	guidancesoftware.com
+nuix-workstation	security-enterprise	Nuix Workstation	nuix.com
+nuix-discover	security-enterprise	Nuix Discover	nuix.com
+x-ways-forensics	security-enterprise	X Ways Forensics	x-ways.net
+winhex	security-enterprise	Winhex	x-ways.net
+paraben-e3	security-enterprise	Paraben E3	paraben.com
+paraben-p2	security-enterprise	Paraben P2	paraben.com
+adf-solutions	security-enterprise	Adf Solutions	adfsolutions.com
+digital-intelligence	security-enterprise	Digital Intelligence	digitalintel.com
+teel-technologies	security-enterprise	Teel Technologies	teeltech.com
+sumuri-artifact	security-enterprise	Sumuri Artifact	sumuri.com
+blackbag	security-enterprise	Blackbag	blackbag.tech
+kroll-kape	security-enterprise	Kroll Kape	kroll.com
+kape	security-enterprise	Kape	kroll.com
+magnet-ai	security-enterprise	Magnet Ai	magnetforensics.com
+cado	security-enterprise	Cado	cado.com
+cybertriage	security-enterprise	Cybertriage	cybertriage.com
+velociraptor-ir	security-enterprise	Velociraptor Ir	docs.velociraptor.app
+grayshift	security-enterprise	Grayshift	grayshift.com
+graykey	security-enterprise	Graykey	grayshift.com
+salvationdata	security-enterprise	Salvationdata	salvationdata.com
+mobiledit	security-enterprise	Mobiledit	mobiledit.com
+lantern	security-enterprise	Lantern	katanaforensics.com
+katana-forensics	security-enterprise	Katana Forensics	katanaforensics.com
+trustedsec	security-enterprise	Trustedsec	trustedsec.com
+fox-forensics	security-enterprise	Fox Forensics	fox-forensics.com.sg
+volatility	security-enterprise	Volatility	volatilityfoundation.org
+volatility3	security-enterprise	Volatility3	volatilityfoundation.org
+rekall	security-enterprise	Rekall	github.com
+memprocfs	security-enterprise	Memprocfs	github.com
+bulk-extractor	security-enterprise	Bulk Extractor	digitalcorpora.org
+photorec	security-enterprise	Photorec	cgsecurity.org
+testdisk	security-enterprise	Testdisk	cgsecurity.org
+r-studio	security-enterprise	R Studio	r-studio.com
+ufs-explorer	security-enterprise	Ufs Explorer	ufsexplorer.com
+dmde	security-enterprise	Dmde	dmde.com
+hex-works	security-enterprise	Hex Works	hex-works.com
+winhex-2	security-enterprise	Winhex 2	x-ways.net
+prodiscover	security-enterprise	Prodiscover	techpathways.com
+ontrack	security-enterprise	Ontrack	ontrack.com
+stellar-data	security-enterprise	Stellar Data	stellarinfo.co
+kernel-data	security-enterprise	Kernel Data	kerneldatarecovery.com
+reclai.me	security-enterprise	Reclai.Me	reclai.me
+reclai	security-enterprise	Reclai	reclai.me
+ddrescue	security-enterprise	Ddrescue	gnu.org
+hindsight	security-enterprise	Hindsight	obsidianforensics.com
+dumpzilla	security-enterprise	Dumpzilla	dumpzilla.org
+pytsk	security-enterprise	Pytsk	github.com
+regripper	security-enterprise	Regripper	github.com
+registry-explorer	security-enterprise	Registry Explorer	ericzimmerman.github.io
+eric-zimmerman-tools	security-enterprise	Eric Zimmerman Tools	ericzimmerman.github.io
+mftecmd	security-enterprise	Mftecmd	ericzimmerman.github.io
+timeline-explorer	security-enterprise	Timeline Explorer	ericzimmerman.github.io
+PECmd	security-enterprise	Pecmd	ericzimmerman.github.io
+pecmd	security-enterprise	Pecmd	ericzimmerman.github.io
+bstrings	security-enterprise	Bstrings	github.com
+iis-forensics	security-enterprise	Iis Forensics	github.com
+log2timeline	security-enterprise	Log2Timeline	github.com
+plaso	security-enterprise	Plaso	plaso-project.org
+timesketch	security-enterprise	Timesketch	timesketch.org
+df-timewolf	security-enterprise	Df Timewolf	github.com
+artifact-essentials	security-enterprise	Artifact Essentials	github.com
+acla	security-enterprise	Acla	github.com
+ir-responder	security-enterprise	Ir Responder	github.com
+remnux	security-enterprise	Remnux	remnux.org
+sift-workstation	security-enterprise	Sift Workstation	digital-forensics.sans.org
+tsurugih	security-enterprise	Tsurugih	tsurugih.com
+dfir-iris	security-enterprise	Dfir Iris	dfir-iris.org
+iris	security-enterprise	Iris	dfir-iris.org
+yeti	security-enterprise	Yeti	yeti-platform.io
+thehive-ir	security-enterprise	Thehive Ir	thehive-project.com
+cortex-ir	security-enterprise	Cortex Ir	thehive-project.com
+opencti-2	security-enterprise	Opencti 2	filigran.io
+intelowl	security-enterprise	Intelowl	intelowlproject.github.io
+yeti-2	security-enterprise	Yeti 2	yeti-platform.io
+unpacme	security-enterprise	Unpacme	unpac.me
+alienvault	security-enterprise	Alienvault	cybersecurity.att.com
+virustotal	security-enterprise	Virustotal	virustotal.com
+hybrid-analysis-2	security-enterprise	Hybrid Analysis 2	hybrid-analysis.com
+relativity	security-enterprise	Relativity	relativity.com
+everlaw	security-enterprise	Everlaw	everlaw.com
+logikcull	security-enterprise	Logikcull	logikcull.com
+disco-e	security-enterprise	Disco E	csdisco.com
+exterro-review	security-enterprise	Exterro Review	exterro.com
+kcura	security-enterprise	Kcura	kcura.com
+onelog	security-enterprise	Onelog	onelog.com
+xact	security-enterprise	Xact	xactip.com
+celebrite-mobile	security-enterprise	Celebrite Mobile	cellebrite.com
+mobiledit-forensic	security-enterprise	Mobiledit Forensic	mobiledit.com
+mvt	security-enterprise	Mvt	mvt.re
+aleapp	security-enterprise	Aleapp	github.com
+ileapp	security-enterprise	Ileapp	github.com
+autopsy-mobile	security-enterprise	Autopsy Mobile	sleuthkit.org
+sherlock	security-enterprise	Sherlock	github.com
+ghidra	security-enterprise	Ghidra	ghidra-sre.org
+x64dbg	security-enterprise	X64Dbg	x64dbg.com
+ollydbg	security-enterprise	Ollydbg	ollydbg.de
+imhex	security-enterprise	Imhex	imhex.werwolv.net
+010-editor	security-enterprise	010 Editor	010editor.com
+binary-ninja-cloud	security-enterprise	Binary Ninja Cloud	binary.ninja
+flare-floss	security-enterprise	Flare Floss	mandiant.com
+capa	security-enterprise	Capa	mandiant.com
+yara	security-enterprise	Yara	virustotal.com
+yara-x	security-enterprise	Yara X	virustotal.com
+clamav	security-enterprise	Clamav	clamav.net
+sandboxie	security-enterprise	Sandboxie	sandboxie-plus.com
+cuckoo	security-enterprise	Cuckoo	cuckoosandbox.org
+capev2	security-enterprise	Capev2	capev2.readthedocs.io
+remnux-2	security-enterprise	Remnux 2	remnux.org
+mandiant-advantage	security-enterprise	Mandiant Advantage	mandiant.com
+crowdstrike-falcon-x	security-enterprise	Crowdstrike Falcon X	crowdstrike.com
+recorded-future-3	security-enterprise	Recorded Future 3	recordedfuture.com
+virustotal-2	security-enterprise	Virustotal 2	virustotal.com
